@@ -8,17 +8,17 @@ const highlights = [
   {
     icon: Shield,
     title: "Security Expert",
-    description: "Certified Cloudflare Solutions Architect and OpenShift Administrator",
+    description: "Cloudflare Solutions Architect, Zero Trust Engineer & OpenShift Administrator",
   },
   {
     icon: Users,
     title: "Team Leader",
-    description: "Fostering collaborative environments where teams grow and succeed",
+    description: "Leading Cloudflare Professional Services and mentoring colleagues at SALT",
   },
   {
     icon: Lightbulb,
     title: "Problem Solver",
-    description: "Breaking down complex challenges into clear, actionable solutions",
+    description: "Breaking down complex security challenges into clear, actionable solutions",
   },
 ];
 

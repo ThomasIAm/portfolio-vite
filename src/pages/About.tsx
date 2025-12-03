@@ -4,7 +4,9 @@ import profileImage from "@/assets/profile.jpg";
 
 const certifications = [
   "Cloudflare Solutions Architect",
+  "Cloudflare Zero Trust Engineer",
   "OpenShift Administrator",
+  "SPLUNK Efficiency & Optimization",
 ];
 
 const values = [
@@ -16,7 +18,7 @@ const values = [
   {
     icon: Heart,
     title: "Team Growth",
-    description: "Believing that a strong team is crucial to success, dedicated to helping each member reach their full potential.",
+    description: "Creating collaborative environments where teams learn from each other and continuously develop their skills.",
   },
   {
     icon: Award,
@@ -59,10 +61,13 @@ export default function About() {
           <div className="max-w-3xl mx-auto">
             <div className="prose prose-lg animate-fade-up">
               <p className="text-lg text-foreground leading-relaxed mb-6">
-                With years of experience and a robust tech background, I focus on guiding my team and clients to success in the dynamic cyber security landscape. My approach extends beyond technology — I prioritize educating and empowering individuals within organizations.
+                With years of experience and a robust tech background, I focus on guiding my team and clients to success in the dynamic cyber security landscape. As a certified Cloudflare Solutions Architect and OpenShift Administrator, I stay current with the latest tools and techniques to protect businesses from cyber threats.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-6">
-                I'm a strong communicator, problem-solver, and critical thinker who thrives in fast-paced environments and relishes challenges. Beyond finding solutions, I foster collaborative environments where teams can grow and develop.
+                My role as lead consultant extends beyond finding solutions — I'm committed to creating a collaborative and supportive environment within my team, where we learn from each other and continuously develop our skills.
+              </p>
+              <p className="text-lg text-foreground leading-relaxed mb-6">
+                I believe cybersecurity isn't just about implementing technology — it's about educating and empowering individuals within organizations. I communicate clearly and engagingly with clients, breaking down complex concepts in an understandable way.
               </p>
             </div>
 
