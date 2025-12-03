@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 const contactMethods = [
   {
     icon: Mail,
-    label: "Email",
-    value: "hello@tvdn.me",
-    href: "mailto:hello@tvdn.me",
-    description: "Best for detailed inquiries",
+    label: "Work Email",
+    value: "thomas.vandennieuwenhoff@salt-security.com",
+    href: "mailto:thomas.vandennieuwenhoff@salt-security.com",
+    description: "Best for professional inquiries",
   },
   {
     icon: Linkedin,

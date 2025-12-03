@@ -4,22 +4,28 @@ import { Button } from "@/components/ui/button";
 
 const projects = [
   {
-    title: "Enterprise Security Framework",
-    description: "Developed a comprehensive security framework for enterprise clients, including threat modeling, incident response procedures, and security awareness training programs.",
-    tags: ["Security Architecture", "Risk Assessment", "Training"],
+    title: "Lead Cloudflare Professional Services",
+    description: "Leading Cloudflare Professional Services at SALT Cyber Security, responsible for mentoring colleagues, identifying commercial opportunities, and delivering consulting and engineering services.",
+    tags: ["Cloudflare", "Leadership", "Professional Services"],
     icon: Shield,
   },
   {
-    title: "Cloud Infrastructure Hardening",
-    description: "Led the security hardening initiative for multi-cloud environments, implementing best practices for Cloudflare, AWS, and Azure deployments.",
-    tags: ["Cloudflare", "Cloud Security", "DevSecOps"],
+    title: "OpenShift Platform Migration",
+    description: "Led OpenShift migrations at Belastingdienst, successfully onboarding developers, implementing automation with Tekton and ArgoCD, and enhancing cluster security with Advanced Cluster Security.",
+    tags: ["OpenShift", "DevOps", "Kubernetes"],
     icon: Server,
   },
   {
-    title: "Zero Trust Implementation",
-    description: "Designed and deployed zero trust architecture for a financial services client, significantly reducing attack surface and improving security posture.",
-    tags: ["Zero Trust", "Identity", "Network Security"],
+    title: "Identity Access Management",
+    description: "Security expert for IBM Security Verify Access at Belastingdienst, managing authentication solutions (including DigiD) and creating migration plans for Red Hat OpenShift.",
+    tags: ["IAM", "Security", "DigiD"],
     icon: Lock,
+  },
+  {
+    title: "Fully Homomorphic Encryption Research",
+    description: "Conducted research on Fully Homomorphic Encryption including business applications, built a proof-of-concept weight-tracking app, and published multiple articles on the technology.",
+    tags: ["Research", "Cryptography", "Innovation"],
+    icon: Shield,
   },
 ];
 
