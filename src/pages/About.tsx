@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { Award, BookOpen, Heart } from "lucide-react";
+import { Award, BookOpen, Heart, Briefcase } from "lucide-react";
 import profileImage from "@/assets/profile.jpg";
 
 const certifications = [
@@ -9,6 +9,32 @@ const certifications = [
   "SPLUNK Efficiency & Optimization",
 ];
 
+const experience = [
+  {
+    title: "Lead Cyber Security Consultant",
+    company: "SALT Cyber Security",
+    period: "Feb 2022 – Present",
+    description: "Leading security consulting engagements, mentoring team members, and delivering enterprise security solutions including Cloudflare implementations and Zero Trust architectures.",
+  },
+  {
+    title: "Cyber Security Consultant",
+    company: "SALT Cyber Security",
+    period: "Mar 2021 – Feb 2022",
+    description: "Delivered security assessments, implemented protective measures, and advised clients on cybersecurity best practices.",
+  },
+  {
+    title: "Application Manager",
+    company: "Belastingdienst (Dutch Tax Administration)",
+    period: "Sep 2019 – Mar 2021",
+    description: "Managed critical applications and infrastructure, ensuring security compliance and operational excellence for government systems.",
+  },
+  {
+    title: "IT Consultant",
+    company: "Unica ICT Solutions",
+    period: "Feb 2018 – Sep 2019",
+    description: "Provided IT consulting services, supporting enterprise clients with infrastructure and security solutions.",
+  },
+];
 const values = [
   {
     icon: BookOpen,
@@ -51,10 +77,42 @@ export default function About() {
                 </p>
               </div>
             </div>
+            {/* Experience Timeline */}
+            <div className="mt-16 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+              <h2 className="font-display text-2xl font-bold text-foreground mb-8 flex items-center gap-3">
+                <Briefcase className="h-6 w-6 text-primary" />
+                Experience
+              </h2>
+              <div className="relative">
+                {/* Timeline line */}
+                <div className="absolute left-[7px] top-2 bottom-2 w-0.5 bg-border" />
+                
+                <div className="space-y-8">
+                  {experience.map((job, index) => (
+                    <div key={index} className="relative pl-8">
+                      {/* Timeline dot */}
+                      <div className="absolute left-0 top-2 w-[15px] h-[15px] rounded-full bg-primary border-4 border-background" />
+                      
+                      <div className="p-6 rounded-xl bg-card shadow-soft">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                          <h3 className="font-display text-lg font-semibold text-foreground">
+                            {job.title}
+                          </h3>
+                          <span className="text-sm text-muted-foreground font-medium">
+                            {job.period}
+                          </span>
+                        </div>
+                        <p className="text-primary font-medium mb-2">{job.company}</p>
+                        <p className="text-muted-foreground text-sm">{job.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
       {/* Main Content */}
       <section className="py-20 md:py-28">
         <div className="container">
