@@ -3,7 +3,22 @@ import { ArrowRight, Shield, Users, Lightbulb } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import { SEO } from "@/components/seo/SEO";
 import profileImage from "@/assets/profile.jpg";
+
+const personStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Thomas van den Nieuwenhoff",
+  url: "https://tvdn.me",
+  jobTitle: "Lead Cyber Security Consultant",
+  worksFor: {
+    "@type": "Organization",
+    name: "SALT Cyber Security",
+  },
+  knowsAbout: ["Cyber Security", "Cloudflare", "Zero Trust", "OpenShift", "DevSecOps"],
+  sameAs: ["https://linkedin.com/in/tvdn", "https://github.com/tvdn"],
+};
 
 const highlights = [
   {
@@ -26,6 +41,13 @@ const highlights = [
 export default function Index() {
   return (
     <Layout>
+      <SEO
+        title="Thomas van den Nieuwenhoff | Lead Cyber Security Consultant"
+        description="Lead Cyber Security Consultant specializing in Cloudflare, Zero Trust, and OpenShift. Empowering businesses and teams in the digital realm."
+        canonical="/"
+        keywords={["cyber security consultant", "Cloudflare expert", "Zero Trust", "OpenShift administrator", "security architect", "Netherlands"]}
+        structuredData={personStructuredData}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-hero min-h-[90vh] flex items-center">
         <div className="container py-20 md:py-32">

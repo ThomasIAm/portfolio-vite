@@ -4,12 +4,19 @@ import { Link } from "react-router-dom";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { calculateReadingTime } from "@/lib/contentful";
 import { format } from "date-fns";
+import { SEO } from "@/components/seo/SEO";
 
 export default function Blog() {
   const { data: posts, isLoading, error } = useBlogPosts();
 
   return (
     <Layout>
+      <SEO
+        title="Blog"
+        description="Insights on cyber security, leadership, and technology from Thomas van den Nieuwenhoff. Expert articles on Cloudflare, Zero Trust, and DevSecOps."
+        canonical="/blog"
+        keywords={["cyber security blog", "security articles", "Cloudflare insights", "Zero Trust architecture", "DevSecOps"]}
+      />
       {/* Hero Section */}
       <section className="py-20 md:py-28 bg-gradient-hero">
         <div className="container">

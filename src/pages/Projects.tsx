@@ -1,6 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { ExternalLink, Github, Lock, Server, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/seo/SEO";
 
 const projects = [
   {
@@ -32,6 +33,12 @@ const projects = [
 export default function Projects() {
   return (
     <Layout>
+      <SEO
+        title="Projects & Work"
+        description="Security initiatives and projects led by Thomas van den Nieuwenhoff including Cloudflare Professional Services, OpenShift migrations, and IAM solutions."
+        canonical="/projects"
+        keywords={["security projects", "Cloudflare consulting", "OpenShift migration", "IAM solutions", "cyber security portfolio"]}
+      />
       {/* Hero Section */}
       <section className="py-20 md:py-28 bg-gradient-hero">
         <div className="container">

@@ -1,6 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { Award, BookOpen, Heart, Trophy } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import { SEO } from "@/components/seo/SEO";
 import profileImage from "@/assets/profile.jpg";
 
 const certifications = [
@@ -31,6 +32,13 @@ const values = [
 export default function About() {
   return (
     <Layout>
+      <SEO
+        title="About"
+        description="Learn about Thomas van den Nieuwenhoff - Lead Cyber Security Consultant with certifications in Cloudflare, Zero Trust, and OpenShift."
+        canonical="/about"
+        type="profile"
+        keywords={["cyber security expert", "Cloudflare Solutions Architect", "Zero Trust Engineer", "OpenShift Administrator", "SALT Cyber Security"]}
+      />
       {/* Hero Section */}
       <section className="py-20 md:py-28 bg-gradient-hero">
         <div className="container">
