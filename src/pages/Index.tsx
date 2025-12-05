@@ -62,7 +62,7 @@ export default function Index() {
             <AnimatedSection variant="scale" delay={200} className="flex-shrink-0">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-warm rounded-full blur-2xl opacity-20 animate-float" />
-                <img alt="Thomas van den Nieuwenhoff" className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background" src="/lovable-uploads/421c25fb-a60c-49fa-a508-a7a44b067f56.jpg" />
+                <img alt="Thomas van den Nieuwenhoff" className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background" src={profileImage} />
               </div>
             </AnimatedSection>
           </div>

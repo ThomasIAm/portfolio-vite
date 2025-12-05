@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { Mail, Linkedin, Github, MapPin } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, Gitlab } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
 
@@ -23,6 +23,13 @@ const contactMethods = [
     label: "GitHub",
     value: "github.com/tvdn",
     href: "https://github.com/tvdn",
+    description: "Check out my code",
+  },
+  {
+    icon: Gitlab,
+    label: "GitLab",
+    value: "gitlab.com/tvdn",
+    href: "https://gitlab.com/tvdn",
     description: "Check out my code",
   },
 ];
