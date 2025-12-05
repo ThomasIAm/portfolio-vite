@@ -5,6 +5,7 @@ import { useBlogPost } from '@/hooks/useBlogPosts';
 import { calculateReadingTime } from '@/lib/contentful';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { format } from 'date-fns';
+import { SEO } from '@/components/seo/SEO';
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -13,6 +14,11 @@ export default function BlogPost() {
   if (isLoading) {
     return (
       <Layout>
+        <SEO
+          title="Loading..."
+          description="Loading blog post"
+          canonical={`/blog/${slug}`}
+        />
         <section className="py-20 md:py-28">
           <div className="container">
             <div className="max-w-3xl mx-auto">
@@ -31,6 +37,11 @@ export default function BlogPost() {
   if (error || !post) {
     return (
       <Layout>
+        <SEO
+          title="Post Not Found"
+          description="The blog post you're looking for doesn't exist."
+          canonical="/blog"
+        />
         <section className="py-20 md:py-28">
           <div className="container">
             <div className="max-w-3xl mx-auto text-center">
@@ -57,8 +68,40 @@ export default function BlogPost() {
   const fields = post.fields;
   const readingTime = calculateReadingTime(fields.content);
 
+  const articleStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: fields.title,
+    description: fields.excerpt,
+    datePublished: fields.publishedDate,
+    dateModified: fields.publishedDate,
+    author: {
+      "@type": "Person",
+      name: "Thomas van den Nieuwenhoff",
+      url: "https://tvdn.me",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Thomas van den Nieuwenhoff",
+      url: "https://tvdn.me",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://tvdn.me/blog/${fields.slug}`,
+    },
+  };
+
   return (
     <Layout>
+      <SEO
+        title={fields.title}
+        description={fields.excerpt}
+        canonical={`/blog/${fields.slug}`}
+        type="article"
+        publishedDate={fields.publishedDate}
+        keywords={["cyber security", "blog", fields.title.toLowerCase()]}
+        structuredData={articleStructuredData}
+      />
       {/* Hero Section */}
       <section className="py-20 md:py-28 bg-gradient-hero">
         <div className="container">

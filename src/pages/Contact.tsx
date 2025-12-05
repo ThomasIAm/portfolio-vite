@@ -1,6 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { Mail, Linkedin, Github, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/seo/SEO";
 
 const contactMethods = [
   {
@@ -29,6 +30,12 @@ const contactMethods = [
 export default function Contact() {
   return (
     <Layout>
+      <SEO
+        title="Contact"
+        description="Get in touch with Thomas van den Nieuwenhoff for cyber security consulting, speaking engagements, or collaboration opportunities."
+        canonical="/contact"
+        keywords={["contact cyber security consultant", "hire security expert", "security consulting Netherlands"]}
+      />
       {/* Hero Section */}
       <section className="py-20 md:py-28 bg-gradient-hero">
         <div className="container">
