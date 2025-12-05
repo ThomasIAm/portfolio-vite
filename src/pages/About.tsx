@@ -1,12 +1,13 @@
 import { Layout } from "@/components/layout/Layout";
-import { Award, BookOpen, Heart } from "lucide-react";
+import { Award, BookOpen, Heart, Trophy } from "lucide-react";
+import { AnimatedSection } from "@/components/ui/animated-section";
 import profileImage from "@/assets/profile.jpg";
 
 const certifications = [
-  "Cloudflare Solutions Architect",
-  "Cloudflare Zero Trust Engineer",
-  "OpenShift Administrator",
-  "SPLUNK Efficiency & Optimization",
+  { name: "Cloudflare Solutions Architect", issuer: "Cloudflare", year: "2023" },
+  { name: "Cloudflare Zero Trust Engineer", issuer: "Cloudflare", year: "2023" },
+  { name: "OpenShift Administrator", issuer: "Red Hat", year: "2022" },
+  { name: "SPLUNK Efficiency & Optimization", issuer: "Splunk", year: "2021" },
 ];
 
 const values = [
@@ -71,22 +72,56 @@ export default function About() {
               </p>
             </div>
 
-            {/* Certifications */}
-            <div className="mt-16 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-6">
-                Certifications
-              </h2>
-              <div className="flex flex-wrap gap-3">
-                {certifications.map((cert) => (
-                  <span
-                    key={cert}
-                    className="px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium text-sm"
-                  >
-                    {cert}
-                  </span>
-                ))}
-              </div>
-            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications Trophy Section */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-background to-muted/30">
+        <div className="container">
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Certifications & Achievements
+            </h2>
+            <p className="text-muted-foreground">Proudly earned credentials</p>
+          </AnimatedSection>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {certifications.map((cert, index) => (
+              <AnimatedSection
+                key={cert.name}
+                variant="scale"
+                delay={index * 100}
+              >
+                <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-amber-50/80 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20 border border-amber-200/50 dark:border-amber-700/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-amber-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  {/* Trophy icon */}
+                  <div className="relative flex justify-center mb-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 dark:from-amber-500 dark:to-amber-700 flex items-center justify-center shadow-lg">
+                      <Trophy className="h-8 w-8 text-white drop-shadow-sm" />
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative text-center">
+                    <h3 className="font-display text-sm font-bold text-foreground mb-2 leading-tight min-h-[2.5rem] flex items-center justify-center">
+                      {cert.name}
+                    </h3>
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">
+                      {cert.issuer}
+                    </p>
+                    <span className="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-semibold">
+                      {cert.year}
+                    </span>
+                  </div>
+                  
+                  {/* Bottom accent */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 rounded-t-full bg-gradient-to-r from-amber-400 to-amber-600" />
+                </div>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
