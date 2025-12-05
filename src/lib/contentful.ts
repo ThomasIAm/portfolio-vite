@@ -1,9 +1,16 @@
-import { createClient } from 'contentful';
+import { createClient, ContentfulClientApi } from 'contentful';
 
-const client = createClient({
-  space: import.meta.env.VITE_CONTENTFUL_SPACE_ID || '',
-  accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN || '',
-});
+const spaceId = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
+const accessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
+
+let client: ContentfulClientApi<undefined> | null = null;
+
+if (spaceId && accessToken) {
+  client = createClient({
+    space: spaceId,
+    accessToken: accessToken,
+  });
+}
 
 export interface BlogPostFields {
   title: string;
@@ -22,6 +29,10 @@ export interface BlogPost {
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
+  if (!client) {
+    console.warn('Contentful not configured. Add VITE_CONTENTFUL_SPACE_ID and VITE_CONTENTFUL_ACCESS_TOKEN.');
+    return [];
+  }
   const response = await client.getEntries({
     content_type: 'blogPost',
     order: ['-sys.createdAt'],
@@ -30,6 +41,10 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
+  if (!client) {
+    console.warn('Contentful not configured. Add VITE_CONTENTFUL_SPACE_ID and VITE_CONTENTFUL_ACCESS_TOKEN.');
+    return null;
+  }
   const response = await client.getEntries({
     content_type: 'blogPost',
     'fields.slug': slug,
