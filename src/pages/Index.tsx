@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SEO } from "@/components/seo/SEO";
 import profileImage from "@/assets/profile.jpg";
-
 const personStructuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -14,40 +13,27 @@ const personStructuredData = {
   jobTitle: "Lead Cyber Security Consultant",
   worksFor: {
     "@type": "Organization",
-    name: "SALT Cyber Security",
+    name: "SALT Cyber Security"
   },
   knowsAbout: ["Cyber Security", "Cloudflare", "Zero Trust", "OpenShift", "DevSecOps"],
-  sameAs: ["https://linkedin.com/in/tvdn", "https://github.com/tvdn"],
+  sameAs: ["https://linkedin.com/in/tvdn", "https://github.com/tvdn"]
 };
-
-const highlights = [
-  {
-    icon: Shield,
-    title: "Security Expert",
-    description: "Cloudflare Solutions Architect, Zero Trust Engineer & OpenShift Administrator",
-  },
-  {
-    icon: Users,
-    title: "Team Leader",
-    description: "Leading Cloudflare Professional Services and mentoring colleagues at SALT",
-  },
-  {
-    icon: Lightbulb,
-    title: "Problem Solver",
-    description: "Breaking down complex security challenges into clear, actionable solutions",
-  },
-];
-
+const highlights = [{
+  icon: Shield,
+  title: "Security Expert",
+  description: "Cloudflare Solutions Architect, Zero Trust Engineer & OpenShift Administrator"
+}, {
+  icon: Users,
+  title: "Team Leader",
+  description: "Leading Cloudflare Professional Services and mentoring colleagues at SALT"
+}, {
+  icon: Lightbulb,
+  title: "Problem Solver",
+  description: "Breaking down complex security challenges into clear, actionable solutions"
+}];
 export default function Index() {
-  return (
-    <Layout>
-      <SEO
-        title="Thomas van den Nieuwenhoff | Lead Cyber Security Consultant"
-        description="Lead Cyber Security Consultant specializing in Cloudflare, Zero Trust, and OpenShift. Empowering businesses and teams in the digital realm."
-        canonical="/"
-        keywords={["cyber security consultant", "Cloudflare expert", "Zero Trust", "OpenShift administrator", "security architect", "Netherlands"]}
-        structuredData={personStructuredData}
-      />
+  return <Layout>
+      <SEO title="Thomas van den Nieuwenhoff | Lead Cyber Security Consultant" description="Lead Cyber Security Consultant specializing in Cloudflare, Zero Trust, and OpenShift. Empowering businesses and teams in the digital realm." canonical="/" keywords={["cyber security consultant", "Cloudflare expert", "Zero Trust", "OpenShift administrator", "security architect", "Netherlands"]} structuredData={personStructuredData} />
       {/* Hero Section */}
       <section className="bg-gradient-hero min-h-[90vh] flex items-center">
         <div className="container py-20 md:py-32">
@@ -76,11 +62,7 @@ export default function Index() {
             <AnimatedSection variant="scale" delay={200} className="flex-shrink-0">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-warm rounded-full blur-2xl opacity-20 animate-float" />
-                <img
-                  src={profileImage}
-                  alt="Thomas van den Nieuwenhoff"
-                  className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background"
-                />
+                <img alt="Thomas van den Nieuwenhoff" className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background" src="/lovable-uploads/421c25fb-a60c-49fa-a508-a7a44b067f56.jpg" />
               </div>
             </AnimatedSection>
           </div>
@@ -100,12 +82,7 @@ export default function Index() {
           </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {highlights.map((item, index) => (
-              <AnimatedSection
-                key={item.title}
-                variant="fade-up"
-                delay={index * 100}
-              >
+            {highlights.map((item, index) => <AnimatedSection key={item.title} variant="fade-up" delay={index * 100}>
                 <div className="p-8 rounded-2xl bg-card shadow-soft hover-lift h-full">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                     <item.icon className="h-6 w-6 text-primary" />
@@ -117,8 +94,7 @@ export default function Index() {
                     {item.description}
                   </p>
                 </div>
-              </AnimatedSection>
-            ))}
+              </AnimatedSection>)}
           </div>
         </div>
       </section>
@@ -142,6 +118,5 @@ export default function Index() {
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 }
