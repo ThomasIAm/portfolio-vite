@@ -27,22 +27,20 @@ const certificationsByCategory = {
     { name: "Red Hat Certified OpenShift Administrator", year: "2024" },
   ],
   Cybersecurity: [
+    { name: "1Password Business Admin", year: "2025" },
+    { name: "Splunk Efficency and Optimization", year: "2024" },
     { name: "Gold Level - Cyber Resilience: Advanced", year: "2025" },
     { name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals", year: "2022" },
     { name: "TryHackMe Advent of Cyber 2021", year: "2021" },
   ],
   Cloud: [
     { name: "Microsoft Certified: Azure Fundamentals", year: "2020" },
-    { name: "Splunk Efficency and Optimization", year: "2024" },
   ],
   Development: [
     { name: "Mendix Rapid Developer", year: "2021" },
     { name: "GitLab Certified Associate", year: "2021" },
     { name: "Object Oriented PHP", year: "2019" },
     { name: "M001: MongoDB Basics", year: "2018" },
-  ],
-  Other: [
-    { name: "1Password Business Admin", year: "2025" },
   ],
 };
 
