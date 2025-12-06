@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { ExternalLink, Github, Lock, Server, Shield } from "lucide-react";
+import { AppWindow, Blocks, ExternalLink, Github, LandPlot, Lock, Server, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
 
@@ -11,22 +11,40 @@ const projects = [
     icon: Shield,
   },
   {
-    title: "OpenShift Platform Migration",
-    description: "Led OpenShift migrations at Belastingdienst, successfully onboarding developers, implementing automation with Tekton and ArgoCD, and enhancing cluster security with Advanced Cluster Security.",
-    tags: ["OpenShift", "DevOps", "Kubernetes"],
-    icon: Server,
-  },
-  {
     title: "Identity Access Management",
     description: "Security expert for IBM Security Verify Access at Belastingdienst, managing authentication solutions (including DigiD) and creating migration plans for Red Hat OpenShift.",
     tags: ["IAM", "Security", "DigiD"],
     icon: Lock,
   },
   {
+    title: "OpenShift Platform Migration",
+    description: "Led OpenShift migrations at Belastingdienst, successfully onboarding developers, implementing automation with Tekton and ArgoCD, and enhancing cluster security with Advanced Cluster Security.",
+    tags: ["OpenShift", "DevOps", "Kubernetes"],
+    icon: Server,
+  },
+  {
     title: "Fully Homomorphic Encryption Research",
     description: "Conducted research on Fully Homomorphic Encryption including business applications, built a proof-of-concept weight-tracking app, and published multiple articles on the technology.",
     tags: ["Research", "Cryptography", "Innovation"],
     icon: Shield,
+  },
+  {
+    title: "Capture-the-Flag Competition",
+    description: "Put together a CTF using RootTheBox, LogonBox VPN, and VMware vCenter technologies.",
+    tags: ["Hacking", "Infrastructure", "Education"],
+    icon: LandPlot,
+  },
+  {
+    title: "Time Saving Chrome Extension",
+    description: "Built an easy way to research academic sources using the Einde search engine right from the Chrome omnibox or extension bar.",
+    tags: ["Development", "Chrome", "Efficiency"],
+    icon: Blocks,
+  },
+  {
+    title: "Low-Code Backoffice/CRM Development",
+    description: "Built a fully functional backoffice and public portfolio webapp with Mendix low-code platform.",
+    tags: ["Development", "Mendix", "Innovation"],
+    icon: AppWindow,
   },
 ];
 
