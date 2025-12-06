@@ -5,32 +5,10 @@ import { SEO } from "@/components/seo/SEO";
 import profileImage from "@/assets/profile.jpg";
 
 const certifications = [
-  { name: "Cloudflare Accredited Services Architect", issuer: "Cloudflare", year: "2023" },
-  { name: "Cloudflare Zero Trust Engineer", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare Accredited Configuration Engineer", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare Accredited MSSP - Customer Success", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare Accredited MSSP - Services Management", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare Accredited MSSP - Zero Trust", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare Accredited Sales Engineer", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare One - Service Delivery", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare Core - Service Delivery", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare One Pre-Sales Track", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare Core Pre-Sales Track", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare One Sales Track", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare Core Sales Track", issuer: "Cloudflare", year: "2025" },
-  { name: "Cloudflare Sales Professional Level II", issuer: "Cloudflare", year: "2025" },
-  { name: "Red Hat Certified OpenShift Administrator", issuer: "Red Hat", year: "2024" },
-  { name: "1Password Business Admin", issuer: "1Password", year: "2025" },
-  { name: "Gold Level - Cyber Resilience: Advanced", issuer: "Phished", year: "2025" },
-  { name: "Splunk Efficency and Optimization", issuer: "Splunk", year: "2024" },
-  { name: "Cloudflare Implementation Specialist - Zero Trust Services", issuer: "Cloudflare", year: "2023" },
-  { name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals", issuer: "Microsoft", year: "2022" },
-  { name: "TryHackMe Advent of Cyber 2021", issuer: "TryHackMe", year: "2021" },
-  { name: "Mendix Rapid Developer", issuer: "Mendix", year: "2021" },
-  { name: "GitLab Certified Associate", issuer: "GitLab", year: "2021" },
-  { name: "Microsoft Certified: Azure Fundamentals", issuer: "Microsoft", year: "2020" },
-  { name: "Object Oriented PHP", issuer: "Udemy", year: "2019" },
-  { name: "M001: MongoDB Basics", issuer: "MongoDB", year: "2018" },
+  { name: "Cloudflare Solutions Architect", issuer: "Cloudflare", year: "2023" },
+  { name: "Cloudflare Zero Trust Engineer", issuer: "Cloudflare", year: "2023" },
+  { name: "OpenShift Administrator", issuer: "Red Hat", year: "2022" },
+  { name: "SPLUNK Efficiency & Optimization", issuer: "Splunk", year: "2021" },
 ];
 
 const values = [

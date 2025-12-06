@@ -1,11 +1,10 @@
-import { Gitlab, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const socialLinks = [
-  { href: "https://www.linkedin.com/in/tvdn", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://github.com/ThomasIAm", icon: Github, label: "GitHub" },
-  { href: "https://gitlab.com/ThomasIAm", icon: Gitlab, label: "GitLab" },
-  { href: "mailto:thomas.vandennieuwenhoff@salt-security.com", icon: Mail, label: "Email" },
+  { href: "https://linkedin.com/in/tvdn", icon: Linkedin, label: "LinkedIn" },
+  { href: "https://github.com/tvdn", icon: Github, label: "GitHub" },
+  { href: "mailto:hello@tvdn.me", icon: Mail, label: "Email" },
 ];
 
 export function Footer() {
