@@ -40,9 +40,40 @@ export default function Index() {
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             <AnimatedSection variant="fade-right" className="flex-1 text-center lg:text-left">
               <p className="text-primary font-medium mb-4">Hi there, I'm</p>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-                Thomas van den Nieuwenhoff
-              </h1>
+              <div className="relative inline-block">
+                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+                  Thomas van den Nieuwenhoff
+                </h1>
+                {/* Arrow pointing to profile picture */}
+                <svg 
+                  className="hidden lg:block absolute -right-16 top-1/2 w-32 h-24 text-primary"
+                  viewBox="0 0 120 80"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M5 40 Q 40 10, 80 25 Q 110 35, 105 55"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    fill="none"
+                    className="animate-[draw_1.5s_ease-out_0.5s_forwards]"
+                    strokeDasharray="150"
+                    strokeDashoffset="150"
+                  />
+                  <path 
+                    d="M100 45 L105 55 L95 52"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    fill="none"
+                    className="animate-[draw_0.3s_ease-out_2s_forwards]"
+                    strokeDasharray="30"
+                    strokeDashoffset="30"
+                  />
+                </svg>
+              </div>
               <p className="text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
                 Lead Cyber Security Consultant with a passion for empowering businesses and teams in the digital realm.
               </p>
