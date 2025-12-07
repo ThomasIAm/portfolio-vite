@@ -5,12 +5,12 @@ import { SEO } from "@/components/seo/SEO";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import profileImage from "@/assets/profile.jpg";
 
-// Certification type with multiple categories and optional logo
+// Certification type
 interface Certification {
   name: string;
   year: string;
   categories: string[];
-  logo?: string; // Path to badge image (e.g., "/lovable-uploads/badge.png")
+  logo?: string; // Path to badge image (e.g., "@assets/certifications/badge.png")
   proofUrl?: string; // Link to verification/proof
   infoUrl?: string; // Link to more information about the certification
 }
@@ -18,7 +18,7 @@ interface Certification {
 // All certifications with their categories
 const certifications: Certification[] = [
   // Cloudflare certifications
-  { name: "Cloudflare Accredited Services Architect", year: "2023", categories: ["Cloudflare"] },
+  { name: "Cloudflare Accredited Services Architect", year: "2023", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e", infoUrl: "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e" },
   { name: "Cloudflare Zero Trust Engineer", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Accredited Configuration Engineer", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Accredited MSSP - Customer Success", year: "2025", categories: ["Cloudflare"] },
