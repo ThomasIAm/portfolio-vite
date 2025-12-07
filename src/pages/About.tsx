@@ -5,44 +5,54 @@ import { SEO } from "@/components/seo/SEO";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import profileImage from "@/assets/profile.jpg";
 
-const certificationsByCategory = {
-  Cloudflare: [
-    { name: "Cloudflare Accredited Services Architect", year: "2023" },
-    { name: "Cloudflare Zero Trust Engineer", year: "2025" },
-    { name: "Cloudflare Accredited Configuration Engineer", year: "2025" },
-    { name: "Cloudflare Accredited MSSP - Customer Success", year: "2025" },
-    { name: "Cloudflare Accredited MSSP - Services Management", year: "2025" },
-    { name: "Cloudflare Accredited MSSP - Zero Trust", year: "2025" },
-    { name: "Cloudflare Accredited Sales Engineer", year: "2025" },
-    { name: "Cloudflare One - Service Delivery", year: "2025" },
-    { name: "Cloudflare Core - Service Delivery", year: "2025" },
-    { name: "Cloudflare One Pre-Sales Track", year: "2025" },
-    { name: "Cloudflare Core Pre-Sales Track", year: "2025" },
-    { name: "Cloudflare One Sales Track", year: "2025" },
-    { name: "Cloudflare Core Sales Track", year: "2025" },
-    { name: "Cloudflare Sales Professional Level II", year: "2025" },
-    { name: "Cloudflare Implementation Specialist - Zero Trust Services", year: "2023" },
-  ],
-  "Red Hat": [
-    { name: "Red Hat Certified OpenShift Administrator", year: "2024" },
-  ],
-  Cybersecurity: [
-    { name: "1Password Business Admin", year: "2025" },
-    { name: "Splunk Efficency and Optimization", year: "2024" },
-    { name: "Gold Level - Cyber Resilience: Advanced", year: "2025" },
-    { name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals", year: "2022" },
-    { name: "TryHackMe Advent of Cyber 2021", year: "2021" },
-  ],
-  Cloud: [
-    { name: "Microsoft Certified: Azure Fundamentals", year: "2020" },
-  ],
-  Development: [
-    { name: "Mendix Rapid Developer", year: "2021" },
-    { name: "GitLab Certified Associate", year: "2021" },
-    { name: "Object Oriented PHP", year: "2019" },
-    { name: "M001: MongoDB Basics", year: "2018" },
-  ],
-};
+// Certification type with multiple categories and optional logo
+interface Certification {
+  name: string;
+  year: string;
+  categories: string[];
+  logo?: string; // Path to badge image (e.g., "/lovable-uploads/badge.png")
+}
+
+// All certifications with their categories
+const certifications: Certification[] = [
+  // Cloudflare certifications
+  { name: "Cloudflare Accredited Services Architect", year: "2023", categories: ["Cloudflare"] },
+  { name: "Cloudflare Zero Trust Engineer", year: "2025", categories: ["Cloudflare", "Cybersecurity"] },
+  { name: "Cloudflare Accredited Configuration Engineer", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Accredited MSSP - Customer Success", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Accredited MSSP - Services Management", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Accredited MSSP - Zero Trust", year: "2025", categories: ["Cloudflare", "Cybersecurity"] },
+  { name: "Cloudflare Accredited Sales Engineer", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare One - Service Delivery", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Core - Service Delivery", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare One Pre-Sales Track", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Core Pre-Sales Track", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare One Sales Track", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Core Sales Track", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Sales Professional Level II", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Implementation Specialist - Zero Trust Services", year: "2023", categories: ["Cloudflare", "Cybersecurity"] },
+  // Red Hat
+  { name: "Red Hat Certified OpenShift Administrator", year: "2024", categories: ["Red Hat", "Cloud"] },
+  // Cybersecurity
+  { name: "1Password Business Admin", year: "2025", categories: ["Cybersecurity"] },
+  { name: "Splunk Efficency and Optimization", year: "2024", categories: ["Cybersecurity"] },
+  { name: "Gold Level - Cyber Resilience: Advanced", year: "2025", categories: ["Cybersecurity"] },
+  { name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals", year: "2022", categories: ["Cybersecurity", "Cloud"] },
+  { name: "TryHackMe Advent of Cyber 2021", year: "2021", categories: ["Cybersecurity"] },
+  // Cloud
+  { name: "Microsoft Certified: Azure Fundamentals", year: "2020", categories: ["Cloud"] },
+  // Development
+  { name: "Mendix Rapid Developer", year: "2021", categories: ["Development"] },
+  { name: "GitLab Certified Associate", year: "2021", categories: ["Development"] },
+  { name: "Object Oriented PHP", year: "2019", categories: ["Development"] },
+  { name: "M001: MongoDB Basics", year: "2018", categories: ["Development"] },
+];
+
+// Get all unique categories and count certs per category
+const categories = [...new Set(certifications.flatMap(cert => cert.categories))];
+
+const getCertsByCategory = (category: string) => 
+  certifications.filter(cert => cert.categories.includes(category));
 
 const values = [
   {
@@ -127,25 +137,25 @@ export default function About() {
             <p className="text-muted-foreground">Proudly earned credentials</p>
           </AnimatedSection>
 
-          <Tabs defaultValue="Cloudflare" className="max-w-6xl mx-auto">
+          <Tabs defaultValue={categories[0]} className="max-w-6xl mx-auto">
             <TabsList className="flex flex-wrap justify-center gap-2 h-auto bg-transparent mb-8">
-              {Object.keys(certificationsByCategory).map((category) => (
+              {categories.map((category) => (
                 <TabsTrigger
                   key={category}
                   value={category}
                   className="px-4 py-2 rounded-full data-[state=active]:bg-accent data-[state=active]:text-accent-foreground"
                 >
-                  {category} ({certificationsByCategory[category as keyof typeof certificationsByCategory].length})
+                  {category} ({getCertsByCategory(category).length})
                 </TabsTrigger>
               ))}
             </TabsList>
 
-            {Object.entries(certificationsByCategory).map(([category, certs]) => (
+            {categories.map((category) => (
               <TabsContent key={category} value={category} className="mt-0">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {certs.map((cert, index) => (
+                  {getCertsByCategory(category).map((cert, index) => (
                     <AnimatedSection
-                      key={cert.name}
+                      key={`${category}-${cert.name}`}
                       variant="scale"
                       delay={index * 50}
                     >
@@ -153,11 +163,21 @@ export default function About() {
                         {/* Glow effect */}
                         <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-amber-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         
-                        {/* Trophy icon */}
+                        {/* Logo or Trophy icon */}
                         <div className="relative flex justify-center mb-4">
-                          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 dark:from-amber-500 dark:to-amber-700 flex items-center justify-center shadow-lg">
-                            <Trophy className="h-8 w-8 text-white drop-shadow-sm" />
-                          </div>
+                          {cert.logo ? (
+                            <div className="w-16 h-16 rounded-full overflow-hidden shadow-lg bg-white dark:bg-gray-800 flex items-center justify-center p-1">
+                              <img 
+                                src={cert.logo} 
+                                alt={`${cert.name} badge`}
+                                className="w-full h-full object-contain"
+                              />
+                            </div>
+                          ) : (
+                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 dark:from-amber-500 dark:to-amber-700 flex items-center justify-center shadow-lg">
+                              <Trophy className="h-8 w-8 text-white drop-shadow-sm" />
+                            </div>
+                          )}
                         </div>
                         
                         {/* Content */}
