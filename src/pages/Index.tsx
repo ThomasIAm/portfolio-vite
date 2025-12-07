@@ -28,14 +28,20 @@ const highlights = [
   {
     icon: Shield,
     title: "Security Expert",
-    description:
-      "Cloudflare Solutions Architect, Zero Trust Engineer & OpenShift Administrator",
+    description: (
+      <>
+        <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Cloudflare</a> Solutions Architect, Zero Trust Engineer & <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">OpenShift</a> Administrator
+      </>
+    ),
   },
   {
     icon: Users,
     title: "Team Leader",
-    description:
-      "Leading Cloudflare Professional Services and mentoring colleagues at SALT",
+    description: (
+      <>
+        Leading <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Cloudflare</a> Professional Services and mentoring colleagues at <a href="https://salt-security.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">SALT</a>
+      </>
+    ),
   },
   {
     icon: Lightbulb,
