@@ -36,7 +36,7 @@ const certifications: Certification[] = [
   // Red Hat
   { name: "Red Hat Certified OpenShift Administrator", year: "2024", categories: ["Red Hat"], proofUrl: "https://www.credly.com/badges/18f84f10-92f3-4667-9641-2eaa96ad23a4", infoUrl: "https://www.redhat.com/en/services/certification/rhcs-paas" },
   // Cybersecurity
-  { name: "1Password Business Admin", year: "2025", categories: ["Cybersecurity"] },
+  { name: "1Password Business Admin", year: "2025", categories: ["Cybersecurity"], proofUrl: "https://verify.skilljar.com/c/dp7nekvp8ety", infoUrl: "https://www.1password.academy/path/1password-for-business-administrators-certificate"},
   { name: "Splunk Efficency and Optimization", year: "2024", categories: ["Cybersecurity"] },
   { name: "Gold Level - Cyber Resilience: Advanced", year: "2025", categories: ["Cybersecurity"] },
   { name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals", year: "2022", categories: ["Cybersecurity", "Cloud"], proofUrl: "https://www.credly.com/badges/05cde803-0d94-47a5-82f9-a8544f93e681", infoUrl: "https://docs.microsoft.com/learn/certifications/security-compliance-and-identity-fundamentals/" },
