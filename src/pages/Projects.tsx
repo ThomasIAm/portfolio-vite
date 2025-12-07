@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { AppWindow, Blocks, ExternalLink, Github, LandPlot, Lock, Server, Shield } from "lucide-react";
+import { AppWindow, Blocks, CloudCog, Code, ExternalLink, Github, LandPlot, LoaderPinwheel, Lock, Server, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
 
@@ -29,10 +29,28 @@ const projects = [
     icon: Shield,
   },
   {
+    title: "Wheel of No",
+    description: "Built a tiny web app with a wheel of fortune that never seems to land on the expected outcome.",
+    tags: ["Development", "Fun", "Prototyping"],
+    icon: LoaderPinwheel,
+  },
+  {
+    title: "Self-Made Cloud Portal",
+    description: "Automated infrastructure management using Ansible/Vagrant, and built a management interface using PHP/Bootstrap.",
+    tags: ["Development", "Cloud", "Automation"],
+    icon: CloudCog,
+  },
+  {
     title: "Capture-the-Flag Competition",
     description: "Put together a CTF using RootTheBox, LogonBox VPN, and VMware vCenter technologies.",
     tags: ["Hacking", "Infrastructure", "Education"],
     icon: LandPlot,
+  },
+  {
+    title: "Low-Code Backoffice/CRM Development",
+    description: "Built a fully functional backoffice and public portfolio webapp with Mendix low-code platform.",
+    tags: ["Development", "Mendix", "Innovation"],
+    icon: AppWindow,
   },
   {
     title: "Time Saving Chrome Extension",
@@ -41,10 +59,16 @@ const projects = [
     icon: Blocks,
   },
   {
-    title: "Low-Code Backoffice/CRM Development",
-    description: "Built a fully functional backoffice and public portfolio webapp with Mendix low-code platform.",
-    tags: ["Development", "Mendix", "Innovation"],
+    title: "My First Webshop",
+    description: "First time working in a team trying to build an MVP powered by PHP/Bootstrap/MySQL.",
+    tags: ["Development", "Teamwork", "PHP"],
     icon: AppWindow,
+  },
+  {
+    title: "AI Sounds Interesting...",
+    description: "Put together an informative website about Artificial Intelligence using Material Design.",
+    tags: ["Development", "Design System", "Web2"],
+    icon: Code,
   },
 ];
 
