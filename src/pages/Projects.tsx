@@ -70,6 +70,12 @@ const projects = [
     tags: ["Development", "Design System", "Web2"],
     icon: Code,
   },
+  {
+    title: "My First Website",
+    description: "This was my first real website with information and tools I wanted handy. I was 15 years old when I made this using PHP/Material Design.",
+    tags: ["Development", "Baby Steps", "Portfolio"],
+    icon: Code,
+  },
 ];
 
 export default function Projects() {
@@ -77,7 +83,7 @@ export default function Projects() {
     <Layout>
       <SEO
         title="Projects & Work"
-        description="Security initiatives and projects led by Thomas van den Nieuwenhoff including Cloudflare Professional Services, OpenShift migrations, and IAM solutions."
+        description="Initiatives and projects led by Thomas van den Nieuwenhoff including Cloudflare Professional Services, OpenShift migrations, and IAM solutions."
         canonical="/projects"
         keywords={["security projects", "Cloudflare consulting", "OpenShift migration", "IAM solutions", "cyber security portfolio"]}
       />
@@ -89,7 +95,7 @@ export default function Projects() {
               Projects & Work
             </h1>
             <p className="text-xl text-muted-foreground">
-              A selection of security initiatives and projects I've led or contributed to.
+              A selection of initiatives and projects I've led or contributed to.
             </p>
           </div>
         </div>
