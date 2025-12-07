@@ -105,9 +105,14 @@ export default function Index() {
                 
                 {/* Option 2: Gradient fade on left side */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-background/60 via-transparent to-transparent z-[1]" />
-                <span className="absolute left-4 bottom-4 text-xs text-muted-foreground bg-background/80 px-2 py-0.5 rounded z-10">
-                  My girlfriend
-                </span>
+                <a 
+                  href="https://swoodroom.nl" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="absolute left-4 bottom-4 text-xs text-muted-foreground hover:text-primary bg-background/80 px-2 py-0.5 rounded z-10 transition-colors"
+                >
+                  My girlfriend ↗
+                </a>
                 
                 {/* Option 5: Small floating badge */}
                 <span className="absolute -right-2 bottom-8 text-xs font-semibold text-primary-foreground bg-primary px-2 py-1 rounded-full shadow-md z-10">
