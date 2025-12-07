@@ -19,33 +19,33 @@ interface Certification {
 const certifications: Certification[] = [
   // Cloudflare certifications
   { name: "Cloudflare Accredited Services Architect", year: "2023", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e", infoUrl: "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e" },
-  { name: "Cloudflare Zero Trust Engineer", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Accredited Configuration Engineer", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Zero Trust Engineer", year: "2025", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4", infoUrl: "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4" },
+  { name: "Cloudflare Accredited Configuration Engineer", year: "2025", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134", infoUrl: "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134" },
   { name: "Cloudflare Accredited MSSP - Customer Success", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Accredited MSSP - Services Management", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Accredited MSSP - Services Management", year: "2025", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f", infoUrl: "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f" },
   { name: "Cloudflare Accredited MSSP - Zero Trust", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Accredited Sales Engineer", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Accredited Sales Engineer", year: "2025", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4", infoUrl: "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4" },
   { name: "Cloudflare One - Service Delivery", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Core - Service Delivery", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare One Pre-Sales Track", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Core Pre-Sales Track", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare One Sales Track", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Core Sales Track", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Sales Professional Level II", year: "2025", categories: ["Cloudflare"] },
+  { name: "Cloudflare Sales Professional Level II", year: "2025", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9", infoUrl: "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9" },
   { name: "Cloudflare Implementation Specialist - Zero Trust Services", year: "2023", categories: ["Cloudflare"] },
   // Red Hat
-  { name: "Red Hat Certified OpenShift Administrator", year: "2024", categories: ["Red Hat"] },
+  { name: "Red Hat Certified OpenShift Administrator", year: "2024", categories: ["Red Hat"], proofUrl: "https://www.credly.com/badges/18f84f10-92f3-4667-9641-2eaa96ad23a4", infoUrl: "https://www.redhat.com/en/services/certification/rhcs-paas" },
   // Cybersecurity
   { name: "1Password Business Admin", year: "2025", categories: ["Cybersecurity"] },
   { name: "Splunk Efficency and Optimization", year: "2024", categories: ["Cybersecurity"] },
   { name: "Gold Level - Cyber Resilience: Advanced", year: "2025", categories: ["Cybersecurity"] },
-  { name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals", year: "2022", categories: ["Cybersecurity", "Cloud"] },
+  { name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals", year: "2022", categories: ["Cybersecurity", "Cloud"], proofUrl: "https://www.credly.com/badges/05cde803-0d94-47a5-82f9-a8544f93e681", infoUrl: "https://docs.microsoft.com/learn/certifications/security-compliance-and-identity-fundamentals/" },
   { name: "TryHackMe Advent of Cyber 2021", year: "2021", categories: ["Cybersecurity"] },
   // Cloud
-  { name: "Microsoft Certified: Azure Fundamentals", year: "2020", categories: ["Cloud"] },
+  { name: "Microsoft Certified: Azure Fundamentals", year: "2020", categories: ["Cloud"], proofUrl: "https://www.credly.com/badges/352815b1-a44e-4e0f-8f47-91ffeeda86ae", infoUrl: "https://docs.microsoft.com/learn/certifications/azure-fundamentals/" },
   // Development
-  { name: "Mendix Rapid Developer", year: "2021", categories: ["Development"] },
-  { name: "GitLab Certified Associate", year: "2021", categories: ["Development"] },
+  { name: "Mendix Rapid Developer", year: "2021", categories: ["Development"], infoUrl: "https://academy.mendix.com/link/certifications/23/rapid" },
+  { name: "GitLab Certified Associate", year: "2021", categories: ["Development"], proofUrl: "https://www.credly.com/badges/67afd7d7-b335-419a-91bc-61661bf7b0ab", infoUrl: "https://university.gitlab.com/pages/certifications" },
   { name: "Object Oriented PHP", year: "2019", categories: ["Development"] },
   { name: "M001: MongoDB Basics", year: "2018", categories: ["Development"] },
 ];
