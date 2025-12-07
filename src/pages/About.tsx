@@ -145,12 +145,13 @@ const certifications: Certification[] = [
     name: "1Password Business Admin",
     year: "2025",
     categories: ["Cybersecurity"],
+    logo: "/assets/certifications/opba.png",
     proofUrl: "https://verify.skilljar.com/c/dp7nekvp8ety",
     infoUrl:
       "https://www.1password.academy/path/1password-for-business-administrators-certificate",
   },
   {
-    name: "Splunk Efficency and Optimization",
+    name: "Splunk Efficiency and Optimization",
     year: "2024",
     categories: ["Cybersecurity"],
   },
@@ -163,6 +164,7 @@ const certifications: Certification[] = [
     name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals",
     year: "2022",
     categories: ["Cybersecurity", "Cloud"],
+    logo: "/assets/certifications/sc900.png",
     proofUrl:
       "https://www.credly.com/badges/05cde803-0d94-47a5-82f9-a8544f93e681",
     infoUrl:
@@ -178,6 +180,7 @@ const certifications: Certification[] = [
     name: "Microsoft Certified: Azure Fundamentals",
     year: "2020",
     categories: ["Cloud"],
+    logo: "/assets/certifications/az900.png",
     proofUrl:
       "https://www.credly.com/badges/352815b1-a44e-4e0f-8f47-91ffeeda86ae",
     infoUrl:
@@ -188,12 +191,14 @@ const certifications: Certification[] = [
     name: "Mendix Rapid Developer",
     year: "2021",
     categories: ["Development"],
+    logo: "/assets/certifications/rapid.png",
     infoUrl: "https://academy.mendix.com/link/certifications/23/rapid",
   },
   {
     name: "GitLab Certified Associate",
     year: "2021",
     categories: ["Development"],
+    logo: "/assets/certifications/cga.png",
     proofUrl:
       "https://www.credly.com/badges/67afd7d7-b335-419a-91bc-61661bf7b0ab",
     infoUrl: "https://university.gitlab.com/pages/certifications",
@@ -349,11 +354,11 @@ export default function About() {
                         {/* Logo or Trophy icon */}
                         <div className="relative flex justify-center mb-4">
                           {cert.logo ? (
-                            <div className="w-16 h-16 rounded-full overflow-hidden shadow-lg bg-white dark:bg-gray-800 flex items-center justify-center p-1">
+                            <div className="w-16 h-16 overflow-hidden drop-shadow-lg dark:bg-gray-800 flex items-center justify-center">
                               <img
                                 src={cert.logo}
                                 alt={`${cert.name} badge`}
-                                className="w-full h-full object-contain"
+                                className="w-full h-full object-cover"
                               />
                             </div>
                           ) : (
