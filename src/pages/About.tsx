@@ -1,5 +1,12 @@
 import { Layout } from "@/components/layout/Layout";
-import { Award, BookOpen, ExternalLink, Heart, ShieldCheck, Trophy } from "lucide-react";
+import {
+  Award,
+  BookOpen,
+  ExternalLink,
+  Heart,
+  ShieldCheck,
+  Trophy,
+} from "lucide-react";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SEO } from "@/components/seo/SEO";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -10,7 +17,7 @@ interface Certification {
   name: string;
   year: string;
   categories: string[];
-  logo?: string; // Path to badge image (e.g., "@assets/certifications/badge.png")
+  logo?: string; // Path to badge image (e.g., "/assets/certifications/badge.png")
   proofUrl?: string; // Link to verification/proof
   infoUrl?: string; // Link to more information about the certification
 }
@@ -18,59 +25,209 @@ interface Certification {
 // All certifications with their categories
 const certifications: Certification[] = [
   // Cloudflare certifications
-  { name: "Cloudflare Accredited Services Architect", year: "2023", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e", infoUrl: "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e" },
-  { name: "Cloudflare Zero Trust Engineer", year: "2025", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4", infoUrl: "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4" },
-  { name: "Cloudflare Accredited Configuration Engineer", year: "2025", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134", infoUrl: "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134" },
-  { name: "Cloudflare Accredited MSSP - Customer Success", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Accredited MSSP - Services Management", year: "2025", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f", infoUrl: "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f" },
-  { name: "Cloudflare Accredited MSSP - Zero Trust", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Accredited Sales Engineer", year: "2025", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4", infoUrl: "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4" },
-  { name: "Cloudflare One - Service Delivery", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Core - Service Delivery", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare One Pre-Sales Track", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Core Pre-Sales Track", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare One Sales Track", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Core Sales Track", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Sales Professional Level II", year: "2025", categories: ["Cloudflare"], proofUrl: "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9", infoUrl: "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9" },
-  { name: "Cloudflare Implementation Specialist - Zero Trust Services", year: "2023", categories: ["Cloudflare"] },
+  {
+    name: "Cloudflare Accredited Services Architect",
+    year: "2023",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/asa.png",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e",
+  },
+  {
+    name: "Cloudflare Zero Trust Engineer",
+    year: "2025",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/zte.png",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4",
+  },
+  {
+    name: "Cloudflare Accredited Configuration Engineer",
+    year: "2025",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/ace.png",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134",
+  },
+  {
+    name: "Cloudflare Accredited MSSP - Customer Success",
+    year: "2025",
+    categories: ["Cloudflare"],
+  },
+  {
+    name: "Cloudflare Accredited MSSP - Services Management",
+    year: "2025",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/amsp.png",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f",
+  },
+  {
+    name: "Cloudflare Accredited MSSP - Zero Trust",
+    year: "2025",
+    categories: ["Cloudflare"],
+  },
+  {
+    name: "Cloudflare Accredited Sales Engineer",
+    year: "2025",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/ase.png",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4",
+  },
+  {
+    name: "Cloudflare One - Service Delivery",
+    year: "2025",
+    categories: ["Cloudflare"],
+  },
+  {
+    name: "Cloudflare Core - Service Delivery",
+    year: "2025",
+    categories: ["Cloudflare"],
+  },
+  {
+    name: "Cloudflare One Pre-Sales Track",
+    year: "2025",
+    categories: ["Cloudflare"],
+  },
+  {
+    name: "Cloudflare Core Pre-Sales Track",
+    year: "2025",
+    categories: ["Cloudflare"],
+  },
+  {
+    name: "Cloudflare One Sales Track",
+    year: "2025",
+    categories: ["Cloudflare"],
+  },
+  {
+    name: "Cloudflare Core Sales Track",
+    year: "2025",
+    categories: ["Cloudflare"],
+  },
+  {
+    name: "Cloudflare Sales Professional Level II",
+    year: "2025",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/asp2.png",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9",
+  },
+  {
+    name: "Cloudflare Implementation Specialist - Zero Trust Services",
+    year: "2023",
+    categories: ["Cloudflare"],
+  },
   // Red Hat
-  { name: "Red Hat Certified OpenShift Administrator", year: "2024", categories: ["Red Hat"], proofUrl: "https://www.credly.com/badges/18f84f10-92f3-4667-9641-2eaa96ad23a4", infoUrl: "https://www.redhat.com/en/services/certification/rhcs-paas" },
+  {
+    name: "Red Hat Certified OpenShift Administrator",
+    year: "2024",
+    categories: ["Red Hat"],
+    logo: "/assets/certifications/ex280.png",
+    proofUrl:
+      "https://www.credly.com/badges/18f84f10-92f3-4667-9641-2eaa96ad23a4",
+    infoUrl: "https://www.redhat.com/en/services/certification/rhcs-paas",
+  },
   // Cybersecurity
-  { name: "1Password Business Admin", year: "2025", categories: ["Cybersecurity"], proofUrl: "https://verify.skilljar.com/c/dp7nekvp8ety", infoUrl: "https://www.1password.academy/path/1password-for-business-administrators-certificate"},
-  { name: "Splunk Efficency and Optimization", year: "2024", categories: ["Cybersecurity"] },
-  { name: "Gold Level - Cyber Resilience: Advanced", year: "2025", categories: ["Cybersecurity"] },
-  { name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals", year: "2022", categories: ["Cybersecurity", "Cloud"], proofUrl: "https://www.credly.com/badges/05cde803-0d94-47a5-82f9-a8544f93e681", infoUrl: "https://docs.microsoft.com/learn/certifications/security-compliance-and-identity-fundamentals/" },
-  { name: "TryHackMe Advent of Cyber 2021", year: "2021", categories: ["Cybersecurity"] },
+  {
+    name: "1Password Business Admin",
+    year: "2025",
+    categories: ["Cybersecurity"],
+    proofUrl: "https://verify.skilljar.com/c/dp7nekvp8ety",
+    infoUrl:
+      "https://www.1password.academy/path/1password-for-business-administrators-certificate",
+  },
+  {
+    name: "Splunk Efficency and Optimization",
+    year: "2024",
+    categories: ["Cybersecurity"],
+  },
+  {
+    name: "Gold Level - Cyber Resilience: Advanced",
+    year: "2025",
+    categories: ["Cybersecurity"],
+  },
+  {
+    name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals",
+    year: "2022",
+    categories: ["Cybersecurity", "Cloud"],
+    proofUrl:
+      "https://www.credly.com/badges/05cde803-0d94-47a5-82f9-a8544f93e681",
+    infoUrl:
+      "https://docs.microsoft.com/learn/certifications/security-compliance-and-identity-fundamentals/",
+  },
+  {
+    name: "TryHackMe Advent of Cyber 2021",
+    year: "2021",
+    categories: ["Cybersecurity"],
+  },
   // Cloud
-  { name: "Microsoft Certified: Azure Fundamentals", year: "2020", categories: ["Cloud"], proofUrl: "https://www.credly.com/badges/352815b1-a44e-4e0f-8f47-91ffeeda86ae", infoUrl: "https://docs.microsoft.com/learn/certifications/azure-fundamentals/" },
+  {
+    name: "Microsoft Certified: Azure Fundamentals",
+    year: "2020",
+    categories: ["Cloud"],
+    proofUrl:
+      "https://www.credly.com/badges/352815b1-a44e-4e0f-8f47-91ffeeda86ae",
+    infoUrl:
+      "https://docs.microsoft.com/learn/certifications/azure-fundamentals/",
+  },
   // Development
-  { name: "Mendix Rapid Developer", year: "2021", categories: ["Development"], infoUrl: "https://academy.mendix.com/link/certifications/23/rapid" },
-  { name: "GitLab Certified Associate", year: "2021", categories: ["Development"], proofUrl: "https://www.credly.com/badges/67afd7d7-b335-419a-91bc-61661bf7b0ab", infoUrl: "https://university.gitlab.com/pages/certifications" },
+  {
+    name: "Mendix Rapid Developer",
+    year: "2021",
+    categories: ["Development"],
+    infoUrl: "https://academy.mendix.com/link/certifications/23/rapid",
+  },
+  {
+    name: "GitLab Certified Associate",
+    year: "2021",
+    categories: ["Development"],
+    proofUrl:
+      "https://www.credly.com/badges/67afd7d7-b335-419a-91bc-61661bf7b0ab",
+    infoUrl: "https://university.gitlab.com/pages/certifications",
+  },
   { name: "Object Oriented PHP", year: "2019", categories: ["Development"] },
   { name: "M001: MongoDB Basics", year: "2018", categories: ["Development"] },
 ];
 
 // Get all unique categories and count certs per category
-const categories = [...new Set(certifications.flatMap(cert => cert.categories))];
+const categories = [
+  ...new Set(certifications.flatMap((cert) => cert.categories)),
+];
 
-const getCertsByCategory = (category: string) => 
-  certifications.filter(cert => cert.categories.includes(category));
+const getCertsByCategory = (category: string) =>
+  certifications.filter((cert) => cert.categories.includes(category));
 
 const values = [
   {
     icon: BookOpen,
     title: "Continuous Learning",
-    description: "Staying up-to-date with the latest tools and techniques to shield businesses from cyber threats.",
+    description:
+      "Staying up-to-date with the latest tools and techniques to shield businesses from cyber threats.",
   },
   {
     icon: Heart,
     title: "Team Growth",
-    description: "Creating collaborative environments where teams learn from each other and continuously develop their skills.",
+    description:
+      "Creating collaborative environments where teams learn from each other and continuously develop their skills.",
   },
   {
     icon: Award,
     title: "Clear Communication",
-    description: "Breaking down complex concepts into clear, engaging terms that empower individuals within organizations.",
+    description:
+      "Breaking down complex concepts into clear, engaging terms that empower individuals within organizations.",
   },
 ];
 
@@ -82,7 +239,13 @@ export default function About() {
         description="Learn about Thomas van den Nieuwenhoff - Lead Cyber Security Consultant with certifications in Cloudflare, Zero Trust, and OpenShift."
         canonical="/about"
         type="profile"
-        keywords={["cyber security expert", "Cloudflare Solutions Architect", "Zero Trust Engineer", "OpenShift Administrator", "SALT Cyber Security"]}
+        keywords={[
+          "cyber security expert",
+          "Cloudflare Solutions Architect",
+          "Zero Trust Engineer",
+          "OpenShift Administrator",
+          "SALT Cyber Security",
+        ]}
       />
       {/* Hero Section */}
       <section className="py-20 md:py-28 bg-gradient-hero">
@@ -90,18 +253,25 @@ export default function About() {
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="flex-shrink-0 animate-fade-up">
+                <span className="absolute -right-5 bottom-5 text-xs font-semibold text-primary-foreground bg-primary px-2 py-1 rounded-full shadow-md z-10">
+                  Me
+                </span>
                 <img
                   src={profileImage}
                   alt="Thomas van den Nieuwenhoff"
                   className="w-48 h-48 md:w-56 md:h-56 rounded-2xl object-cover shadow-card"
                 />
               </div>
-              <div className="text-center md:text-left animate-fade-up" style={{ animationDelay: "0.1s" }}>
+              <div
+                className="text-center md:text-left animate-fade-up"
+                style={{ animationDelay: "0.1s" }}
+              >
                 <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
                   About Me
                 </h1>
                 <p className="text-xl text-muted-foreground">
-                  Lead Cyber Security Consultant with a passion for empowering businesses in the digital realm.
+                  Lead Cyber Security Consultant with a passion for empowering
+                  businesses in the digital realm.
                 </p>
               </div>
             </div>
@@ -115,16 +285,27 @@ export default function About() {
           <div className="max-w-3xl mx-auto">
             <div className="prose prose-lg animate-fade-up">
               <p className="text-lg text-foreground leading-relaxed mb-6">
-                With years of experience and a robust tech background, I focus on guiding my team and clients to success in the dynamic cyber security landscape. As a certified Cloudflare Solutions Architect and OpenShift Administrator, I stay current with the latest tools and techniques to protect businesses from cyber threats.
+                With years of experience and a robust tech background, I focus
+                on guiding my team and clients to success in the dynamic cyber
+                security landscape. As a certified Cloudflare Solutions
+                Architect and OpenShift Administrator, I stay current with the
+                latest tools and techniques to protect businesses from cyber
+                threats.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-6">
-                My role as lead consultant extends beyond finding solutions — I'm committed to creating a collaborative and supportive environment within my team, where we learn from each other and continuously develop our skills.
+                My role as lead consultant extends beyond finding solutions —
+                I'm committed to creating a collaborative and supportive
+                environment within my team, where we learn from each other and
+                continuously develop our skills.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-6">
-                I believe cybersecurity isn't just about implementing technology — it's about educating and empowering individuals within organizations. I communicate clearly and engagingly with clients, breaking down complex concepts in an understandable way.
+                I believe cybersecurity isn't just about implementing technology
+                — it's about educating and empowering individuals within
+                organizations. I communicate clearly and engagingly with
+                clients, breaking down complex concepts in an understandable
+                way.
               </p>
             </div>
-
           </div>
         </div>
       </section>
@@ -164,13 +345,13 @@ export default function About() {
                       <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-amber-50/80 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20 border border-amber-200/50 dark:border-amber-700/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         {/* Glow effect */}
                         <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-amber-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        
+
                         {/* Logo or Trophy icon */}
                         <div className="relative flex justify-center mb-4">
                           {cert.logo ? (
                             <div className="w-16 h-16 rounded-full overflow-hidden shadow-lg bg-white dark:bg-gray-800 flex items-center justify-center p-1">
-                              <img 
-                                src={cert.logo} 
+                              <img
+                                src={cert.logo}
                                 alt={`${cert.name} badge`}
                                 className="w-full h-full object-contain"
                               />
@@ -181,7 +362,7 @@ export default function About() {
                             </div>
                           )}
                         </div>
-                        
+
                         {/* Content */}
                         <div className="relative text-center">
                           <h3 className="font-display text-sm font-bold text-foreground mb-2 leading-tight min-h-[2.5rem] flex items-center justify-center">
@@ -190,7 +371,7 @@ export default function About() {
                           <span className="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-semibold mb-3">
                             {cert.year}
                           </span>
-                          
+
                           {/* Links */}
                           {(cert.proofUrl || cert.infoUrl) && (
                             <div className="flex justify-center gap-3 mt-2">
@@ -221,7 +402,7 @@ export default function About() {
                             </div>
                           )}
                         </div>
-                        
+
                         {/* Bottom accent */}
                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 rounded-t-full bg-gradient-to-r from-amber-400 to-amber-600" />
                       </div>
@@ -256,9 +437,7 @@ export default function About() {
                 <h3 className="font-display text-xl font-semibold text-foreground mb-3">
                   {value.title}
                 </h3>
-                <p className="text-muted-foreground">
-                  {value.description}
-                </p>
+                <p className="text-muted-foreground">{value.description}</p>
               </div>
             ))}
           </div>
