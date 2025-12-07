@@ -356,6 +356,35 @@ export default function About() {
         </div>
       </section>
 
+      {/* Values Section */}
+      <section className="py-20 md:py-28 bg-muted/50">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              What I Value
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {values.map((value, index) => (
+              <div
+                key={value.title}
+                className="p-8 rounded-2xl bg-card shadow-soft animate-fade-up"
+                style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+              >
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
+                  <value.icon className="h-6 w-6 text-accent" />
+                </div>
+                <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+                  {value.title}
+                </h3>
+                <p className="text-muted-foreground">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Certifications Trophy Section */}
       <section className="py-20 md:py-28 bg-gradient-to-b from-background to-muted/30">
         <div className="container">
@@ -458,35 +487,6 @@ export default function About() {
               </TabsContent>
             ))}
           </Tabs>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-20 md:py-28 bg-muted/50">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              What I Value
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {values.map((value, index) => (
-              <div
-                key={value.title}
-                className="p-8 rounded-2xl bg-card shadow-soft animate-fade-up"
-                style={{ animationDelay: `${0.1 * (index + 1)}s` }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
-                  <value.icon className="h-6 w-6 text-accent" />
-                </div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-3">
-                  {value.title}
-                </h3>
-                <p className="text-muted-foreground">{value.description}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
     </Layout>
