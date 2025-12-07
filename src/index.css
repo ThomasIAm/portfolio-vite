@@ -156,12 +156,6 @@
     }
   }
 
-  @keyframes draw {
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
-
   .hover-lift {
     @apply transition-all duration-300 ease-out;
   }

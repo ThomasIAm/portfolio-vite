@@ -13,69 +13,69 @@ const personStructuredData = {
   jobTitle: "Lead Cyber Security Consultant",
   worksFor: {
     "@type": "Organization",
-    name: "SALT Cyber Security"
+    name: "SALT Cyber Security",
   },
-  knowsAbout: ["Cyber Security", "Cloudflare", "Zero Trust", "OpenShift", "DevSecOps"],
-  sameAs: ["https://linkedin.com/in/tvdn", "https://github.com/tvdn"]
+  knowsAbout: [
+    "Cyber Security",
+    "Cloudflare",
+    "Zero Trust",
+    "OpenShift",
+    "DevSecOps",
+  ],
+  sameAs: ["https://linkedin.com/in/tvdn", "https://github.com/tvdn"],
 };
-const highlights = [{
-  icon: Shield,
-  title: "Security Expert",
-  description: "Cloudflare Solutions Architect, Zero Trust Engineer & OpenShift Administrator"
-}, {
-  icon: Users,
-  title: "Team Leader",
-  description: "Leading Cloudflare Professional Services and mentoring colleagues at SALT"
-}, {
-  icon: Lightbulb,
-  title: "Problem Solver",
-  description: "Breaking down complex security challenges into clear, actionable solutions"
-}];
+const highlights = [
+  {
+    icon: Shield,
+    title: "Security Expert",
+    description:
+      "Cloudflare Solutions Architect, Zero Trust Engineer & OpenShift Administrator",
+  },
+  {
+    icon: Users,
+    title: "Team Leader",
+    description:
+      "Leading Cloudflare Professional Services and mentoring colleagues at SALT",
+  },
+  {
+    icon: Lightbulb,
+    title: "Problem Solver",
+    description:
+      "Breaking down complex security challenges into clear, actionable solutions",
+  },
+];
 export default function Index() {
-  return <Layout>
-      <SEO title="Thomas van den Nieuwenhoff | Lead Cyber Security Consultant" description="Lead Cyber Security Consultant specializing in Cloudflare, Zero Trust, and OpenShift. Empowering businesses and teams in the digital realm." canonical="/" keywords={["cyber security consultant", "Cloudflare expert", "Zero Trust", "OpenShift administrator", "security architect", "Netherlands"]} structuredData={personStructuredData} />
+  return (
+    <Layout>
+      <SEO
+        title="Thomas van den Nieuwenhoff | Lead Cyber Security Consultant"
+        description="Lead Cyber Security Consultant specializing in Cloudflare, Zero Trust, and OpenShift. Empowering businesses and teams in the digital realm."
+        canonical="/"
+        keywords={[
+          "cyber security consultant",
+          "Cloudflare expert",
+          "Zero Trust",
+          "OpenShift administrator",
+          "security architect",
+          "Netherlands",
+        ]}
+        structuredData={personStructuredData}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-hero min-h-[90vh] flex items-center">
         <div className="container py-20 md:py-32">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            <AnimatedSection variant="fade-right" className="flex-1 text-center lg:text-left">
+            <AnimatedSection
+              variant="fade-right"
+              className="flex-1 text-center lg:text-left"
+            >
               <p className="text-primary font-medium mb-4">Hi there, I'm</p>
-              <div className="relative inline-block">
-                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-                  Thomas van den Nieuwenhoff
-                </h1>
-                {/* Arrow pointing to profile picture */}
-                <svg 
-                  className="hidden lg:block absolute -right-16 top-1/2 w-32 h-24 text-primary"
-                  viewBox="0 0 120 80"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path 
-                    d="M5 40 Q 40 10, 80 25 Q 110 35, 105 55"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    fill="none"
-                    className="animate-[draw_1.5s_ease-out_0.5s_forwards]"
-                    strokeDasharray="150"
-                    strokeDashoffset="150"
-                  />
-                  <path 
-                    d="M100 45 L105 55 L95 52"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    fill="none"
-                    className="animate-[draw_0.3s_ease-out_2s_forwards]"
-                    strokeDasharray="30"
-                    strokeDashoffset="30"
-                  />
-                </svg>
-              </div>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+                Thomas van den Nieuwenhoff
+              </h1>
               <p className="text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
-                Lead Cyber Security Consultant with a passion for empowering businesses and teams in the digital realm.
+                Lead Cyber Security Consultant with a passion for empowering
+                businesses and teams in the digital realm.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button variant="warm" size="lg" asChild>
@@ -90,10 +90,18 @@ export default function Index() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection variant="scale" delay={200} className="flex-shrink-0">
+            <AnimatedSection
+              variant="scale"
+              delay={200}
+              className="flex-shrink-0"
+            >
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-warm rounded-full blur-2xl opacity-20 animate-float" />
-                <img alt="Thomas van den Nieuwenhoff" className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background" src={profileImage} />
+                <img
+                  alt="Thomas van den Nieuwenhoff"
+                  className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background"
+                  src={profileImage}
+                />
               </div>
             </AnimatedSection>
           </div>
@@ -108,12 +116,18 @@ export default function Index() {
               What I Bring to the Table
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              With years of experience and a robust tech background, I focus on guiding teams and clients to success.
+              With years of experience and a robust tech background, I focus on
+              guiding teams and clients to success.
             </p>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {highlights.map((item, index) => <AnimatedSection key={item.title} variant="fade-up" delay={index * 100}>
+            {highlights.map((item, index) => (
+              <AnimatedSection
+                key={item.title}
+                variant="fade-up"
+                delay={index * 100}
+              >
                 <div className="p-8 rounded-2xl bg-card shadow-soft hover-lift h-full">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                     <item.icon className="h-6 w-6 text-primary" />
@@ -121,11 +135,10 @@ export default function Index() {
                   <h3 className="font-display text-xl font-semibold text-foreground mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-muted-foreground">
-                    {item.description}
-                  </p>
+                  <p className="text-muted-foreground">{item.description}</p>
                 </div>
-              </AnimatedSection>)}
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
@@ -133,12 +146,16 @@ export default function Index() {
       {/* CTA Section */}
       <section className="py-20 bg-muted/50">
         <div className="container">
-          <AnimatedSection variant="scale" className="max-w-3xl mx-auto text-center">
+          <AnimatedSection
+            variant="scale"
+            className="max-w-3xl mx-auto text-center"
+          >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
               Let's Build Something Great Together
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Whether you're looking for security guidance, team leadership, or just want to connect — I'd love to hear from you.
+              Whether you're looking for security guidance, team leadership, or
+              just want to connect — I'd love to hear from you.
             </p>
             <Button variant="warm" size="lg" asChild>
               <Link to="/contact">
@@ -149,5 +166,6 @@ export default function Index() {
           </AnimatedSection>
         </div>
       </section>
-    </Layout>;
+    </Layout>
+  );
 }
