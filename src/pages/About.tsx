@@ -5,23 +5,15 @@ import { SEO } from "@/components/seo/SEO";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import profileImage from "@/assets/profile.jpg";
 
-// Certification type with multiple categories and optional logo
-interface Certification {
-  name: string;
-  year: string;
-  categories: string[];
-  logo?: string; // Path to badge image (e.g., "/lovable-uploads/badge.png")
-}
-
 // All certifications with their categories
 const certifications: Certification[] = [
   // Cloudflare certifications
   { name: "Cloudflare Accredited Services Architect", year: "2023", categories: ["Cloudflare"] },
-  { name: "Cloudflare Zero Trust Engineer", year: "2025", categories: ["Cloudflare", "Cybersecurity"] },
+  { name: "Cloudflare Zero Trust Engineer", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Accredited Configuration Engineer", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Accredited MSSP - Customer Success", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Accredited MSSP - Services Management", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Accredited MSSP - Zero Trust", year: "2025", categories: ["Cloudflare", "Cybersecurity"] },
+  { name: "Cloudflare Accredited MSSP - Zero Trust", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Accredited Sales Engineer", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare One - Service Delivery", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Core - Service Delivery", year: "2025", categories: ["Cloudflare"] },
@@ -30,9 +22,9 @@ const certifications: Certification[] = [
   { name: "Cloudflare One Sales Track", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Core Sales Track", year: "2025", categories: ["Cloudflare"] },
   { name: "Cloudflare Sales Professional Level II", year: "2025", categories: ["Cloudflare"] },
-  { name: "Cloudflare Implementation Specialist - Zero Trust Services", year: "2023", categories: ["Cloudflare", "Cybersecurity"] },
+  { name: "Cloudflare Implementation Specialist - Zero Trust Services", year: "2023", categories: ["Cloudflare"] },
   // Red Hat
-  { name: "Red Hat Certified OpenShift Administrator", year: "2024", categories: ["Red Hat", "Cloud"] },
+  { name: "Red Hat Certified OpenShift Administrator", year: "2024", categories: ["Red Hat"] },
   // Cybersecurity
   { name: "1Password Business Admin", year: "2025", categories: ["Cybersecurity"] },
   { name: "Splunk Efficency and Optimization", year: "2024", categories: ["Cybersecurity"] },
