@@ -59,6 +59,8 @@ const certifications: Certification[] = [
     name: "Cloudflare Accredited MSSP - Customer Success",
     year: "2025",
     categories: ["Cloudflare"],
+    logo: "/assets/certifications/asa.png",
+    proofUrl: "/assets/certifications/amcs.pdf",
   },
   {
     name: "Cloudflare Accredited MSSP - Services Management",
@@ -74,6 +76,8 @@ const certifications: Certification[] = [
     name: "Cloudflare Accredited MSSP - Zero Trust",
     year: "2025",
     categories: ["Cloudflare"],
+    logo: "/assets/certifications/cf.svg",
+    proofUrl: "/assets/certifications/amzt.pdf",
   },
   {
     name: "Cloudflare Accredited Sales Engineer",
@@ -89,31 +93,43 @@ const certifications: Certification[] = [
     name: "Cloudflare One - Service Delivery",
     year: "2025",
     categories: ["Cloudflare"],
+    logo: "/assets/certifications/cf.svg",
+    proofUrl: "/assets/certifications/sdo.pdf",
   },
   {
     name: "Cloudflare Core - Service Delivery",
     year: "2025",
     categories: ["Cloudflare"],
+    logo: "/assets/certifications/cf.svg",
+    proofUrl: "/assets/certifications/sdc.pdf",
   },
   {
     name: "Cloudflare One Pre-Sales Track",
     year: "2025",
     categories: ["Cloudflare"],
+    logo: "/assets/certifications/cf.svg",
+    proofUrl: "/assets/certifications/pso.pdf",
   },
   {
     name: "Cloudflare Core Pre-Sales Track",
     year: "2025",
     categories: ["Cloudflare"],
+    logo: "/assets/certifications/cf.svg",
+    proofUrl: "/assets/certifications/psc.pdf",
   },
   {
     name: "Cloudflare One Sales Track",
     year: "2025",
     categories: ["Cloudflare"],
+    logo: "/assets/certifications/cf.svg",
+    proofUrl: "/assets/certifications/so.pdf",
   },
   {
     name: "Cloudflare Core Sales Track",
     year: "2025",
     categories: ["Cloudflare"],
+    logo: "/assets/certifications/cf.svg",
+    proofUrl: "/assets/certifications/sc.pdf",
   },
   {
     name: "Cloudflare Sales Professional Level II",
@@ -129,6 +145,8 @@ const certifications: Certification[] = [
     name: "Cloudflare Implementation Specialist - Zero Trust Services",
     year: "2023",
     categories: ["Cloudflare"],
+    logo: "/assets/certifications/cis.png",
+    proofUrl: "/assets/certifications/cis.pdf",
   },
   // Red Hat
   {
@@ -154,11 +172,17 @@ const certifications: Certification[] = [
     name: "Splunk Efficiency and Optimization",
     year: "2024",
     categories: ["Cybersecurity"],
+    logo: "/assets/certifications/splunk.png",
+    proofUrl: "/assets/certifications/splunk.pdf",
   },
   {
     name: "Gold Level - Cyber Resilience: Advanced",
     year: "2025",
     categories: ["Cybersecurity"],
+    logo: "/assets/certifications/phished-gold.svg",
+    proofUrl: "/assets/certifications/phished-gold.pdf",
+    infoUrl:
+      "https://info.phished.io/_hcms/raw-resource?path=Academy%20Roadmap/Academy-roadmap-Gold-FEEDBACK.html&portalId=6615327&t=1713359362477&hs_preview_key=CtrNuUqBmKrAuk1LwanIuw&template_id=163886759038&hsLang=en",
   },
   {
     name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals",
@@ -174,6 +198,9 @@ const certifications: Certification[] = [
     name: "TryHackMe Advent of Cyber 2021",
     year: "2021",
     categories: ["Cybersecurity"],
+    logo: "/assets/certifications/thm.svg",
+    proofUrl:
+      "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-HA7S4NNHD6.png",
   },
   // Cloud
   {
@@ -203,8 +230,22 @@ const certifications: Certification[] = [
       "https://www.credly.com/badges/67afd7d7-b335-419a-91bc-61661bf7b0ab",
     infoUrl: "https://university.gitlab.com/pages/certifications",
   },
-  { name: "Object Oriented PHP", year: "2019", categories: ["Development"] },
-  { name: "M001: MongoDB Basics", year: "2018", categories: ["Development"] },
+  {
+    name: "Object Oriented PHP",
+    year: "2019",
+    categories: ["Development"],
+    proofUrl: "https://www.udemy.com/certificate/UC-8G20KC5A/",
+    infoUrl:
+      "https://www.udemy.com/course/learn-object-oriented-php-by-building-a-complete-website/",
+  },
+  {
+    name: "M001: MongoDB Basics",
+    year: "2018",
+    categories: ["Development"],
+    logo: "/assets/certifications/mongo.jpg",
+    proofUrl:
+      "https://university.mongodb.com/course_completion/27a523a4-712f-432c-9a0a-1f20c1a9",
+  },
 ];
 
 // Get all unique categories and count certs per category
