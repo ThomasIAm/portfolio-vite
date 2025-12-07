@@ -30,7 +30,32 @@ const highlights = [
     title: "Security Expert",
     description: (
       <>
-        <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Cloudflare</a> Solutions Architect, Zero Trust Engineer & <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">OpenShift</a> Administrator
+        <a
+          href="https://salt-security.com/diensten/professional-services/architecture-best-practices"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline"
+        >
+          Cloudflare Solutions Architect
+        </a>
+        ,{" "}
+        <a
+          href="https://salt-security.com/diensten/professional-services/consultancy-implementatie"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline"
+        >
+          Zero Trust Engineer
+        </a>{" "}
+        &{" "}
+        <a
+          href="https://redtrain.nl/onze-diensten/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline"
+        >
+          OpenShift Administrator
+        </a>
       </>
     ),
   },
@@ -39,7 +64,15 @@ const highlights = [
     title: "Team Leader",
     description: (
       <>
-        Leading <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Cloudflare</a> Professional Services and mentoring colleagues at <a href="https://salt-security.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">SALT</a>
+        Leading Cloudflare Professional Services and mentoring colleagues at{" "}
+        <a
+          href="https://salt-security.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline"
+        >
+          SALT
+        </a>
       </>
     ),
   },
