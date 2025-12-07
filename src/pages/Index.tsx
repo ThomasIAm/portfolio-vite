@@ -97,6 +97,23 @@ export default function Index() {
             >
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-warm rounded-full blur-2xl opacity-20 animate-float" />
+                
+                {/* Option 1: Text caption overlay */}
+                <span className="absolute -right-4 top-1/2 -translate-y-1/2 text-sm font-medium text-primary bg-background/90 px-2 py-1 rounded shadow-sm z-10">
+                  ← That's me
+                </span>
+                
+                {/* Option 2: Gradient fade on left side */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-background/60 via-transparent to-transparent z-[1]" />
+                <span className="absolute left-4 bottom-4 text-xs text-muted-foreground bg-background/80 px-2 py-0.5 rounded z-10">
+                  My girlfriend
+                </span>
+                
+                {/* Option 5: Small floating badge */}
+                <span className="absolute -right-2 bottom-8 text-xs font-semibold text-primary-foreground bg-primary px-2 py-1 rounded-full shadow-md z-10">
+                  Me
+                </span>
+                
                 <img
                   alt="Thomas van den Nieuwenhoff"
                   className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background"
