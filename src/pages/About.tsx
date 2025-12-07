@@ -1,9 +1,19 @@
 import { Layout } from "@/components/layout/Layout";
-import { Award, BookOpen, Heart, Trophy } from "lucide-react";
+import { Award, BookOpen, ExternalLink, Heart, ShieldCheck, Trophy } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SEO } from "@/components/seo/SEO";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import profileImage from "@/assets/profile.jpg";
+
+// Certification type with multiple categories and optional logo
+interface Certification {
+  name: string;
+  year: string;
+  categories: string[];
+  logo?: string; // Path to badge image (e.g., "/lovable-uploads/badge.png")
+  proofUrl?: string; // Link to verification/proof
+  infoUrl?: string; // Link to more information about the certification
+}
 
 // All certifications with their categories
 const certifications: Certification[] = [
@@ -177,9 +187,39 @@ export default function About() {
                           <h3 className="font-display text-sm font-bold text-foreground mb-2 leading-tight min-h-[2.5rem] flex items-center justify-center">
                             {cert.name}
                           </h3>
-                          <span className="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-semibold">
+                          <span className="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-semibold mb-3">
                             {cert.year}
                           </span>
+                          
+                          {/* Links */}
+                          {(cert.proofUrl || cert.infoUrl) && (
+                            <div className="flex justify-center gap-3 mt-2">
+                              {cert.proofUrl && (
+                                <a
+                                  href={cert.proofUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-xs text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors"
+                                  title="Verify certification"
+                                >
+                                  <ShieldCheck className="h-3.5 w-3.5" />
+                                  Proof
+                                </a>
+                              )}
+                              {cert.infoUrl && (
+                                <a
+                                  href={cert.infoUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-xs text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors"
+                                  title="More information"
+                                >
+                                  <ExternalLink className="h-3.5 w-3.5" />
+                                  Info
+                                </a>
+                              )}
+                            </div>
+                          )}
                         </div>
                         
                         {/* Bottom accent */}
