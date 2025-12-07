@@ -18,6 +18,7 @@ export interface BlogPostFields {
   excerpt: string;
   content: string;
   publishedDate: string;
+  modifiedDate: string;
   featured?: boolean;
 }
 

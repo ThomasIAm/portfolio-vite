@@ -15,7 +15,13 @@ export default function Blog() {
         title="Blog"
         description="Insights on cyber security, leadership, and technology from Thomas van den Nieuwenhoff. Expert articles on Cloudflare, Zero Trust, and DevSecOps."
         canonical="/blog"
-        keywords={["cyber security blog", "security articles", "Cloudflare insights", "Zero Trust architecture", "DevSecOps"]}
+        keywords={[
+          "cyber security blog",
+          "security articles",
+          "Cloudflare insights",
+          "Zero Trust architecture",
+          "DevSecOps",
+        ]}
       />
       {/* Hero Section */}
       <section className="py-20 md:py-28 bg-gradient-hero">
@@ -25,7 +31,8 @@ export default function Blog() {
               Blog
             </h1>
             <p className="text-xl text-muted-foreground">
-              Thoughts on cyber security, leadership, and navigating the digital landscape.
+              Thoughts on cyber security, leadership, and navigating the digital
+              landscape.
             </p>
           </div>
         </div>
@@ -38,7 +45,10 @@ export default function Blog() {
             {isLoading && (
               <div className="space-y-6">
                 {[1, 2, 3].map((i) => (
-                  <div key={i} className="p-8 rounded-2xl bg-card shadow-soft animate-pulse">
+                  <div
+                    key={i}
+                    className="p-8 rounded-2xl bg-card shadow-soft animate-pulse"
+                  >
                     <div className="h-6 bg-muted rounded w-3/4 mb-4" />
                     <div className="h-4 bg-muted rounded w-full mb-2" />
                     <div className="h-4 bg-muted rounded w-2/3" />
@@ -50,7 +60,7 @@ export default function Blog() {
             {error && (
               <div className="p-8 rounded-2xl bg-card shadow-soft text-center">
                 <p className="text-muted-foreground">
-                  Unable to load blog posts. Please check your Contentful configuration.
+                  Unable to load blog posts. Please check your configuration.
                 </p>
               </div>
             )}
@@ -64,64 +74,74 @@ export default function Blog() {
                   Blog Posts Coming Soon
                 </h2>
                 <p className="text-muted-foreground text-lg">
-                  I'm working on some exciting content about cyber security, team leadership, and the intersection of technology and business. Stay tuned for insights from the field.
+                  I'm working on some exciting content about cyber security,
+                  team leadership, and the intersection of technology and
+                  business. Stay tuned for insights from the field.
                 </p>
               </article>
             )}
 
-            {posts && posts.map((post, index) => {
-              const fields = post.fields;
-              const readingTime = calculateReadingTime(fields.content);
-              
-              return (
-                <article
-                  key={post.sys.id}
-                  className="p-8 rounded-2xl bg-card shadow-soft animate-fade-up mb-6 hover:shadow-md transition-shadow"
-                  style={{ animationDelay: `${0.1 * (index + 1)}s` }}
-                >
-                  {fields.featured && (
-                    <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">
-                      Featured
-                    </span>
-                  )}
-                  <Link to={`/blog/${fields.slug}`}>
-                    <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 hover:text-primary transition-colors">
-                      {fields.title}
-                    </h2>
-                  </Link>
-                  <p className="text-muted-foreground text-lg mb-6">
-                    {fields.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                      <span className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4" />
-                        {format(new Date(fields.publishedDate), 'MMM d, yyyy')}
+            {posts &&
+              posts.map((post, index) => {
+                const fields = post.fields;
+                const readingTime = calculateReadingTime(fields.content);
+
+                return (
+                  <article
+                    key={post.sys.id}
+                    className="p-8 rounded-2xl bg-card shadow-soft animate-fade-up mb-6 hover:shadow-md transition-shadow"
+                    style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+                  >
+                    {fields.featured && (
+                      <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">
+                        Featured
                       </span>
-                      <span className="flex items-center gap-2">
-                        <Clock className="h-4 w-4" />
-                        {readingTime}
-                      </span>
-                    </div>
-                    <Link
-                      to={`/blog/${fields.slug}`}
-                      className="inline-flex items-center text-primary font-medium hover:underline"
-                    >
-                      Read more
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                    )}
+                    <Link to={`/blog/${fields.slug}`}>
+                      <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 hover:text-primary transition-colors">
+                        {fields.title}
+                      </h2>
                     </Link>
-                  </div>
-                </article>
-              );
-            })}
+                    <p className="text-muted-foreground text-lg mb-6">
+                      {fields.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                        <span className="flex items-center gap-2">
+                          <Calendar className="h-4 w-4" />
+                          {format(
+                            new Date(fields.publishedDate),
+                            "MMM d, yyyy"
+                          )}
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <Clock className="h-4 w-4" />
+                          {readingTime}
+                        </span>
+                      </div>
+                      <Link
+                        to={`/blog/${fields.slug}`}
+                        className="inline-flex items-center text-primary font-medium hover:underline"
+                      >
+                        Read more
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })}
 
             {/* Newsletter Signup */}
-            <div className="mt-16 p-8 rounded-2xl bg-muted/50 text-center animate-fade-up" style={{ animationDelay: "0.3s" }}>
+            <div
+              className="mt-16 p-8 rounded-2xl bg-muted/50 text-center animate-fade-up"
+              style={{ animationDelay: "0.3s" }}
+            >
               <h3 className="font-display text-xl font-semibold text-foreground mb-3">
                 Want to be notified when new posts are published?
               </h3>
               <p className="text-muted-foreground mb-6">
-                Connect with me on LinkedIn or check back here regularly for updates.
+                Connect with me on LinkedIn or check back here regularly for
+                updates.
               </p>
               <a
                 href="https://linkedin.com/in/tvdn"

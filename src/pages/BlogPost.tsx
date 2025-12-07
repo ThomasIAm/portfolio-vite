@@ -1,15 +1,15 @@
-import { useParams, Link } from 'react-router-dom';
-import { Layout } from '@/components/layout/Layout';
-import { BlogContent } from '@/components/blog/BlogContent';
-import { useBlogPost } from '@/hooks/useBlogPosts';
-import { calculateReadingTime } from '@/lib/contentful';
-import { Calendar, Clock, ArrowLeft } from 'lucide-react';
-import { format } from 'date-fns';
-import { SEO } from '@/components/seo/SEO';
+import { useParams, Link } from "react-router-dom";
+import { Layout } from "@/components/layout/Layout";
+import { BlogContent } from "@/components/blog/BlogContent";
+import { useBlogPost } from "@/hooks/useBlogPosts";
+import { calculateReadingTime } from "@/lib/contentful";
+import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import { format } from "date-fns";
+import { SEO } from "@/components/seo/SEO";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const { data: post, isLoading, error } = useBlogPost(slug || '');
+  const { data: post, isLoading, error } = useBlogPost(slug || "");
 
   if (isLoading) {
     return (
@@ -74,7 +74,7 @@ export default function BlogPost() {
     headline: fields.title,
     description: fields.excerpt,
     datePublished: fields.publishedDate,
-    dateModified: fields.publishedDate,
+    dateModified: fields.modifiedDate,
     author: {
       "@type": "Person",
       name: "Thomas van den Nieuwenhoff",
@@ -119,7 +119,7 @@ export default function BlogPost() {
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <span className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
-                {format(new Date(fields.publishedDate), 'MMMM d, yyyy')}
+                {format(new Date(fields.publishedDate), "MMMM d, yyyy")}
               </span>
               <span className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
@@ -133,7 +133,10 @@ export default function BlogPost() {
       {/* Content */}
       <section className="py-16 md:py-20">
         <div className="container">
-          <article className="max-w-3xl mx-auto animate-fade-up" style={{ animationDelay: '0.1s' }}>
+          <article
+            className="max-w-3xl mx-auto animate-fade-up"
+            style={{ animationDelay: "0.1s" }}
+          >
             <BlogContent content={fields.content} />
           </article>
         </div>
