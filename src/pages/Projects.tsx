@@ -36,14 +36,14 @@ const projects = [
     description: "Built a tiny web app with a wheel of fortune that never seems to land on the expected outcome.",
     tags: ["Development", "Fun", "Prototyping"],
     icon: LoaderPinwheel,
-    url: "benikincapabel.tvdn.me",
+    url: "https://benikincapabel.tvdn.me",
   },
   {
     title: "Self-Made Cloud Portal",
     description: "Automated infrastructure management using Ansible/Vagrant, and built a management interface using PHP/Bootstrap.",
     tags: ["Development", "Cloud", "Automation"],
     icon: CloudCog,
-    url: "vm2.tvdn.me",
+    url: "https://vm2.tvdn.me",
   },
   {
     title: "Capture-the-Flag Competition",
@@ -85,7 +85,7 @@ const projects = [
     description: "This was my first real website with information and tools I wanted handy. I was 15 years old when I made this using PHP/Material Design.",
     tags: ["Development", "Baby Steps", "Portfolio"],
     icon: Code,
-    url: "old.tvdn.me",
+    url: "https://old.tvdn.me",
   },
 ];
 
