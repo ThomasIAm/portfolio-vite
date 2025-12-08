@@ -2,13 +2,18 @@ import { createClient, ContentfulClientApi } from 'contentful';
 
 const spaceId = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
 const accessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
+const previewToken = import.meta.env.VITE_CONTENTFUL_PREVIEW_TOKEN;
+
+// Use Preview API if preview token is provided (shows published + drafts)
+const usePreviewApi = !!previewToken;
 
 let client: ContentfulClientApi<undefined> | null = null;
 
-if (spaceId && accessToken) {
+if (spaceId && (accessToken || previewToken)) {
   client = createClient({
     space: spaceId,
-    accessToken: accessToken,
+    accessToken: usePreviewApi ? previewToken : accessToken,
+    host: usePreviewApi ? 'preview.contentful.com' : 'cdn.contentful.com',
   });
 }
 
