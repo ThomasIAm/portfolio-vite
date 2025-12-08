@@ -9,84 +9,83 @@ const projects = [
     description: "Leading Cloudflare Professional Services at SALT Cyber Security, responsible for mentoring colleagues, identifying commercial opportunities, and delivering consulting and engineering services.",
     tags: ["Cloudflare", "Leadership", "Professional Services"],
     icon: Shield,
-    url: "https://salt-security.com", // Update with actual URL
+    url: "https://salt-security.com",
   },
   {
     title: "Identity Access Management",
     description: "Security expert for IBM Security Verify Access at Belastingdienst, managing authentication solutions (including DigiD) and creating migration plans for Red Hat OpenShift.",
     tags: ["IAM", "Security", "DigiD"],
     icon: Lock,
-    url: "", // Add URL if available
+    url: "https://www.belastingdienst.nl/wps/wcm/connect/nl/home/content/inloggen-mijn-belastingdienst",
   },
   {
     title: "OpenShift Platform Migration",
     description: "Led OpenShift migrations at Belastingdienst, successfully onboarding developers, implementing automation with Tekton and ArgoCD, and enhancing cluster security with Advanced Cluster Security.",
     tags: ["OpenShift", "DevOps", "Kubernetes"],
     icon: Server,
-    url: "", // Add URL if available
   },
   {
     title: "Fully Homomorphic Encryption Research",
     description: "Conducted research on Fully Homomorphic Encryption including business applications, built a proof-of-concept weight-tracking app, and published multiple articles on the technology.",
     tags: ["Research", "Cryptography", "Innovation"],
     icon: Shield,
-    url: "", // Add URL if available
+    url: "https://fhe.tvdn.me",
   },
   {
     title: "Wheel of No",
     description: "Built a tiny web app with a wheel of fortune that never seems to land on the expected outcome.",
     tags: ["Development", "Fun", "Prototyping"],
     icon: LoaderPinwheel,
-    url: "", // Add URL if available
+    url: "benikincapabel.tvdn.me",
   },
   {
     title: "Self-Made Cloud Portal",
     description: "Automated infrastructure management using Ansible/Vagrant, and built a management interface using PHP/Bootstrap.",
     tags: ["Development", "Cloud", "Automation"],
     icon: CloudCog,
-    url: "", // Add URL if available
+    url: "vm2.tvdn.me",
   },
   {
     title: "Capture-the-Flag Competition",
     description: "Put together a CTF using RootTheBox, LogonBox VPN, and VMware vCenter technologies.",
     tags: ["Hacking", "Infrastructure", "Education"],
     icon: LandPlot,
-    url: "", // Add URL if available
+    url: "https://github.com/ThomasIAm/ais-ctf-demo",
   },
   {
     title: "Low-Code Backoffice/CRM Development",
     description: "Built a fully functional backoffice and public portfolio webapp with Mendix low-code platform.",
     tags: ["Development", "Mendix", "Innovation"],
     icon: AppWindow,
-    url: "", // Add URL if available
+    url: "https://github.com/ThomasIAm/Young-Mountaineers",
   },
   {
     title: "Time Saving Chrome Extension",
     description: "Built an easy way to research academic sources using the Einde search engine right from the Chrome omnibox or extension bar.",
     tags: ["Development", "Chrome", "Efficiency"],
     icon: Blocks,
-    url: "", // Add URL if available
+    url: "https://github.com/ThomasIAm/WindeSearch",
   },
   {
     title: "My First Webshop",
     description: "First time working in a team trying to build an MVP powered by PHP/Bootstrap/MySQL.",
     tags: ["Development", "Teamwork", "PHP"],
     icon: AppWindow,
-    url: "", // Add URL if available
+    url: "https://kbsa.tvdn.me",
   },
   {
     title: "AI Sounds Interesting...",
     description: "Put together an informative website about Artificial Intelligence using Material Design.",
     tags: ["Development", "Design System", "Web2"],
     icon: Code,
-    url: "", // Add URL if available
+    url: "https://ai.tvdn.me",
   },
   {
     title: "My First Website",
     description: "This was my first real website with information and tools I wanted handy. I was 15 years old when I made this using PHP/Material Design.",
     tags: ["Development", "Baby Steps", "Portfolio"],
     icon: Code,
-    url: "", // Add URL if available
+    url: "old.tvdn.me",
   },
 ];
 
