@@ -140,7 +140,7 @@ export default function Index() {
                 <a
                   href="https://www.swoodroom.nl"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   className="absolute left-4 bottom-4 text-xs text-muted-foreground hover:text-primary bg-background/80 px-2 py-0.5 rounded z-10 transition-colors"
                 >
                   My partner Sanne ↗
