@@ -22,6 +22,35 @@ interface Certification {
   infoUrl?: string; // Link to more information about the certification
 }
 
+// Brand colors for each category (subtle background tints)
+const categoryColors: Record<string, { light: string; dark: string; accent: string }> = {
+  Cloudflare: {
+    light: "from-orange-50/90 to-orange-100/60",
+    dark: "dark:from-orange-950/40 dark:to-orange-900/25",
+    accent: "bg-orange-500/20 text-orange-700 dark:text-orange-400",
+  },
+  "Red Hat": {
+    light: "from-red-50/90 to-red-100/60",
+    dark: "dark:from-red-950/40 dark:to-red-900/25",
+    accent: "bg-red-500/20 text-red-700 dark:text-red-400",
+  },
+  Cybersecurity: {
+    light: "from-emerald-50/90 to-emerald-100/60",
+    dark: "dark:from-emerald-950/40 dark:to-emerald-900/25",
+    accent: "bg-emerald-500/20 text-emerald-700 dark:text-emerald-400",
+  },
+  Cloud: {
+    light: "from-sky-50/90 to-sky-100/60",
+    dark: "dark:from-sky-950/40 dark:to-sky-900/25",
+    accent: "bg-sky-500/20 text-sky-700 dark:text-sky-400",
+  },
+  Development: {
+    light: "from-violet-50/90 to-violet-100/60",
+    dark: "dark:from-violet-950/40 dark:to-violet-900/25",
+    accent: "bg-violet-500/20 text-violet-700 dark:text-violet-400",
+  },
+};
+
 // All certifications with their categories
 const certifications: Certification[] = [
   // Cloudflare certifications
@@ -408,7 +437,9 @@ export default function About() {
               ))}
             </TabsList>
 
-            {categories.map((category) => (
+            {categories.map((category) => {
+              const colors = categoryColors[category] || categoryColors.Development;
+              return (
               <TabsContent key={category} value={category} className="mt-0">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {getCertsByCategory(category).map((cert, index) => (
@@ -417,9 +448,9 @@ export default function About() {
                       variant="scale"
                       delay={index * 50}
                     >
-                      <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-amber-50/80 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20 border border-amber-200/50 dark:border-amber-700/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                      <div className={`group relative p-6 rounded-2xl bg-gradient-to-b ${colors.light} ${colors.dark} border border-foreground/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}>
                         {/* Glow effect */}
-                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-amber-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                         {/* Logo or Trophy icon */}
                         <div className="relative flex justify-center mb-4">
@@ -432,8 +463,8 @@ export default function About() {
                               />
                             </div>
                           ) : (
-                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 dark:from-amber-500 dark:to-amber-700 flex items-center justify-center shadow-lg">
-                              <Trophy className="h-8 w-8 text-white drop-shadow-sm" />
+                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-foreground/20 to-foreground/40 flex items-center justify-center shadow-lg">
+                              <Trophy className="h-8 w-8 text-foreground drop-shadow-sm" />
                             </div>
                           )}
                         </div>
@@ -443,7 +474,7 @@ export default function About() {
                           <h3 className="font-display text-sm font-bold text-foreground mb-2 leading-tight min-h-[2.5rem] flex items-center justify-center">
                             {cert.name}
                           </h3>
-                          <span className="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-semibold mb-3">
+                          <span className={`inline-block px-3 py-1 rounded-full ${colors.accent} text-xs font-semibold mb-3`}>
                             {cert.year}
                           </span>
 
@@ -485,7 +516,8 @@ export default function About() {
                   ))}
                 </div>
               </TabsContent>
-            ))}
+            );
+            })}
           </Tabs>
         </div>
       </section>
