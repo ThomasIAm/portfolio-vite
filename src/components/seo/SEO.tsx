@@ -14,15 +14,24 @@ interface SEOProps {
 }
 
 const BASE_URL = "https://tvdn.me";
-const DEFAULT_IMAGE = `${BASE_URL}/og-image.jpg`;
 const SITE_NAME = "Thomas van den Nieuwenhoff";
+
+// Generate dynamic OG image URL
+function generateOgImageUrl(title: string, description: string, type: string): string {
+  const params = new URLSearchParams({
+    title,
+    description: description.slice(0, 150),
+    type,
+  });
+  return `${BASE_URL}/og?${params.toString()}`;
+}
 
 export function SEO({
   title,
   description,
   canonical,
   type = "website",
-  image = DEFAULT_IMAGE,
+  image,
   keywords = [],
   publishedDate,
   modifiedDate,
@@ -31,6 +40,7 @@ export function SEO({
 }: SEOProps) {
   const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
   const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
+  const ogImage = image || generateOgImageUrl(title, description, type);
 
   const defaultStructuredData = {
     "@context": "https://schema.org",
@@ -38,7 +48,7 @@ export function SEO({
     name: title,
     description,
     url: canonicalUrl,
-    image,
+    image: ogImage,
     author: {
       "@type": "Person",
       name: SITE_NAME,
@@ -65,14 +75,14 @@ export function SEO({
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content={SITE_NAME} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={ogImage} />
 
       {/* Article specific */}
       {type === "article" && publishedDate && (
