@@ -109,9 +109,10 @@ export default function Blog() {
                       <div className="flex items-center gap-6 text-sm text-muted-foreground">
                         <span className="flex items-center gap-2">
                           <Calendar className="h-4 w-4" />
-                          {fields.publishedDate
-                            ? format(new Date(fields.publishedDate), "MMM d, yyyy")
-                            : "Date TBD"}
+                          {format(
+                            new Date(fields.publishedDate),
+                            "MMM d, yyyy"
+                          )}
                         </span>
                         <span className="flex items-center gap-2">
                           <Clock className="h-4 w-4" />

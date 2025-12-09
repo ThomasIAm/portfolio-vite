@@ -59,8 +59,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   return (response.items[0] as unknown as BlogPost) || null;
 }
 
-export function calculateReadingTime(content: string | undefined): string {
-  if (!content) return '';
+export function calculateReadingTime(content: string): string {
   const wordsPerMinute = 200;
   const words = content.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / wordsPerMinute);
