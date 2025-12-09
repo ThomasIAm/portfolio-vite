@@ -13,8 +13,8 @@ interface SEOProps {
   structuredData?: object;
 }
 
-const BASE_URL = "https://tvdn.me";
-const SITE_NAME = "Thomas van den Nieuwenhoff";
+const BASE_URL = import.meta.env.VITE_BASE_URL || "https://tvdn.me";
+const SITE_NAME = import.meta.env.VITE_SITE_NAME || "Thomas van den Nieuwenhoff";
 
 // Generate dynamic OG image URL
 function generateOgImageUrl(title: string, description: string, type: string): string {
