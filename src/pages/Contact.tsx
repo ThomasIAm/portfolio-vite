@@ -64,24 +64,24 @@ export default function Contact() {
                   return (
                     <div
                       key={method.label}
-                      className="group p-6 rounded-2xl bg-card shadow-soft animate-fade-up"
+                      className="group p-4 sm:p-6 rounded-2xl bg-card shadow-soft animate-fade-up"
                       style={{ animationDelay: `${0.1 * (index + 1)}s` }}
                     >
-                      <div className="flex items-center gap-6 mb-4">
-                        <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                          <method.icon className="h-6 w-6 text-primary" />
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-4">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <method.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                         </div>
-                        <div className="flex-1">
+                        <div className="flex-1 min-w-0">
                           <h2 className="font-display text-lg font-semibold text-foreground mb-1">
                             {method.label}
                           </h2>
-                          {method.value && <p className="text-primary font-medium">{method.value}</p>}
+                          {method.value && <p className="text-primary font-medium break-all">{method.value}</p>}
                           <p className="text-sm text-muted-foreground mt-1">
                             {method.description}
                           </p>
                         </div>
                       </div>
-                      <div className="flex gap-3 ml-20">
+                      <div className="flex flex-wrap gap-3 sm:ml-[4.5rem]">
                         {method.links.map((link) => (
                           <a
                             key={link.label}
@@ -105,17 +105,17 @@ export default function Contact() {
                     href={method.href}
                     target={method.href?.startsWith("http") ? "_blank" : undefined}
                     rel={method.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="group p-6 rounded-2xl bg-card shadow-soft hover-lift flex items-center gap-6 animate-fade-up"
+                    className="group p-4 sm:p-6 rounded-2xl bg-card shadow-soft hover-lift flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 animate-fade-up"
                     style={{ animationDelay: `${0.1 * (index + 1)}s` }}
                   >
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <method.icon className="h-6 w-6 text-primary" />
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors flex-shrink-0">
+                      <method.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <h2 className="font-display text-lg font-semibold text-foreground mb-1">
                         {method.label}
                       </h2>
-                      <p className="text-primary font-medium">{method.value}</p>
+                      <p className="text-primary font-medium break-all">{method.value}</p>
                       <p className="text-sm text-muted-foreground mt-1">
                         {method.description}
                       </p>
