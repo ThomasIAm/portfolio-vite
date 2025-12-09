@@ -62,8 +62,8 @@ const vendorColors: Record<string, CertificationColors> = {
     accent: "bg-green-500/20 text-green-700 dark:text-green-400",
   },
   gitlab: {
-    light: "from-orange-50/90 to-purple-100/60",
-    dark: "dark:from-orange-950/40 dark:to-purple-900/25",
+    light: "from-orange-50/90 to-orange-100/60",
+    dark: "dark:from-orange-950/40 dark:to-orange-900/25",
     accent: "bg-orange-500/20 text-orange-700 dark:text-orange-400",
   },
   splunk: {
