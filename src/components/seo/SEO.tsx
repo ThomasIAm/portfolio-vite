@@ -40,7 +40,7 @@ export function SEO({
 }: SEOProps) {
   const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
   const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
-  const ogImage = image || generateOgImageUrl(title, description, type);
+  const ogImage = generateOgImageUrl(title, description, type);
 
   const defaultStructuredData = {
     "@context": "https://schema.org",
