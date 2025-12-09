@@ -13,6 +13,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import profileImage from "@/assets/profile.jpg";
 
 // Certification type
+interface CertificationColors {
+  light: string;
+  dark: string;
+  accent: string;
+}
+
 interface Certification {
   name: string;
   year: string;
@@ -20,6 +26,7 @@ interface Certification {
   logo?: string; // Path to badge image (e.g., "/assets/certifications/badge.png")
   proofUrl?: string; // Link to verification/proof
   infoUrl?: string; // Link to more information about the certification
+  colors?: CertificationColors; // Optional custom colors for this certification
 }
 
 // Brand colors for each category (subtle background tints)
@@ -505,11 +512,14 @@ export default function About() {
             </TabsList>
 
             {categories.map((category) => {
-              const colors = categoryColors[category] || categoryColors.Development;
+              const categoryFallback = categoryColors[category] || categoryColors.Development;
               return (
               <TabsContent key={category} value={category} className="mt-0">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {getCertsByCategory(category).map((cert, index) => (
+                  {getCertsByCategory(category).map((cert, index) => {
+                    // Use cert-specific colors if defined, otherwise fall back to category colors
+                    const colors = cert.colors || categoryFallback;
+                    return (
                     <AnimatedSection
                       key={`${category}-${cert.name}`}
                       variant="scale"
@@ -580,7 +590,8 @@ export default function About() {
                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 rounded-t-full bg-gradient-to-r from-amber-400 to-amber-600" />
                       </div>
                     </AnimatedSection>
-                  ))}
+                  );
+                  })}
                 </div>
               </TabsContent>
             );
