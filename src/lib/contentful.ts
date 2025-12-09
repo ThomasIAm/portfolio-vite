@@ -34,6 +34,19 @@ export interface BlogPost {
   fields: BlogPostFields;
 }
 
+function isValidBlogPost(item: unknown): item is BlogPost {
+  const post = item as BlogPost;
+  const fields = post?.fields;
+  return !!(
+    post?.sys?.id &&
+    fields?.title &&
+    fields?.slug &&
+    fields?.excerpt &&
+    fields?.content &&
+    fields?.publishedDate
+  );
+}
+
 export async function getBlogPosts(): Promise<BlogPost[]> {
   if (!client) {
     console.warn('Contentful not configured. Add VITE_CONTENTFUL_SPACE_ID and VITE_CONTENTFUL_ACCESS_TOKEN.');
@@ -43,7 +56,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     content_type: 'blogPost',
     order: ['-sys.createdAt'],
   });
-  return response.items as unknown as BlogPost[];
+  return (response.items as unknown as BlogPost[]).filter(isValidBlogPost);
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
