@@ -270,7 +270,7 @@ const certifications: Certification[] = [
     colors: vendorColors.splunk,
   },
   {
-    name: "Gold Level - Cyber Resilience: Advanced",
+    name: "Phished Gold Level - Cyber Resilience: Advanced",
     year: "2025",
     categories: ["Cybersecurity"],
     logo: "/assets/certifications/phished-gold.svg",
