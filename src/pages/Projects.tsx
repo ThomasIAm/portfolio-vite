@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { AppWindow, Blocks, CloudCog, Code, ExternalLink, Github, LandPlot, LoaderPinwheel, Lock, Server, Shield } from "lucide-react";
+import { AppWindow, Blocks, CloudCog, Code, ExternalLink, Github, Gitlab, LandPlot, LoaderPinwheel, Lock, Server, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
 
@@ -156,22 +156,35 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* GitHub CTA */}
+          {/* GitHub & GitLab CTA */}
           <div className="mt-16 text-center animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <p className="text-muted-foreground mb-6">
               Want to see more of my work?
             </p>
-            <Button variant="outline" size="lg" asChild>
-              <a
-                href="https://github.com/tvdn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="mr-2 h-5 w-5" />
-                View GitHub Profile
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button variant="outline" size="lg" asChild>
+                <a
+                  href="https://github.com/tvdn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="mr-2 h-5 w-5" />
+                  View GitHub Profile
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a
+                  href="https://gitlab.com/tvdn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Gitlab className="mr-2 h-5 w-5" />
+                  View GitLab Profile
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

@@ -13,6 +13,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import profileImage from "@/assets/profile.jpg";
 
 // Certification type
+interface CertificationColors {
+  light: string;
+  dark: string;
+  accent: string;
+}
+
 interface Certification {
   name: string;
   year: string;
@@ -20,20 +26,77 @@ interface Certification {
   logo?: string; // Path to badge image (e.g., "/assets/certifications/badge.png")
   proofUrl?: string; // Link to verification/proof
   infoUrl?: string; // Link to more information about the certification
+  colors?: CertificationColors; // Optional custom colors for this certification
 }
 
-// Brand colors for each category (subtle background tints)
-const categoryColors: Record<string, { light: string; dark: string; accent: string }> = {
-  Cloudflare: {
+// Vendor color presets - use these for certification-specific branding
+const vendorColors: Record<string, CertificationColors> = {
+  cloudflare: {
     light: "from-orange-50/90 to-orange-100/60",
     dark: "dark:from-orange-950/40 dark:to-orange-900/25",
     accent: "bg-orange-500/20 text-orange-700 dark:text-orange-400",
   },
-  "Red Hat": {
+  redhat: {
     light: "from-red-50/90 to-red-100/60",
     dark: "dark:from-red-950/40 dark:to-red-900/25",
     accent: "bg-red-500/20 text-red-700 dark:text-red-400",
   },
+  microsoft: {
+    light: "from-blue-50/90 to-cyan-100/60",
+    dark: "dark:from-blue-950/40 dark:to-cyan-900/25",
+    accent: "bg-blue-500/20 text-blue-700 dark:text-blue-400",
+  },
+  google: {
+    light: "from-blue-50/90 to-green-100/60",
+    dark: "dark:from-blue-950/40 dark:to-green-900/25",
+    accent: "bg-blue-500/20 text-blue-700 dark:text-blue-400",
+  },
+  aws: {
+    light: "from-amber-50/90 to-orange-100/60",
+    dark: "dark:from-amber-950/40 dark:to-orange-900/25",
+    accent: "bg-amber-500/20 text-amber-700 dark:text-amber-400",
+  },
+  mongodb: {
+    light: "from-green-50/90 to-emerald-100/60",
+    dark: "dark:from-green-950/40 dark:to-emerald-900/25",
+    accent: "bg-green-500/20 text-green-700 dark:text-green-400",
+  },
+  gitlab: {
+    light: "from-orange-50/90 to-orange-100/60",
+    dark: "dark:from-orange-950/40 dark:to-orange-900/25",
+    accent: "bg-orange-500/20 text-orange-700 dark:text-orange-400",
+  },
+  splunk: {
+    light: "from-pink-50/90 to-green-100/60",
+    dark: "dark:from-pink-950/40 dark:to-green-900/25",
+    accent: "bg-pink-500/20 text-pink-700 dark:text-pink-400",
+  },
+  onepassword: {
+    light: "from-blue-50/90 to-indigo-100/60",
+    dark: "dark:from-blue-950/40 dark:to-indigo-900/25",
+    accent: "bg-blue-500/20 text-blue-700 dark:text-blue-400",
+  },
+  mendix: {
+    light: "from-blue-50/90 to-sky-100/60",
+    dark: "dark:from-blue-950/40 dark:to-sky-900/25",
+    accent: "bg-blue-500/20 text-blue-700 dark:text-blue-400",
+  },
+  tryhackme: {
+    light: "from-slate-50/90 to-red-100/60",
+    dark: "dark:from-slate-950/40 dark:to-red-900/25",
+    accent: "bg-red-500/20 text-red-700 dark:text-red-400",
+  },
+  phished: {
+    light: "from-blue-50/90 to-teal-100/60",
+    dark: "dark:from-blue-950/40 dark:to-teal-900/25",
+    accent: "bg-teal-500/20 text-teal-700 dark:text-teal-400",
+  },
+};
+
+// Brand colors for each category (fallback when no vendor color is specified)
+const categoryColors: Record<string, CertificationColors> = {
+  Cloudflare: vendorColors.cloudflare,
+  "Red Hat": vendorColors.redhat,
   Cybersecurity: {
     light: "from-emerald-50/90 to-emerald-100/60",
     dark: "dark:from-emerald-950/40 dark:to-emerald-900/25",
@@ -196,6 +259,7 @@ const certifications: Certification[] = [
     proofUrl: "https://verify.skilljar.com/c/dp7nekvp8ety",
     infoUrl:
       "https://www.1password.academy/path/1password-for-business-administrators-certificate",
+    colors: vendorColors.onepassword,
   },
   {
     name: "Splunk Efficiency and Optimization",
@@ -203,15 +267,17 @@ const certifications: Certification[] = [
     categories: ["Cybersecurity"],
     logo: "/assets/certifications/splunk.png",
     proofUrl: "/assets/certifications/splunk.pdf",
+    colors: vendorColors.splunk,
   },
   {
-    name: "Gold Level - Cyber Resilience: Advanced",
+    name: "Phished Gold Level - Cyber Resilience: Advanced",
     year: "2025",
     categories: ["Cybersecurity"],
     logo: "/assets/certifications/phished-gold.svg",
     proofUrl: "/assets/certifications/phished-gold.pdf",
     infoUrl:
       "https://info.phished.io/_hcms/raw-resource?path=Academy%20Roadmap/Academy-roadmap-Gold-FEEDBACK.html&portalId=6615327&t=1713359362477&hs_preview_key=CtrNuUqBmKrAuk1LwanIuw&template_id=163886759038&hsLang=en",
+    colors: vendorColors.phished,
   },
   {
     name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals",
@@ -222,6 +288,7 @@ const certifications: Certification[] = [
       "https://www.credly.com/badges/05cde803-0d94-47a5-82f9-a8544f93e681",
     infoUrl:
       "https://docs.microsoft.com/learn/certifications/security-compliance-and-identity-fundamentals/",
+    colors: vendorColors.microsoft,
   },
   {
     name: "TryHackMe Advent of Cyber 2021",
@@ -230,6 +297,7 @@ const certifications: Certification[] = [
     logo: "/assets/certifications/thm.svg",
     proofUrl:
       "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-HA7S4NNHD6.png",
+    colors: vendorColors.tryhackme,
   },
   // Cloud
   {
@@ -241,6 +309,7 @@ const certifications: Certification[] = [
       "https://www.credly.com/badges/352815b1-a44e-4e0f-8f47-91ffeeda86ae",
     infoUrl:
       "https://docs.microsoft.com/learn/certifications/azure-fundamentals/",
+    colors: vendorColors.microsoft,
   },
   // Development
   {
@@ -249,6 +318,7 @@ const certifications: Certification[] = [
     categories: ["Development"],
     logo: "/assets/certifications/rapid.png",
     infoUrl: "https://academy.mendix.com/link/certifications/23/rapid",
+    colors: vendorColors.mendix,
   },
   {
     name: "GitLab Certified Associate",
@@ -258,6 +328,7 @@ const certifications: Certification[] = [
     proofUrl:
       "https://www.credly.com/badges/67afd7d7-b335-419a-91bc-61661bf7b0ab",
     infoUrl: "https://university.gitlab.com/pages/certifications",
+    colors: vendorColors.gitlab,
   },
   {
     name: "Object Oriented PHP",
@@ -274,6 +345,7 @@ const certifications: Certification[] = [
     logo: "/assets/certifications/mongo.jpg",
     proofUrl:
       "https://university.mongodb.com/course_completion/27a523a4-712f-432c-9a0a-1f20c1a9",
+    colors: vendorColors.mongodb,
   },
 ];
 
@@ -354,32 +426,99 @@ export default function About() {
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* Journey Timeline */}
       <section className="py-20 md:py-28">
         <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="prose prose-lg animate-fade-up">
-              <p className="text-lg text-foreground leading-relaxed mb-6">
-                With years of experience and a robust tech background, I focus
-                on guiding my team and clients to success in the dynamic cyber
-                security landscape. As a certified Cloudflare Solutions
-                Architect and OpenShift Administrator, I stay current with the
-                latest tools and techniques to protect businesses from cyber
-                threats.
+          <div className="max-w-4xl mx-auto">
+            <AnimatedSection className="text-center mb-16">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                My Journey
+              </h2>
+              <p className="text-muted-foreground">
+                A path driven by curiosity and continuous growth
               </p>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
-                My role as lead consultant extends beyond finding solutions —
-                I'm committed to creating a collaborative and supportive
-                environment within my team, where we learn from each other and
-                continuously develop our skills.
-              </p>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
-                I believe cybersecurity isn't just about implementing technology
-                — it's about educating and empowering individuals within
-                organizations. I communicate clearly and engagingly with
-                clients, breaking down complex concepts in an understandable
-                way.
-              </p>
+            </AnimatedSection>
+
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/30 md:-translate-x-0.5" />
+
+              {/* Milestone 1 */}
+              <AnimatedSection variant="fade-right" delay={100} className="relative mb-12">
+                <div className="flex items-start gap-6 md:gap-0">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center z-10">
+                    <ShieldCheck className="w-4 h-4 text-primary-foreground" />
+                  </div>
+                  <div className="flex-1 md:w-1/2 md:ml-auto md:pl-12">
+                    <div className="p-6 rounded-2xl bg-card shadow-soft border border-border/50">
+                      <span className="text-sm font-medium text-primary mb-2 block">
+                        Foundation
+                      </span>
+                      <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+                        Tech Background & Expertise
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        With years of experience and a robust tech background, I
+                        focus on guiding my team and clients to success in the
+                        dynamic cyber security landscape. As a certified Cloudflare
+                        Solutions Architect and OpenShift Administrator, I stay
+                        current with the latest tools and techniques.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              {/* Milestone 2 */}
+              <AnimatedSection variant="fade-left" delay={200} className="relative mb-12">
+                <div className="flex items-start gap-6 md:gap-0">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent shadow-lg shadow-accent/30 flex items-center justify-center z-10 md:order-2 md:ml-auto md:mr-[calc(50%-1rem)]">
+                    <Heart className="w-4 h-4 text-accent-foreground" />
+                  </div>
+                  <div className="flex-1 md:w-1/2 md:order-1 md:pr-12 md:text-right">
+                    <div className="p-6 rounded-2xl bg-card shadow-soft border border-border/50">
+                      <span className="text-sm font-medium text-accent mb-2 block">
+                        Leadership
+                      </span>
+                      <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+                        Team Growth & Collaboration
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        My role as lead consultant extends beyond finding solutions
+                        — I'm committed to creating a collaborative and supportive
+                        environment within my team, where we learn from each other
+                        and continuously develop our skills.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              {/* Milestone 3 */}
+              <AnimatedSection variant="fade-right" delay={300} className="relative">
+                <div className="flex items-start gap-6 md:gap-0">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center z-10">
+                    <BookOpen className="w-4 h-4 text-primary-foreground" />
+                  </div>
+                  <div className="flex-1 md:w-1/2 md:ml-auto md:pl-12">
+                    <div className="p-6 rounded-2xl bg-card shadow-soft border border-border/50">
+                      <span className="text-sm font-medium text-primary mb-2 block">
+                        Philosophy
+                      </span>
+                      <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+                        Education & Empowerment
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        I believe cybersecurity isn't just about implementing
+                        technology — it's about educating and empowering individuals
+                        within organizations. I communicate clearly and engagingly
+                        with clients, breaking down complex concepts in an
+                        understandable way.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
             </div>
           </div>
         </div>
@@ -438,11 +577,14 @@ export default function About() {
             </TabsList>
 
             {categories.map((category) => {
-              const colors = categoryColors[category] || categoryColors.Development;
+              const categoryFallback = categoryColors[category] || categoryColors.Development;
               return (
               <TabsContent key={category} value={category} className="mt-0">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {getCertsByCategory(category).map((cert, index) => (
+                  {getCertsByCategory(category).map((cert, index) => {
+                    // Use cert-specific colors if defined, otherwise fall back to category colors
+                    const colors = cert.colors || categoryFallback;
+                    return (
                     <AnimatedSection
                       key={`${category}-${cert.name}`}
                       variant="scale"
@@ -513,7 +655,8 @@ export default function About() {
                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 rounded-t-full bg-gradient-to-r from-amber-400 to-amber-600" />
                       </div>
                     </AnimatedSection>
-                  ))}
+                  );
+                  })}
                 </div>
               </TabsContent>
             );
