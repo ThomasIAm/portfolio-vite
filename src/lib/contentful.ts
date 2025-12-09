@@ -60,7 +60,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 }
 
 export function calculateReadingTime(content: string | undefined): string {
-  if (!content) return '1 min read';
+  if (!content) return '';
   const wordsPerMinute = 200;
   const words = content.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / wordsPerMinute);
