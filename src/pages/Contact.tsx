@@ -21,7 +21,6 @@ const contactMethods = [
   {
     icon: Github,
     label: "Code",
-    value: "GitHub & GitLab",
     description: "Check out my repositories",
     links: [
       { icon: Github, label: "GitHub", href: "https://github.com/tvdn" },
@@ -76,7 +75,7 @@ export default function Contact() {
                           <h2 className="font-display text-lg font-semibold text-foreground mb-1">
                             {method.label}
                           </h2>
-                          <p className="text-primary font-medium">{method.value}</p>
+                          {method.value && <p className="text-primary font-medium">{method.value}</p>}
                           <p className="text-sm text-muted-foreground mt-1">
                             {method.description}
                           </p>
