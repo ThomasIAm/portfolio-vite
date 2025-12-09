@@ -87,9 +87,9 @@ const vendorColors: Record<string, CertificationColors> = {
     accent: "bg-red-500/20 text-red-700 dark:text-red-400",
   },
   phished: {
-    light: "from-yellow-50/90 to-amber-100/60",
-    dark: "dark:from-yellow-950/40 dark:to-amber-900/25",
-    accent: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-400",
+    light: "from-blue-50/90 to-teal-100/60",
+    dark: "dark:from-blue-950/40 dark:to-teal-900/25",
+    accent: "bg-teal-500/20 text-teal-700 dark:text-teal-400",
   },
 };
 
