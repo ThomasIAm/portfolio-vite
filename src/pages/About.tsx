@@ -29,18 +29,74 @@ interface Certification {
   colors?: CertificationColors; // Optional custom colors for this certification
 }
 
-// Brand colors for each category (subtle background tints)
-const categoryColors: Record<string, { light: string; dark: string; accent: string }> = {
-  Cloudflare: {
+// Vendor color presets - use these for certification-specific branding
+const vendorColors: Record<string, CertificationColors> = {
+  cloudflare: {
     light: "from-orange-50/90 to-orange-100/60",
     dark: "dark:from-orange-950/40 dark:to-orange-900/25",
     accent: "bg-orange-500/20 text-orange-700 dark:text-orange-400",
   },
-  "Red Hat": {
+  redhat: {
     light: "from-red-50/90 to-red-100/60",
     dark: "dark:from-red-950/40 dark:to-red-900/25",
     accent: "bg-red-500/20 text-red-700 dark:text-red-400",
   },
+  microsoft: {
+    light: "from-blue-50/90 to-cyan-100/60",
+    dark: "dark:from-blue-950/40 dark:to-cyan-900/25",
+    accent: "bg-blue-500/20 text-blue-700 dark:text-blue-400",
+  },
+  google: {
+    light: "from-blue-50/90 to-green-100/60",
+    dark: "dark:from-blue-950/40 dark:to-green-900/25",
+    accent: "bg-blue-500/20 text-blue-700 dark:text-blue-400",
+  },
+  aws: {
+    light: "from-amber-50/90 to-orange-100/60",
+    dark: "dark:from-amber-950/40 dark:to-orange-900/25",
+    accent: "bg-amber-500/20 text-amber-700 dark:text-amber-400",
+  },
+  mongodb: {
+    light: "from-green-50/90 to-emerald-100/60",
+    dark: "dark:from-green-950/40 dark:to-emerald-900/25",
+    accent: "bg-green-500/20 text-green-700 dark:text-green-400",
+  },
+  gitlab: {
+    light: "from-orange-50/90 to-purple-100/60",
+    dark: "dark:from-orange-950/40 dark:to-purple-900/25",
+    accent: "bg-orange-500/20 text-orange-700 dark:text-orange-400",
+  },
+  splunk: {
+    light: "from-pink-50/90 to-green-100/60",
+    dark: "dark:from-pink-950/40 dark:to-green-900/25",
+    accent: "bg-pink-500/20 text-pink-700 dark:text-pink-400",
+  },
+  onepassword: {
+    light: "from-blue-50/90 to-indigo-100/60",
+    dark: "dark:from-blue-950/40 dark:to-indigo-900/25",
+    accent: "bg-blue-500/20 text-blue-700 dark:text-blue-400",
+  },
+  mendix: {
+    light: "from-blue-50/90 to-sky-100/60",
+    dark: "dark:from-blue-950/40 dark:to-sky-900/25",
+    accent: "bg-blue-500/20 text-blue-700 dark:text-blue-400",
+  },
+  tryhackme: {
+    light: "from-slate-50/90 to-red-100/60",
+    dark: "dark:from-slate-950/40 dark:to-red-900/25",
+    accent: "bg-red-500/20 text-red-700 dark:text-red-400",
+  },
+  phished: {
+    light: "from-yellow-50/90 to-amber-100/60",
+    dark: "dark:from-yellow-950/40 dark:to-amber-900/25",
+    accent: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-400",
+  },
+};
+
+// Brand colors for each category (fallback when no vendor color is specified)
+const categoryColors: Record<string, CertificationColors> = {
+  Cloudflare: vendorColors.cloudflare,
+  "Red Hat": vendorColors.redhat,
   Cybersecurity: {
     light: "from-emerald-50/90 to-emerald-100/60",
     dark: "dark:from-emerald-950/40 dark:to-emerald-900/25",
@@ -203,6 +259,7 @@ const certifications: Certification[] = [
     proofUrl: "https://verify.skilljar.com/c/dp7nekvp8ety",
     infoUrl:
       "https://www.1password.academy/path/1password-for-business-administrators-certificate",
+    colors: vendorColors.onepassword,
   },
   {
     name: "Splunk Efficiency and Optimization",
@@ -210,6 +267,7 @@ const certifications: Certification[] = [
     categories: ["Cybersecurity"],
     logo: "/assets/certifications/splunk.png",
     proofUrl: "/assets/certifications/splunk.pdf",
+    colors: vendorColors.splunk,
   },
   {
     name: "Gold Level - Cyber Resilience: Advanced",
@@ -219,6 +277,7 @@ const certifications: Certification[] = [
     proofUrl: "/assets/certifications/phished-gold.pdf",
     infoUrl:
       "https://info.phished.io/_hcms/raw-resource?path=Academy%20Roadmap/Academy-roadmap-Gold-FEEDBACK.html&portalId=6615327&t=1713359362477&hs_preview_key=CtrNuUqBmKrAuk1LwanIuw&template_id=163886759038&hsLang=en",
+    colors: vendorColors.phished,
   },
   {
     name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals",
@@ -229,6 +288,7 @@ const certifications: Certification[] = [
       "https://www.credly.com/badges/05cde803-0d94-47a5-82f9-a8544f93e681",
     infoUrl:
       "https://docs.microsoft.com/learn/certifications/security-compliance-and-identity-fundamentals/",
+    colors: vendorColors.microsoft,
   },
   {
     name: "TryHackMe Advent of Cyber 2021",
@@ -237,6 +297,7 @@ const certifications: Certification[] = [
     logo: "/assets/certifications/thm.svg",
     proofUrl:
       "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-HA7S4NNHD6.png",
+    colors: vendorColors.tryhackme,
   },
   // Cloud
   {
@@ -248,6 +309,7 @@ const certifications: Certification[] = [
       "https://www.credly.com/badges/352815b1-a44e-4e0f-8f47-91ffeeda86ae",
     infoUrl:
       "https://docs.microsoft.com/learn/certifications/azure-fundamentals/",
+    colors: vendorColors.microsoft,
   },
   // Development
   {
@@ -256,6 +318,7 @@ const certifications: Certification[] = [
     categories: ["Development"],
     logo: "/assets/certifications/rapid.png",
     infoUrl: "https://academy.mendix.com/link/certifications/23/rapid",
+    colors: vendorColors.mendix,
   },
   {
     name: "GitLab Certified Associate",
@@ -265,6 +328,7 @@ const certifications: Certification[] = [
     proofUrl:
       "https://www.credly.com/badges/67afd7d7-b335-419a-91bc-61661bf7b0ab",
     infoUrl: "https://university.gitlab.com/pages/certifications",
+    colors: vendorColors.gitlab,
   },
   {
     name: "Object Oriented PHP",
@@ -281,6 +345,7 @@ const certifications: Certification[] = [
     logo: "/assets/certifications/mongo.jpg",
     proofUrl:
       "https://university.mongodb.com/course_completion/27a523a4-712f-432c-9a0a-1f20c1a9",
+    colors: vendorColors.mongodb,
   },
 ];
 
