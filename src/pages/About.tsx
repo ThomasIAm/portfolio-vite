@@ -3,6 +3,7 @@ import { Award, BookOpen, ExternalLink, Heart, ShieldCheck, Trophy } from "lucid
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SEO } from "@/components/seo/SEO";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { LottieAnimation, LOTTIE_ANIMATIONS } from "@/components/ui/lottie-animation";
 import profileImage from "@/assets/profile.jpg";
 
 // Certification type
@@ -362,8 +363,14 @@ export default function About() {
         ]}
       />
       {/* Hero Section */}
-      <section className="py-20 md:py-28 bg-gradient-hero">
-        <div className="container">
+      <section className="py-20 md:py-28 bg-gradient-hero relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-15">
+          <LottieAnimation
+            src={LOTTIE_ANIMATIONS.pulseRing}
+            className="absolute -right-20 -top-20 w-96 h-96"
+          />
+        </div>
+        <div className="container relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="flex-shrink-0 animate-fade-up">
