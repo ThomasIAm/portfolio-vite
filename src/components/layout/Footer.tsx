@@ -17,6 +17,8 @@ const routeToFile: Record<string, string> = {
   "/projects": "src/pages/Projects.tsx",
   "/blog": "src/pages/Blog.tsx",
   "/contact": "src/pages/Contact.tsx",
+  "/cookies": "src/pages/Cookies.tsx",
+  "/privacy": "src/pages/Privacy.tsx",
 };
 
 function getEditUrl(pathname: string): string {
@@ -75,7 +77,18 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-8 pb-16 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>© {currentYear} Thomas van den Nieuwenhoff. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <p>© {currentYear} Thomas van den Nieuwenhoff</p>
+            <span className="hidden sm:inline text-border">|</span>
+            <div className="flex items-center gap-3">
+              <Link to="/privacy" className="hover:text-foreground transition-colors">
+                Privacy
+              </Link>
+              <Link to="/cookies" className="hover:text-foreground transition-colors">
+                Cookies
+              </Link>
+            </div>
+          </div>
           <div className="flex items-center gap-3">
             <a
               href={editUrl}
