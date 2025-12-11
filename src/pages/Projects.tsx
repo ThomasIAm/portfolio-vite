@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { AppWindow, Blocks, CloudCog, Code, ExternalLink, Github, Gitlab, LandPlot, LoaderPinwheel, Lock, Server, Shield } from "lucide-react";
+import { AppWindow, Blocks, CloudCog, Code, ExternalLink, Github, Gitlab, LandPlot, LoaderPinwheel, Lock, Server, Shield, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
+
+const INITIAL_PROJECTS_COUNT = 6;
 
 const projects = [
   {
@@ -90,6 +93,9 @@ const projects = [
 ];
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? projects : projects.slice(0, INITIAL_PROJECTS_COUNT);
+
   return (
     <Layout>
       <SEO
@@ -116,7 +122,7 @@ export default function Projects() {
       <section className="py-20 md:py-28">
         <div className="container">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {projects.map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <article
                 key={project.title}
                 className="group p-8 rounded-2xl bg-card shadow-soft hover-lift animate-fade-up h-full flex flex-col"
@@ -157,6 +163,20 @@ export default function Projects() {
               </article>
             ))}
           </div>
+
+          {projects.length > INITIAL_PROJECTS_COUNT && (
+            <div className="mt-10 text-center">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => setShowAll(!showAll)}
+                className="gap-2"
+              >
+                {showAll ? "Show Less" : `Show More (${projects.length - INITIAL_PROJECTS_COUNT} more)`}
+                <ChevronDown className={`h-4 w-4 transition-transform ${showAll ? "rotate-180" : ""}`} />
+              </Button>
+            </div>
+          )}
 
           {/* GitHub & GitLab CTA */}
           <div className="mt-16 text-center animate-fade-up" style={{ animationDelay: "0.4s" }}>
