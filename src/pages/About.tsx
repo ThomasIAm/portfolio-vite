@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Award, BookOpen, ExternalLink, Heart, ShieldCheck, Trophy } from "lucide-react";
+import { Award, BookOpen, ChevronDown, ExternalLink, Heart, ShieldCheck, Trophy } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SEO } from "@/components/seo/SEO";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/profile.jpg";
+
+const INITIAL_CERTS_COUNT = 8;
 
 // Certification type
 interface CertificationColors {
@@ -346,6 +350,12 @@ const values = [
 ];
 
 export default function About() {
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
+
+  const toggleCategory = (category: string) => {
+    setExpandedCategories(prev => ({ ...prev, [category]: !prev[category] }));
+  };
+
   return (
     <Layout>
       <SEO
@@ -520,10 +530,14 @@ export default function About() {
 
             {categories.map((category) => {
               const categoryFallback = categoryColors[category] || categoryColors.Development;
+              const allCerts = getCertsByCategory(category);
+              const isExpanded = expandedCategories[category];
+              const visibleCerts = isExpanded ? allCerts : allCerts.slice(0, INITIAL_CERTS_COUNT);
+              
               return (
                 <TabsContent key={category} value={category} className="mt-0">
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {getCertsByCategory(category).map((cert, index) => {
+                    {visibleCerts.map((cert, index) => {
                       // Use cert-specific colors if defined, otherwise fall back to category colors
                       const colors = cert.colors || categoryFallback;
                       return (
@@ -597,6 +611,20 @@ export default function About() {
                       );
                     })}
                   </div>
+                  
+                  {allCerts.length > INITIAL_CERTS_COUNT && (
+                    <div className="mt-8 text-center">
+                      <Button
+                        variant="outline"
+                        size="lg"
+                        onClick={() => toggleCategory(category)}
+                        className="gap-2"
+                      >
+                        {isExpanded ? "Show Less" : `Show More (${allCerts.length - INITIAL_CERTS_COUNT} more)`}
+                        <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+                      </Button>
+                    </div>
+                  )}
                 </TabsContent>
               );
             })}

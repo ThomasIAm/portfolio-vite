@@ -1,13 +1,19 @@
+import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { Calendar, Clock, ArrowRight, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { calculateReadingTime } from "@/lib/contentful";
 import { format } from "date-fns";
 import { SEO } from "@/components/seo/SEO";
+import { Button } from "@/components/ui/button";
+
+const INITIAL_POSTS_COUNT = 5;
 
 export default function Blog() {
   const { data: posts, isLoading, error } = useBlogPosts();
+  const [showAll, setShowAll] = useState(false);
+  const visiblePosts = posts ? (showAll ? posts : posts.slice(0, INITIAL_POSTS_COUNT)) : [];
 
   return (
     <Layout>
@@ -81,55 +87,68 @@ export default function Blog() {
               </article>
             )}
 
-            {posts &&
-              posts.map((post, index) => {
-                const fields = post.fields;
-                const readingTime = calculateReadingTime(fields.content);
+            {posts && visiblePosts.map((post, index) => {
+              const fields = post.fields;
+              const readingTime = calculateReadingTime(fields.content);
 
-                return (
-                  <article
-                    key={post.sys.id}
-                    className="p-8 rounded-2xl bg-card shadow-soft animate-fade-up mb-6 hover:shadow-md transition-shadow"
-                    style={{ animationDelay: `${0.1 * (index + 1)}s` }}
-                  >
-                    {fields.featured && (
-                      <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">
-                        Featured
+              return (
+                <article
+                  key={post.sys.id}
+                  className="p-8 rounded-2xl bg-card shadow-soft animate-fade-up mb-6 hover:shadow-md transition-shadow"
+                  style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+                >
+                  {fields.featured && (
+                    <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">
+                      Featured
+                    </span>
+                  )}
+                  <Link to={`/blog/${fields.slug}`}>
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 hover:text-primary transition-colors">
+                      {fields.title}
+                    </h2>
+                  </Link>
+                  <p className="text-muted-foreground text-lg mb-6">
+                    {fields.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4" />
+                        {format(
+                          new Date(fields.publishedDate),
+                          "MMM d, yyyy"
+                        )}
                       </span>
-                    )}
-                    <Link to={`/blog/${fields.slug}`}>
-                      <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 hover:text-primary transition-colors">
-                        {fields.title}
-                      </h2>
-                    </Link>
-                    <p className="text-muted-foreground text-lg mb-6">
-                      {fields.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                        <span className="flex items-center gap-2">
-                          <Calendar className="h-4 w-4" />
-                          {format(
-                            new Date(fields.publishedDate),
-                            "MMM d, yyyy"
-                          )}
-                        </span>
-                        <span className="flex items-center gap-2">
-                          <Clock className="h-4 w-4" />
-                          {readingTime}
-                        </span>
-                      </div>
-                      <Link
-                        to={`/blog/${fields.slug}`}
-                        className="inline-flex items-center text-primary font-medium hover:underline"
-                      >
-                        Read more
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
+                      <span className="flex items-center gap-2">
+                        <Clock className="h-4 w-4" />
+                        {readingTime}
+                      </span>
                     </div>
-                  </article>
-                );
-              })}
+                    <Link
+                      to={`/blog/${fields.slug}`}
+                      className="inline-flex items-center text-primary font-medium hover:underline"
+                    >
+                      Read more
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </div>
+                </article>
+              );
+            })}
+
+            {posts && posts.length > INITIAL_POSTS_COUNT && (
+              <div className="mt-6 text-center">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => setShowAll(!showAll)}
+                  className="gap-2"
+                >
+                  {showAll ? "Show Less" : `Show More (${posts.length - INITIAL_POSTS_COUNT} more)`}
+                  <ChevronDown className={`h-4 w-4 transition-transform ${showAll ? "rotate-180" : ""}`} />
+                </Button>
+              </div>
+            )}
 
             {/* Newsletter Signup */}
             <div
