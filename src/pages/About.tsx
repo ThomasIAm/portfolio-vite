@@ -590,7 +590,7 @@ export default function About() {
                       variant="scale"
                       delay={index * 50}
                     >
-                      <div className={`group relative p-6 rounded-2xl bg-gradient-to-b ${colors.light} ${colors.dark} border border-foreground/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}>
+                      <div className={`group relative p-6 rounded-2xl bg-gradient-to-b ${colors.light} ${colors.dark} border border-foreground/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col`}>
                         {/* Glow effect */}
                         <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -612,43 +612,41 @@ export default function About() {
                         </div>
 
                         {/* Content */}
-                        <div className="relative text-center">
+                        <div className="relative text-center flex-1 flex flex-col">
                           <h3 className="font-display text-sm font-bold text-foreground mb-2 leading-tight min-h-[2.5rem] flex items-center justify-center">
                             {cert.name}
                           </h3>
-                          <span className={`inline-block px-3 py-1 rounded-full ${colors.accent} text-xs font-semibold mb-3`}>
+                          <span className={`inline-block px-3 py-1 rounded-full ${colors.accent} text-xs font-semibold`}>
                             {cert.year}
                           </span>
 
-                          {/* Links */}
-                          {(cert.proofUrl || cert.infoUrl) && (
-                            <div className="flex justify-center gap-3 mt-2">
-                              {cert.proofUrl && (
-                                <a
-                                  href={cert.proofUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 text-xs text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors"
-                                  title="Verify certification"
-                                >
-                                  <ShieldCheck className="h-3.5 w-3.5" />
-                                  Proof
-                                </a>
-                              )}
-                              {cert.infoUrl && (
-                                <a
-                                  href={cert.infoUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 text-xs text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors"
-                                  title="More information"
-                                >
-                                  <ExternalLink className="h-3.5 w-3.5" />
-                                  Info
-                                </a>
-                              )}
-                            </div>
-                          )}
+                          {/* Links - pinned to bottom */}
+                          <div className="flex justify-center gap-3 mt-auto pt-3 min-h-[24px]">
+                            {cert.proofUrl && (
+                              <a
+                                href={cert.proofUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors"
+                                title="Verify certification"
+                              >
+                                <ShieldCheck className="h-3.5 w-3.5" />
+                                Proof
+                              </a>
+                            )}
+                            {cert.infoUrl && (
+                              <a
+                                href={cert.infoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors"
+                                title="More information"
+                              >
+                                <ExternalLink className="h-3.5 w-3.5" />
+                                Info
+                              </a>
+                            )}
+                          </div>
                         </div>
 
                         {/* Bottom accent */}
