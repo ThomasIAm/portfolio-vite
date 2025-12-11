@@ -1,7 +1,7 @@
 import { Gitlab, Github, Linkedin, Mail, Pencil, Bug } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
-const GITHUB_REPO = "https://github.com/ThomasIAm/tvdn.me";
+const GITHUB_REPO = "https://github.com/ThomasIAm/portfolio-vite";
 
 const socialLinks = [
   { href: "https://www.linkedin.com/in/tvdn", icon: Linkedin, label: "LinkedIn" },
@@ -26,7 +26,7 @@ export function Footer() {
   // Get the file path for current route, default to Index for unknown routes
   const currentFile = routeToFile[location.pathname] || routeToFile["/"];
   const editUrl = `${GITHUB_REPO}/edit/main/${currentFile}`;
-  const issueUrl = `${GITHUB_REPO}/issues/new?title=Issue%20on%20${encodeURIComponent(location.pathname)}&body=Found%20on%20page:%20${encodeURIComponent(location.pathname)}`;
+  const issueUrl = `${GITHUB_REPO}/issues/new/choose`;
 
   return (
     <footer className="border-t border-border bg-muted/30">
