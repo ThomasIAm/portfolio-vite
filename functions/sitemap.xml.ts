@@ -25,14 +25,12 @@ async function fetchBlogPosts(env: any): Promise<BlogPost[]> {
     );
 
     if (!response.ok) {
-      console.error('Failed to fetch blog posts for sitemap');
       return [];
     }
 
     const data = await response.json();
     return data.items || [];
-  } catch (error) {
-    console.error('Error fetching blog posts for sitemap:', error);
+  } catch {
     return [];
   }
 }

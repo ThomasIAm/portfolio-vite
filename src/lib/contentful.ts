@@ -49,7 +49,6 @@ function isValidBlogPost(item: unknown): item is BlogPost {
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
   if (!client) {
-    console.warn('Contentful not configured. Add VITE_CONTENTFUL_SPACE_ID and VITE_CONTENTFUL_ACCESS_TOKEN.');
     return [];
   }
   const response = await client.getEntries({
@@ -61,7 +60,6 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   if (!client) {
-    console.warn('Contentful not configured. Add VITE_CONTENTFUL_SPACE_ID and VITE_CONTENTFUL_ACCESS_TOKEN.');
     return null;
   }
   const response = await client.getEntries({
