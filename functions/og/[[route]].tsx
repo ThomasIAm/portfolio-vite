@@ -20,13 +20,12 @@ export const onRequest: PagesFunction = async ({ request }) => {
           flexDirection: "column",
           width: "100%",
           height: "100%",
-          // Dark mode background: hsl(20, 20%, 10%)
-          background: "linear-gradient(180deg, hsl(20, 20%, 10%) 0%, hsl(20, 18%, 14%) 100%)",
+          background: "linear-gradient(180deg, #1f1714 0%, #2a221d 100%)",
           padding: "60px",
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        {/* Decorative gradient orbs matching warm gradient */}
+        {/* Decorative gradient orbs */}
         <div
           style={{
             position: "absolute",
@@ -34,8 +33,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
             right: "-100px",
             width: "500px",
             height: "500px",
-            // Primary orange: hsl(12, 76%, 61%)
-            background: "radial-gradient(circle, hsla(12, 76%, 61%, 0.15) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(226, 115, 81, 0.15) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />
@@ -46,8 +44,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
             left: "-100px",
             width: "400px",
             height: "400px",
-            // Secondary golden: hsl(32, 95%, 68%)
-            background: "radial-gradient(circle, hsla(32, 95%, 68%, 0.1) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(250, 189, 96, 0.1) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />
@@ -73,14 +70,13 @@ export const onRequest: PagesFunction = async ({ request }) => {
             >
               <span
                 style={{
-                  // Primary color with transparency
-                  background: "hsla(12, 76%, 61%, 0.15)",
-                  color: "hsl(12, 76%, 61%)",
+                  background: "rgba(226, 115, 81, 0.15)",
+                  color: "#e27351",
                   padding: "10px 20px",
                   borderRadius: "24px",
                   fontSize: "18px",
                   fontWeight: 600,
-                  border: "1px solid hsla(12, 76%, 61%, 0.3)",
+                  border: "1px solid rgba(226, 115, 81, 0.3)",
                 }}
               >
                 Blog Post
@@ -93,8 +89,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
             style={{
               fontSize: type === "article" ? "52px" : "60px",
               fontWeight: 700,
-              // Foreground: hsl(40, 20%, 95%)
-              color: "hsl(40, 20%, 95%)",
+              color: "#f5f0e8",
               margin: 0,
               lineHeight: 1.2,
               maxWidth: "900px",
@@ -108,8 +103,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
           <p
             style={{
               fontSize: "26px",
-              // Muted foreground: hsl(40, 10%, 60%)
-              color: "hsl(40, 10%, 60%)",
+              color: "#a89a8a",
               margin: "24px 0 0 0",
               lineHeight: 1.5,
               maxWidth: "750px",
@@ -125,8 +119,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            // Border: hsl(20, 15%, 25%)
-            borderTop: "1px solid hsla(20, 15%, 25%, 0.6)",
+            borderTop: "1px solid rgba(69, 56, 46, 0.6)",
             paddingTop: "30px",
           }}
         >
@@ -150,7 +143,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
               style={{
                 fontSize: "24px",
                 fontWeight: 600,
-                color: "hsl(40, 20%, 95%)",
+                color: "#f5f0e8",
               }}
             >
               tvdn.me
@@ -169,14 +162,14 @@ export const onRequest: PagesFunction = async ({ request }) => {
               style={{
                 width: "40px",
                 height: "4px",
-                background: "linear-gradient(90deg, hsl(12, 76%, 61%) 0%, hsl(32, 95%, 68%) 100%)",
+                background: "linear-gradient(90deg, #e27351 0%, #fabd60 100%)",
                 borderRadius: "2px",
               }}
             />
             <span
               style={{
                 fontSize: "18px",
-                color: "hsl(40, 10%, 60%)",
+                color: "#a89a8a",
               }}
             >
               Cyber Security Consultant
