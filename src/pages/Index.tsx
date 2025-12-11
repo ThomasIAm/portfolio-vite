@@ -4,6 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SEO } from "@/components/seo/SEO";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import profileImage from "@/assets/profile.jpg";
 const personStructuredData = {
   "@context": "https://schema.org",
@@ -150,10 +151,12 @@ export default function Index() {
                   Me
                 </span>
 
-                <img
+                <OptimizedImage
+                  src={profileImage}
                   alt="Thomas van den Nieuwenhoff"
                   className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background"
-                  src={profileImage}
+                  preset="avatarLarge"
+                  showSkeleton={false}
                 />
               </div>
             </AnimatedSection>

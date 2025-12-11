@@ -5,6 +5,7 @@ import { AnimatedSection } from "@/components/ui/animated-section";
 import { SEO } from "@/components/seo/SEO";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import profileImage from "@/assets/profile.jpg";
 
 const INITIAL_CERTS_COUNT = 8;
@@ -380,10 +381,12 @@ export default function About() {
                 <span className="absolute -right-5 bottom-5 text-xs font-semibold text-primary-foreground bg-primary px-2 py-1 rounded-full shadow-md z-10">
                   Me
                 </span>
-                <img
+                <OptimizedImage
                   src={profileImage}
                   alt="Thomas van den Nieuwenhoff"
                   className="w-48 h-48 md:w-56 md:h-56 rounded-2xl object-cover shadow-card"
+                  preset="avatarLarge"
+                  showSkeleton={false}
                 />
               </div>
               <div className="text-center md:text-left animate-fade-up" style={{ animationDelay: "0.1s" }}>
@@ -552,10 +555,12 @@ export default function About() {
                             <div className="relative flex justify-center mb-4">
                               {cert.logo ? (
                                 <div className="w-16 h-16 md:w-20 md:h-20 overflow-hidden drop-shadow-lg flex items-center justify-center">
-                                  <img
+                                  <OptimizedImage
                                     src={cert.logo}
                                     alt={`${cert.name} badge`}
                                     className="w-full h-full object-contain"
+                                    preset="thumbnail"
+                                    showSkeleton={false}
                                   />
                                 </div>
                               ) : (
