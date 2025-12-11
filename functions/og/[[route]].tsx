@@ -9,6 +9,9 @@ export const onRequest: PagesFunction = async ({ request }) => {
   const description = url.searchParams.get("description") || "Lead Cyber Security Consultant";
   const type = url.searchParams.get("type") || "website";
 
+  // Construct absolute URL for the favicon
+  const faviconUrl = `${url.origin}/assets/favicons/favicon-194x194.png`;
+
   return new ImageResponse(
     (
       <div
@@ -17,31 +20,34 @@ export const onRequest: PagesFunction = async ({ request }) => {
           flexDirection: "column",
           width: "100%",
           height: "100%",
-          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)",
+          // Dark mode background: hsl(20, 20%, 10%)
+          background: "linear-gradient(180deg, hsl(20, 20%, 10%) 0%, hsl(20, 18%, 14%) 100%)",
           padding: "60px",
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        {/* Decorative elements */}
+        {/* Decorative gradient orbs matching warm gradient */}
         <div
           style={{
             position: "absolute",
-            top: 0,
-            right: 0,
-            width: "400px",
-            height: "400px",
-            background: "radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%)",
+            top: "-100px",
+            right: "-100px",
+            width: "500px",
+            height: "500px",
+            // Primary orange: hsl(12, 76%, 61%)
+            background: "radial-gradient(circle, hsla(12, 76%, 61%, 0.15) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />
         <div
           style={{
             position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: "300px",
-            height: "300px",
-            background: "radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%)",
+            bottom: "-150px",
+            left: "-100px",
+            width: "400px",
+            height: "400px",
+            // Secondary golden: hsl(32, 95%, 68%)
+            background: "radial-gradient(circle, hsla(32, 95%, 68%, 0.1) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />
@@ -62,18 +68,19 @@ export const onRequest: PagesFunction = async ({ request }) => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                marginBottom: "20px",
+                marginBottom: "24px",
               }}
             >
               <span
                 style={{
-                  background: "rgba(249, 115, 22, 0.2)",
-                  color: "#f97316",
-                  padding: "8px 16px",
-                  borderRadius: "20px",
+                  // Primary color with transparency
+                  background: "hsla(12, 76%, 61%, 0.15)",
+                  color: "hsl(12, 76%, 61%)",
+                  padding: "10px 20px",
+                  borderRadius: "24px",
                   fontSize: "18px",
                   fontWeight: 600,
-                  border: "1px solid rgba(249, 115, 22, 0.3)",
+                  border: "1px solid hsla(12, 76%, 61%, 0.3)",
                 }}
               >
                 Blog Post
@@ -84,12 +91,14 @@ export const onRequest: PagesFunction = async ({ request }) => {
           {/* Title */}
           <h1
             style={{
-              fontSize: type === "article" ? "56px" : "64px",
+              fontSize: type === "article" ? "52px" : "60px",
               fontWeight: 700,
-              color: "#ffffff",
+              // Foreground: hsl(40, 20%, 95%)
+              color: "hsl(40, 20%, 95%)",
               margin: 0,
               lineHeight: 1.2,
               maxWidth: "900px",
+              letterSpacing: "-0.02em",
             }}
           >
             {title}
@@ -98,11 +107,12 @@ export const onRequest: PagesFunction = async ({ request }) => {
           {/* Description */}
           <p
             style={{
-              fontSize: "28px",
-              color: "#94a3b8",
+              fontSize: "26px",
+              // Muted foreground: hsl(40, 10%, 60%)
+              color: "hsl(40, 10%, 60%)",
               margin: "24px 0 0 0",
-              lineHeight: 1.4,
-              maxWidth: "800px",
+              lineHeight: 1.5,
+              maxWidth: "750px",
             }}
           >
             {description}
@@ -115,7 +125,8 @@ export const onRequest: PagesFunction = async ({ request }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: "1px solid rgba(148, 163, 184, 0.2)",
+            // Border: hsl(20, 15%, 25%)
+            borderTop: "1px solid hsla(20, 15%, 25%, 0.6)",
             paddingTop: "30px",
           }}
         >
@@ -126,34 +137,51 @@ export const onRequest: PagesFunction = async ({ request }) => {
               gap: "16px",
             }}
           >
-            {/* Orange accent circle */}
-            <div
+            {/* Favicon */}
+            <img
+              src={faviconUrl}
+              width="48"
+              height="48"
               style={{
-                width: "48px",
-                height: "48px",
-                background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
-                borderRadius: "50%",
+                borderRadius: "12px",
               }}
             />
             <span
               style={{
                 fontSize: "24px",
                 fontWeight: 600,
-                color: "#ffffff",
+                color: "hsl(40, 20%, 95%)",
               }}
             >
               tvdn.me
             </span>
           </div>
 
-          <span
+          {/* Warm gradient accent line */}
+          <div
             style={{
-              fontSize: "20px",
-              color: "#64748b",
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
             }}
           >
-            Cyber Security Consultant
-          </span>
+            <div
+              style={{
+                width: "40px",
+                height: "4px",
+                background: "linear-gradient(90deg, hsl(12, 76%, 61%) 0%, hsl(32, 95%, 68%) 100%)",
+                borderRadius: "2px",
+              }}
+            />
+            <span
+              style={{
+                fontSize: "18px",
+                color: "hsl(40, 10%, 60%)",
+              }}
+            >
+              Cyber Security Consultant
+            </span>
+          </div>
         </div>
       </div>
     ),
