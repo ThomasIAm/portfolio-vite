@@ -541,7 +541,7 @@ export default function About() {
                                   <img
                                     src={cert.logo}
                                     alt={`${cert.name} badge`}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-contain"
                                   />
                                 </div>
                               ) : (
