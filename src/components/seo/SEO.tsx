@@ -1,12 +1,21 @@
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
+import { 
+  SITE_NAME, 
+  DEFAULT_AUTHOR, 
+  getRouteMetadata, 
+  generateOgImageUrl,
+  type RouteMetadata 
+} from "@/config/seo-metadata";
 
 interface SEOProps {
-  title: string;
-  description: string;
+  // Override the shared config if needed
+  title?: string;
+  description?: string;
   canonical?: string;
   type?: "website" | "article" | "profile";
-  image?: string;
   keywords?: string[];
+  // Additional props for articles
   publishedDate?: string;
   modifiedDate?: string;
   author?: string;
@@ -14,33 +23,32 @@ interface SEOProps {
 }
 
 const BASE_URL = import.meta.env.VITE_CF_PAGES_URL || "";
-const SITE_NAME = "Thomas van den Nieuwenhoff";
-
-// Generate dynamic OG image URL
-function generateOgImageUrl(title: string, description: string, type: string): string {
-  const params = new URLSearchParams({
-    title,
-    description: description.slice(0, 150),
-    type,
-  });
-  return `${BASE_URL}/og?${params.toString()}`;
-}
 
 export function SEO({
-  title,
-  description,
+  title: titleOverride,
+  description: descriptionOverride,
   canonical,
-  type = "website",
-  image,
-  keywords = [],
+  type: typeOverride,
+  keywords: keywordsOverride,
   publishedDate,
   modifiedDate,
-  author = SITE_NAME,
+  author = DEFAULT_AUTHOR,
   structuredData,
-}: SEOProps) {
-  const fullTitle = title;
-  const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
-  const ogImage = generateOgImageUrl(title, description, type);
+}: SEOProps = {}) {
+  const location = useLocation();
+  const path = location.pathname;
+  
+  // Get default metadata from shared config
+  const defaultMetadata = getRouteMetadata(path);
+  
+  // Allow overrides
+  const title = titleOverride || defaultMetadata.title;
+  const description = descriptionOverride || defaultMetadata.description;
+  const type = typeOverride || defaultMetadata.type;
+  const keywords = keywordsOverride || defaultMetadata.keywords || [];
+
+  const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : `${BASE_URL}${path}`;
+  const ogImage = generateOgImageUrl(BASE_URL, title, description, type);
 
   const defaultStructuredData = {
     "@context": "https://schema.org",
@@ -64,14 +72,14 @@ export function SEO({
 
   return (
     <Helmet>
-      <title>{fullTitle}</title>
+      <title>{title}</title>
       <meta name="description" content={description} />
       {keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
       <meta name="author" content={author} />
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Open Graph */}
-      <meta property="og:title" content={fullTitle} />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonicalUrl} />
@@ -80,7 +88,7 @@ export function SEO({
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
 
