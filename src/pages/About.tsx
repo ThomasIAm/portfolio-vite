@@ -616,12 +616,12 @@ export default function About() {
                           <h3 className="font-display text-sm font-bold text-foreground mb-2 leading-tight min-h-[2.5rem] flex items-center justify-center">
                             {cert.name}
                           </h3>
-                          <span className={`self-center px-3 py-1 rounded-full ${colors.accent} text-xs font-semibold`}>
-                            {cert.year}
-                          </span>
-
-                          {/* Links - pinned to bottom */}
-                          <div className="flex justify-center gap-3 mt-auto pt-3 min-h-[24px]">
+                          {/* Year and Links - pinned to bottom */}
+                          <div className="mt-auto pt-3 flex flex-col items-center gap-2">
+                            <span className={`px-3 py-1 rounded-full ${colors.accent} text-xs font-semibold`}>
+                              {cert.year}
+                            </span>
+                            <div className="flex justify-center gap-3 min-h-[24px]">
                             {cert.proofUrl && (
                               <a
                                 href={cert.proofUrl}
@@ -646,6 +646,7 @@ export default function About() {
                                 Info
                               </a>
                             )}
+                          </div>
                           </div>
                         </div>
 
