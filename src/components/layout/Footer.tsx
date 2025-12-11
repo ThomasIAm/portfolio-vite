@@ -19,6 +19,7 @@ const routeToFile: Record<string, string> = {
   "/contact": "src/pages/Contact.tsx",
   "/cookies": "src/pages/Cookies.tsx",
   "/privacy": "src/pages/Privacy.tsx",
+  "/notice": "src/pages/Notice.tsx",
 };
 
 function getEditUrl(pathname: string): string {
@@ -86,6 +87,9 @@ export function Footer() {
               </Link>
               <Link to="/cookies" className="hover:text-foreground transition-colors">
                 Cookies
+              </Link>
+              <Link to="/notice" className="hover:text-foreground transition-colors">
+                Notice
               </Link>
             </div>
           </div>
