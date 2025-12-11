@@ -9,8 +9,8 @@ export const onRequest: PagesFunction = async ({ request }) => {
   const description = url.searchParams.get("description") || "Lead Cyber Security Consultant";
   const type = url.searchParams.get("type") || "website";
 
-  // Construct absolute URL for the favicon
-  const faviconUrl = `${url.origin}/assets/favicons/favicon-194x194.png`;
+  // Construct absolute URL for the profile image
+  const profileImageUrl = `${url.origin}/assets/profile.jpg`;
 
   return new ImageResponse(
     (
@@ -130,13 +130,14 @@ export const onRequest: PagesFunction = async ({ request }) => {
               gap: "16px",
             }}
           >
-            {/* Favicon */}
+            {/* Profile Image */}
             <img
-              src={faviconUrl}
+              src={profileImageUrl}
               width="48"
               height="48"
               style={{
-                borderRadius: "12px",
+                borderRadius: "50%",
+                objectFit: "cover",
               }}
             />
             <span
@@ -146,7 +147,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
                 color: "#f5f0e8",
               }}
             >
-              tvdn.me
+              Thomas van den Nieuwenhoff
             </span>
           </div>
 
