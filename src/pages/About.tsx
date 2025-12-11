@@ -597,7 +597,7 @@ export default function About() {
                         {/* Logo or Trophy icon */}
                         <div className="relative flex justify-center mb-4">
                           {cert.logo ? (
-                            <div className="w-16 h-16 overflow-hidden drop-shadow-lg dark:bg-gray-800 flex items-center justify-center">
+                            <div className="w-16 h-16 overflow-hidden drop-shadow-lg flex items-center justify-center">
                               <img
                                 src={cert.logo}
                                 alt={`${cert.name} badge`}
