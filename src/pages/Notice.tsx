@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/seo/SEO";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Heart, Sparkles } from "lucide-react";
 
 interface Dependency {
   name: string;
@@ -52,6 +52,47 @@ export default function Notice() {
             This project is built with the help of amazing open-source software. 
             We are grateful to the developers and maintainers of these projects.
           </p>
+
+          {/* Lovable Shoutout */}
+          <div className="mb-10 p-6 rounded-xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 relative overflow-hidden">
+            <div className="absolute top-2 right-2">
+              <Sparkles className="h-5 w-5 text-primary/40" />
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <Heart className="h-6 w-6 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h2 className="font-display text-xl font-semibold text-foreground mb-2">
+                  Built with Lovable
+                </h2>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  This website was created using{" "}
+                  <a
+                    href="https://lovable.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary font-medium hover:underline"
+                  >
+                    Lovable
+                  </a>
+                  , an AI-powered development platform that makes building web applications 
+                  faster and more intuitive. From design to deployment, Lovable helped bring 
+                  this project to life with its intelligent code generation and seamless 
+                  developer experience.
+                </p>
+                <a
+                  href="https://lovable.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                >
+                  Check out Lovable
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
 
           <div className="space-y-4">
             {dependencies.map((dep) => (
