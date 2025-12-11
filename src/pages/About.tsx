@@ -590,39 +590,38 @@ export default function About() {
                       variant="scale"
                       delay={index * 50}
                     >
-                      <div className={`group relative p-6 rounded-2xl bg-gradient-to-b ${colors.light} ${colors.dark} border border-foreground/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}>
+                      <div className={`group relative p-4 rounded-2xl bg-gradient-to-b ${colors.light} ${colors.dark} border border-foreground/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}>
                         {/* Glow effect */}
                         <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                        {/* Logo or Trophy icon */}
-                        <div className="relative flex justify-center mb-4">
-                          {cert.logo ? (
-                            <div className="w-16 h-16 overflow-hidden drop-shadow-lg dark:bg-gray-800 flex items-center justify-center">
-                              <img
-                                src={cert.logo}
-                                alt={`${cert.name} badge`}
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                          ) : (
-                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-foreground/20 to-foreground/40 flex items-center justify-center shadow-lg">
-                              <Trophy className="h-8 w-8 text-foreground drop-shadow-sm" />
-                            </div>
-                          )}
-                        </div>
+                        <div className="relative flex items-center gap-4">
+                          {/* Logo or Trophy icon */}
+                          <div className="flex-shrink-0">
+                            {cert.logo ? (
+                              <div className="w-12 h-12 overflow-hidden drop-shadow-lg dark:bg-gray-800 flex items-center justify-center">
+                                <img
+                                  src={cert.logo}
+                                  alt={`${cert.name} badge`}
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
+                            ) : (
+                              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-foreground/20 to-foreground/40 flex items-center justify-center shadow-lg">
+                                <Trophy className="h-6 w-6 text-foreground drop-shadow-sm" />
+                              </div>
+                            )}
+                          </div>
 
-                        {/* Content */}
-                        <div className="relative text-center">
-                          <h3 className="font-display text-sm font-bold text-foreground mb-2 leading-tight min-h-[2.5rem] flex items-center justify-center">
-                            {cert.name}
-                          </h3>
-                          <span className={`inline-block px-3 py-1 rounded-full ${colors.accent} text-xs font-semibold mb-3`}>
-                            {cert.year}
-                          </span>
-
-                          {/* Links */}
-                          {(cert.proofUrl || cert.infoUrl) && (
-                            <div className="flex justify-center gap-3 mt-2">
+                          {/* Content */}
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-display text-sm font-bold text-foreground leading-tight line-clamp-2">
+                              {cert.name}
+                            </h3>
+                            <div className="flex items-center gap-3 mt-1.5">
+                              <span className={`inline-block px-2 py-0.5 rounded-full ${colors.accent} text-xs font-semibold`}>
+                                {cert.year}
+                              </span>
+                              {/* Links */}
                               {cert.proofUrl && (
                                 <a
                                   href={cert.proofUrl}
@@ -648,7 +647,7 @@ export default function About() {
                                 </a>
                               )}
                             </div>
-                          )}
+                          </div>
                         </div>
 
                         {/* Bottom accent */}
