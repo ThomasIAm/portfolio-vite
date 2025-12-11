@@ -616,7 +616,7 @@ export default function About() {
                           <h3 className="font-display text-sm font-bold text-foreground mb-2 leading-tight min-h-[2.5rem] flex items-center justify-center">
                             {cert.name}
                           </h3>
-                          <span className={`inline-block px-3 py-1 rounded-full ${colors.accent} text-xs font-semibold`}>
+                          <span className={`self-center px-3 py-1 rounded-full ${colors.accent} text-xs font-semibold`}>
                             {cert.year}
                           </span>
 
