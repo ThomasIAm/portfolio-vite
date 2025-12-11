@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { CodeBlock } from './CodeBlock';
+import { OptimizedImage } from '@/components/ui/optimized-image';
 
 interface BlogContentProps {
   content: string;
@@ -104,11 +105,11 @@ export function BlogContent({ content }: BlogContentProps) {
           ),
           hr: () => <hr className="border-border my-8" />,
           img: ({ src, alt }) => (
-            <img
-              src={src}
+            <OptimizedImage
+              src={src || ''}
               alt={alt || ''}
               className="rounded-lg my-4 max-w-full"
-              loading="lazy"
+              responsive
             />
           ),
         }}
