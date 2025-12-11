@@ -53,6 +53,7 @@ export const onRequest: PagesFunction = async (context) => {
     { path: '/contact', priority: '0.6', changefreq: 'yearly' },
     { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
     { path: '/cookies', priority: '0.3', changefreq: 'yearly' },
+    { path: '/notice', priority: '0.3', changefreq: 'yearly' },
   ];
 
   // Fetch blog posts from Contentful
