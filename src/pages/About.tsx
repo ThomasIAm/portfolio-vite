@@ -445,8 +445,8 @@ export default function About() {
 
               {/* Milestone 1 */}
               <AnimatedSection variant="fade-right" delay={100} className="relative mb-12">
-                <div className="flex items-start gap-6 md:gap-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center z-10">
+                <div className="flex items-start gap-6 md:block">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2">
                     <ShieldCheck className="w-4 h-4 text-primary-foreground" />
                   </div>
                   <div className="flex-1 md:w-1/2 md:ml-auto md:pl-12">
@@ -471,11 +471,11 @@ export default function About() {
 
               {/* Milestone 2 */}
               <AnimatedSection variant="fade-left" delay={200} className="relative mb-12">
-                <div className="flex items-start gap-6 md:gap-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent shadow-lg shadow-accent/30 flex items-center justify-center z-10 md:order-2 md:ml-auto md:mr-[calc(50%-1rem)]">
+                <div className="flex items-start gap-6 md:block">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent shadow-lg shadow-accent/30 flex items-center justify-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2">
                     <Heart className="w-4 h-4 text-accent-foreground" />
                   </div>
-                  <div className="flex-1 md:w-1/2 md:order-1 md:pr-12 md:text-right">
+                  <div className="flex-1 md:w-1/2 md:pr-12 md:text-right">
                     <div className="p-6 rounded-2xl bg-card shadow-soft border border-border/50">
                       <span className="text-sm font-medium text-accent mb-2 block">
                         Leadership
@@ -496,8 +496,8 @@ export default function About() {
 
               {/* Milestone 3 */}
               <AnimatedSection variant="fade-right" delay={300} className="relative">
-                <div className="flex items-start gap-6 md:gap-0">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center z-10">
+                <div className="flex items-start gap-6 md:block">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2">
                     <BookOpen className="w-4 h-4 text-primary-foreground" />
                   </div>
                   <div className="flex-1 md:w-1/2 md:ml-auto md:pl-12">
