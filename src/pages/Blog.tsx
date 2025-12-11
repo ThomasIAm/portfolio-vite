@@ -5,7 +5,7 @@ import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { calculateReadingTime } from "@/lib/contentful";
 import { format } from "date-fns";
 import { SEO } from "@/components/seo/SEO";
-
+import { LoadingAnimation, EmptyStateAnimation, LottieAnimation, LOTTIE_ANIMATIONS } from "@/components/ui/lottie-animation";
 export default function Blog() {
   const { data: posts, isLoading, error } = useBlogPosts();
 
@@ -24,8 +24,14 @@ export default function Blog() {
         ]}
       />
       {/* Hero Section */}
-      <section className="py-20 md:py-28 bg-gradient-hero">
-        <div className="container">
+      <section className="py-20 md:py-28 bg-gradient-hero relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-20">
+          <LottieAnimation
+            src={LOTTIE_ANIMATIONS.dataFlow}
+            className="absolute -right-20 top-0 w-80 h-80"
+          />
+        </div>
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center animate-fade-up">
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
               Blog
@@ -43,37 +49,31 @@ export default function Blog() {
         <div className="container">
           <div className="max-w-3xl mx-auto">
             {isLoading && (
-              <div className="space-y-6">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="p-8 rounded-2xl bg-card shadow-soft animate-pulse"
-                  >
-                    <div className="h-6 bg-muted rounded w-3/4 mb-4" />
-                    <div className="h-4 bg-muted rounded w-full mb-2" />
-                    <div className="h-4 bg-muted rounded w-2/3" />
-                  </div>
-                ))}
+              <div className="flex flex-col items-center justify-center py-12">
+                <LoadingAnimation className="w-32 h-32" />
+                <p className="text-muted-foreground mt-4">Loading posts...</p>
               </div>
             )}
 
             {error && (
-              <div className="p-8 rounded-2xl bg-card shadow-soft text-center">
-                <p className="text-muted-foreground">
+              <div className="p-8 rounded-2xl bg-card shadow-soft text-center flex flex-col items-center">
+                <EmptyStateAnimation className="w-40 h-40" />
+                <p className="text-muted-foreground mt-4">
                   Unable to load blog posts. Please check your configuration.
                 </p>
               </div>
             )}
 
             {posts && posts.length === 0 && (
-              <article className="p-8 rounded-2xl bg-card shadow-soft animate-fade-up">
+              <article className="p-8 rounded-2xl bg-card shadow-soft animate-fade-up flex flex-col items-center text-center">
+                <EmptyStateAnimation className="w-48 h-48" />
                 <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">
                   Coming Soon
                 </span>
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
                   Blog Posts Coming Soon
                 </h2>
-                <p className="text-muted-foreground text-lg">
+                <p className="text-muted-foreground text-lg max-w-md">
                   I'm working on some exciting content about cyber security,
                   team leadership, and the intersection of technology and
                   business. Stay tuned for insights from the field.

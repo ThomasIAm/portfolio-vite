@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Mail, Linkedin, Github, MapPin, Gitlab } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
-
+import { LottieAnimation, LOTTIE_ANIMATIONS } from "@/components/ui/lottie-animation";
 const contactMethods = [
   {
     icon: Mail,
@@ -39,8 +39,14 @@ export default function Contact() {
         keywords={["contact cyber security consultant", "hire security expert", "security consulting Netherlands"]}
       />
       {/* Hero Section */}
-      <section className="py-20 md:py-28 bg-gradient-hero">
-        <div className="container">
+      <section className="py-20 md:py-28 bg-gradient-hero relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-15">
+          <LottieAnimation
+            src={LOTTIE_ANIMATIONS.securityLock}
+            className="absolute -right-10 top-10 w-64 h-64"
+          />
+        </div>
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center animate-fade-up">
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
               Let's Connect

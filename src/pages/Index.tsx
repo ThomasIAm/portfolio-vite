@@ -4,6 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SEO } from "@/components/seo/SEO";
+import { LottieAnimation, LOTTIE_ANIMATIONS } from "@/components/ui/lottie-animation";
 import profileImage from "@/assets/profile.jpg";
 const personStructuredData = {
   "@context": "https://schema.org",
@@ -101,8 +102,18 @@ export default function Index() {
         structuredData={personStructuredData}
       />
       {/* Hero Section */}
-      <section className="bg-gradient-hero min-h-[90vh] flex items-center">
-        <div className="container py-20 md:py-32">
+      <section className="bg-gradient-hero min-h-[90vh] flex items-center relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <LottieAnimation
+            src={LOTTIE_ANIMATIONS.techNetwork}
+            className="absolute -left-20 -top-20 w-96 h-96 opacity-10"
+          />
+          <LottieAnimation
+            src={LOTTIE_ANIMATIONS.particles}
+            className="absolute right-0 bottom-0 w-80 h-80 opacity-10"
+          />
+        </div>
+        <div className="container py-20 md:py-32 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             <AnimatedSection
               variant="fade-right"
