@@ -51,6 +51,8 @@ export const onRequest: PagesFunction = async (context) => {
     { path: '/projects', priority: '0.8', changefreq: 'monthly' },
     { path: '/blog', priority: '0.9', changefreq: 'weekly' },
     { path: '/contact', priority: '0.6', changefreq: 'yearly' },
+    { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
+    { path: '/cookies', priority: '0.3', changefreq: 'yearly' },
   ];
 
   // Fetch blog posts from Contentful
