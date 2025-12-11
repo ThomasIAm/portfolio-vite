@@ -545,8 +545,8 @@ export default function About() {
                                   />
                                 </div>
                               ) : (
-                                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-foreground/20 to-foreground/40 flex items-center justify-center shadow-lg">
-                                  <Trophy className="h-8 w-8 text-foreground drop-shadow-sm" />
+                                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-foreground/20 to-foreground/40 flex items-center justify-center shadow-lg">
+                                  <Trophy className="h-8 w-8 md:h-10 md:w-10 text-foreground drop-shadow-sm" />
                                 </div>
                               )}
                             </div>
