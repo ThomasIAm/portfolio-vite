@@ -15,4 +15,7 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  define: {
+    'import.meta.env.VITE_CF_PAGES_URL': JSON.stringify(process.env.CF_PAGES_URL || ''),
+  },
 }));
