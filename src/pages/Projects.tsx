@@ -119,7 +119,7 @@ export default function Projects() {
             {projects.map((project, index) => (
               <article
                 key={project.title}
-                className="group p-8 rounded-2xl bg-card shadow-soft hover-lift animate-fade-up"
+                className="group p-8 rounded-2xl bg-card shadow-soft hover-lift animate-fade-up h-full flex flex-col"
                 style={{ animationDelay: `${0.1 * (index + 1)}s` }}
               >
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
@@ -128,30 +128,32 @@ export default function Projects() {
                 <h2 className="font-display text-xl font-semibold text-foreground mb-3">
                   {project.title}
                 </h2>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground mb-6 flex-1">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-medium"
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  {project.url && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      Visit website
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  )}
                 </div>
-                {project.url && (
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
-                  >
-                    Visit website
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                )}
               </article>
             ))}
           </div>
