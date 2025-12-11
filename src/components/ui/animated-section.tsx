@@ -14,23 +14,23 @@ interface AnimatedSectionProps {
 
 const variantStyles: Record<AnimationVariant, { initial: string; visible: string }> = {
   "fade-up": {
-    initial: "opacity-70 translate-y-3",
+    initial: "opacity-0 translate-y-8",
     visible: "opacity-100 translate-y-0",
   },
   "fade-left": {
-    initial: "opacity-70 -translate-x-3",
+    initial: "opacity-0 -translate-x-8",
     visible: "opacity-100 translate-x-0",
   },
   "fade-right": {
-    initial: "opacity-70 translate-x-3",
+    initial: "opacity-0 translate-x-8",
     visible: "opacity-100 translate-x-0",
   },
   scale: {
-    initial: "opacity-70 scale-[0.98]",
+    initial: "opacity-0 scale-95",
     visible: "opacity-100 scale-100",
   },
   blur: {
-    initial: "opacity-70 blur-[1px]",
+    initial: "opacity-0 blur-sm",
     visible: "opacity-100 blur-0",
   },
 };
