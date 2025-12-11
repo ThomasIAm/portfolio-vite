@@ -1,8 +1,88 @@
 // Middleware to inject SEO meta tags into HTML for all requests
-import { SITE_NAME, getRouteMetadata, generateOgImageUrl } from '../src/config/seo-metadata';
+import { SITE_NAME, ROUTE_METADATA, generateOgImageUrl } from '../src/config/seo-metadata';
 
-function generateMetaTags(baseUrl: string, path: string): string {
-  const metadata = getRouteMetadata(path);
+interface BlogPostFields {
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  publishedDate: string;
+}
+
+interface ContentfulResponse {
+  items: Array<{
+    fields: BlogPostFields;
+  }>;
+}
+
+async function fetchBlogPost(slug: string, env: any): Promise<BlogPostFields | null> {
+  const spaceId = env.CONTENTFUL_SPACE_ID;
+  const accessToken = env.CONTENTFUL_ACCESS_TOKEN;
+  
+  if (!spaceId || !accessToken) {
+    console.log('Contentful credentials not configured');
+    return null;
+  }
+  
+  try {
+    const response = await fetch(
+      `https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}&content_type=blogPost&fields.slug=${slug}&limit=1`
+    );
+    
+    if (!response.ok) {
+      console.log('Failed to fetch blog post:', response.status);
+      return null;
+    }
+    
+    const data: ContentfulResponse = await response.json();
+    return data.items[0]?.fields || null;
+  } catch (error) {
+    console.log('Error fetching blog post:', error);
+    return null;
+  }
+}
+
+interface RouteMetadata {
+  title: string;
+  description: string;
+  type: string;
+  keywords?: string[];
+}
+
+async function getRouteMetadata(path: string, env: any): Promise<RouteMetadata> {
+  // Check for exact match first
+  if (path in ROUTE_METADATA) {
+    return ROUTE_METADATA[path as keyof typeof ROUTE_METADATA];
+  }
+
+  // Handle blog post pages - fetch real data from Contentful
+  if (path.startsWith('/blog/')) {
+    const slug = path.replace('/blog/', '');
+    const blogPost = await fetchBlogPost(slug, env);
+    
+    if (blogPost) {
+      return {
+        title: blogPost.title,
+        description: blogPost.excerpt,
+        type: 'article',
+        keywords: ['cybersecurity', 'blog', 'security'],
+      };
+    }
+    
+    // Fallback if blog post not found
+    return {
+      title: `Blog Post | ${SITE_NAME}`,
+      description: 'Read the latest insights on cybersecurity.',
+      type: 'article',
+    };
+  }
+
+  // Default fallback
+  return ROUTE_METADATA['/'];
+}
+
+async function generateMetaTags(baseUrl: string, path: string, env: any): Promise<string> {
+  const metadata = await getRouteMetadata(path, env);
   const { title, description, type, keywords } = metadata;
   const canonicalUrl = `${baseUrl}${path}`;
   const ogImage = generateOgImageUrl(baseUrl, title, description, type);
@@ -31,7 +111,7 @@ function generateMetaTags(baseUrl: string, path: string): string {
 }
 
 export const onRequest: PagesFunction = async (context) => {
-  const { request, next } = context;
+  const { request, next, env } = context;
   const url = new URL(request.url);
   const path = url.pathname;
 
@@ -50,11 +130,11 @@ export const onRequest: PagesFunction = async (context) => {
   }
 
   // Get base URL from CF_PAGES_URL or construct from request
-  const baseUrl = (context.env as any).CF_PAGES_URL || `${url.protocol}//${url.host}`;
+  const baseUrl = (env as any).CF_PAGES_URL || `${url.protocol}//${url.host}`;
 
   // Get original HTML and inject meta tags
   let html = await response.text();
-  const metaTags = generateMetaTags(baseUrl, path);
+  const metaTags = await generateMetaTags(baseUrl, path, env);
   
   // Insert meta tags after <head> tag
   html = html.replace('<head>', `<head>${metaTags}`);
