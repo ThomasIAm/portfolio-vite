@@ -13,8 +13,8 @@ interface SEOProps {
   structuredData?: object;
 }
 
-const BASE_URL = import.meta.env.CF_PAGES_URL || "";
-const SITE_NAME = import.meta.env.VITE_SITE_NAME || "Thomas van den Nieuwenhoff";
+const BASE_URL = import.meta.env.VITE_CF_PAGES_URL || "";
+const SITE_NAME = "Thomas van den Nieuwenhoff";
 
 // Generate dynamic OG image URL
 function generateOgImageUrl(title: string, description: string, type: string): string {
@@ -38,7 +38,7 @@ export function SEO({
   author = SITE_NAME,
   structuredData,
 }: SEOProps) {
-  const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
+  const fullTitle = title;
   const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
   const ogImage = generateOgImageUrl(title, description, type);
 
