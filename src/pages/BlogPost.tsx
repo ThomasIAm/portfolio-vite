@@ -6,7 +6,6 @@ import { calculateReadingTime } from "@/lib/contentful";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { format } from "date-fns";
 import { SEO } from "@/components/seo/SEO";
-import { LoadingAnimation, EmptyStateAnimation, LottieAnimation, LOTTIE_ANIMATIONS } from "@/components/ui/lottie-animation";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -22,9 +21,12 @@ export default function BlogPost() {
         />
         <section className="py-20 md:py-28">
           <div className="container">
-            <div className="max-w-3xl mx-auto flex flex-col items-center justify-center">
-              <LoadingAnimation className="w-32 h-32" />
-              <p className="text-muted-foreground mt-4">Loading post...</p>
+            <div className="max-w-3xl mx-auto">
+              <div className="animate-pulse space-y-4">
+                <div className="h-8 bg-muted rounded w-3/4" />
+                <div className="h-4 bg-muted rounded w-1/2" />
+                <div className="h-64 bg-muted rounded mt-8" />
+              </div>
             </div>
           </div>
         </section>
@@ -42,8 +44,7 @@ export default function BlogPost() {
         />
         <section className="py-20 md:py-28">
           <div className="container">
-            <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
-              <EmptyStateAnimation className="w-48 h-48" />
+            <div className="max-w-3xl mx-auto text-center">
               <h1 className="font-display text-3xl font-bold text-foreground mb-4">
                 Post not found
               </h1>
@@ -102,14 +103,8 @@ export default function BlogPost() {
         structuredData={articleStructuredData}
       />
       {/* Hero Section */}
-      <section className="py-20 md:py-28 bg-gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none opacity-15">
-          <LottieAnimation
-            src={LOTTIE_ANIMATIONS.dataFlow}
-            className="absolute -left-10 top-0 w-72 h-72"
-          />
-        </div>
-        <div className="container relative z-10">
+      <section className="py-20 md:py-28 bg-gradient-hero">
+        <div className="container">
           <div className="max-w-3xl mx-auto animate-fade-up">
             <Link
               to="/blog"

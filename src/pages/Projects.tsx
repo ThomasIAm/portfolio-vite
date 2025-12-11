@@ -2,7 +2,6 @@ import { Layout } from "@/components/layout/Layout";
 import { AppWindow, Blocks, CloudCog, Code, ExternalLink, Github, Gitlab, LandPlot, LoaderPinwheel, Lock, Server, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
-import { LottieAnimation, LOTTIE_ANIMATIONS } from "@/components/ui/lottie-animation";
 
 const projects = [
   {
@@ -100,14 +99,8 @@ export default function Projects() {
         keywords={["security projects", "Cloudflare consulting", "OpenShift migration", "IAM solutions", "cyber security portfolio"]}
       />
       {/* Hero Section */}
-      <section className="py-20 md:py-28 bg-gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none opacity-15">
-          <LottieAnimation
-            src={LOTTIE_ANIMATIONS.dataFlow}
-            className="absolute -left-10 top-0 w-72 h-72"
-          />
-        </div>
-        <div className="container relative z-10">
+      <section className="py-20 md:py-28 bg-gradient-hero">
+        <div className="container">
           <div className="max-w-3xl mx-auto text-center animate-fade-up">
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
               Projects & Work
