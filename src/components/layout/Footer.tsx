@@ -1,4 +1,4 @@
-import { Gitlab, Github, Linkedin, Mail, Pencil, Bug } from "lucide-react";
+import { Gitlab, Github, Linkedin, Mail, Pencil, Bug, Activity } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const GITHUB_REPO = "https://github.com/ThomasIAm/portfolio-vite";
@@ -111,6 +111,15 @@ export function Footer() {
             >
               <Bug className="h-3.5 w-3.5" />
               Open Issue
+            </a>
+            <a
+              href="https://status.tvdn.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-muted hover:text-foreground transition-colors"
+            >
+              <Activity className="h-3.5 w-3.5" />
+              Status
             </a>
           </div>
         </div>
