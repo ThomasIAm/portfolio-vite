@@ -19,13 +19,27 @@ const routeToFile: Record<string, string> = {
   "/contact": "src/pages/Contact.tsx",
 };
 
+function getEditUrl(pathname: string): string {
+  // Check for blog post routes (e.g., /blog/some-slug)
+  if (pathname.startsWith("/blog/") && pathname !== "/blog/") {
+    return `${GITHUB_REPO}/edit/main/src/pages/BlogPost.tsx`;
+  }
+  
+  // Check if route exists in map
+  const currentFile = routeToFile[pathname];
+  if (currentFile) {
+    return `${GITHUB_REPO}/edit/main/${currentFile}`;
+  }
+  
+  // Unknown route - just link to repo
+  return GITHUB_REPO;
+}
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const location = useLocation();
   
-  // Get the file path for current route, default to Index for unknown routes
-  const currentFile = routeToFile[location.pathname] || routeToFile["/"];
-  const editUrl = `${GITHUB_REPO}/edit/main/${currentFile}`;
+  const editUrl = getEditUrl(location.pathname);
   const issueUrl = `${GITHUB_REPO}/issues/new/choose`;
 
   return (
