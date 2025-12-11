@@ -43,7 +43,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
+        <div className="mt-8 pt-8 pb-16 border-t border-border text-center text-sm text-muted-foreground">
           <p>© {currentYear} Thomas van den Nieuwenhoff. All rights reserved.</p>
         </div>
       </div>
