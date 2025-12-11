@@ -10,7 +10,7 @@ export default function Privacy() {
     fetch("/PRIVACY.md")
       .then((res) => res.text())
       .then(setContent)
-      .catch(console.error);
+      .catch(() => {});
   }, []);
 
   return (

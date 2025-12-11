@@ -20,7 +20,6 @@ async function fetchBlogPost(slug: string, env: any): Promise<BlogPostFields | n
   const accessToken = env.CONTENTFUL_ACCESS_TOKEN;
   
   if (!spaceId || !accessToken) {
-    console.log('Contentful credentials not configured');
     return null;
   }
   
@@ -30,14 +29,12 @@ async function fetchBlogPost(slug: string, env: any): Promise<BlogPostFields | n
     );
     
     if (!response.ok) {
-      console.log('Failed to fetch blog post:', response.status);
       return null;
     }
     
     const data: ContentfulResponse = await response.json();
     return data.items[0]?.fields || null;
-  } catch (error) {
-    console.log('Error fetching blog post:', error);
+  } catch {
     return null;
   }
 }
