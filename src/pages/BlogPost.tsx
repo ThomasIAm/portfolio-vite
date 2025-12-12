@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { BlogContent } from "@/components/blog/BlogContent";
 import { useBlogPost } from "@/hooks/useBlogPosts";
 import { calculateReadingTime } from "@/lib/contentful";
-import { Calendar, Clock, ArrowLeft, RefreshCw } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, RefreshCw, BookOpen } from "lucide-react";
 import { format } from "date-fns";
 import { SEO } from "@/components/seo/SEO";
 import { OptimizedImage } from "@/components/ui/optimized-image";
@@ -134,6 +134,19 @@ export default function BlogPost() {
                 {readingTime}
               </span>
             </div>
+            {fields.series && (
+              <div className="mt-6 p-4 rounded-lg bg-primary/10 border border-primary/20">
+                <div className="flex items-center gap-2 text-primary font-medium mb-1">
+                  <BookOpen className="h-4 w-4" />
+                  Part of series: {fields.series.fields.title}
+                </div>
+                {fields.series.fields.description && (
+                  <p className="text-sm text-muted-foreground">
+                    {fields.series.fields.description}
+                  </p>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </section>
