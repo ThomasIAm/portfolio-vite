@@ -118,7 +118,7 @@ export default function BlogPost() {
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
               {fields.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-muted-foreground mb-6">
               <span className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
                 {format(new Date(fields.publishedDate), "MMMM d, yyyy")}
@@ -134,6 +134,44 @@ export default function BlogPost() {
                 {readingTime}
               </span>
             </div>
+            
+            {/* Authors */}
+            {fields.authors && fields.authors.length > 0 && (
+              <div className="flex flex-wrap items-center gap-4">
+                {fields.authors.map((author) => (
+                  <div key={author.sys.id} className="flex items-center gap-3">
+                    {author.fields.avatar ? (
+                      <img
+                        src={`https:${author.fields.avatar.fields.file.url}`}
+                        alt={author.fields.name}
+                        className="w-10 h-10 rounded-full object-cover border-2 border-primary/20"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
+                        {author.fields.name.charAt(0)}
+                      </div>
+                    )}
+                    <div>
+                      {author.fields.link ? (
+                        <a
+                          href={author.fields.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-foreground hover:text-primary transition-colors"
+                        >
+                          {author.fields.name}
+                        </a>
+                      ) : (
+                        <span className="font-medium text-foreground">{author.fields.name}</span>
+                      )}
+                      {author.fields.bio && (
+                        <p className="text-xs text-muted-foreground line-clamp-1">{author.fields.bio}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
