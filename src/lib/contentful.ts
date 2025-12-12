@@ -76,6 +76,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   const response = await client.getEntries({
     content_type: 'blogPost',
     order: ['-sys.createdAt'],
+    include: 2, // Resolve linked entries (series, coverImage, sameSubjectPosts)
   });
   return (response.items as unknown as BlogPost[]).filter(isValidBlogPost);
 }
@@ -88,6 +89,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     content_type: 'blogPost',
     'fields.slug': slug,
     limit: 1,
+    include: 2, // Resolve linked entries (series, coverImage, sameSubjectPosts)
   } as any);
   return (response.items[0] as unknown as BlogPost) || null;
 }
