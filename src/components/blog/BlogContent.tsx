@@ -2,9 +2,28 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { CodeBlock } from './CodeBlock';
 import { OptimizedImage } from '@/components/ui/optimized-image';
+import { LinkPreview } from './LinkPreview';
 
 interface BlogContentProps {
   content: string;
+}
+
+// Check if a link should be rendered as a preview card
+// Links on their own line (paragraph with only a link) get preview treatment
+function isStandaloneLink(children: React.ReactNode): boolean {
+  if (!Array.isArray(children) && typeof children !== 'object') return false;
+  
+  const childArray = Array.isArray(children) ? children : [children];
+  
+  // Check if paragraph contains only a single link
+  if (childArray.length === 1) {
+    const child = childArray[0];
+    if (child && typeof child === 'object' && 'type' in child) {
+      return child.type === 'a';
+    }
+  }
+  
+  return false;
 }
 
 export function BlogContent({ content }: BlogContentProps) {
@@ -33,11 +52,27 @@ export function BlogContent({ content }: BlogContentProps) {
               {children}
             </h4>
           ),
-          p: ({ children }) => (
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              {children}
-            </p>
-          ),
+          p: ({ children, node }) => {
+            // Check if this paragraph contains only a standalone link
+            const nodeChildren = node?.children;
+            if (
+              nodeChildren?.length === 1 &&
+              nodeChildren[0].type === 'element' &&
+              nodeChildren[0].tagName === 'a'
+            ) {
+              const linkNode = nodeChildren[0];
+              const href = linkNode.properties?.href as string;
+              if (href && (href.startsWith('http') || href.startsWith('/blog/'))) {
+                return <LinkPreview href={href} />;
+              }
+            }
+            
+            return (
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                {children}
+              </p>
+            );
+          },
           a: ({ href, children }) => (
             <a
               href={href}
