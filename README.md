@@ -22,10 +22,10 @@ A modern, responsive portfolio website showcasing my work as a Lead Cyber Securi
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/portfolio.git
+git clone https://github.com/ThomasIAm/portfolio-vite.git
 
 # Navigate to the project
-cd portfolio
+cd portfolio-vite
 
 # Install dependencies
 npm install
@@ -39,9 +39,9 @@ npm run dev
 Create a `.env` file based on `.env.example`:
 
 ```env
-VITE_CONTENTFUL_SPACE_ID=your_space_id
-VITE_CONTENTFUL_ACCESS_TOKEN=your_access_token
-VITE_CONTENTFUL_PREVIEW_TOKEN=your_preview_token  # Optional: enables draft content
+CONTENTFUL_SPACE_ID=your_space_id
+CONTENTFUL_ACCESS_TOKEN=your_access_token
+CONTENTFUL_PREVIEW_TOKEN=your_preview_token  # Optional: enables draft content
 ```
 
 ## 🏗️ Build
@@ -58,15 +58,20 @@ npm run preview
 
 ```
 src/
+├── assets/         # Static assets (images, etc.)
 ├── components/     # Reusable UI components
-│   ├── layout/     # Layout components (Navigation, Footer)
 │   ├── blog/       # Blog-related components
+│   ├── layout/     # Layout components (Navigation, Footer)
 │   ├── seo/        # SEO components
 │   └── ui/         # shadcn/ui components
+├── config/         # Configuration files (SEO metadata)
 ├── hooks/          # Custom React hooks
 ├── lib/            # Utility functions and API clients
 ├── pages/          # Page components
-└── assets/         # Static assets
+functions/
+├── og/             # Dynamic OG image generation
+├── _middleware.ts  # Cloudflare Pages middleware (SEO injection)
+└── sitemap.xml.ts  # Dynamic sitemap generation
 ```
 
 ## 📄 License
