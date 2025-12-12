@@ -17,14 +17,25 @@ if (spaceId && (accessToken || previewToken)) {
   });
 }
 
+export interface ContentfulAsset {
+  fields: {
+    file: {
+      url: string;
+    };
+    title?: string;
+  };
+}
+
 export interface BlogPostFields {
   title: string;
   slug: string;
   excerpt: string;
   content: string;
   publishedDate: string;
-  modifiedDate: string;
+  modifiedDate?: string;
   featured?: boolean;
+  coverImage?: ContentfulAsset;
+  sameSubjectPosts?: BlogPost[];
 }
 
 export interface BlogPost {

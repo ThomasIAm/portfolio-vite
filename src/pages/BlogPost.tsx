@@ -3,9 +3,11 @@ import { Layout } from "@/components/layout/Layout";
 import { BlogContent } from "@/components/blog/BlogContent";
 import { useBlogPost } from "@/hooks/useBlogPosts";
 import { calculateReadingTime } from "@/lib/contentful";
-import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, RefreshCw } from "lucide-react";
 import { format } from "date-fns";
 import { SEO } from "@/components/seo/SEO";
+import { OptimizedImage } from "@/components/ui/optimized-image";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -116,11 +118,17 @@ export default function BlogPost() {
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
               {fields.title}
             </h1>
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-muted-foreground">
               <span className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
                 {format(new Date(fields.publishedDate), "MMMM d, yyyy")}
               </span>
+              {fields.modifiedDate && fields.modifiedDate !== fields.publishedDate && (
+                <span className="flex items-center gap-2">
+                  <RefreshCw className="h-4 w-4" />
+                  Updated {format(new Date(fields.modifiedDate), "MMMM d, yyyy")}
+                </span>
+              )}
               <span className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
                 {readingTime}
@@ -129,6 +137,22 @@ export default function BlogPost() {
           </div>
         </div>
       </section>
+
+      {/* Cover Image */}
+      {fields.coverImage && (
+        <section className="pb-8 md:pb-12">
+          <div className="container">
+            <div className="max-w-4xl mx-auto animate-fade-up" style={{ animationDelay: "0.05s" }}>
+              <OptimizedImage
+                src={`https:${fields.coverImage.fields.file.url}`}
+                alt={fields.coverImage.fields.title || fields.title}
+                className="rounded-xl w-full aspect-video object-cover shadow-lg"
+                responsive
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Content */}
       <section className="py-16 md:py-20">
@@ -141,6 +165,35 @@ export default function BlogPost() {
           </article>
         </div>
       </section>
+
+      {/* Related Posts */}
+      {fields.sameSubjectPosts && fields.sameSubjectPosts.length > 0 && (
+        <section className="py-12 md:py-16 border-t border-border">
+          <div className="container">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-display text-2xl font-bold text-foreground mb-8">
+                Related Posts
+              </h2>
+              <div className="grid gap-4 md:grid-cols-2">
+                {fields.sameSubjectPosts.map((relatedPost) => (
+                  <Link key={relatedPost.sys.id} to={`/blog/${relatedPost.fields.slug}`}>
+                    <Card className="h-full hover:shadow-md transition-shadow">
+                      <CardContent className="p-4">
+                        <h3 className="font-display font-semibold text-foreground mb-2 line-clamp-2">
+                          {relatedPost.fields.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground line-clamp-2">
+                          {relatedPost.fields.excerpt}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
     </Layout>
   );
 }
