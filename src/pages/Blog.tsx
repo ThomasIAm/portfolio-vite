@@ -130,7 +130,7 @@ export default function Blog() {
       {/* Blog Posts */}
       <section className="py-20 md:py-28">
         <div className="container">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {isLoading && (
               <div className="space-y-6">
                 {[1, 2, 3].map((i) => (
@@ -176,49 +176,48 @@ export default function Blog() {
               </h2>
             )}
 
-            {visibleRegularPosts.map((post, index) => {
-              const fields = post.fields;
-              const readingTime = calculateReadingTime(fields.content);
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {visibleRegularPosts.map((post, index) => {
+                const fields = post.fields;
+                const readingTime = calculateReadingTime(fields.content);
 
-              return (
-                <article
-                  key={post.sys.id}
-                  className="p-8 rounded-2xl bg-card shadow-soft animate-fade-up mb-6 hover:shadow-md transition-shadow"
-                  style={{ animationDelay: `${0.1 * (index + 1)}s` }}
-                >
-                  <Link to={`/blog/${fields.slug}`}>
-                    <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 hover:text-primary transition-colors">
-                      {fields.title}
-                    </h2>
-                  </Link>
-                  <p className="text-muted-foreground text-lg mb-6">
-                    {fields.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                      <span className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4" />
-                        {format(
-                          new Date(fields.publishedDate),
-                          "MMM d, yyyy"
-                        )}
-                      </span>
-                      <span className="flex items-center gap-2">
-                        <Clock className="h-4 w-4" />
-                        {readingTime}
-                      </span>
-                    </div>
-                    <Link
-                      to={`/blog/${fields.slug}`}
-                      className="inline-flex items-center text-primary font-medium hover:underline"
-                    >
-                      Read more
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                return (
+                  <article
+                    key={post.sys.id}
+                    className="p-6 rounded-2xl bg-card shadow-soft animate-fade-up hover:shadow-md transition-shadow flex flex-col h-full"
+                    style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+                  >
+                    <Link to={`/blog/${fields.slug}`}>
+                      <h2 className="font-display text-xl font-bold text-foreground mb-3 hover:text-primary transition-colors line-clamp-2">
+                        {fields.title}
+                      </h2>
                     </Link>
-                  </div>
-                </article>
-              );
-            })}
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-grow">
+                      {fields.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto pt-4 border-t border-border/50">
+                      <div className="flex items-center gap-3">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          {format(new Date(fields.publishedDate), "MMM d")}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="h-3 w-3" />
+                          {readingTime}
+                        </span>
+                      </div>
+                      <Link
+                        to={`/blog/${fields.slug}`}
+                        className="inline-flex items-center text-primary font-medium hover:underline"
+                      >
+                        Read
+                        <ArrowRight className="ml-1 h-3 w-3" />
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
 
             {regularPosts.length > INITIAL_POSTS_COUNT && (
               <div className="mt-6 text-center">
