@@ -58,15 +58,20 @@ npm run preview
 
 ```
 src/
+├── assets/         # Static assets (images, etc.)
 ├── components/     # Reusable UI components
-│   ├── layout/     # Layout components (Navigation, Footer)
 │   ├── blog/       # Blog-related components
+│   ├── layout/     # Layout components (Navigation, Footer)
 │   ├── seo/        # SEO components
 │   └── ui/         # shadcn/ui components
+├── config/         # Configuration files (SEO metadata)
 ├── hooks/          # Custom React hooks
 ├── lib/            # Utility functions and API clients
 ├── pages/          # Page components
-└── assets/         # Static assets
+functions/
+├── og/             # Dynamic OG image generation
+├── _middleware.ts  # Cloudflare Pages middleware (SEO injection)
+└── sitemap.xml.ts  # Dynamic sitemap generation
 ```
 
 ## 📄 License
