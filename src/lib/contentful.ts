@@ -26,6 +26,18 @@ export interface ContentfulAsset {
   };
 }
 
+export interface Author {
+  sys: {
+    id: string;
+  };
+  fields: {
+    name: string;
+    bio?: string;
+    avatar?: ContentfulAsset;
+    link?: string;
+  };
+}
+
 export interface BlogPostFields {
   title: string;
   slug: string;
@@ -36,6 +48,7 @@ export interface BlogPostFields {
   featured?: boolean;
   coverImage?: ContentfulAsset;
   sameSubjectPosts?: BlogPost[];
+  authors?: Author[];
 }
 
 export interface BlogPost {
