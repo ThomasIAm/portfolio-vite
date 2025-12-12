@@ -26,6 +26,16 @@ export interface ContentfulAsset {
   };
 }
 
+export interface BlogSeries {
+  sys: {
+    id: string;
+  };
+  fields: {
+    title: string;
+    description?: string;
+  };
+}
+
 export interface BlogPostFields {
   title: string;
   slug: string;
@@ -36,6 +46,7 @@ export interface BlogPostFields {
   featured?: boolean;
   coverImage?: ContentfulAsset;
   sameSubjectPosts?: BlogPost[];
+  series?: BlogSeries;
 }
 
 export interface BlogPost {
