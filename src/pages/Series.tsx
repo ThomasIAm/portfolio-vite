@@ -116,7 +116,7 @@ const Series = () => {
                     <CardContent className="p-0">
                       <div className="flex flex-col md:flex-row">
                         {fields.coverImage && (
-                          <div className="md:w-64 md:flex-shrink-0">
+                          <div className="md:w-64 md:flex-shrink-0 md:min-h-[180px]">
                             <OptimizedImage
                               src={`https:${fields.coverImage.fields.file.url}`}
                               alt={fields.title}
