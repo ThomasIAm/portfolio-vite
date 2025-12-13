@@ -161,7 +161,7 @@ export default function BlogPost() {
 
       {/* Cover Image */}
       {fields.coverImage && (
-        <section className="pb-8 md:pb-12">
+        <section className="pt-4 md:pt-8 pb-8 md:pb-12">
           <div className="container">
             <div className="max-w-4xl mx-auto animate-fade-up" style={{ animationDelay: "0.05s" }}>
               <OptimizedImage
