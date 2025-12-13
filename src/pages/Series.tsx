@@ -56,7 +56,10 @@ const Series = () => {
     <Layout>
       <SEO
         title={`${series.fields.title} Series`}
-        description={series.fields.description || `Read all posts in the ${series.fields.title} series.`}
+        description={
+          series.fields.description ||
+          `Read all posts in the ${series.fields.title} series.`
+        }
       />
 
       {/* Hero Section */}
@@ -89,14 +92,15 @@ const Series = () => {
               </p>
             )}
             <p className="mt-4 text-sm text-muted-foreground">
-              {sortedPosts.length} {sortedPosts.length === 1 ? 'post' : 'posts'} in this series
+              {sortedPosts.length} {sortedPosts.length === 1 ? "post" : "posts"}{" "}
+              in this series
             </p>
           </div>
         </div>
       </section>
 
       {/* Posts List */}
-      <section className="pb-16 md:pb-24">
+      <section className="py-16 md:py-20">
         <div className="container">
           <div className="max-w-4xl mx-auto space-y-6">
             {sortedPosts.map((post, index) => {
@@ -116,11 +120,11 @@ const Series = () => {
                     <CardContent className="p-0">
                       <div className="flex flex-col md:flex-row">
                         {fields.coverImage && (
-                          <div className="md:w-64 md:flex-shrink-0 md:min-h-[180px]">
+                          <div className="md:w-80 md:flex-shrink-0">
                             <OptimizedImage
                               src={`https:${fields.coverImage.fields.file.url}`}
                               alt={fields.title}
-                              className="w-full h-48 md:h-full object-cover"
+                              className="w-full h-[13rem] object-cover"
                             />
                           </div>
                         )}
