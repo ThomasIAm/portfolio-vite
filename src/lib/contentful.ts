@@ -1,20 +1,5 @@
 // Types and utilities for blog content (static data loaded at build time)
 
-// Contentful Rich Text Document type
-export interface RichTextDocument {
-  nodeType: 'document';
-  data: Record<string, unknown>;
-  content: RichTextNode[];
-}
-
-export interface RichTextNode {
-  nodeType: string;
-  data: Record<string, unknown>;
-  content?: RichTextNode[];
-  value?: string;
-  marks?: { type: string }[];
-}
-
 // Contentful metadata
 export interface ContentfulMetadata {
   tags: unknown[];
@@ -71,7 +56,7 @@ export interface ContentfulAsset {
 // Blog Author
 export interface BlogAuthorFields {
   name: string;
-  bio?: RichTextDocument;
+  bio?: string;
   avatar?: ContentfulAsset;
   link?: string;
 }
@@ -85,7 +70,7 @@ export interface BlogAuthor {
 // Blog Series
 export interface BlogSeriesFields {
   title: string;
-  description?: RichTextDocument;
+  description?: string;
 }
 
 export interface BlogSeries {
@@ -120,19 +105,4 @@ export function calculateReadingTime(content: string): string {
   const words = content.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / wordsPerMinute);
   return `${minutes} min read`;
-}
-
-// Extract plain text from Contentful Rich Text Document
-export function richTextToPlainText(doc: RichTextDocument | undefined): string {
-  if (!doc || !doc.content) return '';
-  
-  const extractText = (nodes: RichTextNode[]): string => {
-    return nodes.map(node => {
-      if (node.value) return node.value;
-      if (node.content) return extractText(node.content);
-      return '';
-    }).join('');
-  };
-  
-  return extractText(doc.content);
 }
