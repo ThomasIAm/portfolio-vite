@@ -135,17 +135,25 @@ export default function BlogPost() {
               </span>
             </div>
             {fields.series && (
-              <div className="mt-6 p-4 rounded-lg bg-primary/10 border border-primary/20">
-                <div className="flex items-center gap-2 text-primary font-medium mb-1">
-                  <BookOpen className="h-4 w-4" />
-                  Part of series: {fields.series.fields.title}
+              <Link
+                to={`/series/${fields.series.fields.title.toLowerCase().replace(/\s+/g, '-')}`}
+                className="mt-6 p-4 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-between gap-4 group hover:bg-primary/15 hover:border-primary/30 transition-colors"
+              >
+                <div>
+                  <div className="flex items-center gap-2 text-primary font-medium mb-1">
+                    <BookOpen className="h-4 w-4" />
+                    Part of series: {fields.series.fields.title}
+                  </div>
+                  {fields.series.fields.description && (
+                    <p className="text-sm text-muted-foreground line-clamp-1">
+                      {fields.series.fields.description}
+                    </p>
+                  )}
                 </div>
-                {fields.series.fields.description && (
-                  <p className="text-sm text-muted-foreground">
-                    {fields.series.fields.description}
-                  </p>
-                )}
-              </div>
+                <span className="text-primary text-sm font-medium group-hover:underline whitespace-nowrap">
+                  View series →
+                </span>
+              </Link>
             )}
           </div>
         </div>
