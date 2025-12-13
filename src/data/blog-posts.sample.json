@@ -1,0 +1,15 @@
+[
+  {
+    "sys": {
+      "id": "sample-post-1"
+    },
+    "fields": {
+      "title": "Sample Blog Post Title",
+      "slug": "sample-blog-post",
+      "excerpt": "This is a sample excerpt for the blog post. Replace this with actual content from Contentful.",
+      "content": "# Sample Content\n\nThis is placeholder content. Run the fetch-content script to populate with real blog posts.",
+      "publishedDate": "2024-01-01",
+      "featured": false
+    }
+  }
+]
