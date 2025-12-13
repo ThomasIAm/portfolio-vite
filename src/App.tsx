@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Series from "./pages/Series";
 import Contact from "./pages/Contact";
 import Cookies from "./pages/Cookies";
 import Privacy from "./pages/Privacy";
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/projects" element={<Projects />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/series/:slug" element={<Series />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/privacy" element={<Privacy />} />
