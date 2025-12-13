@@ -11,14 +11,10 @@ const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 const previewToken = process.env.CONTENTFUL_PREVIEW_TOKEN;
 
-if (!spaceId) {
-  console.error('❌ CONTENTFUL_SPACE_ID environment variable is required');
-  process.exit(1);
-}
-
-if (!accessToken && !previewToken) {
-  console.error('❌ CONTENTFUL_ACCESS_TOKEN or CONTENTFUL_PREVIEW_TOKEN is required');
-  process.exit(1);
+// Skip fetching if credentials aren't configured
+if (!spaceId || (!accessToken && !previewToken)) {
+  console.log('⚠️ Contentful credentials not configured, using existing blog-posts.json');
+  process.exit(0);
 }
 
 const usePreviewApi = !!previewToken;
