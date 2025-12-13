@@ -2,8 +2,25 @@ import { useQuery } from '@tanstack/react-query';
 import type { BlogPost } from '@/lib/contentful';
 import blogPostsData from '@/data/blog-posts.json';
 
-// Cast the imported JSON to the correct type
-const blogPosts = blogPostsData as BlogPost[];
+// Handle both array format and raw Contentful response format
+function parseBlogPosts(): BlogPost[] {
+  const data = blogPostsData as unknown;
+  
+  // If it's already an array, use it directly
+  if (Array.isArray(data)) {
+    return data as BlogPost[];
+  }
+  
+  // If it's a Contentful response object with items
+  if (data && typeof data === 'object' && 'items' in data) {
+    return (data as { items: BlogPost[] }).items;
+  }
+  
+  // Fallback to empty array
+  return [];
+}
+
+const blogPosts = parseBlogPosts();
 
 export function useBlogPosts() {
   return useQuery<BlogPost[]>({
