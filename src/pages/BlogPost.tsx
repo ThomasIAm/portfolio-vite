@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { BlogContent } from "@/components/blog/BlogContent";
 import { useBlogPost } from "@/hooks/useBlogPosts";
-import { calculateReadingTime } from "@/lib/contentful";
+import { calculateReadingTime, richTextToPlainText } from "@/lib/contentful";
 import { Calendar, Clock, ArrowLeft, RefreshCw, BookOpen } from "lucide-react";
 import { format } from "date-fns";
 import { SEO } from "@/components/seo/SEO";
@@ -142,7 +142,7 @@ export default function BlogPost() {
                 </div>
                 {fields.series.fields.description && (
                   <p className="text-sm text-muted-foreground">
-                    {fields.series.fields.description}
+                    {richTextToPlainText(fields.series.fields.description)}
                   </p>
                 )}
               </div>
