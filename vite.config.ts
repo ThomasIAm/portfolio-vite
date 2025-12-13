@@ -17,8 +17,5 @@ export default defineConfig(({ mode }) => ({
   },
   define: {
     "import.meta.env.VITE_CF_PAGES_URL": JSON.stringify(process.env.CF_PAGES_URL || ""),
-    "import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN": JSON.stringify(process.env.CONTENTFUL_ACCESS_TOKEN || ""),
-    "import.meta.env.VITE_CONTENTFUL_SPACE_ID": JSON.stringify(process.env.CONTENTFUL_SPACE_ID || ""),
-    "import.meta.env.VITE_CONTENTFUL_PREVIEW_TOKEN": JSON.stringify(process.env.CONTENTFUL_PREVIEW_TOKEN || ""),
   },
 }));
