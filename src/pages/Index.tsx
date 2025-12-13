@@ -14,103 +14,51 @@ const personStructuredData = {
   jobTitle: "Lead Cyber Security Consultant",
   worksFor: {
     "@type": "Organization",
-    name: "SALT Cyber Security",
+    name: "SALT Cyber Security"
   },
-  knowsAbout: [
-    "Cyber Security",
-    "Cloudflare",
-    "Zero Trust",
-    "OpenShift",
-    "DevSecOps",
-  ],
-  sameAs: ["https://linkedin.com/in/tvdn", "https://github.com/tvdn"],
+  knowsAbout: ["Cyber Security", "Cloudflare", "Zero Trust", "OpenShift", "DevSecOps"],
+  sameAs: ["https://linkedin.com/in/tvdn", "https://github.com/tvdn"]
 };
-const highlights = [
-  {
-    icon: Shield,
-    title: "Security Expert",
-    description: (
-      <>
-        <a
-          href="https://salt-security.com/diensten/professional-services/architecture-best-practices"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-primary hover:underline"
-        >
+const highlights = [{
+  icon: Shield,
+  title: "Security Expert",
+  description: <>
+        <a href="https://salt-security.com/diensten/professional-services/architecture-best-practices" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
           Cloudflare Solutions Architect
         </a>
         ,{" "}
-        <a
-          href="https://salt-security.com/diensten/professional-services/consultancy-implementatie"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-primary hover:underline"
-        >
+        <a href="https://salt-security.com/diensten/professional-services/consultancy-implementatie" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
           Zero Trust Engineer
         </a>{" "}
         &{" "}
-        <a
-          href="https://redtrain.nl/onze-diensten/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-primary hover:underline"
-        >
+        <a href="https://redtrain.nl/onze-diensten/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
           OpenShift Administrator
         </a>
       </>
-    ),
-  },
-  {
-    icon: Users,
-    title: "Team Leader",
-    description: (
-      <>
+}, {
+  icon: Users,
+  title: "Team Leader",
+  description: <>
         Leading Cloudflare Professional Services and mentoring colleagues at{" "}
-        <a
-          href="https://salt-security.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-primary hover:underline"
-        >
+        <a href="https://salt-security.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
           SALT
         </a>
       </>
-    ),
-  },
-  {
-    icon: Lightbulb,
-    title: "Problem Solver",
-    description:
-      "Breaking down complex security challenges into clear, actionable solutions",
-  },
-];
+}, {
+  icon: Lightbulb,
+  title: "Problem Solver",
+  description: "Breaking down complex security challenges into clear, actionable solutions"
+}];
 export default function Index() {
-  return (
-    <Layout>
-      <SEO
-        title="Thomas van den Nieuwenhoff | Lead Cyber Security Consultant"
-        description="Lead Cyber Security Consultant specializing in Cloudflare, Zero Trust, and OpenShift. Empowering businesses and teams in the digital realm."
-        canonical="/"
-        keywords={[
-          "cyber security consultant",
-          "Cloudflare expert",
-          "Zero Trust",
-          "OpenShift administrator",
-          "security architect",
-          "Netherlands",
-        ]}
-        structuredData={personStructuredData}
-      />
+  return <Layout>
+      <SEO title="Thomas van den Nieuwenhoff | Lead Cyber Security Consultant" description="Lead Cyber Security Consultant specializing in Cloudflare, Zero Trust, and OpenShift. Empowering businesses and teams in the digital realm." canonical="/" keywords={["cyber security consultant", "Cloudflare expert", "Zero Trust", "OpenShift administrator", "security architect", "Netherlands"]} structuredData={personStructuredData} />
       {/* Hero Section */}
       <section className="bg-gradient-hero min-h-[90vh] flex items-center">
         <div className="container py-20 md:py-32">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            <AnimatedSection
-              variant="fade-right"
-              className="flex-1 text-center lg:text-left"
-            >
+            <AnimatedSection variant="fade-right" className="flex-1 text-center lg:text-left">
               <p className="text-primary font-medium mb-4">Hi there, I'm</p>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 font-sans">
                 Thomas van den Nieuwenhoff
               </h1>
               <p className="text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
@@ -130,20 +78,11 @@ export default function Index() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection
-              variant="scale"
-              delay={200}
-              className="flex-shrink-0"
-            >
+            <AnimatedSection variant="scale" delay={200} className="flex-shrink-0">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-warm rounded-full blur-2xl opacity-20 animate-float" />
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-background/60 via-transparent to-transparent z-[1]" />
-                <a
-                  href="https://www.swoodroom.nl"
-                  target="_blank"
-                  rel="noopener"
-                  className="absolute left-4 bottom-4 text-xs text-muted-foreground hover:text-primary bg-background/80 px-2 py-0.5 rounded z-10 transition-colors"
-                >
+                <a href="https://www.swoodroom.nl" target="_blank" rel="noopener" className="absolute left-4 bottom-4 text-xs text-muted-foreground hover:text-primary bg-background/80 px-2 py-0.5 rounded z-10 transition-colors">
                   My partner Sanne ↗
                 </a>
 
@@ -151,13 +90,7 @@ export default function Index() {
                   Me
                 </span>
 
-                <OptimizedImage
-                  src={profileImage}
-                  alt="Thomas van den Nieuwenhoff"
-                  className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background"
-                  preset="avatarLarge"
-                  showSkeleton={false}
-                />
+                <OptimizedImage src={profileImage} alt="Thomas van den Nieuwenhoff" className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background" preset="avatarLarge" showSkeleton={false} />
               </div>
             </AnimatedSection>
           </div>
@@ -178,12 +111,7 @@ export default function Index() {
           </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {highlights.map((item, index) => (
-              <AnimatedSection
-                key={item.title}
-                variant="fade-up"
-                delay={index * 100}
-              >
+            {highlights.map((item, index) => <AnimatedSection key={item.title} variant="fade-up" delay={index * 100}>
                 <div className="p-8 rounded-2xl bg-card shadow-soft hover-lift h-full">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                     <item.icon className="h-6 w-6 text-primary" />
@@ -193,8 +121,7 @@ export default function Index() {
                   </h3>
                   <p className="text-muted-foreground">{item.description}</p>
                 </div>
-              </AnimatedSection>
-            ))}
+              </AnimatedSection>)}
           </div>
         </div>
       </section>
@@ -202,10 +129,7 @@ export default function Index() {
       {/* CTA Section */}
       <section className="py-20 bg-muted/50">
         <div className="container">
-          <AnimatedSection
-            variant="scale"
-            className="max-w-3xl mx-auto text-center"
-          >
+          <AnimatedSection variant="scale" className="max-w-3xl mx-auto text-center">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
               Let's Build Something Great Together
             </h2>
@@ -222,6 +146,5 @@ export default function Index() {
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 }
