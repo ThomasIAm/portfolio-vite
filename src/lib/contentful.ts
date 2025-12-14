@@ -1,73 +1,103 @@
-import { createClient, ContentfulClientApi } from 'contentful';
+// Types and utilities for blog content (static data loaded at build time)
 
-const spaceId = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
-const accessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
-const previewToken = import.meta.env.VITE_CONTENTFUL_PREVIEW_TOKEN;
-
-// Use Preview API if preview token is provided (shows published + drafts)
-const usePreviewApi = !!previewToken;
-
-let client: ContentfulClientApi<undefined> | null = null;
-
-if (spaceId && (accessToken || previewToken)) {
-  client = createClient({
-    space: spaceId,
-    accessToken: usePreviewApi ? previewToken : accessToken,
-    host: usePreviewApi ? 'preview.contentful.com' : 'cdn.contentful.com',
-  });
+// Contentful metadata
+export interface ContentfulMetadata {
+  tags: unknown[];
+  concepts: unknown[];
 }
 
+// Contentful sys link
+export interface ContentfulSysLink {
+  sys: {
+    type: 'Link';
+    linkType: string;
+    id: string;
+  };
+}
+
+// Contentful sys object
+export interface ContentfulSys {
+  space: ContentfulSysLink;
+  type: 'Entry' | 'Asset';
+  id: string;
+  contentType?: ContentfulSysLink;
+  revision: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt?: string;
+  firstPublishedAt?: string;
+  publishedVersion?: number;
+  environment: ContentfulSysLink;
+  locale: string;
+}
+
+// Contentful Asset
+export interface ContentfulAsset {
+  metadata: ContentfulMetadata;
+  sys: ContentfulSys;
+  fields: {
+    title: string;
+    description?: string;
+    file: {
+      url: string;
+      details: {
+        size: number;
+        image?: {
+          width: number;
+          height: number;
+        };
+      };
+      fileName: string;
+      contentType: string;
+    };
+  };
+}
+
+// Blog Author
+export interface BlogAuthorFields {
+  name: string;
+  bio?: string;
+  avatar?: ContentfulAsset;
+  link?: string;
+}
+
+export interface BlogAuthor {
+  metadata: ContentfulMetadata;
+  sys: ContentfulSys;
+  fields: BlogAuthorFields;
+}
+
+// Blog Series
+export interface BlogSeriesFields {
+  title: string;
+  description?: string;
+}
+
+export interface BlogSeries {
+  metadata: ContentfulMetadata;
+  sys: ContentfulSys;
+  fields: BlogSeriesFields;
+}
+
+// Blog Post
 export interface BlogPostFields {
   title: string;
   slug: string;
   excerpt: string;
   content: string;
   publishedDate: string;
-  modifiedDate: string;
+  modifiedDate?: string;
   featured?: boolean;
+  author?: BlogAuthor[];
+  coverImage?: ContentfulAsset;
+  sameSubjectPosts?: BlogPost[];
+  series?: BlogSeries;
 }
 
 export interface BlogPost {
-  sys: {
-    id: string;
-  };
+  metadata: ContentfulMetadata;
+  sys: ContentfulSys;
   fields: BlogPostFields;
-}
-
-function isValidBlogPost(item: unknown): item is BlogPost {
-  const post = item as BlogPost;
-  const fields = post?.fields;
-  return !!(
-    post?.sys?.id &&
-    fields?.title &&
-    fields?.slug &&
-    fields?.excerpt &&
-    fields?.content &&
-    fields?.publishedDate
-  );
-}
-
-export async function getBlogPosts(): Promise<BlogPost[]> {
-  if (!client) {
-    return [];
-  }
-  const response = await client.getEntries({
-    content_type: 'blogPost',
-    order: ['-sys.createdAt'],
-  });
-  return (response.items as unknown as BlogPost[]).filter(isValidBlogPost);
-}
-
-export async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  if (!client) {
-    return null;
-  }
-  const response = await client.getEntries({
-    content_type: 'blogPost',
-    'fields.slug': slug,
-    limit: 1,
-  } as any);
-  return (response.items[0] as unknown as BlogPost) || null;
 }
 
 export function calculateReadingTime(content: string): string {
