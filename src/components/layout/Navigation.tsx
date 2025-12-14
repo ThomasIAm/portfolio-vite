@@ -3,7 +3,7 @@ import { Home, User, FolderOpen, BookOpen, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/", label: "Home", icon: Home },
+  { href: "/", label: "Home", icon: Home, exact: true },
   { href: "/about", label: "About", icon: User },
   { href: "/projects", label: "Projects", icon: FolderOpen },
   { href: "/blog", label: "Blog", icon: BookOpen },
@@ -18,7 +18,9 @@ export function Navigation() {
       <div className="container flex items-center justify-around h-16 max-w-lg mx-auto">
         {navLinks.map((link) => {
           const Icon = link.icon;
-          const isActive = location.pathname === link.href;
+          const isActive = link.exact 
+            ? location.pathname === link.href 
+            : location.pathname === link.href || location.pathname.startsWith(link.href + "/");
           
           return (
             <Link

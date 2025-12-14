@@ -138,7 +138,7 @@ export default function BlogPost() {
             </div>
             {fields.series && (
               <Link
-                to={`/series/${fields.series.fields.title
+                to={`/blog/series/${fields.series.fields.title
                   .toLowerCase()
                   .replace(/\s+/g, "-")}`}
                 className="mt-6 p-4 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-between gap-4 group hover:bg-primary/15 hover:border-primary/30 transition-colors"
