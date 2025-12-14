@@ -1,9 +1,5 @@
-declare module '*.json' {
-  const value: unknown;
-  export default value;
-}
-
 declare module '@/data/blog-posts.json' {
-  const value: unknown;
+  import type { BlogPost } from '@/lib/contentful';
+  const value: BlogPost[];
   export default value;
 }
