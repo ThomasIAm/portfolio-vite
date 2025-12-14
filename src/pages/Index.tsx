@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SEO } from "@/components/seo/SEO";
 import { OptimizedImage } from "@/components/ui/optimized-image";
-import profileImage from "@/assets/profile.jpg";
+const profileImage = "/assets/profile.jpg";
 const personStructuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
