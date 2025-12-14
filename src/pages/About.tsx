@@ -6,7 +6,7 @@ import { SEO } from "@/components/seo/SEO";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
-import profileImage from "@/assets/profile.jpg";
+const profileImage = "/assets/profile.jpg";
 
 const INITIAL_CERTS_COUNT = 8;
 
