@@ -138,9 +138,9 @@ export default function BlogPost() {
             </div>
             
             {/* Authors */}
-            {fields.authors && fields.authors.length > 0 && (
+            {fields.author && fields.author.length > 0 && (
               <div className="flex flex-wrap items-center gap-4">
-                {fields.authors.map((author) => (
+                {fields.author.map((author) => (
                   <div key={author.sys.id} className="flex items-center gap-3">
                     {author.fields.avatar ? (
                       <img
@@ -173,6 +173,7 @@ export default function BlogPost() {
                   </div>
                 ))}
               </div>
+            )}
             {fields.series && (
               <Link
                 to={`/blog/series/${fields.series.fields.title
