@@ -1,19 +1,27 @@
 #!/usr/bin/env node
 
 import { createClient } from 'contentful';
-import { writeFileSync, mkdirSync } from 'fs';
+import { writeFileSync, mkdirSync, copyFileSync, existsSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const dataDir = join(__dirname, '..', 'src', 'data');
+const outputPath = join(dataDir, 'blog-posts.json');
+const samplePath = join(dataDir, 'blog-posts.sample.json');
 
 const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 const previewToken = process.env.CONTENTFUL_PREVIEW_TOKEN;
 
-// Skip fetching if credentials aren't configured
+// If credentials aren't configured, copy sample data to blog-posts.json
 if (!spaceId || (!accessToken && !previewToken)) {
-  console.log('⚠️ Contentful credentials not configured, using existing blog-posts.json');
+  console.log('⚠️ Contentful credentials not configured, using sample data');
+  mkdirSync(dataDir, { recursive: true });
+  if (existsSync(samplePath)) {
+    copyFileSync(samplePath, outputPath);
+    console.log('📝 Copied blog-posts.sample.json to blog-posts.json');
+  }
   process.exit(0);
 }
 
@@ -57,11 +65,9 @@ async function main() {
     const posts = await fetchBlogPosts();
     
     // Ensure data directory exists
-    const dataDir = join(__dirname, '..', 'src', 'data');
     mkdirSync(dataDir, { recursive: true });
     
     // Write posts to JSON file
-    const outputPath = join(dataDir, 'blog-posts.json');
     writeFileSync(outputPath, JSON.stringify(posts, null, 2));
     
     console.log(`📝 Wrote ${posts.length} posts to ${outputPath}`);

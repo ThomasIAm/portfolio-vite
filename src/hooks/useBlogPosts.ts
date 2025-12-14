@@ -1,21 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import type { BlogPost } from '@/lib/contentful';
-import blogPostsSample from '@/data/blog-posts.sample.json';
-
-// Try to load blog-posts.json, fall back to sample data
-let blogPostsData: unknown = blogPostsSample;
-
-try {
-  // @ts-expect-error - blog-posts.json may not exist at build time
-  const realData = await import('@/data/blog-posts.json');
-  blogPostsData = realData.default || realData;
-} catch {
-  // Use sample data as fallback
-}
+import blogPostsData from '@/data/blog-posts.json';
 
 // Handle both array format and raw Contentful response format
 function parseBlogPosts(): BlogPost[] {
-  const data = blogPostsData;
+  const data = blogPostsData as unknown;
   
   // If it's already an array, use it directly
   if (Array.isArray(data)) {
