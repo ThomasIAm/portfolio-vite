@@ -1,14 +1,11 @@
-
-# Pull Request Template
-
-## 📌 Description
+# 📌 Description
 Please include a summary of the changes and the related issue. Explain the motivation and context behind this PR.
 
 Fixes # (issue)
 
 ---
 
-## ✅ Type of Change
+# ✅ Type of Change
 Please delete options that are not relevant:
 
 - [ ] Bug fix (non-breaking change that fixes an issue)
@@ -18,7 +15,7 @@ Please delete options that are not relevant:
 
 ---
 
-## 🔍 How Has This Been Tested?
+# 🔍 How Has This Been Tested?
 Describe the tests you ran to verify your changes. Include any relevant details for your test configuration.
 
 - [ ] Unit tests
@@ -27,12 +24,12 @@ Describe the tests you ran to verify your changes. Include any relevant details 
 
 ---
 
-## 📷 Screenshots (if applicable)
+# 📷 Screenshots (if applicable)
 Add screenshots to help explain your changes.
 
 ---
 
-## ✅ Checklist
+# ✅ Checklist
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my code
 - [ ] I have commented my code, particularly in hard-to-understand areas
@@ -44,11 +41,11 @@ Add screenshots to help explain your changes.
 
 ---
 
-## 🔗 Related Issues or Discussions
+# 🔗 Related Issues or Discussions
 Link to any related issues, discussions, or resources.
 
 ---
 
-## 📦 Additional Notes
+# 📦 Additional Notes
 Add any other context or information about the pull request here.
 ``
