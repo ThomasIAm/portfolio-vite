@@ -20,7 +20,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
           flexDirection: "column",
           width: "100%",
           height: "100%",
-          background: "linear-gradient(180deg, #1f1714 0%, #2a221d 100%)",
+          background: "linear-gradient(180deg, #f8f6f2 0%, #f2ede6 100%)",
           padding: "60px",
           fontFamily: "system-ui, sans-serif",
         }}
@@ -33,7 +33,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
             right: "-100px",
             width: "500px",
             height: "500px",
-            background: "radial-gradient(circle, rgba(226, 115, 81, 0.15) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(226, 115, 81, 0.12) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />
@@ -70,13 +70,13 @@ export const onRequest: PagesFunction = async ({ request }) => {
             >
               <span
                 style={{
-                  background: "rgba(226, 115, 81, 0.15)",
-                  color: "#e27351",
+                  background: "rgba(226, 115, 81, 0.12)",
+                  color: "#d15a3a",
                   padding: "10px 20px",
                   borderRadius: "24px",
                   fontSize: "18px",
                   fontWeight: 600,
-                  border: "1px solid rgba(226, 115, 81, 0.3)",
+                  border: "1px solid rgba(226, 115, 81, 0.25)",
                 }}
               >
                 Blog Post
@@ -89,7 +89,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
             style={{
               fontSize: type === "article" ? "52px" : "60px",
               fontWeight: 700,
-              color: "#f5f0e8",
+              color: "#302823",
               margin: 0,
               lineHeight: 1.2,
               maxWidth: "900px",
@@ -103,7 +103,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
           <p
             style={{
               fontSize: "26px",
-              color: "#a89a8a",
+              color: "#7a706a",
               margin: "24px 0 0 0",
               lineHeight: 1.5,
               maxWidth: "750px",
@@ -119,7 +119,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: "1px solid rgba(69, 56, 46, 0.6)",
+            borderTop: "1px solid #e0d8d0",
             paddingTop: "30px",
           }}
         >
@@ -144,7 +144,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
               style={{
                 fontSize: "24px",
                 fontWeight: 600,
-                color: "#f5f0e8",
+                color: "#302823",
               }}
             >
               Thomas van den Nieuwenhoff
@@ -170,7 +170,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
             <span
               style={{
                 fontSize: "18px",
-                color: "#a89a8a",
+                color: "#7a706a",
               }}
             >
               Cyber Security Consultant

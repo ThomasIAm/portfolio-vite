@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Award, BookOpen, ChevronDown, ExternalLink, Heart, ShieldCheck, Trophy } from "lucide-react";
+import {
+  Award,
+  BookOpen,
+  ChevronDown,
+  ExternalLink,
+  Heart,
+  ShieldCheck,
+  Trophy,
+} from "lucide-react";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SEO } from "@/components/seo/SEO";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -120,24 +128,30 @@ const certifications: Certification[] = [
     year: "2023",
     categories: ["Cloudflare"],
     logo: "/assets/certifications/asa.png",
-    proofUrl: "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e",
-    infoUrl: "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e",
   },
   {
     name: "Cloudflare Zero Trust Engineer",
     year: "2025",
     categories: ["Cloudflare"],
     logo: "/assets/certifications/zte.png",
-    proofUrl: "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4",
-    infoUrl: "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4",
   },
   {
     name: "Cloudflare Accredited Configuration Engineer",
     year: "2025",
     categories: ["Cloudflare"],
     logo: "/assets/certifications/ace.png",
-    proofUrl: "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134",
-    infoUrl: "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134",
   },
   {
     name: "Cloudflare Accredited MSSP - Customer Success",
@@ -151,8 +165,10 @@ const certifications: Certification[] = [
     year: "2025",
     categories: ["Cloudflare"],
     logo: "/assets/certifications/amsp.png",
-    proofUrl: "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f",
-    infoUrl: "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f",
   },
   {
     name: "Cloudflare Accredited MSSP - Zero Trust",
@@ -166,8 +182,10 @@ const certifications: Certification[] = [
     year: "2025",
     categories: ["Cloudflare"],
     logo: "/assets/certifications/ase.png",
-    proofUrl: "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4",
-    infoUrl: "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4",
   },
   {
     name: "Cloudflare One - Service Delivery",
@@ -216,8 +234,10 @@ const certifications: Certification[] = [
     year: "2025",
     categories: ["Cloudflare"],
     logo: "/assets/certifications/asp2.png",
-    proofUrl: "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9",
-    infoUrl: "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9",
+    proofUrl:
+      "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9",
+    infoUrl:
+      "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9",
   },
   {
     name: "Cloudflare Implementation Specialist - Zero Trust Services",
@@ -232,7 +252,8 @@ const certifications: Certification[] = [
     year: "2024",
     categories: ["Red Hat"],
     logo: "/assets/certifications/ex280.png",
-    proofUrl: "https://www.credly.com/badges/18f84f10-92f3-4667-9641-2eaa96ad23a4",
+    proofUrl:
+      "https://www.credly.com/badges/18f84f10-92f3-4667-9641-2eaa96ad23a4",
     infoUrl: "https://www.redhat.com/en/services/certification/rhcs-paas",
   },
   // Cybersecurity
@@ -242,7 +263,8 @@ const certifications: Certification[] = [
     categories: ["Cybersecurity"],
     logo: "/assets/certifications/opba.png",
     proofUrl: "https://verify.skilljar.com/c/dp7nekvp8ety",
-    infoUrl: "https://www.1password.academy/path/1password-for-business-administrators-certificate",
+    infoUrl:
+      "https://www.1password.academy/path/1password-for-business-administrators-certificate",
     colors: vendorColors.onepassword,
   },
   {
@@ -268,8 +290,10 @@ const certifications: Certification[] = [
     year: "2022",
     categories: ["Cybersecurity", "Cloud"],
     logo: "/assets/certifications/sc900.png",
-    proofUrl: "https://www.credly.com/badges/05cde803-0d94-47a5-82f9-a8544f93e681",
-    infoUrl: "https://docs.microsoft.com/learn/certifications/security-compliance-and-identity-fundamentals/",
+    proofUrl:
+      "https://www.credly.com/badges/05cde803-0d94-47a5-82f9-a8544f93e681",
+    infoUrl:
+      "https://docs.microsoft.com/learn/certifications/security-compliance-and-identity-fundamentals/",
     colors: vendorColors.microsoft,
   },
   {
@@ -277,7 +301,8 @@ const certifications: Certification[] = [
     year: "2021",
     categories: ["Cybersecurity"],
     logo: "/assets/certifications/thm.svg",
-    proofUrl: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-HA7S4NNHD6.png",
+    proofUrl:
+      "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-HA7S4NNHD6.png",
     colors: vendorColors.tryhackme,
   },
   // Cloud
@@ -286,8 +311,10 @@ const certifications: Certification[] = [
     year: "2020",
     categories: ["Cloud"],
     logo: "/assets/certifications/az900.png",
-    proofUrl: "https://www.credly.com/badges/352815b1-a44e-4e0f-8f47-91ffeeda86ae",
-    infoUrl: "https://docs.microsoft.com/learn/certifications/azure-fundamentals/",
+    proofUrl:
+      "https://www.credly.com/badges/352815b1-a44e-4e0f-8f47-91ffeeda86ae",
+    infoUrl:
+      "https://docs.microsoft.com/learn/certifications/azure-fundamentals/",
     colors: vendorColors.microsoft,
   },
   // Development
@@ -304,7 +331,8 @@ const certifications: Certification[] = [
     year: "2021",
     categories: ["Development"],
     logo: "/assets/certifications/cga.png",
-    proofUrl: "https://www.credly.com/badges/67afd7d7-b335-419a-91bc-61661bf7b0ab",
+    proofUrl:
+      "https://www.credly.com/badges/67afd7d7-b335-419a-91bc-61661bf7b0ab",
     infoUrl: "https://university.gitlab.com/pages/certifications",
     colors: vendorColors.gitlab,
   },
@@ -313,28 +341,34 @@ const certifications: Certification[] = [
     year: "2019",
     categories: ["Development"],
     proofUrl: "https://www.udemy.com/certificate/UC-8G20KC5A/",
-    infoUrl: "https://www.udemy.com/course/learn-object-oriented-php-by-building-a-complete-website/",
+    infoUrl:
+      "https://www.udemy.com/course/learn-object-oriented-php-by-building-a-complete-website/",
   },
   {
     name: "M001: MongoDB Basics",
     year: "2018",
     categories: ["Development"],
     logo: "/assets/certifications/mongo.jpg",
-    proofUrl: "https://university.mongodb.com/course_completion/27a523a4-712f-432c-9a0a-1f20c1a9",
+    proofUrl:
+      "https://university.mongodb.com/course_completion/27a523a4-712f-432c-9a0a-1f20c1a9",
     colors: vendorColors.mongodb,
   },
 ];
 
 // Get all unique categories and count certs per category
-const categories = [...new Set(certifications.flatMap((cert) => cert.categories))];
+const categories = [
+  ...new Set(certifications.flatMap((cert) => cert.categories)),
+];
 
-const getCertsByCategory = (category: string) => certifications.filter((cert) => cert.categories.includes(category));
+const getCertsByCategory = (category: string) =>
+  certifications.filter((cert) => cert.categories.includes(category));
 
 const values = [
   {
     icon: BookOpen,
     title: "Continuous Learning",
-    description: "Staying up-to-date with the latest tools and techniques to shield businesses from cyber threats.",
+    description:
+      "Staying up-to-date with the latest tools and techniques to shield businesses from cyber threats.",
   },
   {
     icon: Heart,
@@ -351,10 +385,12 @@ const values = [
 ];
 
 export default function About() {
-  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
+  const [expandedCategories, setExpandedCategories] = useState<
+    Record<string, boolean>
+  >({});
 
   const toggleCategory = (category: string) => {
-    setExpandedCategories(prev => ({ ...prev, [category]: !prev[category] }));
+    setExpandedCategories((prev) => ({ ...prev, [category]: !prev[category] }));
   };
 
   return (
@@ -389,10 +425,16 @@ export default function About() {
                   showSkeleton={false}
                 />
               </div>
-              <div className="text-center md:text-left animate-fade-up" style={{ animationDelay: "0.1s" }}>
-                <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">About Me</h1>
+              <div
+                className="text-center md:text-left animate-fade-up"
+                style={{ animationDelay: "0.1s" }}
+              >
+                <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+                  About Me
+                </h1>
                 <p className="text-xl text-muted-foreground">
-                  Lead Cyber Security Consultant with a passion for empowering businesses in the digital realm.
+                  Lead Cyber Security Consultant with a passion for empowering
+                  businesses in the digital realm.
                 </p>
               </div>
             </div>
@@ -405,8 +447,12 @@ export default function About() {
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <AnimatedSection className="text-center mb-16">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">My Journey</h2>
-              <p className="text-muted-foreground">A path driven by curiosity and continuous growth</p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                My Journey
+              </h2>
+              <p className="text-muted-foreground">
+                A path driven by curiosity and continuous growth
+              </p>
             </AnimatedSection>
 
             <div className="relative">
@@ -414,21 +460,30 @@ export default function About() {
               <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/30 md:-translate-x-0.5" />
 
               {/* Milestone 1 */}
-              <AnimatedSection variant="fade-right" delay={100} className="relative mb-12">
+              <AnimatedSection
+                variant="fade-right"
+                delay={100}
+                className="relative mb-12"
+              >
                 <div className="flex items-start gap-6 md:block">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2">
                     <ShieldCheck className="w-4 h-4 text-primary-foreground" />
                   </div>
                   <div className="flex-1 md:w-1/2 md:ml-auto md:pl-12">
                     <div className="p-6 rounded-2xl bg-card shadow-soft border border-border/50">
-                      <span className="text-sm font-medium text-primary mb-2 block">Foundation</span>
+                      <span className="text-sm font-medium text-primary mb-2 block">
+                        Foundation
+                      </span>
                       <h3 className="font-display text-xl font-semibold text-foreground mb-3">
                         Tech Background & Expertise
                       </h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        With years of experience and a robust tech background, I focus on guiding my team and clients to
-                        success in the dynamic cyber security landscape. As a certified Cloudflare Solutions Architect
-                        and OpenShift Administrator, I stay current with the latest tools and techniques.
+                        With years of experience and a robust tech background, I
+                        focus on guiding my team and clients to success in the
+                        dynamic cyber security landscape. As a certified
+                        Cloudflare Solutions Architect and OpenShift
+                        Administrator, I stay current with the latest tools and
+                        techniques.
                       </p>
                     </div>
                   </div>
@@ -436,21 +491,29 @@ export default function About() {
               </AnimatedSection>
 
               {/* Milestone 2 */}
-              <AnimatedSection variant="fade-left" delay={200} className="relative mb-12">
+              <AnimatedSection
+                variant="fade-left"
+                delay={200}
+                className="relative mb-12"
+              >
                 <div className="flex items-start gap-6 md:block">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent shadow-lg shadow-accent/30 flex items-center justify-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2">
                     <Heart className="w-4 h-4 text-accent-foreground" />
                   </div>
                   <div className="flex-1 md:w-1/2 md:pr-12 md:text-right">
                     <div className="p-6 rounded-2xl bg-card shadow-soft border border-border/50">
-                      <span className="text-sm font-medium text-accent mb-2 block">Leadership</span>
+                      <span className="text-sm font-medium text-accent mb-2 block">
+                        Leadership
+                      </span>
                       <h3 className="font-display text-xl font-semibold text-foreground mb-3">
                         Team Growth & Collaboration
                       </h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        My role as lead consultant extends beyond finding solutions — I'm committed to creating a
-                        collaborative and supportive environment within my team, where we learn from each other and
-                        continuously develop our skills.
+                        My role as lead consultant extends beyond finding
+                        solutions — I'm committed to creating a collaborative
+                        and supportive environment within my team, where we
+                        learn from each other and continuously develop our
+                        skills.
                       </p>
                     </div>
                   </div>
@@ -458,21 +521,29 @@ export default function About() {
               </AnimatedSection>
 
               {/* Milestone 3 */}
-              <AnimatedSection variant="fade-right" delay={300} className="relative">
+              <AnimatedSection
+                variant="fade-right"
+                delay={300}
+                className="relative"
+              >
                 <div className="flex items-start gap-6 md:block">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary shadow-lg shadow-primary/30 flex items-center justify-center z-10 md:absolute md:left-1/2 md:-translate-x-1/2">
                     <BookOpen className="w-4 h-4 text-primary-foreground" />
                   </div>
                   <div className="flex-1 md:w-1/2 md:ml-auto md:pl-12">
                     <div className="p-6 rounded-2xl bg-card shadow-soft border border-border/50">
-                      <span className="text-sm font-medium text-primary mb-2 block">Philosophy</span>
+                      <span className="text-sm font-medium text-primary mb-2 block">
+                        Philosophy
+                      </span>
                       <h3 className="font-display text-xl font-semibold text-foreground mb-3">
                         Education & Empowerment
                       </h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        I believe cybersecurity isn't just about implementing technology — it's about educating and
-                        empowering individuals within organizations. I communicate clearly and engagingly with clients,
-                        breaking down complex concepts in an understandable way.
+                        I believe cybersecurity isn't just about implementing
+                        technology — it's about educating and empowering
+                        individuals within organizations. I communicate clearly
+                        and engagingly with clients, breaking down complex
+                        concepts in an understandable way.
                       </p>
                     </div>
                   </div>
@@ -487,7 +558,9 @@ export default function About() {
       <section className="py-20 md:py-28 bg-muted/50">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">What I Value</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              What I Value
+            </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -497,10 +570,12 @@ export default function About() {
                 className="p-8 rounded-2xl bg-card shadow-soft animate-fade-up"
                 style={{ animationDelay: `${0.1 * (index + 1)}s` }}
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
-                  <value.icon className="h-6 w-6 text-accent" />
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                  <value.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-3">{value.title}</h3>
+                <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+                  {value.title}
+                </h3>
                 <p className="text-muted-foreground">{value.description}</p>
               </div>
             ))}
@@ -532,11 +607,14 @@ export default function About() {
             </TabsList>
 
             {categories.map((category) => {
-              const categoryFallback = categoryColors[category] || categoryColors.Development;
+              const categoryFallback =
+                categoryColors[category] || categoryColors.Development;
               const allCerts = getCertsByCategory(category);
               const isExpanded = expandedCategories[category];
-              const visibleCerts = isExpanded ? allCerts : allCerts.slice(0, INITIAL_CERTS_COUNT);
-              
+              const visibleCerts = isExpanded
+                ? allCerts
+                : allCerts.slice(0, INITIAL_CERTS_COUNT);
+
               return (
                 <TabsContent key={category} value={category} className="mt-0">
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -544,7 +622,11 @@ export default function About() {
                       // Use cert-specific colors if defined, otherwise fall back to category colors
                       const colors = cert.colors || categoryFallback;
                       return (
-                        <AnimatedSection key={`${category}-${cert.name}`} variant="scale" delay={index * 50}>
+                        <AnimatedSection
+                          key={`${category}-${cert.name}`}
+                          variant="scale"
+                          delay={index * 50}
+                        >
                           <div
                             className={`group relative p-6 rounded-2xl bg-gradient-to-b ${colors.light} ${colors.dark} border border-foreground/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col`}
                           >
@@ -577,7 +659,9 @@ export default function About() {
                               </h3>
                               {/* Year and Links - pinned to bottom */}
                               <div className="mt-auto pt-3 flex flex-col items-center gap-2">
-                                <span className={`px-3 py-1 rounded-full ${colors.accent} text-xs font-semibold`}>
+                                <span
+                                  className={`px-3 py-1 rounded-full ${colors.accent} text-xs font-semibold`}
+                                >
                                   {cert.year}
                                 </span>
                                 <div className="flex justify-center gap-3 min-h-[24px]">
@@ -616,7 +700,7 @@ export default function About() {
                       );
                     })}
                   </div>
-                  
+
                   {allCerts.length > INITIAL_CERTS_COUNT && (
                     <div className="mt-8 text-center">
                       <Button
@@ -625,8 +709,16 @@ export default function About() {
                         onClick={() => toggleCategory(category)}
                         className="gap-2"
                       >
-                        {isExpanded ? "Show Less" : `Show More (${allCerts.length - INITIAL_CERTS_COUNT} more)`}
-                        <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+                        {isExpanded
+                          ? "Show Less"
+                          : `Show More (${
+                              allCerts.length - INITIAL_CERTS_COUNT
+                            } more)`}
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${
+                            isExpanded ? "rotate-180" : ""
+                          }`}
+                        />
                       </Button>
                     </div>
                   )}
