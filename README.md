@@ -65,14 +65,33 @@ src/
 │   ├── seo/        # SEO components
 │   └── ui/         # shadcn/ui components
 ├── config/         # Configuration files (SEO metadata)
+├── data/           # Static data (blog posts JSON)
 ├── hooks/          # Custom React hooks
 ├── lib/            # Utility functions and API clients
 ├── pages/          # Page components
+scripts/
+└── fetch-content.mjs  # Build-time content fetching from Contentful
 functions/
+├── api/            # API endpoints (OG metadata fetching)
 ├── og/             # Dynamic OG image generation
 ├── _middleware.ts  # Cloudflare Pages middleware (SEO injection)
 └── sitemap.xml.ts  # Dynamic sitemap generation
 ```
+
+## 🔗 Routes
+
+| Route | Description |
+|-------|-------------|
+| `/` | Home page |
+| `/about` | About page with certifications |
+| `/projects` | Projects showcase |
+| `/blog` | Blog listing with featured carousel |
+| `/blog/:slug` | Individual blog post |
+| `/blog/series/:slug` | Blog series page |
+| `/contact` | Contact page |
+| `/privacy` | Privacy policy |
+| `/cookies` | Cookie policy |
+| `/notice` | Legal notice and attributions |
 
 ## 📄 License
 

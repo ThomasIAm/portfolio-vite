@@ -1,0 +1,459 @@
+[
+  {
+    "metadata": {
+      "tags": [],
+      "concepts": []
+    },
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "1u3dqblumu33"
+        }
+      },
+      "type": "Entry",
+      "id": "2tzy1tMRQfonEizhdL6yP1",
+      "contentType": {
+        "sys": {
+          "type": "Link",
+          "linkType": "ContentType",
+          "id": "blogPost"
+        }
+      },
+      "revision": 2,
+      "createdAt": "2025-12-08T22:03:00.547Z",
+      "updatedAt": "2025-12-13T21:17:27.260Z",
+      "publishedAt": "2025-12-13T21:17:27.260Z",
+      "firstPublishedAt": "2025-12-08T22:10:28.757Z",
+      "publishedVersion": 31,
+      "environment": {
+        "sys": {
+          "id": "master",
+          "type": "Link",
+          "linkType": "Environment"
+        }
+      },
+      "locale": "en-US"
+    },
+    "fields": {
+      "title": "Example Blog Post Title",
+      "slug": "example-blog-post-slug",
+      "author": [
+        {
+          "metadata": {
+            "tags": [],
+            "concepts": []
+          },
+          "sys": {
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "1u3dqblumu33"
+              }
+            },
+            "type": "Entry",
+            "id": "y95XhuhGw65C4vKWCfqEm",
+            "contentType": {
+              "sys": {
+                "type": "Link",
+                "linkType": "ContentType",
+                "id": "blogAuthor"
+              }
+            },
+            "revision": 2,
+            "createdAt": "2025-12-07T21:16:43.771Z",
+            "updatedAt": "2025-12-13T21:31:50.038Z",
+            "publishedAt": "2025-12-13T21:31:50.038Z",
+            "firstPublishedAt": "2025-12-07T21:21:43.444Z",
+            "publishedVersion": 7,
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "locale": "en-US"
+          },
+          "fields": {
+            "name": "Example Author Name",
+            "bio": "Example author bio.",
+            "avatar": {
+              "metadata": {
+                "tags": [],
+                "concepts": []
+              },
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "1u3dqblumu33"
+                  }
+                },
+                "type": "Asset",
+                "id": "ZSe5UWSdjASJUYvujvBNo",
+                "revision": 1,
+                "createdAt": "2025-12-07T21:20:15.162Z",
+                "updatedAt": "2025-12-07T21:21:19.060Z",
+                "publishedAt": "2025-12-07T21:21:19.060Z",
+                "firstPublishedAt": "2025-12-07T21:21:19.060Z",
+                "publishedVersion": 4,
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "locale": "en-US"
+              },
+              "fields": {
+                "title": "Example avatar title",
+                "description": "Example avatar description.",
+                "file": {
+                  "url": "//images.ctfassets.net/1u3dqblumu33/ZSe5UWSdjASJUYvujvBNo/1ae7e82fe64a2a21fdfdc40928fc6b5a/profile.jpg",
+                  "details": {
+                    "size": 1021194,
+                    "image": {
+                      "width": 1920,
+                      "height": 1439
+                    }
+                  },
+                  "fileName": "profile.jpg",
+                  "contentType": "image/jpeg"
+                }
+              }
+            },
+            "link": "https://example.com"
+          }
+        }
+      ],
+      "excerpt": "Example blog post excerpt.",
+      "content": "Example blog post content.",
+      "modifiedDate": "2022-01-28T12:00+00:00",
+      "publishedDate": "2022-01-27T12:00+00:00",
+      "featured": true,
+      "series": {
+        "metadata": {
+          "tags": [],
+          "concepts": []
+        },
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "1u3dqblumu33"
+            }
+          },
+          "type": "Entry",
+          "id": "gVxGeXOkYTen1x9hPDX8l",
+          "contentType": {
+            "sys": {
+              "type": "Link",
+              "linkType": "ContentType",
+              "id": "category"
+            }
+          },
+          "revision": 3,
+          "createdAt": "2025-12-08T20:24:08.904Z",
+          "updatedAt": "2025-12-13T21:28:35.001Z",
+          "publishedAt": "2025-12-13T21:28:35.001Z",
+          "firstPublishedAt": "2025-12-08T20:27:22.616Z",
+          "publishedVersion": 9,
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "locale": "en-US"
+        },
+        "fields": {
+          "title": "Example Series Title",
+          "description": "Example series description."
+        }
+      },
+      "coverImage": {
+        "metadata": {
+          "tags": [],
+          "concepts": []
+        },
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "1u3dqblumu33"
+            }
+          },
+          "type": "Asset",
+          "id": "15k1xTnR9kJMR26qxTOs9H",
+          "revision": 1,
+          "createdAt": "2025-12-08T22:07:58.740Z",
+          "updatedAt": "2025-12-08T22:08:24.126Z",
+          "publishedAt": "2025-12-08T22:08:24.126Z",
+          "firstPublishedAt": "2025-12-08T22:08:24.126Z",
+          "publishedVersion": 4,
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "locale": "en-US"
+        },
+        "fields": {
+          "title": "Example cover image title",
+          "description": "Example cover image description.",
+          "file": {
+            "url": "//images.ctfassets.net/1u3dqblumu33/15k1xTnR9kJMR26qxTOs9H/d39ef275b7736f8cfaa5fa79593f4aa9/1643293458900",
+            "details": {
+              "size": 603981,
+              "image": {
+                "width": 1280,
+                "height": 720
+              }
+            },
+            "fileName": "1643293458900",
+            "contentType": "image/png"
+          }
+        }
+      },
+      "sameSubjectPosts": [
+        {
+          "metadata": {
+            "tags": [],
+            "concepts": []
+          },
+          "sys": {
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "1u3dqblumu33"
+              }
+            },
+            "type": "Entry",
+            "id": "72V6H9r9ZbtopC83ETakJU",
+            "contentType": {
+              "sys": {
+                "type": "Link",
+                "linkType": "ContentType",
+                "id": "blogPost"
+              }
+            },
+            "revision": 2,
+            "createdAt": "2025-12-08T22:09:16.962Z",
+            "updatedAt": "2025-12-08T22:36:36.265Z",
+            "publishedAt": "2025-12-08T22:36:36.265Z",
+            "firstPublishedAt": "2025-12-08T22:31:12.272Z",
+            "publishedVersion": 105,
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "locale": "en-US"
+          },
+          "fields": {
+            "title": "Example same subject post title",
+            "slug": "example-same-subject-post-slug",
+            "author": [
+              {
+                "metadata": {
+                  "tags": [],
+                  "concepts": []
+                },
+                "sys": {
+                  "space": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Space",
+                      "id": "1u3dqblumu33"
+                    }
+                  },
+                  "type": "Entry",
+                  "id": "y95XhuhGw65C4vKWCfqEm",
+                  "contentType": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "ContentType",
+                      "id": "blogAuthor"
+                    }
+                  },
+                  "revision": 2,
+                  "createdAt": "2025-12-07T21:16:43.771Z",
+                  "updatedAt": "2025-12-13T21:31:50.038Z",
+                  "publishedAt": "2025-12-13T21:31:50.038Z",
+                  "firstPublishedAt": "2025-12-07T21:21:43.444Z",
+                  "publishedVersion": 7,
+                  "environment": {
+                    "sys": {
+                      "id": "master",
+                      "type": "Link",
+                      "linkType": "Environment"
+                    }
+                  },
+                  "locale": "en-US"
+                },
+                "fields": {
+                  "name": "Example Author Name",
+                  "bio": "Example author bio.",
+                  "avatar": {
+                    "metadata": {
+                      "tags": [],
+                      "concepts": []
+                    },
+                    "sys": {
+                      "space": {
+                        "sys": {
+                          "type": "Link",
+                          "linkType": "Space",
+                          "id": "1u3dqblumu33"
+                        }
+                      },
+                      "type": "Asset",
+                      "id": "ZSe5UWSdjASJUYvujvBNo",
+                      "revision": 1,
+                      "createdAt": "2025-12-07T21:20:15.162Z",
+                      "updatedAt": "2025-12-07T21:21:19.060Z",
+                      "publishedAt": "2025-12-07T21:21:19.060Z",
+                      "firstPublishedAt": "2025-12-07T21:21:19.060Z",
+                      "publishedVersion": 4,
+                      "environment": {
+                        "sys": {
+                          "id": "master",
+                          "type": "Link",
+                          "linkType": "Environment"
+                        }
+                      },
+                      "locale": "en-US"
+                    },
+                    "fields": {
+                      "title": "Example avatar title",
+                      "description": "Example avatar description.",
+                      "file": {
+                        "url": "//images.ctfassets.net/1u3dqblumu33/ZSe5UWSdjASJUYvujvBNo/1ae7e82fe64a2a21fdfdc40928fc6b5a/profile.jpg",
+                        "details": {
+                          "size": 1021194,
+                          "image": {
+                            "width": 1920,
+                            "height": 1439
+                          }
+                        },
+                        "fileName": "profile.jpg",
+                        "contentType": "image/jpeg"
+                      }
+                    }
+                  },
+                  "link": "https://example.com"
+                }
+              }
+            ],
+            "excerpt": "Example same subject post excerpt.",
+            "content": "Example same subject post content.",
+            "modifiedDate": "2021-12-25T12:00+00:00",
+            "publishedDate": "2021-12-24T12:00+00:00",
+            "series": {
+              "metadata": {
+                "tags": [],
+                "concepts": []
+              },
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "1u3dqblumu33"
+                  }
+                },
+                "type": "Entry",
+                "id": "4vyBkegijuYfJi61lX7olM",
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category"
+                  }
+                },
+                "revision": 3,
+                "createdAt": "2025-12-08T20:44:44.753Z",
+                "updatedAt": "2025-12-13T21:28:46.587Z",
+                "publishedAt": "2025-12-13T21:28:46.587Z",
+                "firstPublishedAt": "2025-12-08T20:47:18.958Z",
+                "publishedVersion": 12,
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "locale": "en-US"
+              },
+              "fields": {
+                "title": "Example Same Subject Blog Post Series Title",
+                "description": "Example same subject blog post series description."
+              }
+            },
+            "coverImage": {
+              "metadata": {
+                "tags": [],
+                "concepts": []
+              },
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "1u3dqblumu33"
+                  }
+                },
+                "type": "Asset",
+                "id": "6LeAdIQNeZapLbYtv0ZxEO",
+                "revision": 1,
+                "createdAt": "2025-12-08T22:30:28.567Z",
+                "updatedAt": "2025-12-08T22:30:59.961Z",
+                "publishedAt": "2025-12-08T22:30:59.961Z",
+                "firstPublishedAt": "2025-12-08T22:30:59.961Z",
+                "publishedVersion": 4,
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "locale": "en-US"
+              },
+              "fields": {
+                "title": "Example same subject post cover image title",
+                "description": "Example same subject post cover image description.",
+                "file": {
+                  "url": "//images.ctfassets.net/1u3dqblumu33/6LeAdIQNeZapLbYtv0ZxEO/91bca942702ee131c618b5160a670718/1640021581708",
+                  "details": {
+                    "size": 1928080,
+                    "image": {
+                      "width": 2000,
+                      "height": 600
+                    }
+                  },
+                  "fileName": "1640021581708",
+                  "contentType": "image/png"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

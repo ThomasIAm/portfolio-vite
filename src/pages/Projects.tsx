@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { AppWindow, Blocks, CloudCog, Code, ExternalLink, Github, Gitlab, LandPlot, LoaderPinwheel, Lock, Server, Shield, ChevronDown } from "lucide-react";
+import { AppWindow, Blocks, CloudCog, Code, ExternalLink, Github, Gitlab, LandPlot, Linkedin, LoaderPinwheel, Lock, Server, Shield, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
 
@@ -178,7 +178,7 @@ export default function Projects() {
             </div>
           )}
 
-          {/* GitHub & GitLab CTA */}
+          {/* GitHub/GitLab/LinkedIn CTA */}
           <div className="mt-16 text-center animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <p className="text-muted-foreground mb-6">
               Want to see more of my work?
@@ -203,6 +203,17 @@ export default function Projects() {
                 >
                   <Gitlab className="mr-2 h-5 w-5" />
                   View GitLab Profile
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a
+                  href="https://www.linkedin.com/in/tvdn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin className="mr-2 h-5 w-5" />
+                  View LinkedIn Profile
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
               </Button>
