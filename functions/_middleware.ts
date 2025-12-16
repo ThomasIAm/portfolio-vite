@@ -136,15 +136,8 @@ export const onRequest: PagesFunction = async (context) => {
   // Insert meta tags after <head> tag
   html = html.replace('<head>', `<head>${metaTags}`);
 
-  // Create new headers with CSP
-  const newHeaders = new Headers(response.headers);
-  newHeaders.set(
-    'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://cdn.contentful.com https://images.ctfassets.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
-  );
-
   return new Response(html, {
     status: response.status,
-    headers: newHeaders,
+    headers: response.headers,
   });
 };
