@@ -21,17 +21,6 @@ function contentfulPlugin(): Plugin {
         console.error('❌ Failed to fetch content:', error);
         throw error;
       }
-
-      console.log('🔒 Generating security headers...');
-      try {
-        execSync('node scripts/generate-headers.mjs', { 
-          stdio: 'inherit',
-          env: process.env 
-        });
-      } catch (error) {
-        console.error('❌ Failed to generate headers:', error);
-        throw error;
-      }
     },
 
     // Watch mode for development
