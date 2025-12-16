@@ -55,13 +55,10 @@ function contentfulPlugin(): Plugin {
 }
 
 // https://vitejs.dev/config/
-import { SECURITY_HEADERS } from './src/config/security-headers';
-
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
-    headers: SECURITY_HEADERS,
   },
   build: {
     sourcemap: true,
