@@ -1,5 +1,6 @@
 // Shared security headers configuration
-// Used by vite.config.ts (dev) and scripts to generate public/_headers (prod)
+// Used by vite.config.ts for development server
+// IMPORTANT: Keep in sync with scripts/generate-headers.mjs
 
 export const CSP_DIRECTIVES = {
   "default-src": ["'self'"],
