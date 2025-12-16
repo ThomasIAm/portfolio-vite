@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,18 +7,25 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import Series from "./pages/Series";
-import Contact from "./pages/Contact";
-import Cookies from "./pages/Cookies";
-import Privacy from "./pages/Privacy";
-import Notice from "./pages/Notice";
-import NotFound from "./pages/NotFound";
+
+// Lazy load non-critical pages
+const About = lazy(() => import("./pages/About"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Series = lazy(() => import("./pages/Series"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Cookies = lazy(() => import("./pages/Cookies"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Notice = lazy(() => import("./pages/Notice"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
+
+// Minimal loading fallback to avoid layout shift
+const PageLoader = () => (
+  <div className="min-h-screen bg-background" />
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -27,19 +35,21 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/blog/series/:slug" element={<Series />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/cookies" element={<Cookies />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/notice" element={<Notice />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/blog/series/:slug" element={<Series />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/cookies" element={<Cookies />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/notice" element={<Notice />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
