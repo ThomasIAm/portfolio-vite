@@ -151,12 +151,10 @@ export default function Index() {
                   Me
                 </span>
 
-                <OptimizedImage
+                <img
                   src={profileImage}
                   alt="Thomas van den Nieuwenhoff"
-                  className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background"
-                  preset="avatarLarge"
-                  showSkeleton={false}
+                  class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background"
                 />
               </div>
             </AnimatedSection>
