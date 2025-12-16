@@ -55,10 +55,15 @@ function contentfulPlugin(): Plugin {
 }
 
 // https://vitejs.dev/config/
+const cspHeader = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://cdn.contentful.com https://images.ctfassets.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self'";
+
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    headers: {
+      'Content-Security-Policy': cspHeader,
+    },
   },
   build: {
     sourcemap: true,
