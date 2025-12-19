@@ -20,23 +20,10 @@ export interface ImageTransformOptions {
 /**
  * Check if Cloudflare Image Transform is enabled
  * Controlled via VITE_ENABLE_CF_IMAGE_TRANSFORM environment variable
- * Falls back to hostname detection if not set
  */
 function isCloudflareImageTransformEnabled(): boolean {
-  // Check environment variable first
   const envValue = import.meta.env.VITE_ENABLE_CF_IMAGE_TRANSFORM;
-  if (envValue !== undefined) {
-    return envValue === 'true' || envValue === '1';
-  }
-  
-  // Fallback: Check if we're on a Cloudflare Pages domain or custom domain
-  if (typeof window === 'undefined') return false;
-  const hostname = window.location.hostname;
-  return (
-    hostname.endsWith('.pages.dev') ||
-    hostname === 'tvdn.me' ||
-    hostname.endsWith('.tvdn.me')
-  );
+  return envValue === 'true' || envValue === '1';
 }
 
 /**
