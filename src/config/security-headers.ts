@@ -5,7 +5,7 @@
 export const CSP_DIRECTIVES: Record<string, string[]> = {
   "default-src": ["'self'"],
   "script-src": ["'strict-dynamic'"],
-  "style-src": ["'self'", "https://fonts.googleapis.com"],
+  "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
   "font-src": ["'self'", "https://fonts.gstatic.com"],
   "img-src": ["'self'", "https:", "data:"],
   "connect-src": ["'self'", "https://cdn.contentful.com", "https://images.ctfassets.net"],
