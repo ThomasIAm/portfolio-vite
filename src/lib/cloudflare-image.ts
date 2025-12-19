@@ -18,11 +18,18 @@ export interface ImageTransformOptions {
 }
 
 /**
- * Check if we're in a Cloudflare environment (production)
- * In development, Cloudflare Image Transform won't work
+ * Check if Cloudflare Image Transform is enabled
+ * Controlled via VITE_ENABLE_CF_IMAGE_TRANSFORM environment variable
+ * Falls back to hostname detection if not set
  */
-function isCloudflareEnvironment(): boolean {
-  // Check if we're on a Cloudflare Pages domain or custom domain
+function isCloudflareImageTransformEnabled(): boolean {
+  // Check environment variable first
+  const envValue = import.meta.env.VITE_ENABLE_CF_IMAGE_TRANSFORM;
+  if (envValue !== undefined) {
+    return envValue === 'true' || envValue === '1';
+  }
+  
+  // Fallback: Check if we're on a Cloudflare Pages domain or custom domain
   if (typeof window === 'undefined') return false;
   const hostname = window.location.hostname;
   return (
@@ -68,7 +75,7 @@ export function getOptimizedImageUrl(
     src.startsWith('data:') ||
     src.startsWith('http://') ||
     src.startsWith('https://') ||
-    !isCloudflareEnvironment()
+    !isCloudflareImageTransformEnabled()
   ) {
     return src;
   }
@@ -99,7 +106,7 @@ export function getResponsiveSrcSet(
   widths: number[] = [320, 640, 768, 1024, 1280, 1536],
   options: Omit<ImageTransformOptions, 'width'> = {}
 ): string {
-  if (!isCloudflareEnvironment()) {
+  if (!isCloudflareImageTransformEnabled()) {
     return '';
   }
 
