@@ -1,5 +1,6 @@
-// Middleware to inject SEO meta tags into HTML for all requests
+// Middleware to inject SEO meta tags and CSP nonce into HTML for all requests
 import { SITE_NAME, ROUTE_METADATA, generateOgImageUrl } from '../src/config/seo-metadata';
+import { buildCSPHeader, SECURITY_HEADERS } from '../src/config/security-headers';
 
 interface BlogPostFields {
   title: string;
@@ -13,6 +14,13 @@ interface ContentfulResponse {
   items: Array<{
     fields: BlogPostFields;
   }>;
+}
+
+// Generate a cryptographically secure nonce
+function generateNonce(): string {
+  const array = new Uint8Array(16);
+  crypto.getRandomValues(array);
+  return btoa(String.fromCharCode(...array));
 }
 
 async function fetchBlogPost(slug: string, env: any): Promise<BlogPostFields | null> {
@@ -107,6 +115,27 @@ async function generateMetaTags(baseUrl: string, path: string, env: any): Promis
   `;
 }
 
+// Inject nonce into all script tags
+function injectNonceIntoScripts(html: string, nonce: string): string {
+  // Add nonce to module scripts (Vite entry point)
+  html = html.replace(
+    /<script type="module"/g,
+    `<script nonce="${nonce}" type="module"`
+  );
+  
+  // Add nonce to regular scripts without nonce
+  html = html.replace(
+    /<script(?!.*nonce)([^>]*)>/g,
+    `<script nonce="${nonce}"$1>`
+  );
+  
+  // Handle the font loader inline script in the link onload
+  // This is tricky - we need to allow it via strict-dynamic propagation
+  // The onload handler will work because it's an event handler, not a script tag
+  
+  return html;
+}
+
 export const onRequest: PagesFunction = async (context) => {
   const { request, next, env } = context;
   const url = new URL(request.url);
@@ -126,18 +155,35 @@ export const onRequest: PagesFunction = async (context) => {
     return response;
   }
 
+  // Generate unique nonce for this request
+  const nonce = generateNonce();
+
   // Get base URL from CF_PAGES_URL or construct from request
   const baseUrl = (env as any).CF_PAGES_URL || `${url.protocol}//${url.host}`;
 
-  // Get original HTML and inject meta tags
+  // Get original HTML and inject meta tags + nonce
   let html = await response.text();
   const metaTags = await generateMetaTags(baseUrl, path, env);
   
   // Insert meta tags after <head> tag
   html = html.replace('<head>', `<head>${metaTags}`);
+  
+  // Inject nonce into all script tags
+  html = injectNonceIntoScripts(html, nonce);
+
+  // Build new headers with CSP
+  const headers = new Headers(response.headers);
+  
+  // Add CSP with nonce
+  headers.set('Content-Security-Policy', buildCSPHeader(nonce));
+  
+  // Add other security headers
+  for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
+    headers.set(key, value);
+  }
 
   return new Response(html, {
     status: response.status,
-    headers: response.headers,
+    headers,
   });
 };

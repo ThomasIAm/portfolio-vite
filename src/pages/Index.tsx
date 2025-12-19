@@ -157,6 +157,8 @@ export default function Index() {
                   className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background"
                   preset="avatarLarge"
                   showSkeleton={false}
+                  loading="eager"
+                  fetchPriority="high"
                 />
               </div>
             </AnimatedSection>

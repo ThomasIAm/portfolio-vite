@@ -71,6 +71,9 @@ export const OptimizedImage = forwardRef<HTMLImageElement, OptimizedImageProps>(
       onError?.(e);
     };
 
+    // Extract loading and fetchPriority from props to avoid passing invalid attributes
+    const { loading = 'lazy', fetchPriority, ...restProps } = props;
+
     return (
       <div className={cn('relative', showSkeleton && isLoading && 'bg-muted animate-pulse')}>
         <img
@@ -78,8 +81,9 @@ export const OptimizedImage = forwardRef<HTMLImageElement, OptimizedImageProps>(
           src={hasError && fallbackSrc ? fallbackSrc : optimizedSrc}
           srcSet={srcSet}
           alt={alt}
-          loading="lazy"
+          loading={loading}
           decoding="async"
+          fetchPriority={fetchPriority}
           onLoad={handleLoad}
           onError={handleError}
           className={cn(
@@ -87,7 +91,7 @@ export const OptimizedImage = forwardRef<HTMLImageElement, OptimizedImageProps>(
             isLoading && showSkeleton ? 'opacity-0' : 'opacity-100',
             className
           )}
-          {...props}
+          {...restProps}
         />
       </div>
     );
