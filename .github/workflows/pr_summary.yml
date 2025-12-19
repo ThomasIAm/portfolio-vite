@@ -9,7 +9,7 @@ jobs:
   summary:
     runs-on: ubuntu-latest
     permissions:
-      pull_requests: write
+      pull-requests: write
       models: read
       contents: read
 
@@ -28,7 +28,7 @@ jobs:
 
       - name: Comment with AI summary
         run: |
-          gh pr comment $PR_NUMBER --body '${{ steps.inference.outputs.response }}'
+          gh pr comment $PR_NUMBER --body "${{ RESPONSE }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
