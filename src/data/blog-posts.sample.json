@@ -132,7 +132,7 @@
         }
       ],
       "excerpt": "Example blog post excerpt.",
-      "content": "Example blog post content.",
+      "content": "Example blog post content.\n\nhttps://example.com\n\nLast paragraph.",
       "modifiedDate": "2022-01-28T12:00+00:00",
       "publishedDate": "2022-01-27T12:00+00:00",
       "featured": true,
