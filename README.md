@@ -74,11 +74,13 @@ npm run preview
 
 Add these environment variables in Cloudflare Pages dashboard under **Settings → Environment Variables**:
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `CONTENTFUL_SPACE_ID` | Your Contentful space ID | Yes |
-| `CONTENTFUL_ACCESS_TOKEN` | Contentful Delivery API token | Yes |
-| `CONTENTFUL_PREVIEW_TOKEN` | Contentful Preview API token | No |
+| Variable | Description | Required | Example |
+|----------|-------------|----------|---------|
+| `CONTENTFUL_SPACE_ID` | Your Contentful space ID | Yes | 1a1aaaaaaa11 |
+| `CONTENTFUL_ACCESS_TOKEN` | Contentful Delivery API token | Yes | AA1AA1aaA1aAAA11aAaA11AA1AaAa1a1AaAAaAAAAaA |
+| `CONTENTFUL_PREVIEW_TOKEN` | Contentful Preview API token | No | AA1AA1aaA1aAAA11aAaA11AA1AaAa1a1AaAAaAAAAaA |
+| `CF_PAGES_URL` | Your (custom) Pages domain | No | https://tvdn.me |
+| `VITE_ENABLE_CF_IMAGE_TRANSFORM` | If Cloudflare Image Transform should be enabled | No | true |
 
 ### Cloudflare Functions
 
@@ -97,6 +99,7 @@ These are automatically deployed when you deploy to Cloudflare Pages.
 3. SSL is automatically provisioned
 
 ## 📁 Project Structure
+```
 src/
 ├── assets/         # Static assets (images, etc.)
 ├── components/     # Reusable UI components
