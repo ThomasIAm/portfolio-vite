@@ -19,6 +19,7 @@ export function LinkPreview({ href }: LinkPreviewProps) {
   const [metadata, setMetadata] = useState<OGMetadata | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const { data: posts } = useBlogPosts();
 
   const isInternal = href.startsWith('/blog/') || href.includes(window.location.hostname + '/blog/');
@@ -27,10 +28,10 @@ export function LinkPreview({ href }: LinkPreviewProps) {
     async function fetchMetadata() {
       setLoading(true);
       setError(false);
+      setImageError(false);
 
       try {
         if (isInternal) {
-          // Extract slug from internal blog link
           const slug = href.includes('/blog/') 
             ? href.split('/blog/')[1]?.split(/[?#]/)[0] 
             : null;
@@ -55,7 +56,6 @@ export function LinkPreview({ href }: LinkPreviewProps) {
           }
         }
 
-        // Fetch external OG metadata
         const response = await fetch(`/api/og-metadata?url=${encodeURIComponent(href)}`);
         if (!response.ok) throw new Error('Failed to fetch');
         
@@ -90,7 +90,6 @@ export function LinkPreview({ href }: LinkPreviewProps) {
   }
 
   if (error || !metadata?.title) {
-    // Fallback to simple link
     return (
       <a
         href={href}
@@ -104,21 +103,24 @@ export function LinkPreview({ href }: LinkPreviewProps) {
     );
   }
 
+  const showImage = metadata.image && !imageError;
+
   const PreviewCard = (
     <div className="my-4 rounded-lg border border-border bg-card overflow-hidden hover:shadow-md transition-shadow group">
       <div className="flex flex-col sm:flex-row">
-        {metadata.image ? (
+        {showImage ? (
           <div className="sm:w-48 h-32 sm:h-auto shrink-0 overflow-hidden bg-muted">
             <img
               src={metadata.image}
               alt={metadata.title || ''}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
+              onError={() => setImageError(true)}
             />
           </div>
         ) : (
-          <div className="sm:w-48 h-32 sm:h-auto shrink-0 bg-muted flex items-center justify-center">
-            <FileText className="h-12 w-12 text-muted-foreground/50" />
+          <div className="sm:w-24 h-24 sm:h-auto shrink-0 bg-muted flex items-center justify-center">
+            <FileText className="h-8 w-8 text-muted-foreground/50" />
           </div>
         )}
         <div className="p-4 flex flex-col justify-center min-w-0">
