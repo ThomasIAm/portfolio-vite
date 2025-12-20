@@ -225,6 +225,9 @@ export default function BlogPost() {
       <section className="py-16 md:py-20">
         <div className="container">
           <div className="max-w-6xl mx-auto">
+            {/* Mobile Table of Contents */}
+            <TableOfContents content={fields.content} variant="mobile" />
+            
             <div className="flex gap-12">
               {/* Main Article */}
               <article
@@ -236,7 +239,7 @@ export default function BlogPost() {
               
               {/* Table of Contents Sidebar */}
               <aside className="hidden lg:block w-64 shrink-0">
-                <TableOfContents content={fields.content} />
+                <TableOfContents content={fields.content} variant="desktop" />
               </aside>
             </div>
           </div>
