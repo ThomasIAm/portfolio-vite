@@ -140,7 +140,7 @@ export function BlogContent({ content }: BlogContentProps) {
           li: ({ children }) => {
             // Strip paragraph wrapper that react-markdown adds to list items
             const content = React.Children.map(children, (child) => {
-              if (React.isValidElement(child) && child.type === 'p') {
+              if (React.isValidElement(child) && (child.type as any).name === 'p') {
                 return child.props.children;
               }
               return child;
