@@ -1,234 +1,129 @@
-This Application collects some Personal Data from its Users.
+# PRIVACY POLICY
 
-This document contains [a section dedicated to Californian consumers and their privacy rights](#california_info).
+As soon as you visit our website tvdn.me or contact us, we receive information about you. In this privacy statement we explain what we do with that information. We always handle your information with care and store it securely. If you have any questions or want to know what information we have on you, please contact us. We may amend this privacy statement if necessary. We recommend that you regularly review this privacy statement so that you are aware of these changes. This privacy statement was last modified on 20 december 2025.
 
-This document can be printed for reference by using the print command in the settings of any browser.
+## Contents
+1. When do you apply this privacy statement?
+2. Who uses your data?
+3. Whose data do we use?
+4. How do we get your data?
+5. What data of you do we use?
+6. What do we use your data for?
+7. How long do we store your data?
+8. Who do we share your data with?
+9. Where do we store your data?
+10. How safe is your data with us?
+11. What are your rights?
+12. Which rules apply to this privacy statement?
+13. Which cookies do we use?
+14. What do we do with data of minors?
+15. Do you have a question about this privacy policy?
 
-## Owner and Data Controller
+# 1. When do you apply this privacy statement?
 
-Thomas van den Nieuwenhoff
+This privacy statement applies to all personal data that we process and to all domains related to us. This concerns the personal data of everyone who has ever had contact with us or visited our website, such as visitors, customers and business contacts. Personal data is all data that can be traced back to you as an individual, such as your name, telephone number, IP address, customer number or surfing behavior. If you want to know more about personal data, please visit the website of the Dutch Data Protection Authority.
 
-**Owner contact email:** privacy@tvdn.me
+# 2. Who uses your data?
 
-## Types of Data collected
+T. van den Nieuwenhoff is responsible for the website tvdn.me and therefore the responsible person for the use of your personal data as described in this privacy statement.
 
-Among the types of Personal Data that this Application collects, by itself or through third parties, there are: Usage Data; first name; last name; email address; Tracker.
+# 3. Whose data do we use?
 
-Complete details on each type of Personal Data collected are provided in the dedicated sections of this privacy policy or by specific explanation texts displayed prior to the Data collection.  
-Personal Data may be freely provided by the User, or, in case of Usage Data, collected automatically when using this Application.  
-Unless specified otherwise, all Data requested by this Application is mandatory and failure to provide this Data may make it impossible for this Application to provide its services. In cases where this Application specifically states that some Data is not mandatory, Users are free not to communicate this Data without consequences to the availability or the functioning of the Service.  
-Users who are uncertain about which Personal Data is mandatory are welcome to contact the Owner.  
-Any use of Cookies – or of other tracking tools – by this Application or by the owners of third-party services used by this Application serves the purpose of providing the Service required by the User, in addition to any other purposes described in the present document and in the Cookie Policy, if available.
+We process the personal data of everyone who has had contact with us or visited our website. These include visitors, private customers, business customers and contact persons of our partners.
 
-Users are responsible for any third-party Personal Data obtained, published or shared through this Application and confirm that they have the third party's consent to provide the Data to the Owner.
+# 4. How do we get your data?
 
-## Mode and place of processing the Data
+We receive the data directly from you as soon as you:
 
-### Methods of processing
+* visit our website
+* contact us by mail, telephone or other means
 
-The Owner takes appropriate security measures to prevent unauthorized access, disclosure, modification, or unauthorized destruction of the Data.  
-The Data processing is carried out using computers and/or IT enabled tools, following organizational procedures and modes strictly related to the purposes indicated. In addition to the Owner, in some cases, the Data may be accessible to certain types of persons in charge, involved with the operation of this Application (administration, sales, marketing, legal, system administration) or external parties (such as third-party technical service providers, mail carriers, hosting providers, IT companies, communications agencies) appointed, if necessary, as Data Processors by the Owner. The updated list of these parties may be requested from the Owner at any time.
+# 5. What data of you do we use?
 
-### Legal basis of processing
+We use the following data:
 
-The Owner may process Personal Data relating to Users if one of the following applies:
+* IP address
+* name
+* e-mail address
 
-* Users have given their consent for one or more specific purposes. Note: Under some legislations the Owner may be allowed to process Personal Data until the User objects to such processing (“opt-out”), without having to rely on consent or any other of the following legal bases. This, however, does not apply, whenever the processing of Personal Data is subject to European data protection law;
-* provision of Data is necessary for the performance of an agreement with the User and/or for any pre-contractual obligations thereof;
-* processing is necessary for compliance with a legal obligation to which the Owner is subject;
-* processing is related to a task that is carried out in the public interest or in the exercise of official authority vested in the Owner;
-* processing is necessary for the purposes of the legitimate interests pursued by the Owner or by a third party.
+# 6. What do we use your data for?
 
-In any case, the Owner will gladly help to clarify the specific legal basis that applies to the processing, and in particular whether the provision of Personal Data is a statutory or contractual requirement, or a requirement necessary to enter into a contract.
+We only use your personal data for the purpose for which we are allowed to use it:
+* we have received your permission to use your personal data
+* we use your data because we keep a central administration for example, use the data for risk management
 
-### Place
+# 7. How long do we keep you data?
 
-The Data is processed at the Owner's operating offices and in any other places where the parties involved in the processing are located.  
+We keep your personal data for as long as we are required to do so by law and for as long as necessary for the purpose for which we use your data. For example, as long as you are a customer with us, we store your data according to the statutory retention period of seven years. After that, we only keep your data for statistical purposes and to handle any complaints or legal matters. If you want to know more about how long we store specific data about you, please contact us.
 
-Depending on the User's location, data transfers may involve transferring the User's Data to a country other than their own. To find out more about the place of processing of such transferred Data, Users can check the section containing details about the processing of Personal Data.
+# 8. Who do we share your data with?
 
-Users are also entitled to learn about the legal basis of Data transfers to a country outside the European Union or to any international organization governed by public international law or set up by two or more countries, such as the UN, and about the security measures taken by the Owner to safeguard their Data.  
+We only process your personal data ourselves. We don't share your personal data with others.
 
-If any such transfer takes place, Users can find out more by checking the relevant sections of this document or inquire with the Owner using the information provided in the contact section.
+# 9. Where do we store your data?
 
-### Retention time
+We process your data within the European Economic Area. This means that we also store your data within the EEA. In some cases, your personal data will be processed outside the EEA. Unfortunately, the rules in those countries do not always offer the same protection of personal data as in the Netherlands. That is why we have ensured that your personal data in that case is just as well protected as it is here. We have done this by making agreements with those who handle your data outside the EEA. This way your data remains safe. If you have any questions about this, please feel free to contact us.
 
-Personal Data shall be processed and stored for as long as required by the purpose they have been collected for.
+# 10. How safe is your data with us?
 
-Therefore:
+We have done a lot to protect your data as well as possible, both organisationally and technically. We have secured our systems and various means of communication to ensure that your data does not end up in the hands of others. Your data is therefore safe with us. We also ensure that your data is only used by people who have received permission from us. If you have any questions about the specific method of securing, please contact us.
 
-* Personal Data collected for purposes related to the performance of a contract between the Owner and the User shall be retained until such contract has been fully performed.
-* Personal Data collected for the purposes of the Owner’s legitimate interests shall be retained as long as needed to fulfill such purposes. Users may find specific information regarding the legitimate interests pursued by the Owner within the relevant sections of this document or by contacting the Owner.
+# 11. What are your rights?
 
-The Owner may be allowed to retain Personal Data for a longer period whenever the User has given consent to such processing, as long as such consent is not withdrawn. Furthermore, the Owner may be obliged to retain Personal Data for a longer period whenever required to do so for the performance of a legal obligation or upon order of an authority.  
+Because we use your personal data, you have various rights. We have listed these rights for you below.
 
-Once the retention period expires, Personal Data shall be deleted. Therefore, the right to access, the right to erasure, the right to rectification and the right to data portability cannot be enforced after expiration of the retention period.
+## Right to information
 
-## The purposes of processing
+We must explain to you in an understandable and clear manner what we do with your data and what control you have over it. That is why we explain in detail in this privacy statement what data we collect from you and how we handle your data.
 
-The Data concerning the User is collected to allow the Owner to provide its Service, comply with its legal obligations, respond to enforcement requests, protect its rights and interests (or those of its Users or third parties), detect any malicious or fraudulent activity, as well as the following: Displaying content from external platforms, Contacting the User and Traffic optimization and distribution.
+## Right to access
 
-For specific information about the Personal Data used for each purpose, the User may refer to the section “Detailed information on the processing of Personal Data”.
+You may always ask us to view the data we hold about you.
 
-## Detailed information on the processing of Personal Data
+## Right to correction
 
-Personal Data is collected for the following purposes and using the following services:
+You may ask us to have your data corrected if it is incorrect or incomplete.
 
-### Contacting the User
+## Right to object
 
-#### Contact form (this Application)
+You may object to the processing of your data if you do not agree with the way we handle your personal data. This right applies to the data we use for direct marketing. You can indicate to us that you no longer wish to receive e-mails from us. This also applies to personalized recommendations on our website.
 
-By filling in the contact form with their Data, the User authorizes this Application to use these details to reply to requests for information, quotes or any other kind of request as indicated by the form’s header.
+## Right to data portability
 
-Personal Data processed: email address; first name; last name.
+If you are a customer of ours or if you have given permission for the use of your data, you may ask us to send you the digital data we have about you. This way you can transfer that data to another organisation if you wish.
 
-Category of personal information collected according to CCPA: identifiers.
+## Right to restriction
 
-### Content commenting
+You may ask to limit the use of your data. This means that in certain cases we may only store your data but not use it.
 
-Content commenting services allow Users to make and publish their comments on the contents of this Application.  
-Depending on the settings chosen by the Owner, Users may also leave anonymous comments. If there is an email address among the Personal Data provided by the User, it may be used to send notifications of comments on the same content. Users are responsible for the content of their own comments.  
-If a content commenting service provided by third parties is installed, it may still collect web traffic data for the pages where the comment service is installed, even when Users do not use the content commenting service.
+## Right to be forgotten
 
-#### Disqus (Disqus)
+You may ask us to delete all data we have about you. We will then delete all data that can be traced back to you. In some cases we cannot or may not yet delete your data. For example, we have to keep some data for 7 years for the tax authorities.
 
-Disqus is a hosted discussion board solution provided by Disqus that enables this Application to add a commenting feature to any content.
+## Right to submit a complaint
 
-Personal Data processed: Data communicated while using the service; Tracker; Usage Data.
+You may submit a complaint about the way in which we handle your data. If you have a complaint, we will be happy to resolve it for you. To do so, please contact us. You may also submit your complaint to the Dutch Data Protection Authority. Of cource we hope that is does not come to that, but if it's necessary you can also go to court. In that case, the court in the place of residence of T. van den Nieuwenhoff is the one
+which will handle your complaint.
 
-Place of processing: United States – [Privacy Policy](https://help.disqus.com/terms-and-policies/disqus-privacy-policy) – [Opt out](https://disqus.com/data-sharing-settings/).
+## How do I submit a request or complaint?
 
-Category of personal information collected according to CCPA: internet information.
+You can submit your request or complaint to us by sending a mail to privacy@tvdn.me. We process every request or complaint within 30 days. If you submit multiple applications or complaints or if you submit a complex requerst or complaint, this may take more time. In that case, we will contact you within 60 days at the latest. We may ask you to identify yourself. In that case, we will ask you to submit certain information to ensure that you are the correct person whose personal data is.
 
-This processing constitutes a sale based on the definition under the CCPA. In addition to the information in this clause, the User can find information regarding how to opt out of the sale in the section detailing the rights of Californian consumers.
+# 12. What rules apply to this privacy statement?
 
-### Displaying content from external platforms
+Our privacy statement must meet several conditions. These conditions can be found in particular in the Dutch General Data Protection Regulation. In addition, the general rules that apply under Dutch law apply to our privacy statement.
 
-This type of service allows you to view content hosted on external platforms directly from the pages of this Application and interact with them.  
-This type of service might still collect web traffic data for the pages where the service is installed, even when Users do not use it.
+# 13. Which cookies do we use?
 
-#### Font Awesome (Fonticons, Inc. )
+You can indicate yourself what data we may use from you. If you have given us permission to personalize your profile based on your surfing and search behaviour, we can set up our website specifically for you so that its use becomes easier and more personal. We do this using cookies. A cookie is a small text file that is placed on your hardware when you visit our website.
+We use the following types of cookies on our website:
 
-Font Awesome is a typeface visualization service provided by Fonticons, Inc. that allows this Application to incorporate content of this kind on its pages.
+* functional cookies: like session and login cookies to collect session and login information
 
-Personal Data processed: Usage Data.
+# 14. What do we do with data of minors?
 
-Place of processing: United States – [Privacy Policy](https://fontawesome.com/privacy).
+We do not target minors with our website. This means that if you are under the age of 18, you need permission from a parent or guardian to use our website. If you are a minor when you visit our website or webshop, we assume that you have received this permission before your visit.
 
-Category of personal information collected according to CCPA: internet information.
+# 15. Do you have a question about this privacy policy?
 
-This processing constitutes a sale based on the definition under the CCPA. In addition to the information in this clause, the User can find information regarding how to opt out of the sale in the section detailing the rights of Californian consumers.
-
-#### Google Fonts (Google Ireland Limited)
-
-Google Fonts is a typeface visualization service provided by Google Ireland Limited that allows this Application to incorporate content of this kind on its pages.
-
-Personal Data processed: Usage Data; various types of Data as specified in the privacy policy of the service.
-
-Place of processing: Ireland – [Privacy Policy](https://policies.google.com/privacy).
-
-Category of personal information collected according to CCPA: internet information.
-
-This processing constitutes a sale based on the definition under the CCPA. In addition to the information in this clause, the User can find information regarding how to opt out of the sale in the section detailing the rights of Californian consumers.
-
-### Traffic optimization and distribution
-
-This type of service allows this Application to distribute their content using servers located across different countries and to optimize their performance.  
-Which Personal Data are processed depends on the characteristics and the way these services are implemented. Their function is to filter communications between this Application and the User's browser.  
-Considering the widespread distribution of this system, it is difficult to determine the locations to which the contents that may contain Personal Information of the User are transferred.
-
-#### Cloudflare (Cloudflare Inc.)
-
-Cloudflare is a traffic optimization and distribution service provided by Cloudflare Inc.  
-The way Cloudflare is integrated means that it filters all the traffic through this Application, i.e., communication between this Application and the User's browser, while also allowing analytical data from this Application to be collected.
-
-Personal Data processed: Tracker; various types of Data as specified in the privacy policy of the service.
-
-Place of processing: United States – [Privacy Policy](https://www.cloudflare.com/privacypolicy/).
-
-Category of personal information collected according to CCPA: internet information.
-
-This processing constitutes a sale based on the definition under the CCPA. In addition to the information in this clause, the User can find information regarding how to opt out of the sale in the section detailing the rights of Californian consumers.
-
-## The rights of Users
-
-Users may exercise certain rights regarding their Data processed by the Owner.
-
-In particular, Users have the right to do the following:
-
-* **Withdraw their consent at any time.** Users have the right to withdraw consent where they have previously given their consent to the processing of their Personal Data.
-* **Object to processing of their Data.** Users have the right to object to the processing of their Data if the processing is carried out on a legal basis other than consent. Further details are provided in the dedicated section below.
-* **Access their Data.** Users have the right to learn if Data is being processed by the Owner, obtain disclosure regarding certain aspects of the processing and obtain a copy of the Data undergoing processing.
-* **Verify and seek rectification.** Users have the right to verify the accuracy of their Data and ask for it to be updated or corrected.
-* **Restrict the processing of their Data.** Users have the right, under certain circumstances, to restrict the processing of their Data. In this case, the Owner will not process their Data for any purpose other than storing it.
-* **Have their Personal Data deleted or otherwise removed.** Users have the right, under certain circumstances, to obtain the erasure of their Data from the Owner.
-* **Receive their Data and have it transferred to another controller.** Users have the right to receive their Data in a structured, commonly used and machine readable format and, if technically feasible, to have it transmitted to another controller without any hindrance. This provision is applicable provided that the Data is processed by automated means and that the processing is based on the User's consent, on a contract which the User is part of or on pre-contractual obligations thereof.
-* **Lodge a complaint.** Users have the right to bring a claim before their competent data protection authority.
-
-### Details about the right to object to processing
-
-Where Personal Data is processed for a public interest, in the exercise of an official authority vested in the Owner or for the purposes of the legitimate interests pursued by the Owner, Users may object to such processing by providing a ground related to their particular situation to justify the objection.
-
-Users must know that, however, should their Personal Data be processed for direct marketing purposes, they can object to that processing at any time without providing any justification. To learn, whether the Owner is processing Personal Data for direct marketing purposes, Users may refer to the relevant sections of this document.
-
-### How to exercise these rights
-
-Any requests to exercise User rights can be directed to the Owner through the contact details provided in this document. These requests can be exercised free of charge and will be addressed by the Owner as early as possible and always within one month.
-
-## Additional information about Data collection and processing
-
-### Legal action
-
-The User's Personal Data may be used for legal purposes by the Owner in Court or in the stages leading to possible legal action arising from improper use of this Application or the related Services.  
-The User declares to be aware that the Owner may be required to reveal personal data upon request of public authorities.
-
-### Additional information about User's Personal Data
-
-In addition to the information contained in this privacy policy, this Application may provide the User with additional and contextual information concerning particular Services or the collection and processing of Personal Data upon request.
-
-### System logs and maintenance
-
-For operation and maintenance purposes, this Application and any third-party services may collect files that record interaction with this Application (System logs) use other Personal Data (such as the IP Address) for this purpose.
-
-### Information not contained in this policy
-
-More details concerning the collection or processing of Personal Data may be requested from the Owner at any time. Please see the contact information at the beginning of this document.
-
-### How “Do Not Track” requests are handled
-
-This Application does not support “Do Not Track” requests.  
-To determine whether any of the third-party services it uses honor the “Do Not Track” requests, please read their privacy policies.
-
-### Changes to this privacy policy
-
-The Owner reserves the right to make changes to this privacy policy at any time by notifying its Users on this page and possibly within this Application and/or - as far as technically and legally feasible - sending a notice to Users via any contact information available to the Owner. It is strongly recommended to check this page often, referring to the date of the last modification listed at the bottom.  
-
-Should the changes affect processing activities performed on the basis of the User’s consent, the Owner shall collect new consent from the User, where required.
-
-## Information for Californian consumers
-
-This part of the document integrates with and supplements the information contained in the rest of the privacy policy and is provided by the business running this Application and, if the case may be, its parent, subsidiaries and affiliates (for the purposes of this section referred to collectively as “we”, “us”, “our”).
-
-The provisions contained in this section apply to all Users who are consumers residing in the state of California, United States of America, according to "The California Consumer Privacy Act of 2018" (Users are referred to below, simply as “you”, “your”, “yours”), and, for such consumers, these provisions supersede any other possibly divergent or conflicting provisions contained in the privacy policy.
-
-This part of the document uses the term “personal information“ as it is defined in The California Consumer Privacy Act (CCPA).
-
-### Categories of personal information collected, disclosed or sold
-
-In this section we summarize the categories of personal information that we've collected, disclosed or sold and the purposes thereof. **You can read about these activities in detail in the section titled “Detailed information on the processing of Personal Data” within this document.**
-
-#### Information we collect: the categories of personal information we collect
-
-We have collected the following categories of personal information about you: identifiers and internet information.
-
-We will not collect additional categories of personal information without notifying you.
-
-#### How we collect information: what are the sources of the personal information we collect?
-
-We collect the above mentioned categories of personal information, either directly or indirectly, from you when you use this Application.
-
-For example, you directly provide your personal information when you submit requests via any forms on this Application. You also provide personal information indirectly when you navigate this Application, as personal information about you is automatically observed and collected. Finally, we may collect your personal information from third parties that work with us in connection with the Service or with the functioning of this Application and features thereof.
-
-#### How we use the information we collect: sharing and disclosing of your personal information with third parties for a business purpose
-
-We may disclose the personal information we collect about you to a third party for business purposes. In this case, we enter a written agreement with such third party that requires the recipient to both keep the personal information confidential and not use it for any purpose(s) other than those necessary for the performance of th
+If you have a question about our privacy policy, please feel free to contact us on privacy@tvdn.me. We are happy to help.
