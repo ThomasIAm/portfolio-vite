@@ -92,6 +92,14 @@ This project uses Cloudflare Pages Functions for:
 
 These are automatically deployed when you deploy to Cloudflare Pages.
 
+### API Documentation
+
+The API is documented using OpenAPI 3.0.3 specification:
+- **Schema:** Available at `/openapi.json`
+- **Generate:** Run `node scripts/generate-openapi.mjs` to regenerate the schema
+
+To add a new function to the OpenAPI schema, update the `functionDefinitions` array in `scripts/generate-openapi.mjs`.
+
 ### Custom Domain
 
 1. In Cloudflare Pages, go to your project → **Custom domains**
