@@ -77,7 +77,7 @@ export default function Blog() {
                     : null;
 
                   return (
-                    <CarouselItem key={post.sys.id} className="pl-4 md:basis-1/2 lg:basis-1/2">
+                    <CarouselItem key={post.sys.id} className="pl-4 basis-[85%] sm:basis-[85%] md:basis-1/2 lg:basis-1/2">
                       <Link to={`/blog/${fields.slug}`} className="block h-full">
                         <article className="h-full rounded-2xl bg-card shadow-soft overflow-hidden group hover:shadow-md transition-shadow">
                           {coverImageUrl && (
