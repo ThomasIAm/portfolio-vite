@@ -89,18 +89,42 @@ export function LinkPreview({ href }: LinkPreviewProps) {
     );
   }
 
+  const hostname = (() => {
+    try {
+      return new URL(href).hostname;
+    } catch {
+      return href;
+    }
+  })();
+
   if (error || !metadata?.title) {
-    return (
-      <a
-        href={href}
-        className="text-primary hover:underline inline-flex items-center gap-1"
-        target={href.startsWith('http') ? '_blank' : undefined}
-        rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-      >
-        {href}
-        {href.startsWith('http') && <ExternalLink className="h-3 w-3" />}
-      </a>
+    const FallbackCard = (
+      <div className="my-4 rounded-lg border border-border bg-card overflow-hidden hover:shadow-md transition-shadow group">
+        <div className="flex items-center gap-4 p-4">
+          <div className="w-12 h-12 shrink-0 bg-muted rounded flex items-center justify-center">
+            <FileText className="h-6 w-6 text-muted-foreground/50" />
+          </div>
+          <div className="min-w-0">
+            <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
+              <span className="truncate">{hostname}</span>
+              {href.startsWith('http') && <ExternalLink className="h-3 w-3 shrink-0" />}
+            </div>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors truncate">
+              {href}
+            </p>
+          </div>
+        </div>
+      </div>
     );
+
+    if (href.startsWith('http')) {
+      return (
+        <a href={href} target="_blank" rel="noopener noreferrer" className="block no-underline">
+          {FallbackCard}
+        </a>
+      );
+    }
+    return FallbackCard;
   }
 
   const showImage = metadata.image && !imageError;
