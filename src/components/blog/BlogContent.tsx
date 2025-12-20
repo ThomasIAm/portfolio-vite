@@ -16,7 +16,8 @@ function isStandaloneLink(children: React.ReactNode): { href: string } | null {
   if (childArray.length !== 1) return null;
   
   const child = childArray[0];
-  if (React.isValidElement(child) && child.type === 'a' && child.props.href) {
+  // ReactMarkdown passes elements with props.href for links
+  if (React.isValidElement(child) && child.props?.href) {
     return { href: child.props.href };
   }
   
