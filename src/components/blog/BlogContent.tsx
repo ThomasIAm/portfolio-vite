@@ -4,9 +4,65 @@ import { CodeBlock } from './CodeBlock';
 import { OptimizedImage } from '@/components/ui/optimized-image';
 import { LinkPreview } from './LinkPreview';
 import React from 'react';
+import { Link } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface BlogContentProps {
   content: string;
+}
+
+// Generate a slug from heading text
+function generateSlug(children: React.ReactNode): string {
+  const text = React.Children.toArray(children)
+    .map((child) => {
+      if (typeof child === 'string') return child;
+      if (React.isValidElement(child) && child.props?.children) {
+        return generateSlug(child.props.children);
+      }
+      return '';
+    })
+    .join('');
+  
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim();
+}
+
+// Copy anchor link to clipboard
+function copyAnchorLink(slug: string) {
+  const url = `${window.location.origin}${window.location.pathname}#${slug}`;
+  navigator.clipboard.writeText(url);
+  toast.success('Link copied to clipboard');
+}
+
+// Heading component with anchor link
+function Heading({ 
+  level, 
+  children, 
+  className 
+}: { 
+  level: 1 | 2 | 3 | 4; 
+  children: React.ReactNode; 
+  className: string;
+}) {
+  const slug = generateSlug(children);
+  const Tag = `h${level}` as const;
+  
+  return (
+    <Tag id={slug} className={`${className} group relative scroll-mt-20`}>
+      {children}
+      <button
+        onClick={() => copyAnchorLink(slug)}
+        className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity inline-flex items-center text-muted-foreground hover:text-primary"
+        aria-label="Copy link to heading"
+      >
+        <Link className="h-4 w-4" />
+      </button>
+    </Tag>
+  );
 }
 
 // Check if a paragraph contains only a single link (standalone link)
@@ -16,7 +72,6 @@ function isStandaloneLink(children: React.ReactNode): { href: string } | null {
   if (childArray.length !== 1) return null;
   
   const child = childArray[0];
-  // ReactMarkdown passes elements with props.href for links
   if (React.isValidElement(child) && child.props?.href) {
     return { href: child.props.href };
   }
@@ -31,27 +86,26 @@ export function BlogContent({ content }: BlogContentProps) {
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children }) => (
-            <h1 className="font-display text-3xl font-bold text-foreground mt-10 mb-6">
+            <Heading level={1} className="font-display text-3xl font-bold text-foreground mt-10 mb-6">
               {children}
-            </h1>
+            </Heading>
           ),
           h2: ({ children }) => (
-            <h2 className="font-display text-2xl font-bold text-foreground mt-8 mb-4">
+            <Heading level={2} className="font-display text-2xl font-bold text-foreground mt-8 mb-4">
               {children}
-            </h2>
+            </Heading>
           ),
           h3: ({ children }) => (
-            <h3 className="font-display text-xl font-semibold text-foreground mt-6 mb-3">
+            <Heading level={3} className="font-display text-xl font-semibold text-foreground mt-6 mb-3">
               {children}
-            </h3>
+            </Heading>
           ),
           h4: ({ children }) => (
-            <h4 className="font-display text-lg font-semibold text-foreground mt-4 mb-2">
+            <Heading level={4} className="font-display text-lg font-semibold text-foreground mt-4 mb-2">
               {children}
-            </h4>
+            </Heading>
           ),
           p: ({ children }) => {
-            // Check if this paragraph contains only a standalone link
             const standaloneLink = isStandaloneLink(children);
             if (standaloneLink) {
               return <LinkPreview href={standaloneLink.href} />;
