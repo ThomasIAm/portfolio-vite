@@ -58,9 +58,45 @@ npm run build
 npm run preview
 ```
 
-## 📁 Project Structure
+## 🌐 Deploying to Cloudflare Pages
 
-```
+### Quick Deploy
+
+1. Push your code to a GitHub repository
+2. Go to [Cloudflare Pages](https://pages.cloudflare.com/) and create a new project
+3. Connect your GitHub repository
+4. Configure the build settings:
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+   - **Node.js version:** `18` (or higher)
+
+### Environment Variables
+
+Add these environment variables in Cloudflare Pages dashboard under **Settings → Environment Variables**:
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `CONTENTFUL_SPACE_ID` | Your Contentful space ID | Yes |
+| `CONTENTFUL_ACCESS_TOKEN` | Contentful Delivery API token | Yes |
+| `CONTENTFUL_PREVIEW_TOKEN` | Contentful Preview API token | No |
+
+### Cloudflare Functions
+
+This project uses Cloudflare Pages Functions for:
+- Dynamic OG image generation (`functions/og/`)
+- OG metadata fetching API (`functions/api/og-metadata.ts`)
+- Dynamic sitemap generation (`functions/sitemap.xml.ts`)
+- SEO middleware for meta tag injection (`functions/_middleware.ts`)
+
+These are automatically deployed when you deploy to Cloudflare Pages.
+
+### Custom Domain
+
+1. In Cloudflare Pages, go to your project → **Custom domains**
+2. Add your domain and follow the DNS configuration steps
+3. SSL is automatically provisioned
+
+## 📁 Project Structure
 src/
 ├── assets/         # Static assets (images, etc.)
 ├── components/     # Reusable UI components
