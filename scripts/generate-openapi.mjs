@@ -19,7 +19,7 @@ const projectRoot = path.resolve(__dirname, '..');
 const baseSchema = {
   openapi: '3.0.3',
   info: {
-    title: 'TVDN.me API',
+    title: 'TvdN.me API',
     description: 'Cloudflare Pages Functions API for tvdn.me personal website',
     version: '1.0.0',
     contact: {
