@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 src/data/blog-posts.json
+.wrangler
+.dev.vars*
 
 # Editor directories and files
 .vscode/*
