@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { BlogContent } from "@/components/blog/BlogContent";
+import { TableOfContents } from "@/components/blog/TableOfContents";
 import { useBlogPost } from "@/hooks/useBlogPosts";
 import { calculateReadingTime } from "@/lib/contentful";
 import { Calendar, Clock, ArrowLeft, RefreshCw, BookOpen } from "lucide-react";
@@ -223,12 +224,22 @@ export default function BlogPost() {
       {/* Content */}
       <section className="py-16 md:py-20">
         <div className="container">
-          <article
-            className="max-w-3xl mx-auto animate-fade-up"
-            style={{ animationDelay: "0.1s" }}
-          >
-            <BlogContent content={fields.content} />
-          </article>
+          <div className="max-w-6xl mx-auto">
+            <div className="flex gap-12">
+              {/* Main Article */}
+              <article
+                className="flex-1 max-w-3xl animate-fade-up"
+                style={{ animationDelay: "0.1s" }}
+              >
+                <BlogContent content={fields.content} />
+              </article>
+              
+              {/* Table of Contents Sidebar */}
+              <aside className="hidden lg:block w-64 shrink-0">
+                <TableOfContents content={fields.content} />
+              </aside>
+            </div>
+          </div>
         </div>
       </section>
 
