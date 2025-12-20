@@ -2,9 +2,26 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { CodeBlock } from './CodeBlock';
 import { OptimizedImage } from '@/components/ui/optimized-image';
+import { LinkPreview } from './LinkPreview';
+import React from 'react';
 
 interface BlogContentProps {
   content: string;
+}
+
+// Check if a paragraph contains only a single link (standalone link)
+function isStandaloneLink(children: React.ReactNode): { href: string } | null {
+  const childArray = React.Children.toArray(children);
+  
+  if (childArray.length !== 1) return null;
+  
+  const child = childArray[0];
+  // ReactMarkdown passes elements with props.href for links
+  if (React.isValidElement(child) && child.props?.href) {
+    return { href: child.props.href };
+  }
+  
+  return null;
 }
 
 export function BlogContent({ content }: BlogContentProps) {
@@ -33,11 +50,19 @@ export function BlogContent({ content }: BlogContentProps) {
               {children}
             </h4>
           ),
-          p: ({ children }) => (
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              {children}
-            </p>
-          ),
+          p: ({ children }) => {
+            // Check if this paragraph contains only a standalone link
+            const standaloneLink = isStandaloneLink(children);
+            if (standaloneLink) {
+              return <LinkPreview href={standaloneLink.href} />;
+            }
+            
+            return (
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                {children}
+              </p>
+            );
+          },
           a: ({ href, children }) => (
             <a
               href={href}
