@@ -137,9 +137,16 @@ export function BlogContent({ content }: BlogContentProps) {
               {children}
             </ol>
           ),
-          li: ({ children }) => (
-            <li className="text-muted-foreground">{children}</li>
-          ),
+          li: ({ children }) => {
+            // Strip paragraph wrapper that react-markdown adds to list items
+            const content = React.Children.map(children, (child) => {
+              if (React.isValidElement(child) && child.type === 'p') {
+                return child.props.children;
+              }
+              return child;
+            });
+            return <li className="text-muted-foreground">{content}</li>;
+          },
           blockquote: ({ children }) => (
             <blockquote className="border-l-4 border-primary pl-4 italic text-muted-foreground my-4">
               {children}
