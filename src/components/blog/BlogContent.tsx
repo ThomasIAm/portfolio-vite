@@ -81,7 +81,7 @@ function isStandaloneLink(children: React.ReactNode): { href: string } | null {
 
 export function BlogContent({ content }: BlogContentProps) {
   return (
-    <div className="prose-warm overflow-hidden">
+    <div className="prose-warm">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
@@ -254,7 +254,7 @@ export function BlogContent({ content }: BlogContentProps) {
               <OptimizedImage
                 src={src || ''}
                 alt={alt || ''}
-                className="rounded-lg max-w-full w-auto h-auto"
+                className="rounded-lg max-w-full"
                 responsive
               />
             );
@@ -262,7 +262,7 @@ export function BlogContent({ content }: BlogContentProps) {
             if (title) {
               return (
                 <div className="my-4 flex justify-center">
-                  <figure className="inline-block max-w-full">
+                  <figure className="inline-block">
                     {image}
                     <figcaption className="text-center text-sm text-muted-foreground mt-2 italic">
                       {title}

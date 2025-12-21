@@ -75,7 +75,7 @@ export const OptimizedImage = forwardRef<HTMLImageElement, OptimizedImageProps>(
     const { loading = 'lazy', fetchPriority, ...restProps } = props;
 
     return (
-      <div className={cn('relative max-w-full', showSkeleton && isLoading && 'bg-muted animate-pulse')}>
+      <div className={cn('relative', showSkeleton && isLoading && 'bg-muted animate-pulse')}>
         <img
           ref={ref}
           src={hasError && fallbackSrc ? fallbackSrc : optimizedSrc}
@@ -87,7 +87,7 @@ export const OptimizedImage = forwardRef<HTMLImageElement, OptimizedImageProps>(
           onLoad={handleLoad}
           onError={handleError}
           className={cn(
-            'block max-w-full h-auto transition-opacity duration-300',
+            'transition-opacity duration-300',
             isLoading && showSkeleton ? 'opacity-0' : 'opacity-100',
             className
           )}
