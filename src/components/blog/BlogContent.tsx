@@ -117,23 +117,29 @@ export function BlogContent({ content }: BlogContentProps) {
               </p>
             );
           },
-          a: ({ href, children }) => {
+          a: ({ href, children, ...props }) => {
             const isHashLink = href?.startsWith('#');
+            const isExternal = href?.startsWith('http');
 
             return (
               <a
+                {...props}
                 href={href}
-                className="text-primary hover:underline"
-                target={href?.startsWith('http') ? '_blank' : undefined}
-                rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className={`text-primary hover:underline ${props.className ?? ''}`}
+                target={isExternal ? '_blank' : undefined}
+                rel={isExternal ? 'noopener noreferrer' : undefined}
                 onClick={(e) => {
+                  props.onClick?.(e as any);
                   if (!isHashLink) return;
+
                   e.preventDefault();
 
                   const hash = (href || '').replace(/^#/, '');
                   const candidates = [
                     hash,
-                    hash.startsWith('user-content-') ? hash.replace(/^user-content-/, '') : `user-content-${hash}`,
+                    hash.startsWith('user-content-')
+                      ? hash.replace(/^user-content-/, '')
+                      : `user-content-${hash}`,
                   ];
 
                   const targetId = candidates.find((id) => document.getElementById(id));
