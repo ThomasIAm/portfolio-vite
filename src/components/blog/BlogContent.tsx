@@ -249,14 +249,29 @@ export function BlogContent({ content }: BlogContentProps) {
             </td>
           ),
           hr: () => <hr className="border-border my-8" />,
-          img: ({ src, alt }) => (
-            <OptimizedImage
-              src={src || ''}
-              alt={alt || ''}
-              className="rounded-lg my-4 max-w-full"
-              responsive
-            />
-          ),
+          img: ({ src, alt, title }) => {
+            const image = (
+              <OptimizedImage
+                src={src || ''}
+                alt={alt || ''}
+                className="rounded-lg max-w-full"
+                responsive
+              />
+            );
+
+            if (title) {
+              return (
+                <figure className="my-4">
+                  {image}
+                  <figcaption className="text-center text-sm text-muted-foreground mt-2 italic">
+                    {title}
+                  </figcaption>
+                </figure>
+              );
+            }
+
+            return <div className="my-4">{image}</div>;
+          },
         }}
       >
         {content}
