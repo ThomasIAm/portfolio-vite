@@ -117,16 +117,36 @@ export function BlogContent({ content }: BlogContentProps) {
               </p>
             );
           },
-          a: ({ href, children }) => (
-            <a
-              href={href}
-              className="text-primary hover:underline"
-              target={href?.startsWith('http') ? '_blank' : undefined}
-              rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-            >
-              {children}
-            </a>
-          ),
+          a: ({ href, children }) => {
+            const isHashLink = href?.startsWith('#');
+
+            return (
+              <a
+                href={href}
+                className="text-primary hover:underline"
+                target={href?.startsWith('http') ? '_blank' : undefined}
+                rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                onClick={(e) => {
+                  if (!isHashLink) return;
+                  e.preventDefault();
+
+                  const hash = (href || '').replace(/^#/, '');
+                  const candidates = [
+                    hash,
+                    hash.startsWith('user-content-') ? hash.replace(/^user-content-/, '') : `user-content-${hash}`,
+                  ];
+
+                  const targetId = candidates.find((id) => document.getElementById(id));
+                  if (!targetId) return;
+
+                  document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+                  window.history.pushState(null, '', `#${targetId}`);
+                }}
+              >
+                {children}
+              </a>
+            );
+          },
           ul: ({ children }) => (
             <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
               {children}
@@ -137,7 +157,7 @@ export function BlogContent({ content }: BlogContentProps) {
               {children}
             </ol>
           ),
-          li: ({ children, id, ...props }) => {
+          li: ({ node, children, ...props }) => {
             // Strip paragraph wrapper that react-markdown adds to list items
             const content = React.Children.map(children, (child) => {
               if (React.isValidElement(child) && (child.type as any).name === 'p') {
@@ -145,7 +165,28 @@ export function BlogContent({ content }: BlogContentProps) {
               }
               return child;
             });
-            return <li id={id} className="text-muted-foreground scroll-mt-20" {...props}>{content}</li>;
+
+            const rawId =
+              (props as any).id ??
+              (node as any)?.properties?.id ??
+              (node as any)?.data?.hProperties?.id;
+
+            const { id: _ignoredId, ...restProps } = props as any;
+
+            const userContentId = rawId
+              ? rawId.startsWith('user-content-')
+                ? rawId
+                : `user-content-${rawId}`
+              : undefined;
+
+            return (
+              <li id={rawId} className="text-muted-foreground scroll-mt-20" {...restProps}>
+                {userContentId && userContentId !== rawId ? (
+                  <span id={userContentId} className="sr-only" />
+                ) : null}
+                {content}
+              </li>
+            );
           },
           section: ({ children, ...props }) => {
             // Handle footnotes section created by remark-gfm
