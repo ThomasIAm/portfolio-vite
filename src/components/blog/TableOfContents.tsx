@@ -42,6 +42,16 @@ function extractHeadings(markdown: string): TocItem[] {
     });
   }
 
+  // Check if content has footnotes (remark-gfm creates a Footnotes section)
+  const footnoteRefRegex = /\[\^[^\]]+\]/g;
+  if (footnoteRefRegex.test(markdown)) {
+    headings.push({
+      id: 'footnote-label',
+      text: 'Footnotes',
+      level: 2,
+    });
+  }
+
   return headings;
 }
 
@@ -59,7 +69,15 @@ function TocList({ headings, activeId, onItemClick }: {
         >
           <a
             href={`#${heading.id}`}
-            onClick={onItemClick}
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById(heading.id);
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                window.history.pushState(null, '', `#${heading.id}`);
+              }
+              onItemClick?.();
+            }}
             className={cn(
               'block py-1 text-muted-foreground hover:text-foreground transition-colors',
               activeId === heading.id && 'text-primary font-medium border-l-2 border-primary -ml-px pl-[11px]'
