@@ -23,12 +23,8 @@ function contentfulPlugin(): Plugin {
       }
     },
 
-    // Watch mode for development
+    // Refresh content on every page load in development
     configureServer(server) {
-      const POLL_INTERVAL = 60000; // Check every 60 seconds in dev
-      
-      console.log('👀 Content watch mode enabled (polling every 60s)');
-      
       const fetchContent = () => {
         try {
           execSync('node scripts/fetch-content.mjs', { 
@@ -44,11 +40,12 @@ function contentfulPlugin(): Plugin {
       // Initial fetch
       fetchContent();
 
-      // Poll for updates
-      const interval = setInterval(fetchContent, POLL_INTERVAL);
-
-      server.httpServer?.on('close', () => {
-        clearInterval(interval);
+      // Refresh on HTML requests (page loads/refreshes)
+      server.middlewares.use((req, _res, next) => {
+        if (req.headers.accept?.includes('text/html')) {
+          fetchContent();
+        }
+        next();
       });
     }
   };
