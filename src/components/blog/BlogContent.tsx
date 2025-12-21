@@ -261,18 +261,16 @@ export function BlogContent({ content }: BlogContentProps) {
 
             if (title) {
               return (
-                <div className="my-4 flex justify-center">
-                  <figure className="inline-block">
-                    {image}
-                    <figcaption className="text-center text-sm text-muted-foreground mt-2 italic">
-                      {title}
-                    </figcaption>
-                  </figure>
-                </div>
+                <figure className="my-4 inline-block">
+                  {image}
+                  <figcaption className="text-center text-sm text-muted-foreground mt-2 italic">
+                    {title}
+                  </figcaption>
+                </figure>
               );
             }
 
-            return <div className="my-4 flex justify-center">{image}</div>;
+            return <div className="my-4">{image}</div>;
           },
         }}
       >

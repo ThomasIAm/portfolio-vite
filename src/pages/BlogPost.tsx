@@ -231,7 +231,7 @@ export default function BlogPost() {
             <div className="flex gap-12">
               {/* Main Article */}
               <article
-                className="flex-1 max-w-3xl mx-auto px-4 sm:px-0 animate-fade-up"
+                className="flex-1 max-w-3xl animate-fade-up"
                 style={{ animationDelay: "0.1s" }}
               >
                 <BlogContent content={fields.content} />
