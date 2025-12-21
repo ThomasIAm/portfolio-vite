@@ -137,7 +137,7 @@ export function BlogContent({ content }: BlogContentProps) {
               {children}
             </ol>
           ),
-          li: ({ children }) => {
+          li: ({ children, id, ...props }) => {
             // Strip paragraph wrapper that react-markdown adds to list items
             const content = React.Children.map(children, (child) => {
               if (React.isValidElement(child) && (child.type as any).name === 'p') {
@@ -145,7 +145,19 @@ export function BlogContent({ content }: BlogContentProps) {
               }
               return child;
             });
-            return <li className="text-muted-foreground">{content}</li>;
+            return <li id={id} className="text-muted-foreground scroll-mt-20" {...props}>{content}</li>;
+          },
+          section: ({ children, ...props }) => {
+            // Handle footnotes section created by remark-gfm
+            const dataFootnotes = (props as any)['data-footnotes'];
+            if (dataFootnotes !== undefined) {
+              return (
+                <section data-footnotes className="mt-8 pt-8 border-t border-border" {...props}>
+                  {children}
+                </section>
+              );
+            }
+            return <section {...props}>{children}</section>;
           },
           blockquote: ({ children }) => (
             <blockquote className="border-l-4 border-primary pl-4 italic text-muted-foreground my-4">
