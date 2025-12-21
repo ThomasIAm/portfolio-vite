@@ -4,7 +4,6 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { execSync } from "child_process";
 import type { Plugin } from "vite";
-import { cloudflare } from "@cloudflare/vite-plugin";
 
 function contentfulPlugin(): Plugin {
   return {
@@ -66,7 +65,6 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     contentfulPlugin(),
-    cloudflare(),
     react(), 
     mode === "development" && componentTagger()
   ].filter(Boolean),
