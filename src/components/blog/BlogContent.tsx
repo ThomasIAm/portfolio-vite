@@ -262,7 +262,7 @@ export function BlogContent({ content }: BlogContentProps) {
             if (title) {
               return (
                 <div className="my-4 flex justify-center">
-                  <figure className="inline-block">
+                  <figure className="inline-block max-w-full">
                     {image}
                     <figcaption className="text-center text-sm text-muted-foreground mt-2 italic">
                       {title}

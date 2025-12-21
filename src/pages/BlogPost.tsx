@@ -228,17 +228,17 @@ export default function BlogPost() {
             {/* Mobile Table of Contents */}
             <TableOfContents content={fields.content} variant="mobile" />
             
-            <div className="flex gap-12">
+            <div className="flex flex-col lg:flex-row gap-12">
               {/* Main Article */}
               <article
-                className="flex-1 max-w-3xl mx-auto px-4 sm:px-0 animate-fade-up"
+                className="flex-1 min-w-0 max-w-3xl mx-auto px-4 sm:px-0 animate-fade-up"
                 style={{ animationDelay: "0.1s" }}
               >
                 <BlogContent content={fields.content} />
               </article>
               
               {/* Table of Contents Sidebar */}
-              <aside className="hidden lg:block w-64 shrink-0">
+              <aside className="hidden lg:block w-64 shrink-0 min-w-0">
                 <TableOfContents content={fields.content} variant="desktop" />
               </aside>
             </div>
