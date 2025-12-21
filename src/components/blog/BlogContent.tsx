@@ -261,7 +261,7 @@ export function BlogContent({ content }: BlogContentProps) {
 
             if (title) {
               return (
-                <figure className="my-4">
+                <figure className="my-4 inline-block">
                   {image}
                   <figcaption className="text-center text-sm text-muted-foreground mt-2 italic">
                     {title}
