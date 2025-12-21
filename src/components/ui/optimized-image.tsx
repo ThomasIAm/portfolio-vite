@@ -87,7 +87,7 @@ export const OptimizedImage = forwardRef<HTMLImageElement, OptimizedImageProps>(
           onLoad={handleLoad}
           onError={handleError}
           className={cn(
-            'transition-opacity duration-300',
+            'block max-w-full h-auto transition-opacity duration-300',
             isLoading && showSkeleton ? 'opacity-0' : 'opacity-100',
             className
           )}
