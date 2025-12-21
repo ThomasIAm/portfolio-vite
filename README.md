@@ -144,6 +144,11 @@ functions/
 | `/cookies` | Cookie policy |
 | `/notice` | Legal notice and attributions |
 
+### Anchors (headings & footnotes)
+
+- Blog headings get stable `id`s for deep-linking.
+- Footnote hashes support both plain IDs (e.g. `#fn-source`) and GitHub-style prefixed IDs (e.g. `#user-content-fn-source`).
+
 ## 📄 License
 
 All rights reserved.
