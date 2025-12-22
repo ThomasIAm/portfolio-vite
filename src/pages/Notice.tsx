@@ -24,7 +24,7 @@ const dependencies: Dependency[] = [
   { name: "Prism React Renderer", url: "https://github.com/FormidableLabs/prism-react-renderer", license: "MIT", description: "Syntax highlighting for code blocks" },
   { name: "React Helmet Async", url: "https://github.com/staylor/react-helmet-async", license: "Apache-2.0", description: "Thread-safe document head manager" },
   { name: "date-fns", url: "https://date-fns.org", license: "MIT", description: "Modern JavaScript date utility library" },
-  { name: "Framer Motion", url: "https://framer.com/motion", license: "MIT", description: "Production-ready motion library for React" },
+  { name: "Embla Carousel", url: "https://www.embla-carousel.com", license: "MIT", description: "Lightweight carousel library with great performance" },
   { name: "Sonner", url: "https://sonner.emilkowal.ski", license: "MIT", description: "Opinionated toast component for React" },
   { name: "Zod", url: "https://zod.dev", license: "MIT", description: "TypeScript-first schema validation" },
   { name: "React Hook Form", url: "https://react-hook-form.com", license: "MIT", description: "Performant form validation library" },
@@ -32,6 +32,8 @@ const dependencies: Dependency[] = [
   { name: "class-variance-authority", url: "https://cva.style", license: "Apache-2.0", description: "Class variance authority for component variants" },
   { name: "clsx", url: "https://github.com/lukeed/clsx", license: "MIT", description: "Tiny utility for constructing className strings" },
   { name: "tailwind-merge", url: "https://github.com/dcastil/tailwind-merge", license: "MIT", description: "Merge Tailwind CSS classes without style conflicts" },
+  { name: "Recharts", url: "https://recharts.org", license: "MIT", description: "Composable charting library built on React components" },
+  { name: "remark-gfm", url: "https://github.com/remarkjs/remark-gfm", license: "MIT", description: "GitHub Flavored Markdown support for remark" },
 ];
 
 export default function Notice() {
