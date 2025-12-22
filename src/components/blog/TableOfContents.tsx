@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { List, ChevronDown } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
 import {
   Collapsible,
@@ -83,12 +84,18 @@ function TocList({
               onItemClick?.();
             }}
             className={cn(
-              "block py-1 text-muted-foreground hover:text-foreground transition-colors",
+              "block py-1 text-muted-foreground hover:text-foreground transition-colors [&_em]:italic [&_strong]:font-semibold [&_code]:font-mono [&_code]:text-[0.9em] [&_code]:bg-muted [&_code]:px-1 [&_code]:rounded",
               activeId === heading.id &&
                 "text-primary font-medium border-l-2 border-primary -ml-px pl-[11px]"
             )}
           >
-            {heading.text}
+            <ReactMarkdown
+              components={{
+                p: ({ children }) => <>{children}</>,
+              }}
+            >
+              {heading.text}
+            </ReactMarkdown>
           </a>
         </li>
       ))}
