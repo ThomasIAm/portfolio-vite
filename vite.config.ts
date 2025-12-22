@@ -4,8 +4,6 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { execSync } from "child_process";
 import type { Plugin } from "vite";
-import tailwindcss from "@tailwindcss/postcss";
-import autoprefixer from "autoprefixer";
 
 function contentfulPlugin(): Plugin {
   return {
@@ -61,14 +59,6 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     sourcemap: true,
-  },
-  css: {
-    postcss: {
-      plugins: [
-        tailwindcss,
-        autoprefixer,
-      ],
-    },
   },
   plugins: [
     contentfulPlugin(),
