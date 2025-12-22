@@ -30,5 +30,3 @@ updates:
        update-types:
          - "major"
          - "minor"
-   ignore:
-     - update-types: ["patch"]
