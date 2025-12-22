@@ -144,22 +144,6 @@ functions/
 | `/cookies` | Cookie policy |
 | `/notice` | Legal notice and attributions |
 
-### Anchors (headings & footnotes)
-
-- Blog headings get stable `id`s for deep-linking.
-- Footnote hashes support both plain IDs (e.g. `#fn-source`) and GitHub-style prefixed IDs (e.g. `#user-content-fn-source`).
-- Custom anchors via raw HTML: `<span id="my-anchor"></span>` or `<h2 id="custom-id">`.
-
-### Table of Contents
-
-- Automatically generated from blog post headings.
-- Supports markdown formatting in headings (_italic_, **bold**, `code`).
-
-### Featured Posts
-
-- Featured posts appear in the carousel AND in the "All Posts" grid.
-- Featured posts display a "Featured" badge in the grid view.
-
 ## 📄 License
 
 All rights reserved.
