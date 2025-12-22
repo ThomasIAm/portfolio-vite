@@ -1,5 +1,10 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkRehype from "remark-rehype";
+import remarkParse from "remark-parse";
+import rehypeRaw from "rehype-raw";
+import rehypeSanitize from "rehype-sanitize";
+import rehypeStringify from "rehype-stringify";
 import { CodeBlock } from "./CodeBlock";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { LinkPreview } from "./LinkPreview";
@@ -83,7 +88,14 @@ export function BlogContent({ content }: BlogContentProps) {
   return (
     <div className="prose-warm">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[
+          remarkParse,
+          remarkGfm,
+          [remarkRehype, { allowDangerousHtml: true }],
+          rehypeRaw,
+          rehypeSanitize,
+          rehypeStringify,
+        ]}
         components={{
           h1: ({ children }) => (
             <Heading
