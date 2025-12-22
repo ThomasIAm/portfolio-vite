@@ -137,7 +137,7 @@ export default function BlogPost() {
                 {readingTime}
               </span>
             </div>
-            
+
             {/* Authors */}
             {fields.author && fields.author.length > 0 && (
               <div className="flex flex-wrap items-center gap-4">
@@ -165,10 +165,14 @@ export default function BlogPost() {
                           {author.fields.name}
                         </a>
                       ) : (
-                        <span className="font-medium text-foreground">{author.fields.name}</span>
+                        <span className="font-medium text-foreground">
+                          {author.fields.name}
+                        </span>
                       )}
                       {author.fields.bio && (
-                        <p className="text-xs text-muted-foreground line-clamp-1">{author.fields.bio}</p>
+                        <p className="text-xs text-muted-foreground line-clamp-1">
+                          {author.fields.bio}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -227,16 +231,16 @@ export default function BlogPost() {
           <div className="max-w-6xl mx-auto">
             {/* Mobile Table of Contents */}
             <TableOfContents content={fields.content} variant="mobile" />
-            
+
             <div className="flex gap-12">
               {/* Main Article */}
               <article
-                className="flex-1 max-w-3xl animate-fade-up"
+                className="flex-1 max-w-3xl animate-fade-up overflow-x-hidden"
                 style={{ animationDelay: "0.1s" }}
               >
                 <BlogContent content={fields.content} />
               </article>
-              
+
               {/* Table of Contents Sidebar */}
               <aside className="hidden lg:block w-64 shrink-0">
                 <TableOfContents content={fields.content} variant="desktop" />
