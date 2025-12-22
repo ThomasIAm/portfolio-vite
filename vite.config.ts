@@ -1,5 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
+import tailwindcss from "@tailwindcss/postcss";
+import autoprefixer from "autoprefixer";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { execSync } from "child_process";
@@ -59,6 +61,11 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     sourcemap: true,
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss(), autoprefixer()],
+    },
   },
   plugins: [
     contentfulPlugin(),
