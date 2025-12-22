@@ -29,18 +29,23 @@ function generateSlug(text: string): string {
 }
 
 function extractHeadings(markdown: string): TocItem[] {
-  const headingRegex = /^(#{1,4})\s+(.+)$/gm;
   const headings: TocItem[] = [];
-  let match;
+  const lines = markdown.split('\n');
 
-  while ((match = headingRegex.exec(markdown)) !== null) {
-    const level = match[1].length;
-    const text = match[2].trim();
-    headings.push({
-      id: generateSlug(text),
-      text,
-      level,
-    });
+  for (const line of lines) {
+    // Match heading prefix at start of line (non-greedy, no backtracking)
+    const hashMatch = line.match(/^(#{1,4})\s/);
+    if (hashMatch) {
+      const level = hashMatch[1].length;
+      const text = line.slice(hashMatch[0].length).trim();
+      if (text) {
+        headings.push({
+          id: generateSlug(text),
+          text,
+          level,
+        });
+      }
+    }
   }
 
   // Check if content has footnotes (remark-gfm creates a Footnotes section)
