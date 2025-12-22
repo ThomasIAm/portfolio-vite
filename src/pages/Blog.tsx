@@ -22,8 +22,8 @@ export default function Blog() {
   const [showAll, setShowAll] = useState(false);
   
   const featuredPosts = posts?.filter((post) => post.fields.featured) || [];
-  const regularPosts = posts?.filter((post) => !post.fields.featured) || [];
-  const visibleRegularPosts = showAll ? regularPosts : regularPosts.slice(0, INITIAL_POSTS_COUNT);
+  const allPosts = posts || [];
+  const visiblePosts = showAll ? allPosts : allPosts.slice(0, INITIAL_POSTS_COUNT);
 
   return (
     <Layout>
@@ -170,16 +170,17 @@ export default function Blog() {
               </article>
             )}
 
-            {regularPosts.length > 0 && (
+            {allPosts.length > 0 && (
               <h2 className="font-display text-2xl font-bold text-foreground mb-8">
                 All Posts
               </h2>
             )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {visibleRegularPosts.map((post, index) => {
+              {visiblePosts.map((post, index) => {
                 const fields = post.fields;
                 const readingTime = calculateReadingTime(fields.content);
+                const isFeatured = post.fields.featured;
 
                 return (
                   <article
@@ -187,6 +188,11 @@ export default function Blog() {
                     className="p-6 rounded-2xl bg-card shadow-soft animate-fade-up hover:shadow-md transition-shadow flex flex-col h-full"
                     style={{ animationDelay: `${0.1 * (index + 1)}s` }}
                   >
+                    {isFeatured && (
+                      <span className="inline-block px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-2 w-fit">
+                        Featured
+                      </span>
+                    )}
                     <Link to={`/blog/${fields.slug}`}>
                       <h2 className="font-display text-xl font-bold text-foreground mb-3 hover:text-primary transition-colors line-clamp-2">
                         {fields.title}
@@ -219,7 +225,7 @@ export default function Blog() {
               })}
             </div>
 
-            {regularPosts.length > INITIAL_POSTS_COUNT && (
+            {allPosts.length > INITIAL_POSTS_COUNT && (
               <div className="mt-6 text-center">
                 <Button
                   variant="outline"
@@ -227,7 +233,7 @@ export default function Blog() {
                   onClick={() => setShowAll(!showAll)}
                   className="gap-2"
                 >
-                  {showAll ? "Show Less" : `Show More (${regularPosts.length - INITIAL_POSTS_COUNT} more)`}
+                  {showAll ? "Show Less" : `Show More (${allPosts.length - INITIAL_POSTS_COUNT} more)`}
                   <ChevronDown className={`h-4 w-4 transition-transform ${showAll ? "rotate-180" : ""}`} />
                 </Button>
               </div>
