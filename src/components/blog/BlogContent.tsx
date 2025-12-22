@@ -1,11 +1,11 @@
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import { CodeBlock } from './CodeBlock';
-import { OptimizedImage } from '@/components/ui/optimized-image';
-import { LinkPreview } from './LinkPreview';
-import React from 'react';
-import { Link } from 'lucide-react';
-import { toast } from 'sonner';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { CodeBlock } from "./CodeBlock";
+import { OptimizedImage } from "@/components/ui/optimized-image";
+import { LinkPreview } from "./LinkPreview";
+import React from "react";
+import { Link } from "lucide-react";
+import { toast } from "sonner";
 
 interface BlogContentProps {
   content: string;
@@ -15,19 +15,19 @@ interface BlogContentProps {
 function generateSlug(children: React.ReactNode): string {
   const text = React.Children.toArray(children)
     .map((child) => {
-      if (typeof child === 'string') return child;
+      if (typeof child === "string") return child;
       if (React.isValidElement(child) && child.props?.children) {
         return generateSlug(child.props.children);
       }
-      return '';
+      return "";
     })
-    .join('');
-  
+    .join("");
+
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
     .trim();
 }
 
@@ -35,22 +35,22 @@ function generateSlug(children: React.ReactNode): string {
 function copyAnchorLink(slug: string) {
   const url = `${window.location.origin}${window.location.pathname}#${slug}`;
   navigator.clipboard.writeText(url);
-  toast.success('Link copied to clipboard');
+  toast.success("Link copied to clipboard");
 }
 
 // Heading component with anchor link
-function Heading({ 
-  level, 
-  children, 
-  className 
-}: { 
-  level: 1 | 2 | 3 | 4; 
-  children: React.ReactNode; 
+function Heading({
+  level,
+  children,
+  className,
+}: {
+  level: 1 | 2 | 3 | 4;
+  children: React.ReactNode;
   className: string;
 }) {
   const slug = generateSlug(children);
   const Tag = `h${level}` as const;
-  
+
   return (
     <Tag id={slug} className={`${className} group relative scroll-mt-20`}>
       {children}
@@ -68,14 +68,14 @@ function Heading({
 // Check if a paragraph contains only a single link (standalone link)
 function isStandaloneLink(children: React.ReactNode): { href: string } | null {
   const childArray = React.Children.toArray(children);
-  
+
   if (childArray.length !== 1) return null;
-  
+
   const child = childArray[0];
   if (React.isValidElement(child) && child.props?.href) {
     return { href: child.props.href };
   }
-  
+
   return null;
 }
 
@@ -86,22 +86,34 @@ export function BlogContent({ content }: BlogContentProps) {
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children }) => (
-            <Heading level={1} className="font-display text-3xl font-bold text-foreground mt-10 mb-6">
+            <Heading
+              level={1}
+              className="font-display text-3xl font-bold text-foreground mt-10 mb-6"
+            >
               {children}
             </Heading>
           ),
           h2: ({ children }) => (
-            <Heading level={2} className="font-display text-2xl font-bold text-foreground mt-8 mb-4">
+            <Heading
+              level={2}
+              className="font-display text-2xl font-bold text-foreground mt-8 mb-4"
+            >
               {children}
             </Heading>
           ),
           h3: ({ children }) => (
-            <Heading level={3} className="font-display text-xl font-semibold text-foreground mt-6 mb-3">
+            <Heading
+              level={3}
+              className="font-display text-xl font-semibold text-foreground mt-6 mb-3"
+            >
               {children}
             </Heading>
           ),
           h4: ({ children }) => (
-            <Heading level={4} className="font-display text-lg font-semibold text-foreground mt-4 mb-2">
+            <Heading
+              level={4}
+              className="font-display text-lg font-semibold text-foreground mt-4 mb-2"
+            >
               {children}
             </Heading>
           ),
@@ -110,7 +122,7 @@ export function BlogContent({ content }: BlogContentProps) {
             if (standaloneLink) {
               return <LinkPreview href={standaloneLink.href} />;
             }
-            
+
             return (
               <p className="text-muted-foreground leading-relaxed mb-4">
                 {children}
@@ -118,35 +130,41 @@ export function BlogContent({ content }: BlogContentProps) {
             );
           },
           a: ({ href, children, ...props }) => {
-            const isHashLink = href?.startsWith('#');
-            const isExternal = href?.startsWith('http');
+            const isHashLink = href?.startsWith("#");
+            const isExternal = href?.startsWith("http");
 
             return (
               <a
                 {...props}
                 href={href}
-                className={`text-primary hover:underline ${props.className ?? ''}`}
-                target={isExternal ? '_blank' : undefined}
-                rel={isExternal ? 'noopener noreferrer' : undefined}
+                className={`text-primary hover:underline ${
+                  props.className ?? ""
+                }`}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
                 onClick={(e) => {
                   props.onClick?.(e as any);
                   if (!isHashLink) return;
 
                   e.preventDefault();
 
-                  const hash = (href || '').replace(/^#/, '');
+                  const hash = (href || "").replace(/^#/, "");
                   const candidates = [
                     hash,
-                    hash.startsWith('user-content-')
-                      ? hash.replace(/^user-content-/, '')
+                    hash.startsWith("user-content-")
+                      ? hash.replace(/^user-content-/, "")
                       : `user-content-${hash}`,
                   ];
 
-                  const targetId = candidates.find((id) => document.getElementById(id));
+                  const targetId = candidates.find((id) =>
+                    document.getElementById(id)
+                  );
                   if (!targetId) return;
 
-                  document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
-                  window.history.pushState(null, '', `#${targetId}`);
+                  document
+                    .getElementById(targetId)
+                    ?.scrollIntoView({ behavior: "smooth" });
+                  window.history.pushState(null, "", `#${targetId}`);
                 }}
               >
                 {children}
@@ -166,7 +184,10 @@ export function BlogContent({ content }: BlogContentProps) {
           li: ({ node, children, ...props }) => {
             // Strip paragraph wrapper that react-markdown adds to list items
             const content = React.Children.map(children, (child) => {
-              if (React.isValidElement(child) && (child.type as any).name === 'p') {
+              if (
+                React.isValidElement(child) &&
+                (child.type as any).name === "p"
+              ) {
                 return child.props.children;
               }
               return child;
@@ -180,13 +201,17 @@ export function BlogContent({ content }: BlogContentProps) {
             const { id: _ignoredId, ...restProps } = props as any;
 
             const userContentId = rawId
-              ? rawId.startsWith('user-content-')
+              ? rawId.startsWith("user-content-")
                 ? rawId
                 : `user-content-${rawId}`
               : undefined;
 
             return (
-              <li id={rawId} className="text-muted-foreground scroll-mt-20" {...restProps}>
+              <li
+                id={rawId}
+                className="text-muted-foreground scroll-mt-20"
+                {...restProps}
+              >
                 {userContentId && userContentId !== rawId ? (
                   <span id={userContentId} className="sr-only" />
                 ) : null}
@@ -196,10 +221,14 @@ export function BlogContent({ content }: BlogContentProps) {
           },
           section: ({ children, ...props }) => {
             // Handle footnotes section created by remark-gfm
-            const dataFootnotes = (props as any)['data-footnotes'];
+            const dataFootnotes = (props as any)["data-footnotes"];
             if (dataFootnotes !== undefined) {
               return (
-                <section data-footnotes className="mt-8 pt-8 border-t border-border" {...props}>
+                <section
+                  data-footnotes
+                  className="mt-8 pt-8 border-t border-border"
+                  {...props}
+                >
                   {children}
                 </section>
               );
@@ -212,9 +241,9 @@ export function BlogContent({ content }: BlogContentProps) {
             </blockquote>
           ),
           code: ({ className, children }) => {
-            const match = /language-(\w+)/.exec(className || '');
+            const match = /language-(\w+)/.exec(className || "");
             const isInline = !match;
-            
+
             if (isInline) {
               return (
                 <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-foreground">
@@ -222,10 +251,10 @@ export function BlogContent({ content }: BlogContentProps) {
                 </code>
               );
             }
-            
+
             return (
               <CodeBlock
-                code={String(children).replace(/\n$/, '')}
+                code={String(children).replace(/\n$/, "")}
                 language={match[1]}
               />
             );
@@ -252,8 +281,8 @@ export function BlogContent({ content }: BlogContentProps) {
           img: ({ src, alt, title }) => {
             const image = (
               <OptimizedImage
-                src={src || ''}
-                alt={alt || ''}
+                src={src || ""}
+                alt={alt || ""}
                 className="rounded-lg max-w-full"
                 responsive
               />
@@ -263,7 +292,7 @@ export function BlogContent({ content }: BlogContentProps) {
               return (
                 <figure className="my-4 inline-block">
                   {image}
-                  <figcaption className="text-center text-sm text-muted-foreground mt-2 italic">
+                  <figcaption className="text-sm text-muted-foreground mt-2 italic">
                     {title}
                   </figcaption>
                 </figure>
