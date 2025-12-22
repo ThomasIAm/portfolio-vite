@@ -32,6 +32,7 @@ const dependencies: Dependency[] = [
   { name: "class-variance-authority", url: "https://cva.style", license: "Apache-2.0", description: "Class variance authority for component variants" },
   { name: "clsx", url: "https://github.com/lukeed/clsx", license: "MIT", description: "Tiny utility for constructing className strings" },
   { name: "tailwind-merge", url: "https://github.com/dcastil/tailwind-merge", license: "MIT", description: "Merge Tailwind CSS classes without style conflicts" },
+  { name: "@tailwindcss/postcss", url: "https://tailwindcss.com/docs/installation/using-postcss", license: "MIT", description: "PostCSS plugin for Tailwind CSS v4" },
   { name: "Recharts", url: "https://recharts.org", license: "MIT", description: "Composable charting library built on React components" },
   { name: "remark-gfm", url: "https://github.com/remarkjs/remark-gfm", license: "MIT", description: "GitHub Flavored Markdown support for remark" },
 ];
