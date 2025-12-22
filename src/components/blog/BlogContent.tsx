@@ -1,31 +1,60 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkRehype from "remark-rehype";
+import remarkParse from "remark-parse";
+import rehypeRaw from "rehype-raw";
+import rehypeSanitize from "rehype-sanitize";
+import rehypeStringify from "rehype-stringify";
 import { CodeBlock } from "./CodeBlock";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { LinkPreview } from "./LinkPreview";
 import React from "react";
-import { Link, Info, Lightbulb, AlertTriangle, AlertCircle, Flame } from "lucide-react";
+import {
+  Link,
+  Info,
+  Lightbulb,
+  AlertTriangle,
+  AlertCircle,
+  Flame,
+} from "lucide-react";
 import { toast } from "sonner";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
 // GitHub-style alert types
 const ALERT_TYPES = {
-  NOTE: { icon: Info, className: "border-blue-500/50 bg-blue-500/10 [&>svg]:text-blue-500" },
-  TIP: { icon: Lightbulb, className: "border-green-500/50 bg-green-500/10 [&>svg]:text-green-500" },
-  IMPORTANT: { icon: AlertCircle, className: "border-purple-500/50 bg-purple-500/10 [&>svg]:text-purple-500" },
-  WARNING: { icon: AlertTriangle, className: "border-yellow-500/50 bg-yellow-500/10 [&>svg]:text-yellow-500" },
-  CAUTION: { icon: Flame, className: "border-red-500/50 bg-red-500/10 [&>svg]:text-red-500" },
+  NOTE: {
+    icon: Info,
+    className: "border-blue-500/50 bg-blue-500/10 [&>svg]:text-blue-500",
+  },
+  TIP: {
+    icon: Lightbulb,
+    className: "border-green-500/50 bg-green-500/10 [&>svg]:text-green-500",
+  },
+  IMPORTANT: {
+    icon: AlertCircle,
+    className: "border-purple-500/50 bg-purple-500/10 [&>svg]:text-purple-500",
+  },
+  WARNING: {
+    icon: AlertTriangle,
+    className: "border-yellow-500/50 bg-yellow-500/10 [&>svg]:text-yellow-500",
+  },
+  CAUTION: {
+    icon: Flame,
+    className: "border-red-500/50 bg-red-500/10 [&>svg]:text-red-500",
+  },
 } as const;
 
 type AlertType = keyof typeof ALERT_TYPES;
 
 // Parse GitHub-style alert from blockquote children
-function parseGitHubAlert(children: React.ReactNode): { type: AlertType; content: React.ReactNode } | null {
+function parseGitHubAlert(
+  children: React.ReactNode
+): { type: AlertType; content: React.ReactNode } | null {
   const childArray = React.Children.toArray(children);
-  
+
   for (const child of childArray) {
     if (!React.isValidElement(child)) continue;
-    
+
     const grandchildren = React.Children.toArray(child.props?.children);
     for (let i = 0; i < grandchildren.length; i++) {
       const gc = grandchildren[i];
@@ -34,27 +63,31 @@ function parseGitHubAlert(children: React.ReactNode): { type: AlertType; content
         if (match) {
           const alertType = match[1] as AlertType;
           const remainingText = gc.replace(match[0], "");
-          
+
           // Rebuild content without the alert marker
           const newGrandchildren = [
             ...grandchildren.slice(0, i),
             remainingText,
             ...grandchildren.slice(i + 1),
-          ].filter(c => c !== "");
-          
-          const newChild = React.cloneElement(child as React.ReactElement, {}, ...newGrandchildren);
+          ].filter((c) => c !== "");
+
+          const newChild = React.cloneElement(
+            child as React.ReactElement,
+            {},
+            ...newGrandchildren
+          );
           const newChildren = [
             ...childArray.slice(0, childArray.indexOf(child)),
             newChild,
             ...childArray.slice(childArray.indexOf(child) + 1),
           ];
-          
+
           return { type: alertType, content: newChildren };
         }
       }
     }
   }
-  
+
   return null;
 }
 
@@ -134,7 +167,14 @@ export function BlogContent({ content }: BlogContentProps) {
   return (
     <div className="prose-warm">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[
+          remarkParse,
+          remarkGfm,
+          [remarkRehype, { allowDangerousHtml: true }],
+          rehypeRaw,
+          rehypeSanitize,
+          rehypeStringify,
+        ]}
         components={{
           h1: ({ children }) => (
             <Heading
@@ -288,22 +328,24 @@ export function BlogContent({ content }: BlogContentProps) {
           },
           blockquote: ({ children }) => {
             const alertData = parseGitHubAlert(children);
-            
+
             if (alertData) {
               const { type, content } = alertData;
               const { icon: Icon, className } = ALERT_TYPES[type];
-              
+
               return (
                 <Alert className={`my-4 ${className}`}>
                   <Icon className="h-4 w-4" />
-                  <AlertTitle className="font-semibold capitalize">{type.toLowerCase()}</AlertTitle>
+                  <AlertTitle className="font-semibold capitalize">
+                    {type.toLowerCase()}
+                  </AlertTitle>
                   <AlertDescription className="[&_p]:mb-0 [&_p]:text-current">
                     {content}
                   </AlertDescription>
                 </Alert>
               );
             }
-            
+
             return (
               <blockquote className="border-l-4 border-primary pl-4 italic text-muted-foreground my-4">
                 {children}
