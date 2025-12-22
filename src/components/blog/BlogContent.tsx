@@ -301,12 +301,22 @@ export function BlogContent({ content }: BlogContentProps) {
             );
 
             if (title) {
+              // Parse title for caption and source: "caption|1" or just "caption"
+              const [caption, sourceNum] = title.split("|").map((s) => s.trim());
+
               return (
-                <figure className="my-4 inline-block">
+                <figure className="my-4 inline-block relative">
                   {image}
-                  <figcaption className="text-sm text-muted-foreground mt-2 italic">
-                    {title}
-                  </figcaption>
+                  {sourceNum && (
+                    <span className="absolute top-2 -right-6 text-xs text-muted-foreground font-medium">
+                      [{sourceNum}]
+                    </span>
+                  )}
+                  {caption && (
+                    <figcaption className="text-sm text-muted-foreground mt-2 italic">
+                      {caption}
+                    </figcaption>
+                  )}
                 </figure>
               );
             }
