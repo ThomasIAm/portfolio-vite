@@ -132,4 +132,13 @@
     transform: translateY(-4px);
     box-shadow: var(--shadow-hover);
   }
+
+  /* Position sup beside preceding figure */
+  .prose-warm figure {
+    @apply relative;
+  }
+
+  .prose-warm figure + sup {
+    @apply absolute top-2 -right-6 text-xs text-muted-foreground;
+  }
 }
