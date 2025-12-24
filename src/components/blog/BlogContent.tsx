@@ -46,11 +46,6 @@ const ALERT_TYPES = {
 
 type AlertType = keyof typeof ALERT_TYPES;
 
-interface ElementWithChildren {
-  children?: React.ReactNode;
-  href?: string;
-}
-
 // Parse GitHub-style alert from blockquote children
 function parseGitHubAlert(
   children: React.ReactNode
