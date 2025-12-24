@@ -58,6 +58,8 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    // Disable HMR to avoid React Refresh runtime mismatches in some preview environments.
+    hmr: false,
   },
   build: {
     sourcemap: true,
