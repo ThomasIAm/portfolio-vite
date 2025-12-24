@@ -1,10 +1,13 @@
 import { createRoot } from "react-dom/client";
-import { HelmetProvider } from "react-helmet-async";
+import { createHead, UnheadProvider } from "@unhead/react/client";
 import App from "./App.tsx";
 import "./index.css";
 
+const head = createHead();
+
 createRoot(document.getElementById("root")!).render(
-  <HelmetProvider>
+  <UnheadProvider head={head}>
     <App />
-  </HelmetProvider>
+  </UnheadProvider>
 );
+

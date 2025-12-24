@@ -22,7 +22,7 @@ const dependencies: Dependency[] = [
   { name: "Contentful", url: "https://contentful.com", license: "MIT", description: "Headless CMS for content management" },
   { name: "React Markdown", url: "https://github.com/remarkjs/react-markdown", license: "MIT", description: "Markdown component for React" },
   { name: "Prism React Renderer", url: "https://github.com/FormidableLabs/prism-react-renderer", license: "MIT", description: "Syntax highlighting for code blocks" },
-  { name: "React Helmet Async", url: "https://github.com/staylor/react-helmet-async", license: "Apache-2.0", description: "Thread-safe document head manager" },
+  { name: "Unhead (React)", url: "https://unhead.unjs.io", license: "MIT", description: "Document head manager for React" },
   { name: "date-fns 4", url: "https://date-fns.org", license: "MIT", description: "Modern JavaScript date utility library" },
   { name: "Embla Carousel", url: "https://www.embla-carousel.com", license: "MIT", description: "Lightweight carousel library with great performance" },
   { name: "Sonner 2", url: "https://sonner.emilkowal.ski", license: "MIT", description: "Opinionated toast component for React" },

@@ -8,6 +8,7 @@ A modern, responsive portfolio website showcasing my work as a Lead Cyber Securi
 - **Build Tool:** Vite
 - **Styling:** Tailwind CSS v4 with `@tailwindcss/postcss`
 - **UI Components:** shadcn/ui (Radix UI primitives)
+- **Head Management:** Unhead (`@unhead/react`)
 - **Content Management:** Contentful CMS
 - **Routing:** React Router 7
 - **Data Fetching:** TanStack Query
