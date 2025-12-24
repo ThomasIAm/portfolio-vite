@@ -51,9 +51,6 @@ npm install
 
 # Start the development server
 npm run dev
-
-# Note: In some preview environments we disable Vite HMR (Fast Refresh) to avoid React Refresh runtime mismatches.
-# If you need HMR locally, remove `server.hmr: false` from vite.config.ts.
 ```
 
 ### Environment Variables
