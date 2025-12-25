@@ -10,11 +10,11 @@ interface Dependency {
 }
 
 const dependencies: Dependency[] = [
-  { name: "React", url: "https://react.dev", license: "MIT", description: "UI library for building user interfaces" },
+  { name: "React 19", url: "https://react.dev", license: "MIT", description: "UI library for building user interfaces" },
   { name: "Vite", url: "https://vitejs.dev", license: "MIT", description: "Next generation frontend build tool" },
-  { name: "Tailwind CSS", url: "https://tailwindcss.com", license: "MIT", description: "Utility-first CSS framework" },
+  { name: "Tailwind CSS 4", url: "https://tailwindcss.com", license: "MIT", description: "Utility-first CSS framework" },
   { name: "TypeScript", url: "https://typescriptlang.org", license: "Apache-2.0", description: "Typed superset of JavaScript" },
-  { name: "React Router", url: "https://reactrouter.com", license: "MIT", description: "Declarative routing for React" },
+  { name: "React Router 7", url: "https://reactrouter.com", license: "MIT", description: "Declarative routing for React" },
   { name: "TanStack Query", url: "https://tanstack.com/query", license: "MIT", description: "Powerful data synchronization for React" },
   { name: "Radix UI", url: "https://radix-ui.com", license: "MIT", description: "Unstyled, accessible UI primitives" },
   { name: "shadcn/ui", url: "https://ui.shadcn.com", license: "MIT", description: "Re-usable components built with Radix UI and Tailwind" },
@@ -22,19 +22,22 @@ const dependencies: Dependency[] = [
   { name: "Contentful", url: "https://contentful.com", license: "MIT", description: "Headless CMS for content management" },
   { name: "React Markdown", url: "https://github.com/remarkjs/react-markdown", license: "MIT", description: "Markdown component for React" },
   { name: "Prism React Renderer", url: "https://github.com/FormidableLabs/prism-react-renderer", license: "MIT", description: "Syntax highlighting for code blocks" },
-  { name: "React Helmet Async", url: "https://github.com/staylor/react-helmet-async", license: "Apache-2.0", description: "Thread-safe document head manager" },
-  { name: "date-fns", url: "https://date-fns.org", license: "MIT", description: "Modern JavaScript date utility library" },
+  { name: "Unhead (React)", url: "https://unhead.unjs.io", license: "MIT", description: "Document head manager for React" },
+  { name: "date-fns 4", url: "https://date-fns.org", license: "MIT", description: "Modern JavaScript date utility library" },
   { name: "Embla Carousel", url: "https://www.embla-carousel.com", license: "MIT", description: "Lightweight carousel library with great performance" },
-  { name: "Sonner", url: "https://sonner.emilkowal.ski", license: "MIT", description: "Opinionated toast component for React" },
-  { name: "Zod", url: "https://zod.dev", license: "MIT", description: "TypeScript-first schema validation" },
+  { name: "Sonner 2", url: "https://sonner.emilkowal.ski", license: "MIT", description: "Opinionated toast component for React" },
+  { name: "Zod 4", url: "https://zod.dev", license: "MIT", description: "TypeScript-first schema validation" },
   { name: "React Hook Form", url: "https://react-hook-form.com", license: "MIT", description: "Performant form validation library" },
   { name: "next-themes", url: "https://github.com/pacocoursey/next-themes", license: "MIT", description: "Perfect dark mode in React" },
   { name: "class-variance-authority", url: "https://cva.style", license: "Apache-2.0", description: "Class variance authority for component variants" },
   { name: "clsx", url: "https://github.com/lukeed/clsx", license: "MIT", description: "Tiny utility for constructing className strings" },
   { name: "tailwind-merge", url: "https://github.com/dcastil/tailwind-merge", license: "MIT", description: "Merge Tailwind CSS classes without style conflicts" },
   { name: "@tailwindcss/postcss", url: "https://tailwindcss.com/docs/installation/using-postcss", license: "MIT", description: "PostCSS plugin for Tailwind CSS v4" },
-  { name: "Recharts", url: "https://recharts.org", license: "MIT", description: "Composable charting library built on React components" },
+  { name: "Recharts 3", url: "https://recharts.org", license: "MIT", description: "Composable charting library built on React components" },
   { name: "remark-gfm", url: "https://github.com/remarkjs/remark-gfm", license: "MIT", description: "GitHub Flavored Markdown support for remark" },
+  { name: "Vaul 1", url: "https://vaul.emilkowal.ski", license: "MIT", description: "Drawer component for React" },
+  { name: "React Day Picker 9", url: "https://daypicker.dev", license: "MIT", description: "Flexible date picker for React" },
+  { name: "React Resizable Panels 3", url: "https://github.com/bvaughn/react-resizable-panels", license: "MIT", description: "Resizable panel groups/layouts for React" },
 ];
 
 export default function Notice() {

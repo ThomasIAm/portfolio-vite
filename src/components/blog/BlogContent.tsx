@@ -55,7 +55,8 @@ function parseGitHubAlert(
   for (const child of childArray) {
     if (!React.isValidElement(child)) continue;
 
-    const grandchildren = React.Children.toArray(child.props?.children);
+    const element = child as React.ReactElement<{ children?: React.ReactNode }>;
+    const grandchildren = React.Children.toArray(element.props?.children);
     for (let i = 0; i < grandchildren.length; i++) {
       const gc = grandchildren[i];
       if (typeof gc === "string") {
@@ -100,8 +101,11 @@ function generateSlug(children: React.ReactNode): string {
   const text = React.Children.toArray(children)
     .map((child) => {
       if (typeof child === "string") return child;
-      if (React.isValidElement(child) && child.props?.children) {
-        return generateSlug(child.props.children);
+      if (React.isValidElement(child)) {
+        const element = child as React.ReactElement<{ children?: React.ReactNode }>;
+        if (element.props?.children) {
+          return generateSlug(element.props.children);
+        }
       }
       return "";
     })
@@ -156,8 +160,11 @@ function isStandaloneLink(children: React.ReactNode): { href: string } | null {
   if (childArray.length !== 1) return null;
 
   const child = childArray[0];
-  if (React.isValidElement(child) && child.props?.href) {
-    return { href: child.props.href };
+  if (React.isValidElement(child)) {
+    const element = child as React.ReactElement<{ href?: string }>;
+    if (element.props?.href) {
+      return { href: element.props.href };
+    }
   }
 
   return null;
@@ -234,7 +241,7 @@ export function BlogContent({ content }: BlogContentProps) {
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener noreferrer" : undefined}
                 onClick={(e) => {
-                  props.onClick?.(e as any);
+                  props.onClick?.(e as React.MouseEvent<HTMLAnchorElement>);
                   if (!isHashLink) return;
 
                   e.preventDefault();
@@ -277,34 +284,35 @@ export function BlogContent({ content }: BlogContentProps) {
             const content = React.Children.map(children, (child) => {
               if (
                 React.isValidElement(child) &&
-                (child.type as any).name === "p"
+                (child.type as { name?: string }).name === "p"
               ) {
-                return child.props.children;
+                const element = child as React.ReactElement<{ children?: React.ReactNode }>;
+                return element.props?.children;
               }
               return child;
             });
 
             const rawId =
-              (props as any).id ??
-              (node as any)?.properties?.id ??
-              (node as any)?.data?.hProperties?.id;
+              (props as Record<string, unknown>).id ??
+              (node as { properties?: { id?: string } })?.properties?.id ??
+              (node as { data?: { hProperties?: { id?: string } } })?.data?.hProperties?.id;
 
-            const { id: _ignoredId, ...restProps } = props as any;
+            const { id: _ignoredId, ...restProps } = props as Record<string, unknown>;
 
             const userContentId = rawId
-              ? rawId.startsWith("user-content-")
+              ? (rawId as string).startsWith("user-content-")
                 ? rawId
                 : `user-content-${rawId}`
               : undefined;
 
             return (
               <li
-                id={rawId}
+                id={rawId as string | undefined}
                 className="text-muted-foreground scroll-mt-20"
                 {...restProps}
               >
                 {userContentId && userContentId !== rawId ? (
-                  <span id={userContentId} className="sr-only" />
+                  <span id={userContentId as string} className="sr-only" />
                 ) : null}
                 {content}
               </li>
@@ -312,7 +320,7 @@ export function BlogContent({ content }: BlogContentProps) {
           },
           section: ({ children, ...props }) => {
             // Handle footnotes section created by remark-gfm
-            const dataFootnotes = (props as any)["data-footnotes"];
+            const dataFootnotes = (props as Record<string, unknown>)["data-footnotes"];
             if (dataFootnotes !== undefined) {
               return (
                 <section

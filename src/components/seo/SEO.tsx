@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Head } from "@unhead/react";
 import { useLocation } from "react-router-dom";
 import { 
   SITE_NAME, 
@@ -71,7 +71,7 @@ export function SEO({
   };
 
   return (
-    <Helmet>
+    <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
       {keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
@@ -105,6 +105,6 @@ export function SEO({
       <script type="application/ld+json">
         {JSON.stringify(structuredData || defaultStructuredData)}
       </script>
-    </Helmet>
+    </Head>
   );
 }

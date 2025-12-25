@@ -4,16 +4,18 @@ A modern, responsive portfolio website showcasing my work as a Lead Cyber Securi
 
 ## 🚀 Tech Stack
 
-- **Framework:** React 18 with TypeScript
+- **Framework:** React 19 with TypeScript
 - **Build Tool:** Vite
 - **Styling:** Tailwind CSS v4 with `@tailwindcss/postcss`
 - **UI Components:** shadcn/ui (Radix UI primitives)
+- **Head Management:** Unhead (`@unhead/react`)
 - **Content Management:** Contentful CMS
-- **Routing:** React Router
+- **Routing:** React Router 7
 - **Data Fetching:** TanStack Query
 - **Carousel:** Embla Carousel
-- **Charts:** Recharts
-- **Forms:** React Hook Form + Zod
+- **Charts:** Recharts 3
+- **Forms:** React Hook Form + Zod 4
+- **Date Utilities:** date-fns 4
 
 ## ⚙️ Tailwind CSS v4 Configuration
 
