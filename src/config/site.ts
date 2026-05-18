@@ -1,6 +1,8 @@
 const siteName = "Thomas van den Nieuwenhoff";
 const siteRole = "Lead Cyber Security Consultant";
 const siteUrl = "https://tvdn.me";
+
+// Keep full profile URLs explicit because handles can differ across platforms.
 const linkedinUrl = "https://linkedin.com/in/tvdn";
 const githubUrl = "https://github.com/ThomasIAm";
 const gitlabUrl = "https://gitlab.com/ThomasIAm";
