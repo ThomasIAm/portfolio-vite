@@ -296,6 +296,42 @@ const certifications: Certification[] = [
       "https://www.credly.com/badges/18f84f10-92f3-4667-9641-2eaa96ad23a4",
     infoUrl: "https://www.redhat.com/en/services/certification/rhcs-paas",
   },
+  {
+    name: "Multicluster Management with Red Hat Advanced Cluster Management for Kubernetes (DO432) - Ver. 2.13",
+    year: "2026",
+    categories: ["Red Hat"],
+    logo: "/assets/certifications/do432.png",
+    proofUrl:
+      "https://www.credly.com/badges/4c429aa6-fcdb-4ea4-9b79-6432a86d7c8f",
+    infoUrl: "https://www.redhat.com/en/services/training/do432-multicluster-management-red-hat-advanced-cluster-management-kubernetes",
+  },
+  {
+    name: "Securing Kubernetes Clusters with Red Hat Advanced Cluster Security (DO430) - Ver. 4.6",
+    year: "2026",
+    categories: ["Red Hat"],
+    logo: "/assets/certifications/do430.png",
+    proofUrl:
+      "https://www.credly.com/badges/38dcbbd9-f998-4b0c-ad3a-2bd0c998d84f",
+    infoUrl: "https://www.redhat.com/en/services/training/do430-securing-kubernetes-clusters-red-hat-advanced-cluster-security",
+  },
+  {
+    name: "Red Hat OpenShift Administration III: Scaling Deployments in the Enterprise (DO380) - Ver. 4.14",
+    year: "2025",
+    categories: ["Red Hat"],
+    logo: "/assets/certifications/do380.png",
+    proofUrl:
+      "https://www.credly.com/badges/d8cb9547-4229-4a5b-94ed-df8bcc30c909",
+    infoUrl: "https://www.redhat.com/en/services/training/do380-red-hat-openshift-administration-iii-scaling-deployments-in-the-enterprise",
+  },
+  {
+    name: "Red Hat OpenShift Installation Lab (DO322) - Ver. 4.6",
+    year: "2025",
+    categories: ["Red Hat"],
+    logo: "/assets/certifications/do322.png",
+    proofUrl:
+      "https://www.credly.com/badges/da95d555-9d93-4e86-a1f9-6f8be6808c8c",
+    infoUrl: "https://www.redhat.com/en/services/training/do322-red-hat-openshift-installation-lab",
+  },
   // Cybersecurity
   {
     name: "1Password Business Admin",
