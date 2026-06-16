@@ -324,6 +324,15 @@ const certifications: Certification[] = [
     infoUrl: "https://www.redhat.com/en/services/training/do380-red-hat-openshift-administration-iii-scaling-deployments-in-the-enterprise",
   },
   {
+    name: "Enterprise Kubernetes Storage with Red Hat OpenShift Data Foundation (DO370) - Ver. 4.16",
+    year: "2026",
+    categories: ["Red Hat"],
+    logo: "/assets/certifications/do370.png",
+    proofUrl:
+      "https://www.credly.com/badges/4cb02b7e-b046-4202-bd51-f9665bae5a6b",
+    infoUrl: "https://www.redhat.com/en/services/training/do370-enterprise-kubernetes-storage-with-red-hat-openshift-data-foundation",
+  },
+  {
     name: "Red Hat OpenShift Installation Lab (DO322) - Ver. 4.6",
     year: "2025",
     categories: ["Red Hat"],
