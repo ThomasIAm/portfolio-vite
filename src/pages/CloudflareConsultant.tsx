@@ -201,7 +201,7 @@ export default function CloudflareConsultant() {
                 "Cloudflare Solutions Architect: gecertificeerd op het volledige portfolio",
                 "Lead Consultant bij SALT, PowerUP+ Cloudflare-partner in Nederland",
                 "Praktijkervaring met enterprise migraties, Zero Trust uitrol en Workers in productie",
-                "Onafhankelijk advies — geen vendor lock-in zonder reden",
+                "Onafhankelijk advies, geen vendor lock-in zonder reden",
                 "Knowledge transfer als standaard: je team blijft niet afhankelijk",
               ].map((item) => (
                 <li key={item} className="flex gap-3">
