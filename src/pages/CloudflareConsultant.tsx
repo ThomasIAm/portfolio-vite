@@ -45,7 +45,7 @@ const faqs = [
   },
   {
     q: "Ben je een gecertificeerd Cloudflare partner in Nederland?",
-    a: "Ja, ik werk als Lead Cyber Security Consultant bij SALT, een Cloudflare-partner in Nederland. Ik ben Cloudflare Solutions Architect gecertificeerd en lever Professional Services voor enterprise-klanten.",
+    a: "Ja, ik werk als Lead Cyber Security Consultant bij SALT, een PowerUP+ Cloudflare-partner in Nederland. Ik ben Cloudflare Solutions Architect gecertificeerd en lever professional services voor enterprise-klanten.",
   },
   {
     q: "Welke Cloudflare-producten ondersteun je?",
