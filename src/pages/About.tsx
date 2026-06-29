@@ -575,8 +575,8 @@ export default function About() {
                       <p className="text-muted-foreground leading-relaxed">
                         With years of experience and a robust tech background, I
                         focus on guiding my team and clients to success in the
-                        dynamic cyber security landscape. As a certified
-                        Cloudflare Solutions Architect and OpenShift
+                        dynamic cyber security landscape. As a <a href="/cloudflare-expert">certified
+                        Cloudflare Solutions Architect</a> and OpenShift
                         Administrator, I stay current with the latest tools and
                         techniques.
                       </p>
