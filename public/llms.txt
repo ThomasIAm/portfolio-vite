@@ -1,6 +1,6 @@
 # Thomas van den Nieuwenhoff
 
-> Lead Cyber Security Consultant in the Netherlands. Cloudflare Solutions Architect specializing in Zero Trust, SASE, WAF, and Cloudflare Workers. Lead consultant at SALT Cyber Security (Cloudflare partner NL).
+> Lead Cyber Security Consultant in the Netherlands. Cloudflare Solutions Architect specializing in Zero Trust, SASE, WAF, and Cloudflare Workers. Lead consultant at SALT Cyber Security (Cloudflare PowerUP+ partner NL).
 
 Content on this site is available as Markdown by sending `Accept: text/markdown` to any page URL.
 
