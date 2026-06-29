@@ -68,7 +68,7 @@ const faqs = [
 const consultantStructuredData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Thomas van den Nieuwenhoff — Cloudflare Consultant Nederland",
+  name: "Thomas van den Nieuwenhoff: Cloudflare consultant Nederland",
   description:
     "Onafhankelijk Cloudflare consultant en Zero Trust expert in Nederland. Cloudflare Solutions Architect, gespecialiseerd in WAF, SASE, Workers en enterprise security.",
   url: "https://tvdn.me/cloudflare-consultant",
