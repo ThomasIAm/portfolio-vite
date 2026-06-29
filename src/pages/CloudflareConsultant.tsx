@@ -16,7 +16,7 @@ const services = [
     icon: Cloud,
     title: "Cloudflare Architectuur & Implementatie",
     description:
-      "Van DNS-migratie tot WAF, Magic Transit en Load Balancing — productie-ready setups voor Nederlandse organisaties.",
+      "Van DNS-migratie tot WAF, Magic Transit en Load Balancing. Productie-ready setups voor Nederlandse organisaties.",
   },
   {
     icon: Lock,
