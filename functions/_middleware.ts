@@ -164,6 +164,51 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const url = new URL(request.url);
   const path = url.pathname;
 
+  // Markdown for Agents: content negotiation for blog posts.
+  // When an agent requests `Accept: text/markdown` on /blog/:slug,
+  // return the raw markdown body sourced from Contentful instead of HTML.
+  const accept = request.headers.get("accept") || "";
+  const wantsMarkdown =
+    accept.includes("text/markdown") &&
+    !accept.includes("text/html"); // browsers send both; agents typically send only markdown
+  if (wantsMarkdown && path.startsWith("/blog/") && path !== "/blog/") {
+    const slug = path.replace("/blog/", "").replace(/\/$/, "");
+    if (slug.length > 0 && !slug.startsWith("series")) {
+      const blogPost = await fetchBlogPost(slug, env);
+      if (!blogPost) {
+        return new Response(`# Not Found\n\nNo blog post matches \`${slug}\`.\n`, {
+          status: 404,
+          headers: {
+            "Content-Type": "text/markdown; charset=utf-8",
+            "Cache-Control": "public, max-age=60",
+          },
+        });
+      }
+      const body = [
+        `---`,
+        `title: ${JSON.stringify(blogPost.title)}`,
+        `slug: ${blogPost.slug}`,
+        `published: ${blogPost.publishedDate}`,
+        `---`,
+        ``,
+        `# ${blogPost.title}`,
+        ``,
+        `> ${blogPost.excerpt}`,
+        ``,
+        blogPost.content,
+        ``,
+      ].join("\n");
+      return new Response(body, {
+        status: 200,
+        headers: {
+          "Content-Type": "text/markdown; charset=utf-8",
+          "Cache-Control": "public, max-age=300",
+          Vary: "Accept",
+        },
+      });
+    }
+  }
+
   // Skip for assets, API routes, and the OG image endpoint
   if (
     path.startsWith("/og") ||
@@ -220,6 +265,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
     headers.set(key, value);
   }
+
+  // Advertise that this URL has a markdown variant for agents
+  headers.append("Vary", "Accept");
 
   return new Response(html, {
     status: blogPostNotFound ? 404 : response.status,
