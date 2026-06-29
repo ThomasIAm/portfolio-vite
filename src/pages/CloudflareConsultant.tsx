@@ -133,7 +133,7 @@ export default function CloudflareConsultant() {
         <div className="container py-20 md:py-28">
           <AnimatedSection className="max-w-3xl">
             <p className="text-primary font-medium mb-4">
-              Cloudflare Consultant — Nederland
+              Cloudflare consultant: Nederland
             </p>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
               Cloudflare consultant voor Zero Trust, WAF & edge-architectuur
