@@ -14,7 +14,7 @@ import {
 const services = [
   {
     icon: Cloud,
-    title: "Cloudflare Architectuur & Implementatie",
+    title: "Cloudflare architectuur & implementatie",
     description:
       "Van DNS-migratie tot WAF, Magic Transit en Load Balancing. Productie-ready setups voor Nederlandse organisaties.",
   },
