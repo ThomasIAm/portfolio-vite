@@ -166,7 +166,7 @@ export default function CloudflareConsultant() {
               Wat ik lever
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              End-to-end Cloudflare consultancy — onafhankelijk advies,
+              End-to-end Cloudflare consultancy: onafhankelijk advies,
               implementatie en knowledge transfer.
             </p>
           </AnimatedSection>
