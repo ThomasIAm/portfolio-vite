@@ -199,7 +199,7 @@ export default function CloudflareConsultant() {
             <ul className="space-y-4">
               {[
                 "Cloudflare Solutions Architect: gecertificeerd op het volledige portfolio",
-                "Lead Consultant bij SALT, Cloudflare-partner in Nederland",
+                "Lead Consultant bij SALT, PowerUP+ Cloudflare-partner in Nederland",
                 "Praktijkervaring met enterprise migraties, Zero Trust uitrol en Workers in productie",
                 "Onafhankelijk advies — geen vendor lock-in zonder reden",
                 "Knowledge transfer als standaard: je team blijft niet afhankelijk",
