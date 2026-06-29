@@ -139,7 +139,7 @@ export default function CloudflareConsultant() {
               Cloudflare consultant voor Zero Trust, WAF & edge-architectuur
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Ik help Nederlandse organisaties Cloudflare goed inrichten — van
+              Ik help Nederlandse organisaties Cloudflare goed inrichten, van
               DNS-migratie en WAF-tuning tot complete Zero Trust uitrol en
               Workers-applicaties op de edge.
             </p>
