@@ -186,7 +186,7 @@ export default function Projects() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="outline" size="lg" asChild>
                 <a
-                  href="https://github.com/tvdn"
+                  href="https://github.com/ThomasIAm"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
