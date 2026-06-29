@@ -1,0 +1,32 @@
+# Thomas van den Nieuwenhoff
+
+> Lead Cyber Security Consultant in the Netherlands. Cloudflare Solutions Architect specializing in Zero Trust, SASE, WAF, and Cloudflare Workers. Lead consultant at SALT Cyber Security (Cloudflare partner NL).
+
+Content on this site is available as Markdown by sending `Accept: text/markdown` to any page URL.
+
+## Core pages
+
+- [Home](https://tvdn.me/): Profile, focus areas, and highlights.
+- [About](https://tvdn.me/about): Background, experience, and certifications (Cloudflare, Red Hat OpenShift, TryHackMe).
+- [Cloudflare Consultant Nederland](https://tvdn.me/cloudflare-consultant): Services, FAQ, and engagement model for Cloudflare consultancy in the Netherlands.
+- [Projects](https://tvdn.me/projects): Selected professional and personal projects.
+- [Contact](https://tvdn.me/contact): Get in touch for consultancy, speaking, or collaboration.
+
+## Writing
+
+- [Blog](https://tvdn.me/blog): Articles on Cloudflare, Zero Trust, cloud security, and DevSecOps.
+- [Sitemap](https://tvdn.me/sitemap.xml): Full machine-readable index of all pages and blog posts.
+
+## Machine-readable
+
+- [OpenAPI schema](https://tvdn.me/openapi.json): Schema for site Cloudflare Functions (search, OG metadata, preview).
+- [robots.txt](https://tvdn.me/robots.txt): Crawler policy. AI training and search indexing are allowed.
+
+## Expertise
+
+- Cloudflare: WAF, CDN, Load Balancing, DNS, Magic Transit, Magic WAN
+- Zero Trust / SASE: Access, Gateway, Tunnel, Browser Isolation, CASB
+- Developer Platform: Workers, Pages, R2, D1, Durable Objects
+- Security: DDoS mitigation, Bot Management, API Shield, Page Shield
+- Compliance: NIS2, ISO 27001 alignment
+- Adjacent: Red Hat OpenShift administration, DevSecOps
