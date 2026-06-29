@@ -250,7 +250,7 @@ export default function CloudflareConsultant() {
               Klaar om je Cloudflare-stack te versterken?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Plan een vrijblijvende kennismaking — we bespreken je doelen,
+              Plan een vrijblijvende kennismaking: we bespreken je doelen,
               huidige setup en mogelijke quick wins.
             </p>
             <Button variant="warm" size="lg" asChild>
