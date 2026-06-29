@@ -39,6 +39,12 @@ export const ROUTE_METADATA: Record<string, RouteMetadata> = {
     type: 'website',
     keywords: ['contact', 'cyber security consulting', 'collaboration'],
   },
+  '/cloudflare-consultant': {
+    title: 'Cloudflare Consultant Nederland | Zero Trust & SASE Expert',
+    description: 'Onafhankelijk Cloudflare consultant in Nederland. Cloudflare Solutions Architect met expertise in Zero Trust, WAF, Workers en enterprise security.',
+    type: 'website',
+    keywords: ['Cloudflare consultant Nederland', 'Cloudflare expert', 'Cloudflare Solutions Architect', 'Zero Trust consultant', 'SASE Nederland', 'Cloudflare Workers', 'WAF specialist'],
+  },
 };
 
 export function getRouteMetadata(path: string): RouteMetadata {

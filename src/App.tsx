@@ -21,6 +21,7 @@ const Privacy = lazy(() => import("./pages/Privacy"));
 const Preview = lazy(() => import("./pages/Preview"));
 const Notice = lazy(() => import("./pages/Notice"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const CloudflareConsultant = lazy(() => import("./pages/CloudflareConsultant"));
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ const App = () => (
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/preview/:slug" element={<Preview />} />
               <Route path="/notice" element={<Notice />} />
+              <Route path="/cloudflare-consultant" element={<CloudflareConsultant />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
