@@ -23,7 +23,7 @@ const contactMethods = [
     label: "Code",
     description: "Check out my repositories",
     links: [
-      { icon: Github, label: "GitHub", href: "https://github.com/tvdn" },
+      { icon: Github, label: "GitHub", href: "https://github.com/ThomasIAm" },
       { icon: Gitlab, label: "GitLab", href: "https://gitlab.com/tvdn" },
     ],
   },
