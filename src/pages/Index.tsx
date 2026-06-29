@@ -23,7 +23,7 @@ const personStructuredData = {
     "OpenShift",
     "DevSecOps",
   ],
-  sameAs: ["https://linkedin.com/in/tvdn", "https://github.com/tvdn"],
+  sameAs: ["https://linkedin.com/in/tvdn", "https://github.com/ThomasIAm"],
 };
 const highlights = [
   {
