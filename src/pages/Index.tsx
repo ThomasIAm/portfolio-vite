@@ -32,8 +32,7 @@ const highlights = [
     description: (
       <>
         <a
-          href="https://salt-security.com/diensten/professional-services/architecture-best-practices"
-          target="_blank"
+          href="/cloudflare-expert"
           rel="noopener noreferrer"
           className="text-primary hover:underline"
         >
@@ -41,8 +40,7 @@ const highlights = [
         </a>
         ,{" "}
         <a
-          href="https://salt-security.com/diensten/professional-services/consultancy-implementatie"
-          target="_blank"
+          href="/cloudflare-expert"
           rel="noopener noreferrer"
           className="text-primary hover:underline"
         >
