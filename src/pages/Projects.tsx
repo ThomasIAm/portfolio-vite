@@ -197,7 +197,7 @@ export default function Projects() {
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a
-                  href="https://gitlab.com/tvdn"
+                  href="https://gitlab.com/ThomasIAm"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
