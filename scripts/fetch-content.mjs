@@ -14,14 +14,18 @@ const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 const previewToken = process.env.CONTENTFUL_PREVIEW_TOKEN;
 
-// If credentials aren't configured, copy sample data to blog-posts.json
-if (!spaceId || (!accessToken && !previewToken)) {
-  console.log('⚠️ Contentful credentials not configured, using sample data');
+function useSampleData(reason) {
+  console.log(`⚠️ ${reason}, using sample data`);
   mkdirSync(dataDir, { recursive: true });
   if (existsSync(samplePath)) {
     copyFileSync(samplePath, outputPath);
     console.log('📝 Copied blog-posts.sample.json to blog-posts.json');
   }
+}
+
+// If credentials aren't configured, copy sample data to blog-posts.json
+if (!spaceId || (!accessToken && !previewToken)) {
+  useSampleData('Contentful credentials not configured');
   process.exit(0);
 }
 
