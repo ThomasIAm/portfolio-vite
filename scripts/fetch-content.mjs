@@ -78,7 +78,8 @@ async function main() {
     console.log('✨ Content fetch complete!');
   } catch (error) {
     console.error('❌ Failed to fetch content:', error.message);
-    process.exit(1);
+    // Don't fail the build — fall back to sample data so preview/dev still works
+    useSampleData('Contentful fetch failed');
   }
 }
 
