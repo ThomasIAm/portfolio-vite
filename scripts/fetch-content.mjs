@@ -6,6 +6,12 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const envPath = join(__dirname, '..', '.env');
+if (existsSync(envPath) && typeof process.loadEnvFile === 'function') {
+  // Load repo-local .env without overriding vars already set by the host
+  // (Cloudflare Pages, CI, or the sandbox shell take precedence).
+  try { process.loadEnvFile(envPath); } catch { /* ignore */ }
+}
 const dataDir = join(__dirname, '..', 'src', 'data');
 const outputPath = join(dataDir, 'blog-posts.json');
 const samplePath = join(dataDir, 'blog-posts.sample.json');
