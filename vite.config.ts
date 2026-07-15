@@ -7,7 +7,8 @@ import { componentTagger } from "lovable-tagger";
 import { execSync } from "child_process";
 import type { Plugin } from "vite";
 
-function contentfulPlugin(): Plugin {
+function contentfulPlugin(extraEnv: Record<string, string> = {}): Plugin {
+  const childEnv = { ...process.env, ...extraEnv };
   return {
     name: "vite-contentful-plugin",
 
@@ -17,7 +18,7 @@ function contentfulPlugin(): Plugin {
       try {
         execSync("node scripts/fetch-content.mjs", {
           stdio: "inherit",
-          env: process.env,
+          env: childEnv,
         });
       } catch (error) {
         console.error("❌ Failed to fetch content:", error);
@@ -31,7 +32,7 @@ function contentfulPlugin(): Plugin {
         try {
           execSync("node scripts/fetch-content.mjs", {
             stdio: "pipe",
-            env: process.env,
+            env: childEnv,
           });
           console.log("🔄 Content refreshed");
         } catch (error) {
@@ -56,7 +57,6 @@ function contentfulPlugin(): Plugin {
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const childEnv = { ...process.env, ...env };
   return {
   server: {
     host: "::",
@@ -88,7 +88,7 @@ export default defineConfig(({ mode }) => {
     },
   },
   plugins: [
-    contentfulPlugin(),
+    contentfulPlugin(env),
     react(),
     mode === "development" && componentTagger(),
   ].filter(Boolean),
@@ -102,6 +102,5 @@ export default defineConfig(({ mode }) => {
       process.env.CF_PAGES_URL || "",
     ),
   },
-  plugins_env: childEnv, // unused, but keeps ref
   };
 });
