@@ -97,6 +97,11 @@ const vendorColors: Record<string, CertificationColors> = {
     dark: "dark:from-blue-950/40 dark:to-teal-900/25",
     accent: "bg-teal-500/20 text-teal-700 dark:text-teal-400",
   },
+  anthropic: {
+    light: "from-orange-50/90 to-amber-100/60",
+    dark: "dark:from-orange-950/40 dark:to-amber-900/25",
+    accent: "bg-[#D97757]/20 text-[#CC785C] dark:text-[#E8A48C]",
+  },
 };
 
 // Brand colors for each category (fallback when no vendor color is specified)
