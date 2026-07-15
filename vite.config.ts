@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import tailwindcss from "@tailwindcss/postcss";
 import autoprefixer from "autoprefixer";
@@ -54,7 +54,10 @@ function contentfulPlugin(): Plugin {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  const childEnv = { ...process.env, ...env };
+  return {
   server: {
     host: "::",
     port: 8080,
@@ -99,4 +102,6 @@ export default defineConfig(({ mode }) => ({
       process.env.CF_PAGES_URL || "",
     ),
   },
-}));
+  plugins_env: childEnv, // unused, but keeps ref
+  };
+});
