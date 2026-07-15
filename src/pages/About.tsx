@@ -400,6 +400,17 @@ const certifications: Certification[] = [
       "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-HA7S4NNHD6.png",
     colors: vendorColors.tryhackme,
   },
+  // AI
+  {
+    name: "Claude Partner Badge - Claude Code",
+    year: "2026",
+    categories: ["AI"],
+    logo: "/assets/certifications/claude-partner-badge-claude-code.png",
+    proofUrl: "https://www.credly.com/badges/5c6d45d9-8a76-41ef-a14c-724c47e9ac8e/public_url",
+    infoUrl:
+      "https://anthropic-partners.skilljar.com/path/partner-badge-claude-code",
+    colors: vendorColors.anthropic,
+  },
   // Cloud
   {
     name: "Microsoft Certified: Azure Fundamentals",
