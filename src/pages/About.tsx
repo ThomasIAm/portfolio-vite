@@ -144,9 +144,9 @@ const certifications: Certification[] = [
     categories: ["Cloudflare"],
     logo: "/assets/certifications/asa.png",
     proofUrl:
-      "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e",
+      "",
     infoUrl:
-      "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e",
+      "",
   },
   {
     name: "Cloudflare One Advanced",
@@ -154,9 +154,9 @@ const certifications: Certification[] = [
     categories: ["Cloudflare"],
     logo: "/assets/certifications/cfoneadv.png",
     proofUrl:
-      "https://university.cloudflare.com/credential/verify/8af04ea4-8023-4889-bbb3-e7b8a16343ba",
+      "https://www.credly.com/badges/466b3b3b-1af6-44cc-9ddc-7842d2cc8b9f/public_url",
     infoUrl:
-      "https://university.cloudflare.com/credential/verify/8af04ea4-8023-4889-bbb3-e7b8a16343ba",
+      "https://www.credly.com/badges/466b3b3b-1af6-44cc-9ddc-7842d2cc8b9f/public_url",
   },
   {
     name: "Cloudflare Zero Trust Engineer",
@@ -174,9 +174,19 @@ const certifications: Certification[] = [
     categories: ["Cloudflare"],
     logo: "/assets/certifications/appsecadv.png",
     proofUrl:
-      "https://university.cloudflare.com/credential/verify/a52c3432-e2a9-445b-9ee6-e01e63484116",
+      "https://www.credly.com/badges/aa071640-fcc9-4791-b60a-81b4f046ce0c/public_url",
     infoUrl:
-      "https://university.cloudflare.com/credential/verify/a52c3432-e2a9-445b-9ee6-e01e63484116",
+      "https://www.credly.com/badges/aa071640-fcc9-4791-b60a-81b4f046ce0c/public_url",
+  },
+  {
+    name: "Cloudflare Network Services Essentials",
+    year: "2026",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/cfnetess.png",
+    proofUrl:
+      "https://www.credly.com/badges/2b8b835a-c2ef-4e47-8d41-73a6ca42d7de/public_url",
+    infoUrl:
+      "https://www.credly.com/badges/2b8b835a-c2ef-4e47-8d41-73a6ca42d7de/public_url",
   },
   {
     name: "Cloudflare Accredited Configuration Engineer",
@@ -194,9 +204,9 @@ const certifications: Certification[] = [
     categories: ["Cloudflare"],
     logo: "/assets/certifications/devplatfund.png",
     proofUrl:
-      "https://university.cloudflare.com/credential/verify/dc1f3413-dc59-11f0-815e-42010a400fdb",
+      "https://www.credly.com/badges/26640607-7db4-4770-b3c3-45ad50dab830/public_url",
     infoUrl:
-      "https://university.cloudflare.com/credential/verify/dc1f3413-dc59-11f0-815e-42010a400fdb",
+      "https://www.credly.com/badges/26640607-7db4-4770-b3c3-45ad50dab830/public_url",
   },
   {
     name: "Cloudflare Accredited MSSP - Customer Success",
