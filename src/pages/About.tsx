@@ -301,6 +301,14 @@ const certifications: Certification[] = [
     logo: "/assets/certifications/cis.png",
     proofUrl: "/assets/certifications/cis.pdf",
   },
+  {
+    name: "Cloudflare WAF Rules & Mitigation Knowledge Credential",
+    year: "2026",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/cfl1.png",
+    proofUrl: "https://www.credly.com/badges/68b68ca5-de71-4209-88b9-cf597b039df9/public_url",
+    infoUrl: "https://www.credly.com/badges/68b68ca5-de71-4209-88b9-cf597b039df9/public_url",
+  },
   // Red Hat
   {
     name: "Red Hat Certified OpenShift Administrator",
