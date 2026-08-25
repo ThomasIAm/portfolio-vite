@@ -199,14 +199,14 @@ const certifications: Certification[] = [
       "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134",
   },
   {
-    name: "Cloudflare Developers Platform Fundamentals",
-    year: "2025",
+    name: "Cloudflare Developers Platform Essentials",
+    year: "2026",
     categories: ["Cloudflare"],
-    logo: "/assets/certifications/devplatfund.png",
+    logo: "/assets/certifications/devplatess.png",
     proofUrl:
-      "https://www.credly.com/badges/26640607-7db4-4770-b3c3-45ad50dab830/public_url",
+      "https://www.credly.com/badges/7f46af20-1adb-47a0-bbce-18d109b64738/public_url",
     infoUrl:
-      "https://www.credly.com/badges/26640607-7db4-4770-b3c3-45ad50dab830/public_url",
+      "https://www.credly.com/badges/7f46af20-1adb-47a0-bbce-18d109b64738/public_url",
   },
   {
     name: "Cloudflare Accredited MSSP - Customer Success",
