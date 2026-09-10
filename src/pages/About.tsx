@@ -200,13 +200,13 @@ const certifications: Certification[] = [
   },
   {
     name: "Cloudflare One Fundamentals",
-    year: "2025",
+    year: "2026",
     categories: ["Cloudflare"],
     logo: "/assets/certifications/cfonefund.png",
     proofUrl:
-      "https://www.credly.com/badges/0407496c-e9bf-46cc-a54a-6e7ab1c83e45/public_url",
+      "https://www.credly.com/badges/f23ec69d-2b9f-4027-bc86-9a548ce76f3d/public_url",
     infoUrl:
-      "https://www.credly.com/badges/0407496c-e9bf-46cc-a54a-6e7ab1c83e45/public_url",
+      "https://www.credly.com/badges/f23ec69d-2b9f-4027-bc86-9a548ce76f3d/public_url",
   },
   {
     name: "Cloudflare Application Security Fundamentals",
