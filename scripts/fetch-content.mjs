@@ -13,6 +13,16 @@ const samplePath = join(dataDir, 'blog-posts.sample.json');
 const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 const previewToken = process.env.CONTENTFUL_PREVIEW_TOKEN;
+const useSample = process.env.USE_SAMPLE_CONTENT === 'true';
+
+if (useSample) {
+  console.log('📝 USE_SAMPLE_CONTENT=true, copying sample data');
+  mkdirSync(dataDir, { recursive: true });
+  if (existsSync(samplePath)) {
+    copyFileSync(samplePath, outputPath);
+  }
+  process.exit(0);
+}
 
 // If credentials aren't configured, copy sample data to blog-posts.json
 if (!spaceId || (!accessToken && !previewToken)) {
