@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { screen } from "@testing-library/react";
+import { siteConfig } from "@/config/site";
 import { renderWithProviders } from "@/test/test-utils";
 import { Layout } from "../Layout";
 
@@ -22,6 +23,6 @@ describe("Layout", () => {
     // Navigation renders nav links
     expect(screen.getByText("Home")).toBeInTheDocument();
     // Footer renders name
-    expect(screen.getByText("Thomas van den Nieuwenhoff")).toBeInTheDocument();
+    expect(screen.getByText(siteConfig.name)).toBeInTheDocument();
   });
 });

@@ -334,7 +334,7 @@ function generateSlug(children: React.ReactNode): string {
 // Copy anchor link to clipboard
 function copyAnchorLink(slug: string) {
   const url = `${window.location.origin}${window.location.pathname}#${slug}`;
-  navigator.clipboard.writeText(url);
+  void navigator.clipboard.writeText(url);
   toast.success("Link copied to clipboard");
 }
 
