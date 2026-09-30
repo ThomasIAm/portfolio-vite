@@ -23,7 +23,7 @@ describe("Footer", () => {
     const gitlabLink = screen.getByLabelText("GitLab");
     expect(gitlabLink).toHaveAttribute("href", siteConfig.social.gitlab.href);
 
-    const emailLink = screen.getByLabelText("Email");
+    const emailLink = screen.getByLabelText(siteConfig.contact.email.label);
     expect(emailLink).toHaveAttribute("href", `mailto:${siteConfig.contact.email.address}`);
   });
 
