@@ -23,7 +23,7 @@ interface SEOProps {
   structuredData?: object;
 }
 
-const BASE_URL = siteConfig.siteUrl;
+const BASE_URL = import.meta.env.VITE_CF_PAGES_URL || import.meta.env.VITE_SITE_URL || siteConfig.siteUrl;
 
 export function SEO({
   title: titleOverride,
