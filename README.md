@@ -1,4 +1,4 @@
-# Portfolio Vite Framework
+# Portfolio Vite Framework 
 
 A modern, responsive portfolio website framework originally built for my own site and now structured for easier reuse.
 
