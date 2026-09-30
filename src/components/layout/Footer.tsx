@@ -8,7 +8,7 @@ const socialLinks = [
   { href: siteConfig.social.linkedin.href, icon: Linkedin, label: siteConfig.social.linkedin.label },
   { href: siteConfig.social.github.href, icon: Github, label: siteConfig.social.github.label },
   { href: siteConfig.social.gitlab.href, icon: Gitlab, label: siteConfig.social.gitlab.label },
-  { href: `mailto:${siteConfig.contact.email.address}`, icon: Mail, label: "Email" },
+  { href: `mailto:${siteConfig.contact.email.address}`, icon: Mail, label: siteConfig.contact.email.label },
 ];
 
 // Map routes to source files
