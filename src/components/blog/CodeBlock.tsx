@@ -114,30 +114,34 @@ export function CodeBlock({
       return;
     }
 
-    getHighlighter().then((highlighter) => {
-      if (cancelled) return;
+    getHighlighter()
+      .then((highlighter) => {
+        if (cancelled) return;
 
-      try {
-        const result = highlighter.codeToHtml(trimmedCode, {
-          lang: language,
-          themes: {
-            light: "github-light",
-            dark: "github-dark",
-          },
-        });
-        setHtml(result);
-      } catch {
-        // Language not loaded, fall back to plaintext
-        const result = highlighter.codeToHtml(trimmedCode, {
-          lang: "text",
-          themes: {
-            light: "github-light",
-            dark: "github-dark",
-          },
-        });
-        setHtml(result);
-      }
-    });
+        try {
+          const result = highlighter.codeToHtml(trimmedCode, {
+            lang: language,
+            themes: {
+              light: "github-light",
+              dark: "github-dark",
+            },
+          });
+          setHtml(result);
+        } catch {
+          // Language not loaded, fall back to plaintext
+          const result = highlighter.codeToHtml(trimmedCode, {
+            lang: "text",
+            themes: {
+              light: "github-light",
+              dark: "github-dark",
+            },
+          });
+          setHtml(result);
+        }
+      })
+      .catch(() => {
+        console.error("Failed to highlight code");
+      });
 
     return () => {
       cancelled = true;
@@ -145,7 +149,7 @@ export function CodeBlock({
   }, [trimmedCode, language, terminal]);
 
   function handleCopy() {
-    navigator.clipboard.writeText(trimmedCode);
+    void navigator.clipboard.writeText(trimmedCode);
     setCopied(true);
     toast.success("Copied to clipboard");
 
