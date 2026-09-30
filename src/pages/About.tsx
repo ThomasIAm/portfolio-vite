@@ -99,6 +99,11 @@ const vendorColors: Record<string, CertificationColors> = {
     dark: "dark:from-blue-950/40 dark:to-teal-900/25",
     accent: "bg-teal-500/20 text-teal-700 dark:text-teal-400",
   },
+  anthropic: {
+    light: "from-orange-50/90 to-amber-100/60",
+    dark: "dark:from-orange-950/40 dark:to-amber-900/25",
+    accent: "bg-[#D97757]/20 text-[#CC785C] dark:text-[#E8A48C]",
+  },
 };
 
 // Brand colors for each category (fallback when no vendor color is specified)
@@ -136,44 +141,14 @@ const certifications: Certification[] = [
       "",
   },
   {
-    name: "Cloudflare Accredited Services Architect",
-    year: "2023",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/asa.png",
-    proofUrl:
-      "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e",
-    infoUrl:
-      "https://university.cloudflare.com/credential/verify/260ad5dc-bb33-4fea-be51-266c8e80553e",
-  },
-  {
     name: "Cloudflare One Advanced",
     year: "2026",
     categories: ["Cloudflare"],
     logo: "/assets/certifications/cfoneadv.png",
     proofUrl:
-      "https://university.cloudflare.com/credential/verify/8af04ea4-8023-4889-bbb3-e7b8a16343ba",
+      "https://www.credly.com/badges/466b3b3b-1af6-44cc-9ddc-7842d2cc8b9f/public_url",
     infoUrl:
-      "https://university.cloudflare.com/credential/verify/8af04ea4-8023-4889-bbb3-e7b8a16343ba",
-  },
-  {
-    name: "Cloudflare One Essentials",
-    year: "2026",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/cfoneess.png",
-    proofUrl:
-      "https://university.cloudflare.com/credential/verify/6c07f560-f3a1-4392-81dd-0c44f28f2033",
-    infoUrl:
-      "https://university.cloudflare.com/credential/verify/6c07f560-f3a1-4392-81dd-0c44f28f2033",
-  },
-  {
-    name: "Cloudflare Zero Trust Engineer",
-    year: "2025",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/zte.png",
-    proofUrl:
-      "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4",
-    infoUrl:
-      "https://university.cloudflare.com/credential/verify/b9b183ab-ff65-4c24-bc79-852aa73a08f4",
+      "https://www.credly.com/badges/466b3b3b-1af6-44cc-9ddc-7842d2cc8b9f/public_url",
   },
   {
     name: "Cloudflare Application Security Advanced",
@@ -181,132 +156,97 @@ const certifications: Certification[] = [
     categories: ["Cloudflare"],
     logo: "/assets/certifications/appsecadv.png",
     proofUrl:
-      "https://university.cloudflare.com/credential/verify/a52c3432-e2a9-445b-9ee6-e01e63484116",
+      "https://www.credly.com/badges/aa071640-fcc9-4791-b60a-81b4f046ce0c/public_url",
     infoUrl:
-      "https://university.cloudflare.com/credential/verify/a52c3432-e2a9-445b-9ee6-e01e63484116",
+      "https://www.credly.com/badges/aa071640-fcc9-4791-b60a-81b4f046ce0c/public_url",
+  },
+  {
+    name: "Cloudflare One Essentials",
+    year: "2026",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/cfoneess.png",
+    proofUrl:
+      "https://www.credly.com/badges/428509b0-749e-4ddf-9210-75a7afad8664/public_url",
+    infoUrl:
+      "https://www.credly.com/badges/428509b0-749e-4ddf-9210-75a7afad8664/public_url",
+  },
+  {
+    name: "Cloudflare Application Security Essentials",
+    year: "2025",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/cfappsecess.png",
+    proofUrl:
+      "https://www.credly.com/badges/783dfdc4-aee4-480c-b606-12315799a05a/public_url",
+    infoUrl:
+      "https://www.credly.com/badges/783dfdc4-aee4-480c-b606-12315799a05a/public_url",
+  },
+  {
+    name: "Cloudflare Network Services Essentials",
+    year: "2026",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/cfnetess.png",
+    proofUrl:
+      "https://www.credly.com/badges/2b8b835a-c2ef-4e47-8d41-73a6ca42d7de/public_url",
+    infoUrl:
+      "https://www.credly.com/badges/2b8b835a-c2ef-4e47-8d41-73a6ca42d7de/public_url",
+  },
+  {
+    name: "Cloudflare Developers Platform Essentials",
+    year: "2026",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/devplatess.png",
+    proofUrl:
+      "https://www.credly.com/badges/7f46af20-1adb-47a0-bbce-18d109b64738/public_url",
+    infoUrl:
+      "https://www.credly.com/badges/7f46af20-1adb-47a0-bbce-18d109b64738/public_url",
+  },
+  {
+    name: "Cloudflare One Fundamentals",
+    year: "2026",
+    categories: ["Cloudflare"],
+    logo: "/assets/certifications/cfonefund.png",
+    proofUrl:
+      "https://www.credly.com/badges/f23ec69d-2b9f-4027-bc86-9a548ce76f3d/public_url",
+    infoUrl:
+      "https://www.credly.com/badges/f23ec69d-2b9f-4027-bc86-9a548ce76f3d/public_url",
   },
   {
     name: "Cloudflare Application Security Fundamentals",
     year: "2025",
     categories: ["Cloudflare"],
-    logo: "/assets/certifications/appsecfund.png",
+    logo: "/assets/certifications/cfappsecfund.png",
     proofUrl:
-      "https://university.cloudflare.com/credential/verify/dc1f34c3-dc59-11f0-815e-42010a400fdb",
+      "https://www.credly.com/badges/40a04612-ace1-4b07-923e-1ff940f6e6b3/public_url",
     infoUrl:
-      "https://university.cloudflare.com/credential/verify/dc1f34c3-dc59-11f0-815e-42010a400fdb",
+      "https://www.credly.com/badges/40a04612-ace1-4b07-923e-1ff940f6e6b3/public_url",
   },
   {
-    name: "Cloudflare Accredited Configuration Engineer",
+    name: "Cloudflare Network Services Fundamentals",
     year: "2025",
     categories: ["Cloudflare"],
-    logo: "/assets/certifications/ace.png",
+    logo: "/assets/certifications/cfnetfund.png",
     proofUrl:
-      "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134",
+      "https://www.credly.com/badges/83f2e009-2693-4162-b58b-813cac044268/public_url",
     infoUrl:
-      "https://university.cloudflare.com/credential/verify/446f6fad-4737-477d-8db0-f425a704c134",
+      "https://www.credly.com/badges/83f2e009-2693-4162-b58b-813cac044268/public_url",
   },
   {
     name: "Cloudflare Developers Platform Fundamentals",
     year: "2025",
     categories: ["Cloudflare"],
-    logo: "/assets/certifications/devplatfund.png",
+    logo: "/assets/certifications/cfdevfund.png",
     proofUrl:
-      "https://university.cloudflare.com/credential/verify/dc1f3413-dc59-11f0-815e-42010a400fdb",
+      "https://www.credly.com/badges/26640607-7db4-4770-b3c3-45ad50dab830/public_url",
     infoUrl:
-      "https://university.cloudflare.com/credential/verify/dc1f3413-dc59-11f0-815e-42010a400fdb",
+      "https://www.credly.com/badges/26640607-7db4-4770-b3c3-45ad50dab830/public_url",
   },
   {
-    name: "Cloudflare Accredited MSSP - Customer Success",
-    year: "2025",
+    name: "Cloudflare WAF Rules & Mitigation Knowledge Credential",
+    year: "2026",
     categories: ["Cloudflare"],
-    logo: "/assets/certifications/asa.png",
-    proofUrl: "/assets/certifications/amcs.pdf",
-  },
-  {
-    name: "Cloudflare Accredited MSSP - Services Management",
-    year: "2025",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/amsp.png",
-    proofUrl:
-      "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f",
-    infoUrl:
-      "https://university.cloudflare.com/credential/verify/f1db1fd9-e0dc-45eb-b111-47e0a884f24f",
-  },
-  {
-    name: "Cloudflare Accredited MSSP - Zero Trust",
-    year: "2025",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/cf.svg",
-    proofUrl: "/assets/certifications/amzt.pdf",
-  },
-  {
-    name: "Cloudflare Accredited Sales Engineer",
-    year: "2025",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/ase.png",
-    proofUrl:
-      "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4",
-    infoUrl:
-      "https://university.cloudflare.com/credential/verify/18688620-b859-4e55-8563-8eee8ed3e0d4",
-  },
-  {
-    name: "Cloudflare One - Service Delivery",
-    year: "2025",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/cf.svg",
-    proofUrl: "/assets/certifications/sdo.pdf",
-  },
-  {
-    name: "Cloudflare Core - Service Delivery",
-    year: "2025",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/cf.svg",
-    proofUrl: "/assets/certifications/sdc.pdf",
-  },
-  {
-    name: "Cloudflare One Pre-Sales Track",
-    year: "2025",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/cf.svg",
-    proofUrl: "/assets/certifications/pso.pdf",
-  },
-  {
-    name: "Cloudflare Core Pre-Sales Track",
-    year: "2025",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/cf.svg",
-    proofUrl: "/assets/certifications/psc.pdf",
-  },
-  {
-    name: "Cloudflare One Sales Track",
-    year: "2025",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/cf.svg",
-    proofUrl: "/assets/certifications/so.pdf",
-  },
-  {
-    name: "Cloudflare Core Sales Track",
-    year: "2025",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/cf.svg",
-    proofUrl: "/assets/certifications/sc.pdf",
-  },
-  {
-    name: "Cloudflare Sales Professional Level II",
-    year: "2025",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/asp2.png",
-    proofUrl:
-      "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9",
-    infoUrl:
-      "https://university.cloudflare.com/credential/verify/9f8ac9de-4b3c-45b5-b989-8a275a71e6f9",
-  },
-  {
-    name: "Cloudflare Implementation Specialist - Zero Trust Services",
-    year: "2023",
-    categories: ["Cloudflare"],
-    logo: "/assets/certifications/cis.png",
-    proofUrl: "/assets/certifications/cis.pdf",
+    logo: "/assets/certifications/cfl1.png",
+    proofUrl: "https://www.credly.com/badges/68b68ca5-de71-4209-88b9-cf597b039df9/public_url",
+    infoUrl: "https://www.credly.com/badges/68b68ca5-de71-4209-88b9-cf597b039df9/public_url",
   },
   // Red Hat
   {
@@ -317,6 +257,51 @@ const certifications: Certification[] = [
     proofUrl:
       "https://www.credly.com/badges/18f84f10-92f3-4667-9641-2eaa96ad23a4",
     infoUrl: "https://www.redhat.com/en/services/certification/rhcs-paas",
+  },
+  {
+    name: "Multicluster Management with Red Hat Advanced Cluster Management for Kubernetes (DO432) - Ver. 2.13",
+    year: "2026",
+    categories: ["Red Hat"],
+    logo: "/assets/certifications/do432.png",
+    proofUrl:
+      "https://www.credly.com/badges/4c429aa6-fcdb-4ea4-9b79-6432a86d7c8f",
+    infoUrl: "https://www.redhat.com/en/services/training/do432-multicluster-management-red-hat-advanced-cluster-management-kubernetes",
+  },
+  {
+    name: "Securing Kubernetes Clusters with Red Hat Advanced Cluster Security (DO430) - Ver. 4.6",
+    year: "2026",
+    categories: ["Red Hat"],
+    logo: "/assets/certifications/do430.png",
+    proofUrl:
+      "https://www.credly.com/badges/38dcbbd9-f998-4b0c-ad3a-2bd0c998d84f",
+    infoUrl: "https://www.redhat.com/en/services/training/do430-securing-kubernetes-clusters-red-hat-advanced-cluster-security",
+  },
+  {
+    name: "Red Hat OpenShift Administration III: Scaling Deployments in the Enterprise (DO380) - Ver. 4.14",
+    year: "2025",
+    categories: ["Red Hat"],
+    logo: "/assets/certifications/do380.png",
+    proofUrl:
+      "https://www.credly.com/badges/d8cb9547-4229-4a5b-94ed-df8bcc30c909",
+    infoUrl: "https://www.redhat.com/en/services/training/do380-red-hat-openshift-administration-iii-scaling-deployments-in-the-enterprise",
+  },
+  {
+    name: "Enterprise Kubernetes Storage with Red Hat OpenShift Data Foundation (DO370) - Ver. 4.16",
+    year: "2026",
+    categories: ["Red Hat"],
+    logo: "/assets/certifications/do370.png",
+    proofUrl:
+      "https://www.credly.com/badges/4cb02b7e-b046-4202-bd51-f9665bae5a6b",
+    infoUrl: "https://www.redhat.com/en/services/training/do370-enterprise-kubernetes-storage-with-red-hat-openshift-data-foundation",
+  },
+  {
+    name: "Red Hat OpenShift Installation Lab (DO322) - Ver. 4.6",
+    year: "2025",
+    categories: ["Red Hat"],
+    logo: "/assets/certifications/do322.png",
+    proofUrl:
+      "https://www.credly.com/badges/da95d555-9d93-4e86-a1f9-6f8be6808c8c",
+    infoUrl: "https://www.redhat.com/en/services/training/do322-red-hat-openshift-installation-lab",
   },
   // Cybersecurity
   {
@@ -376,6 +361,17 @@ const certifications: Certification[] = [
     proofUrl:
       "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-HA7S4NNHD6.png",
     colors: vendorColors.tryhackme,
+  },
+  // AI
+  {
+    name: "Claude Partner Badge - Claude Code",
+    year: "2026",
+    categories: ["AI"],
+    logo: "/assets/certifications/claude-partner-badge-claude-code.png",
+    proofUrl: "https://www.credly.com/badges/5c6d45d9-8a76-41ef-a14c-724c47e9ac8e/public_url",
+    infoUrl:
+      "https://anthropic-partners.skilljar.com/path/partner-badge-claude-code",
+    colors: vendorColors.anthropic,
   },
   // Cloud
   {
