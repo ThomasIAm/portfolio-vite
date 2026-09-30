@@ -46,8 +46,8 @@ function formatDate(date: string): string {
   return new Date(date).toISOString().split('T')[0];
 }
 
-export const onRequest: PagesFunction = async (context) => {
-  const baseUrl = siteConfig.siteUrl || context.env.CF_PAGES_URL || new URL(context.request.url).origin;
+export const onRequest: PagesFunction<SitemapEnv> = async (context) => {
+  const baseUrl = siteConfig.siteUrl;
 
   // Static routes with their priorities and change frequencies
   const staticRoutes = [
