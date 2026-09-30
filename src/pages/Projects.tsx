@@ -187,7 +187,7 @@ export default function Projects() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="outline" size="lg" asChild>
                 <a
-                  href="https://github.com/tvdn"
+                  href={siteConfig.social.github.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -198,7 +198,7 @@ export default function Projects() {
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a
-                  href="https://gitlab.com/tvdn"
+                  href={siteConfig.social.gitlab.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -209,7 +209,7 @@ export default function Projects() {
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a
-                  href="https://www.linkedin.com/in/tvdn"
+                  href={siteConfig.social.linkedin.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
