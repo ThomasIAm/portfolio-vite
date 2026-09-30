@@ -11,7 +11,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
   const type = url.searchParams.get("type") || "website";
 
   // Construct absolute URL for the profile image
-  const profileImageUrl = `${url.origin}/assets/profile.jpg`;
+  const profileImageUrl = siteConfig.profileImage.src;
 
   return new ImageResponse(
     (
