@@ -1,6 +1,6 @@
 const siteName = "Thomas van den Nieuwenhoff";
 const siteRole = "Lead Cyber Security Consultant";
-const siteUrl = import.meta.env.VITE_CF_PAGES_URL || import.meta.env.VITE_SITE_URL || "https://tvdn.me";
+const siteUrl = context.env.CF_PAGES_URL || context.env.SITE_URL || "https://tvdn.me";
 
 // Keep full profile URLs explicit because handles can differ across platforms.
 const linkedinUrl = "https://linkedin.com/in/tvdn";
