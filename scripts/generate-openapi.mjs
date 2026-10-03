@@ -67,7 +67,7 @@ const functionDefinitions = [
             headers: {
               'Cache-Control': {
                 description: 'Caching directive',
-                schema: { type: 'string', example: 'public, max-age=86400' }
+                schema: { type: 'string', example: 'no-store' }
               }
             },
             content: {
@@ -85,12 +85,12 @@ const functionDefinitions = [
             content: {
               'application/json': {
                 schema: { $ref: '#/components/schemas/Error' },
-                example: { error: 'URL parameter is required' }
+                example: { error: 'A public https URL is required' }
               }
             }
           },
-          500: {
-            description: 'Server error - Failed to fetch metadata',
+          502: {
+            description: 'Bad gateway - the target site could not be fetched or its metadata could not be parsed',
             content: {
               'application/json': {
                 schema: { $ref: '#/components/schemas/MetadataError' }
