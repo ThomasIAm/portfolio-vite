@@ -29,7 +29,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      # No dependency install scripts: blocks malicious postinstall hooks. Tests and build don't need them.
+      - run: npm ci --ignore-scripts
       - run: npm run lint
       - run: npm test
       - run: npm run build

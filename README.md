@@ -85,7 +85,7 @@ npm run preview
 npm test   # Vitest, single run
 ```
 
-`.github/workflows/ci.yml` runs `npm ci`, `npm run lint`, `npm test` and `npm run build` on every pull request and push to `main`:
+`.github/workflows/ci.yml` runs `npm ci --ignore-scripts` (no dependency install scripts), `npm run lint`, `npm test` and `npm run build` on every pull request and push to `main`:
 
 - Builds with `USE_SAMPLE_CONTENT=true`, so no secrets are used in CI (safe for fork PRs).
 - Uses the `pull_request` trigger (never `pull_request_target`) and read-only `contents` permission.
