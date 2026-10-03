@@ -3,11 +3,17 @@ import {
   SITE_NAME,
   ROUTE_METADATA,
   generateOgImageUrl,
+  isMarkdownPath,
 } from "../src/config/seo-metadata";
 import {
   buildCSPHeader,
   SECURITY_HEADERS,
 } from "../src/config/security-headers";
+import {
+  getPageMarkdown,
+  RENDER_MARKER_HEADER,
+  type PageMarkdownEnv,
+} from "./lib/page-markdown";
 
 interface BlogPostFields {
   title: string;
@@ -17,7 +23,7 @@ interface BlogPostFields {
   publishedDate: string;
 }
 
-interface Env {
+interface Env extends PageMarkdownEnv {
   CONTENTFUL_SPACE_ID?: string;
   CONTENTFUL_ACCESS_TOKEN?: string;
   CF_PAGES_URL?: string;
@@ -114,6 +120,9 @@ async function generateMetaTags(
   const { title, description, type, keywords } = metadata;
   const canonicalUrl = `${baseUrl}${path}`;
   const ogImage = generateOgImageUrl(baseUrl, title, description, type);
+  const hasMarkdown =
+    isMarkdownPath(path) ||
+    (path.startsWith("/blog/") && !path.startsWith("/blog/series"));
 
   return `
     <title>${title}</title>
@@ -121,6 +130,7 @@ async function generateMetaTags(
     <meta name="author" content="${SITE_NAME}" />
     ${keywords?.length ? `<meta name="keywords" content="${keywords.join(", ")}" />` : ""}
     <link rel="canonical" href="${canonicalUrl}" />
+    ${hasMarkdown ? `<link rel="alternate" type="text/markdown" href="${canonicalUrl}" />` : ""}
     
     <!-- Open Graph -->
     <meta property="og:title" content="${title}" />
@@ -164,13 +174,21 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const url = new URL(request.url);
   const path = url.pathname;
 
-  // Markdown for Agents: content negotiation for blog posts.
-  // When an agent requests `Accept: text/markdown` on /blog/:slug,
-  // return the raw markdown body sourced from Contentful instead of HTML.
+  // Markdown for Agents: content negotiation.
+  // Blog posts return their Contentful markdown; allowlisted pages are
+  // rendered by Browser Run (see functions/lib/page-markdown.ts).
   const accept = request.headers.get("accept") || "";
+  const isOwnRender = request.headers.has(RENDER_MARKER_HEADER);
   const wantsMarkdown =
+    !isOwnRender &&
     accept.includes("text/markdown") &&
     !accept.includes("text/html"); // browsers send both; agents typically send only markdown
+  if (wantsMarkdown && isMarkdownPath(path)) {
+    const baseUrl = env.CF_PAGES_URL || `${url.protocol}//${url.host}`;
+    const markdownResponse = await getPageMarkdown(path, baseUrl, env);
+    if (markdownResponse) return markdownResponse;
+    // Not configured or render failed: fall through to normal HTML.
+  }
   if (wantsMarkdown && path.startsWith("/blog/") && path !== "/blog/") {
     const slug = path.replace("/blog/", "").replace(/\/$/, "");
     if (slug.length > 0 && !slug.startsWith("series")) {
