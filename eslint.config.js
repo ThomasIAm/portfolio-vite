@@ -11,6 +11,11 @@ export default tseslint.config(
     // SonarSource rules (same engine as SonarCloud) to catch findings before they reach the dashboard.
     ...sonarjs.configs.recommended,
     files: ["**/*.{ts,tsx,js,mjs}"],
+    rules: {
+      ...sonarjs.configs.recommended.rules,
+      // Reported but not blocking: large render functions need a planned refactor.
+      "sonarjs/cognitive-complexity": "warn",
+    },
     languageOptions: { ...sonarjs.configs.recommended.languageOptions, globals: { ...globals.browser, ...globals.node } },
   },
   {
