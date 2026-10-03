@@ -25,7 +25,8 @@ export default function Preview() {
   useEffect(() => {
     if (!slug) return;
     let cancelled = false;
-    (async () => {
+    // Errors are handled inside; the effect can't await, so the promise is intentionally not awaited.
+    void (async () => {
       try {
         const res = await fetch(`/api/preview?slug=${encodeURIComponent(slug)}`);
         if (!res.ok) {
