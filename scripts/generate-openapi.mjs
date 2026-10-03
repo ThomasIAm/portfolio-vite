@@ -76,8 +76,12 @@ const functionDefinitions = [
               }
             }
           },
+          401: {
+            description: 'Missing or invalid Cloudflare Access JWT',
+            content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } }
+          },
           400: {
-            description: 'Bad request - URL parameter missing',
+            description: 'Bad request - public https URL required',
             content: {
               'application/json': {
                 schema: { $ref: '#/components/schemas/Error' },
@@ -91,20 +95,6 @@ const functionDefinitions = [
               'application/json': {
                 schema: { $ref: '#/components/schemas/MetadataError' }
               }
-            }
-          }
-        }
-      },
-      options: {
-        operationId: 'ogMetadataPreflight',
-        summary: 'CORS preflight for OG metadata endpoint',
-        responses: {
-          200: {
-            description: 'CORS preflight response',
-            headers: {
-              'Access-Control-Allow-Origin': { schema: { type: 'string', example: '*' } },
-              'Access-Control-Allow-Methods': { schema: { type: 'string', example: 'GET, POST, OPTIONS' } },
-              'Access-Control-Allow-Headers': { schema: { type: 'string', example: 'Content-Type' } }
             }
           }
         }
