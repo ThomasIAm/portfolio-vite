@@ -7,5 +7,5 @@ export interface OGMetadata {
 }
 export function extractStandaloneLinks(markdown: unknown): string[];
 export function isAllowedPreviewUrl(href: string): boolean;
-export function extractOgMetadata(html: string, pageUrl: string): OGMetadata;
+export function extractOgMetadata(html: string, pageUrl: string, linkUrl?: string): OGMetadata;
 export function fetchOgMetadata(href: string): Promise<OGMetadata>;
