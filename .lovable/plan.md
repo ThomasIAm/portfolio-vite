@@ -29,7 +29,7 @@ Agent  --Accept: text/markdown-->  middleware
 
 ## What you'll need to set up in Cloudflare
 - **API token** with only the *Browser Rendering – Edit* permission, saved as the secret `CF_BROWSER_RUN_TOKEN` in Pages (production). Also add `CF_ACCOUNT_ID` as a variable.
-- **KV namespace** (e.g. `PAGE_MARKDOWN`), bound to the Pages project. I can create it with the Cloudflare tools if you want.
+- **Nothing for caching: the Workers Cache API replaces the KV namespace** (e.g. `PAGE_MARKDOWN`), bound to the Pages project. I can create it with the Cloudflare tools if you want.
 - Optionally, a usage alert on Browser Run.
 
 ## Security and cost choices
