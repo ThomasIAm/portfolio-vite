@@ -8,6 +8,8 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
+    "content": "node scripts/fetch-content.mjs",
+    "pretest": "node scripts/fetch-content.mjs",
     "test": "vitest run",
     "preview": "vite preview",
     "dev:pages": "npx wrangler pages dev ./dist",
