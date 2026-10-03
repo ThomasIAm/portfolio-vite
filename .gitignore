@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 src/data/blog-posts.json
+src/data/link-previews.json
 .wrangler
 .dev.vars*
 dev.env

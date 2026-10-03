@@ -4,11 +4,19 @@ import { createClient } from 'contentful';
 import { writeFileSync, mkdirSync, copyFileSync, existsSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { extractStandaloneLinks, fetchOgMetadata } from '../shared/link-preview.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dataDir = join(__dirname, '..', 'src', 'data');
 const outputPath = join(dataDir, 'blog-posts.json');
 const samplePath = join(dataDir, 'blog-posts.sample.json');
+const previewsPath = join(dataDir, 'link-previews.json');
+
+// Sample mode never contacts external sites; previews show the fallback card.
+function writeEmptyPreviews() {
+  mkdirSync(dataDir, { recursive: true });
+  writeFileSync(previewsPath, '{}\n');
+}
 
 const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
@@ -21,6 +29,7 @@ if (useSample) {
   if (existsSync(samplePath)) {
     copyFileSync(samplePath, outputPath);
   }
+  writeEmptyPreviews();
   process.exit(0);
 }
 
@@ -32,6 +41,7 @@ if (!spaceId || (!accessToken && !previewToken)) {
     copyFileSync(samplePath, outputPath);
     console.log('📝 Copied blog-posts.sample.json to blog-posts.json');
   }
+  writeEmptyPreviews();
   process.exit(0);
 }
 
@@ -70,6 +80,28 @@ async function fetchBlogPosts() {
   return posts;
 }
 
+// Fetch link-preview metadata once at build time so no runtime fetching is needed.
+// Individual failures are non-fatal: that link just shows the fallback card.
+async function fetchLinkPreviews(posts) {
+  const urls = [...new Set(posts.flatMap((p) => extractStandaloneLinks(p.fields.content)))];
+  const previews = {};
+  const queue = [...urls];
+  const worker = async () => {
+    while (queue.length) {
+      const url = queue.shift();
+      try {
+        const meta = await fetchOgMetadata(url);
+        if (meta.title) previews[url] = meta;
+      } catch (error) {
+        console.warn(`⚠️ Link preview skipped for ${url}: ${error.message}`);
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: 4 }, worker));
+  console.log(`🔗 Collected ${Object.keys(previews).length}/${urls.length} link previews`);
+  return previews;
+}
+
 async function main() {
   try {
     const posts = await fetchBlogPosts();
@@ -81,6 +113,9 @@ async function main() {
     writeFileSync(outputPath, JSON.stringify(posts, null, 2));
     
     console.log(`📝 Wrote ${posts.length} posts to ${outputPath}`);
+
+    const previews = await fetchLinkPreviews(posts);
+    writeFileSync(previewsPath, JSON.stringify(previews, null, 2));
     console.log('✨ Content fetch complete!');
   } catch (error) {
     console.error('❌ Failed to fetch content:', error.message);

@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ExternalLink, FileText } from 'lucide-react';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
+import linkPreviews from '@/data/link-previews.json';
+
+const staticPreviews = linkPreviews as Record<string, OGMetadata>;
 
 interface OGMetadata {
   title?: string;
@@ -54,6 +57,19 @@ export function LinkPreview({ href }: LinkPreviewProps) {
               return;
             }
           }
+        }
+
+        // Published posts: metadata collected at build time.
+        const prebuilt = staticPreviews[href];
+        if (prebuilt) {
+          setMetadata(prebuilt);
+          return;
+        }
+
+        // Live lookup only exists for drafts on Access-protected preview deployments.
+        if (!window.location.pathname.startsWith('/preview/')) {
+          setError(true);
+          return;
         }
 
         const response = await fetch(`/api/og-metadata?url=${encodeURIComponent(href)}`);
