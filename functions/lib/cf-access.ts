@@ -14,7 +14,7 @@ let certCache: { domain: string; keys: Jwk[]; fetchedAt: number } | null = null;
 const CERT_TTL_MS = 60 * 60 * 1000;
 
 function b64urlToBytes(input: string): Uint8Array {
-  const b64 = input.replace(/-/g, '+').replace(/_/g, '/').padEnd(Math.ceil(input.length / 4) * 4, '=');
+  const b64 = input.replaceAll('-', '+').replaceAll('_', '/').padEnd(Math.ceil(input.length / 4) * 4, '=');
   const bin = atob(b64);
   return Uint8Array.from(bin, (c) => c.charCodeAt(0));
 }
