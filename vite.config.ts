@@ -84,7 +84,8 @@ export default defineConfig(({ mode }) => {
   },
   css: {
     postcss: {
-      plugins: [tailwindcss(), autoprefixer()],
+      // Cast: @tailwindcss/postcss bundles its own postcss copy, whose types differ from vite's.
+      plugins: [tailwindcss() as unknown as import("postcss").AcceptedPlugin, autoprefixer()],
     },
   },
   plugins: [
