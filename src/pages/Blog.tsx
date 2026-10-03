@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Calendar, Clock, ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, Clock, ArrowRight, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { calculateReadingTime } from "@/lib/contentful";

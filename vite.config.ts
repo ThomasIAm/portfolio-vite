@@ -1,10 +1,8 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import tailwindcss from "@tailwindcss/postcss";
-import autoprefixer from "autoprefixer";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
-import { execSync } from "child_process";
+import { execFileSync } from "node:child_process";
 import type { Plugin } from "vite";
 
 function contentfulPlugin(extraEnv: Record<string, string> = {}): Plugin {
@@ -16,7 +14,7 @@ function contentfulPlugin(extraEnv: Record<string, string> = {}): Plugin {
     buildStart() {
       console.log("📡 Fetching content from Contentful...");
       try {
-        execSync("node scripts/fetch-content.mjs", {
+        execFileSync(process.execPath, ["scripts/fetch-content.mjs"], {
           stdio: "inherit",
           env: childEnv,
         });
@@ -30,13 +28,14 @@ function contentfulPlugin(extraEnv: Record<string, string> = {}): Plugin {
     configureServer(server) {
       const fetchContent = () => {
         try {
-          execSync("node scripts/fetch-content.mjs", {
+          execFileSync(process.execPath, ["scripts/fetch-content.mjs"], {
             stdio: "pipe",
             env: childEnv,
           });
           console.log("🔄 Content refreshed");
         } catch (error) {
-          console.error("❌ Content refresh failed");
+          // Dev only: keep serving the last fetched content instead of crashing the dev server.
+          console.error("❌ Content refresh failed:", error instanceof Error ? error.message : error);
         }
       };
 
@@ -82,12 +81,7 @@ export default defineConfig(({ mode }) => {
   build: {
     sourcemap: true,
   },
-  css: {
-    postcss: {
-      // Cast: @tailwindcss/postcss bundles its own postcss copy, whose types differ from vite's.
-      plugins: [tailwindcss() as unknown as import("postcss").AcceptedPlugin, autoprefixer()],
-    },
-  },
+  // PostCSS (Tailwind + autoprefixer) is configured in postcss.config.js.
   plugins: [
     contentfulPlugin(env),
     react(),

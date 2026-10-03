@@ -40,6 +40,7 @@ const dependencies: Dependency[] = [
   { name: "Vaul 1", url: "https://vaul.emilkowal.ski", license: "MIT", description: "Drawer component for React" },
   { name: "React Day Picker 9", url: "https://daypicker.dev", license: "MIT", description: "Flexible date picker for React" },
   { name: "React Resizable Panels 3", url: "https://github.com/bvaughn/react-resizable-panels", license: "MIT", description: "Resizable panel groups/layouts for React" },
+  { name: "eslint-plugin-sonarjs", url: "https://github.com/SonarSource/SonarJS", license: "LGPL-3.0-only", description: "SonarSource code-quality rules for ESLint (development only)" },
 ];
 
 export default function Notice() {

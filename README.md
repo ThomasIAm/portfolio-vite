@@ -82,8 +82,11 @@ npm run preview
 ## ✅ Tests & CI
 
 ```bash
-npm test   # Vitest, single run
+npm test       # Vitest, single run
+npm run lint   # ESLint incl. SonarSource rules (eslint-plugin-sonarjs)
 ```
+
+The linter includes SonarSource's recommended rules (the same engine as SonarCloud), so most SonarCloud findings surface locally and in CI first. Cognitive-complexity findings are warnings, not errors.
 
 `.github/workflows/ci.yml` runs `npm ci --ignore-scripts` (no dependency install scripts), `npm run lint`, `npm test` and `npm run build` on every pull request and push to `main`:
 

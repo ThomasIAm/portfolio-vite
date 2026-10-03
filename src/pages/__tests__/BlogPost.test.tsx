@@ -23,24 +23,18 @@ vi.mock("@/lib/contentful", () => ({
 }));
 
 describe("BlogPost page", () => {
-  it("renders post title", () => {
-    renderWithProviders(<BlogPost />);
-    expect(screen.getByText("Test Blog Post")).toBeInTheDocument();
-  });
-
   it("renders back to blog link", () => {
     renderWithProviders(<BlogPost />);
     const backLink = screen.getByText("Back to Blog");
     expect(backLink.closest("a")).toHaveAttribute("href", "/blog");
   });
 
-  it("renders reading time", () => {
+  it.each([
+    ["post title", "Test Blog Post"],
+    ["reading time", "3 min read"],
+    ["published date", "January 1, 2024"],
+  ])("renders %s", (_label, text) => {
     renderWithProviders(<BlogPost />);
-    expect(screen.getByText("3 min read")).toBeInTheDocument();
-  });
-
-  it("renders published date", () => {
-    renderWithProviders(<BlogPost />);
-    expect(screen.getByText("January 1, 2024")).toBeInTheDocument();
+    expect(screen.getByText(text)).toBeInTheDocument();
   });
 });

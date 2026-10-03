@@ -5,9 +5,10 @@ import {
   DEFAULT_AUTHOR, 
   getRouteMetadata, 
   generateOgImageUrl,
-  type RouteMetadata 
 } from "@/config/seo-metadata";
 import { siteConfig } from "@/config/site";
+
+const SCHEMA_TYPES: Record<string, string> = { article: "BlogPosting", profile: "ProfilePage", website: "WebPage" };
 
 interface SEOProps {
   // Override the shared config if needed
@@ -53,7 +54,7 @@ export function SEO({
 
   const defaultStructuredData = {
     "@context": "https://schema.org",
-    "@type": type === "article" ? "BlogPosting" : type === "profile" ? "ProfilePage" : "WebPage",
+    "@type": SCHEMA_TYPES[type] ?? "WebPage",
     name: title,
     description,
     url: canonicalUrl,

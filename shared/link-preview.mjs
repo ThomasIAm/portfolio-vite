@@ -75,6 +75,30 @@ export function extractOgMetadata(html, pageUrl, linkUrl = pageUrl) {
   };
 }
 
+/** Read at most MAX_HTML_BYTES of the response body as text. */
+async function readCappedText(res) {
+  const reader = res.body?.getReader();
+  if (!reader) throw new Error('No body');
+  const chunks = [];
+  let size = 0;
+  while (size < MAX_HTML_BYTES) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+    size += value.byteLength;
+  }
+  reader.cancel().catch(() => {});
+  const bytes = new Uint8Array(Math.min(size, MAX_HTML_BYTES));
+  let offset = 0;
+  for (const c of chunks) {
+    if (offset >= bytes.length) break;
+    const part = c.subarray(0, bytes.length - offset);
+    bytes.set(part, offset);
+    offset += part.byteLength;
+  }
+  return new TextDecoder().decode(bytes);
+}
+
 /** Fetch with https-only, no redirects to other protocols, timeout and size cap. */
 export async function fetchOgMetadata(href) {
   if (!isAllowedPreviewUrl(href)) throw new Error('URL not allowed');
@@ -97,24 +121,8 @@ export async function fetchOgMetadata(href) {
     }
     if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
     if (!(res.headers.get('content-type') ?? '').includes('html')) throw new Error('Not HTML');
-    const reader = res.body?.getReader();
-    if (!reader) throw new Error('No body');
-    const chunks = [];
-    let size = 0;
-    while (size < MAX_HTML_BYTES) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      chunks.push(value);
-      size += value.byteLength;
-    }
-    reader.cancel().catch(() => {});
-    const bytes = new Uint8Array(size);
-    let offset = 0;
-    for (const c of chunks) {
-      bytes.set(c.subarray(0, Math.min(c.byteLength, size - offset)), offset);
-      offset += c.byteLength;
-    }
-    return extractOgMetadata(new TextDecoder().decode(bytes.subarray(0, MAX_HTML_BYTES)), current, href);
+    const html = await readCappedText(res);
+    return extractOgMetadata(html, current, href);
   }
   throw new Error('Too many redirects');
 }
