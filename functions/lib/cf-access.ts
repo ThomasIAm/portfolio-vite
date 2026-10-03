@@ -16,7 +16,7 @@ const CERT_TTL_MS = 60 * 60 * 1000;
 function b64urlToBytes(input: string): Uint8Array {
   const b64 = input.replaceAll('-', '+').replaceAll('_', '/').padEnd(Math.ceil(input.length / 4) * 4, '=');
   const bin = atob(b64);
-  return Uint8Array.from(bin, (c) => c.charCodeAt(0));
+  return Uint8Array.from(bin, (c) => c.codePointAt(0) ?? 0);
 }
 
 function decodeJson<T>(part: string): T {
