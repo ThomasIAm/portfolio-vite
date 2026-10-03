@@ -107,7 +107,7 @@ Add these environment variables in Cloudflare Pages dashboard under **Settings â
 
 This project uses Cloudflare Pages Functions for:
 - **AI Search API** (`functions/api/search.ts`) - Semantic search using Cloudflare AI Search Worker binding
-- **Content Preview API** (`functions/api/preview.ts`) - Fetches draft content from Contentful Preview API
+- **Content Preview API** (`functions/api/preview.ts`) - Fetches draft content from Contentful Preview API. Requires a valid Cloudflare Access JWT (`Cf-Access-Jwt-Assertion`); set `CF_ACCESS_TEAM_DOMAIN` (e.g. `myteam.cloudflareaccess.com`) and `CF_ACCESS_AUD` (Access application AUD tag) on **preview** deployments only. Without them (e.g. production) the endpoint always returns 401.
 - Dynamic OG image generation (`functions/og/`)
 - OG metadata fetching API (`functions/api/og-metadata.ts`)
 - Dynamic sitemap generation (`functions/sitemap.xml.ts`)

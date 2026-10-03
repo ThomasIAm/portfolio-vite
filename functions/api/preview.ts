@@ -1,7 +1,10 @@
 // Cloudflare Pages Function: Fetch draft blog post from Contentful Preview API
-// Used by the content preview page to display unpublished content
+// Used by the content preview page to display unpublished content.
+// Requires a valid Cloudflare Access JWT, so it only works behind Access.
 
-interface Env {
+import { verifyAccessJwt, type AccessEnv } from '../lib/cf-access';
+
+interface Env extends AccessEnv {
   CONTENTFUL_SPACE_ID: string;
   CONTENTFUL_PREVIEW_TOKEN: string;
 }
@@ -45,9 +48,17 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   const slug = url.searchParams.get('slug');
 
   const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
+    'Cache-Control': 'no-store',
   };
+
+  if (!(await verifyAccessJwt(request, env))) {
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401,
+      headers: corsHeaders,
+    });
+  }
+
 
   if (!slug) {
     return new Response(JSON.stringify({ error: 'Missing slug parameter' }), {
