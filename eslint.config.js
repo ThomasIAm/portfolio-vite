@@ -3,9 +3,16 @@ import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
+import sonarjs from "eslint-plugin-sonarjs";
 
 export default tseslint.config(
   { ignores: ["dist"] },
+  {
+    // SonarSource rules (same engine as SonarCloud) to catch findings before they reach the dashboard.
+    ...sonarjs.configs.recommended,
+    files: ["**/*.{ts,tsx,js,mjs}"],
+    languageOptions: { ...sonarjs.configs.recommended.languageOptions, globals: { ...globals.browser, ...globals.node } },
+  },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
