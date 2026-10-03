@@ -1,13 +1,21 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import tailwindcss from "@tailwindcss/postcss";
-import autoprefixer from "autoprefixer";
-import path from "path";
+import path from "node:path";
 import { componentTagger } from "lovable-tagger";
-import { execSync } from "child_process";
+import { execFileSync } from "node:child_process";
 import type { Plugin } from "vite";
 
-function contentfulPlugin(): Plugin {
+// Styling (Tailwind + autoprefixer) is configured in postcss.config.js only,
+// so Vite and the plugins never compare two different postcss type copies.
+
+function contentfulPlugin(extraEnv: Record<string, string>): Plugin {
+  const run = (stdio: "inherit" | "pipe") =>
+    // Use the running Node binary instead of looking up "node" on PATH.
+    execFileSync(process.execPath, ["scripts/fetch-content.mjs"], {
+      stdio,
+      env: { ...extraEnv, ...process.env },
+    });
+
   return {
     name: "vite-contentful-plugin",
 
@@ -15,10 +23,7 @@ function contentfulPlugin(): Plugin {
     buildStart() {
       console.log("📡 Fetching content from Contentful...");
       try {
-        execSync("node scripts/fetch-content.mjs", {
-          stdio: "inherit",
-          env: process.env,
-        });
+        run("inherit");
       } catch (error) {
         console.error("❌ Failed to fetch content:", error);
         throw error;
@@ -29,20 +34,15 @@ function contentfulPlugin(): Plugin {
     configureServer(server) {
       const fetchContent = () => {
         try {
-          execSync("node scripts/fetch-content.mjs", {
-            stdio: "pipe",
-            env: process.env,
-          });
+          run("pipe");
           console.log("🔄 Content refreshed");
         } catch (error) {
-          console.error("❌ Content refresh failed");
+          console.error("❌ Content refresh failed:", error);
         }
       };
 
-      // Initial fetch
       fetchContent();
 
-      // Refresh on HTML requests (page loads/refreshes)
       server.middlewares.use((req, _res, next) => {
         if (req.headers.accept?.includes("text/html")) {
           fetchContent();
@@ -79,13 +79,8 @@ export default defineConfig(({ mode }) => ({
   build: {
     sourcemap: true,
   },
-  css: {
-    postcss: {
-      plugins: [tailwindcss(), autoprefixer()],
-    },
-  },
   plugins: [
-    contentfulPlugin(),
+    contentfulPlugin(loadEnv(mode, process.cwd(), "")),
     react(),
     mode === "development" && componentTagger(),
   ].filter(Boolean),
