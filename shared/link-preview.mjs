@@ -45,7 +45,12 @@ function metaContent(html, property) {
   return m?.[1];
 }
 
-export function extractOgMetadata(html, pageUrl) {
+/**
+ * @param html     HTML of the page that was actually returned
+ * @param pageUrl  Final URL (after redirects) — base for resolving relative values
+ * @param linkUrl  Original link in the post — the card's click target (defaults to pageUrl)
+ */
+export function extractOgMetadata(html, pageUrl, linkUrl = pageUrl) {
   const title = metaContent(html, 'title') ?? /<title[^>]*>([^<]+)<\/title>/i.exec(html)?.[1]?.trim();
   let image = metaContent(html, 'image');
   if (image) {
@@ -61,7 +66,7 @@ export function extractOgMetadata(html, pageUrl) {
     description: metaContent(html, 'description'),
     image,
     siteName: metaContent(html, 'site_name') ?? new URL(pageUrl).hostname,
-    url: pageUrl,
+    url: linkUrl,
   };
 }
 
@@ -104,7 +109,7 @@ export async function fetchOgMetadata(href) {
       bytes.set(c.subarray(0, Math.min(c.byteLength, size - offset)), offset);
       offset += c.byteLength;
     }
-    return extractOgMetadata(new TextDecoder().decode(bytes.subarray(0, MAX_HTML_BYTES)), href);
+    return extractOgMetadata(new TextDecoder().decode(bytes.subarray(0, MAX_HTML_BYTES)), current, href);
   }
   throw new Error('Too many redirects');
 }
