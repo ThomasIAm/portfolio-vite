@@ -47,6 +47,20 @@ export const ROUTE_METADATA: Record<string, RouteMetadata> = {
   },
 };
 
+/**
+ * Non-blog pages that agents can fetch as Markdown (`Accept: text/markdown`).
+ * This is the single allowlist: only these paths are ever rendered by Browser Run.
+ */
+export const MARKDOWN_PATHS = ['/', '/about', '/projects', '/cloudflare-consultant'] as const;
+
+export function normalizeMarkdownPath(path: string): string {
+  return path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
+}
+
+export function isMarkdownPath(path: string): boolean {
+  return (MARKDOWN_PATHS as readonly string[]).includes(normalizeMarkdownPath(path));
+}
+
 export function getRouteMetadata(path: string): RouteMetadata {
   // Direct match
   if (ROUTE_METADATA[path]) {
