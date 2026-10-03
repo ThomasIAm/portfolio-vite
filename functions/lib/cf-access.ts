@@ -24,7 +24,7 @@ function decodeJson<T>(part: string): T {
 }
 
 async function getKeys(domain: string, forceRefresh = false): Promise<Jwk[]> {
-  if (!forceRefresh && certCache && certCache.domain === domain && Date.now() - certCache.fetchedAt < CERT_TTL_MS) {
+  if (!forceRefresh && certCache?.domain === domain && Date.now() - certCache.fetchedAt < CERT_TTL_MS) {
     return certCache.keys;
   }
   const res = await fetch(`https://${domain}/cdn-cgi/access/certs`);
