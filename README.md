@@ -111,6 +111,21 @@ To add a new function to the OpenAPI schema, update the `functionDefinitions` ar
 2. Add your domain and follow the DNS configuration steps
 3. SSL is automatically provisioned
 
+### Markdown for Agents
+
+Requests with `Accept: text/markdown` (and no `text/html`) get Markdown instead of HTML:
+
+- **Blog posts** (`/blog/<slug>`): the Contentful Markdown body with frontmatter.
+- **Allowlisted pages** (`MARKDOWN_PATHS` in `src/config/seo-metadata.ts`): rendered by Cloudflare Browser Run's `/markdown` endpoint, then cached per data center with the Workers Cache API for 24h. The cache key includes the commit SHA, so each deploy starts fresh. See `functions/lib/page-markdown.ts`.
+
+If Browser Run isn't configured or fails, the normal HTML is returned. Production setup:
+
+1. Create an API token with only **Account → Browser Rendering → Edit**. Save it as the secret `CF_BROWSER_RUN_TOKEN` (production).
+2. Add `CF_ACCOUNT_ID` as a production variable.
+3. Optionally, set a usage alert for Browser Rendering.
+
+Preview deployments sit behind Cloudflare Access, which Browser Run can't pass, so don't set these there.
+
 ## 📁 Project Structure
 ```
 src/
