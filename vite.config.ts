@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/postcss";
 import autoprefixer from "autoprefixer";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
-import { execSync } from "child_process";
+import { execFileSync } from "node:child_process";
 import type { Plugin } from "vite";
 
 function contentfulPlugin(extraEnv: Record<string, string> = {}): Plugin {

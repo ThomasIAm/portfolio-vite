@@ -8,6 +8,8 @@ import {
 } from "@/config/seo-metadata";
 import { siteConfig } from "@/config/site";
 
+const SCHEMA_TYPES: Record<string, string> = { article: "BlogPosting", profile: "ProfilePage", website: "WebPage" };
+
 interface SEOProps {
   // Override the shared config if needed
   title?: string;
