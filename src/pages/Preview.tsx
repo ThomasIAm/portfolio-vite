@@ -13,32 +13,37 @@ import { Button } from "@/components/ui/button";
 
 export default function Preview() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const fetchPreview = async () => {
-    if (!slug) return;
-    setIsLoading(true);
-    setError(null);
-    try {
-      const res = await fetch(`/api/preview?slug=${encodeURIComponent(slug)}`);
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || `Failed to load preview (${res.status})`);
-      }
-      const data = await res.json();
-      setPost(data as BlogPost);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load preview");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // Each load is identified by slug + attempt; loading = no result yet for the current request.
+  const [attempt, setAttempt] = useState(0);
+  const requestKey = `${slug ?? ""}#${attempt}`;
+  const [result, setResult] = useState<{ key: string; post: BlogPost | null; error: string | null } | null>(null);
+  const isLoading = Boolean(slug) && result?.key !== requestKey;
+  const post = result?.key === requestKey ? result.post : null;
+  const error = result?.key === requestKey ? result.error : null;
+  const fetchPreview = () => setAttempt((n) => n + 1);
 
   useEffect(() => {
-    fetchPreview();
-  }, [slug]);
+    if (!slug) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/preview?slug=${encodeURIComponent(slug)}`);
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.error || `Failed to load preview (${res.status})`);
+        }
+        const data = (await res.json()) as BlogPost;
+        if (!cancelled) setResult({ key: requestKey, post: data, error: null });
+      } catch (err) {
+        if (!cancelled) {
+          setResult({ key: requestKey, post: null, error: err instanceof Error ? err.message : "Failed to load preview" });
+        }
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, requestKey]);
 
   if (isLoading) {
     return (

@@ -23,4 +23,10 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+  {
+    // Generated shadcn/ui primitives and test helpers export variants/utilities next to
+    // components by design; Fast Refresh granularity doesn't matter there.
+    files: ["src/components/ui/**/*.{ts,tsx}", "src/test/**/*.{ts,tsx}"],
+    rules: { "react-refresh/only-export-components": "off" },
+  },
 );
