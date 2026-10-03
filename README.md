@@ -53,6 +53,9 @@ That single config file now centralizes the most commonly rebranded values:
 - social/profile links
 - contact email and location copy
 - shared SEO descriptions
+- legal identity for the privacy and cookie policies (`legal.name`, `legal.privacyEmail`)
+
+> **Important — legal documents:** `/privacy` and `/cookies` render `public/PRIVACY.md` and `public/COOKIES.md`. Site URL/domain, data-controller name and privacy email are filled in from `src/config/site.ts` via `{{siteUrl}}`, `{{siteDomain}}`, `{{legalName}}` and `{{privacyEmail}}` placeholders, but the remaining text (jurisdiction, data processed, cookies used, retention, last-modified date) describes the original owner's situation. You **must** review and rewrite both files for your own site before publishing.
 
 After that, update the page-specific content in `src/pages/` and your Contentful content model/data as needed.
 

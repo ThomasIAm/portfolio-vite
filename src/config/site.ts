@@ -54,6 +54,12 @@ export const siteConfig = {
         "Available for remote collaboration worldwide. Open to discussing security consulting, speaking engagements, and collaboration opportunities.",
     },
   },
+  // Used to fill {{placeholders}} in public/PRIVACY.md and public/COOKIES.md.
+  // Reusers MUST update these and review the legal text itself.
+  legal: {
+    name: "T. van den Nieuwenhoff",
+    privacyEmail: "privacy@tvdn.me",
+  },
   seo: {
     homeDescription:
       "Lead Cyber Security Consultant specializing in Cloudflare, Zero Trust, and OpenShift. Empowering businesses and teams in the digital realm.",
@@ -70,4 +76,14 @@ export function buildSiteUrl(path = ""): string {
   }
 
   return new URL(path, `${siteConfig.siteUrl}/`).toString();
+}
+
+export function fillLegalPlaceholders(markdown: string): string {
+  const values: Record<string, string> = {
+    siteUrl: siteConfig.siteUrl,
+    siteDomain: new URL(siteConfig.siteUrl).host,
+    legalName: siteConfig.legal.name,
+    privacyEmail: siteConfig.legal.privacyEmail,
+  };
+  return markdown.replace(/\{\{(\w+)\}\}/g, (match, key: string) => values[key] ?? match);
 }
