@@ -1,7 +1,5 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import tailwindcss from "@tailwindcss/postcss";
-import autoprefixer from "autoprefixer";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { execFileSync } from "node:child_process";
@@ -83,10 +81,8 @@ export default defineConfig(({ mode }) => {
   build: {
     sourcemap: true,
   },
-  css: {
-    postcss: {
-      // Cast: @tailwindcss/postcss bundles its own postcss copy, whose types differ from vite's.
-      plugins: [tailwindcss() as unknown as import("postcss").AcceptedPlugin, autoprefixer()],
+  // PostCSS (Tailwind + autoprefixer) is configured in postcss.config.js.
+  plugins: [tailwindcss() as unknown as import("postcss").AcceptedPlugin, autoprefixer()],
     },
   },
   plugins: [
