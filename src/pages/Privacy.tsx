@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/seo/SEO";
 import { BlogContent } from "@/components/blog/BlogContent";
+import { fillLegalPlaceholders } from "@/config/site";
 
 export default function Privacy() {
   const [content, setContent] = useState("");
@@ -9,7 +10,7 @@ export default function Privacy() {
   useEffect(() => {
     fetch("/PRIVACY.md")
       .then((res) => res.text())
-      .then(setContent)
+      .then((text) => setContent(fillLegalPlaceholders(text)))
       .catch(() => {});
   }, []);
 
