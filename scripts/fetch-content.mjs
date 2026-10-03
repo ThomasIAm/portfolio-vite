@@ -90,6 +90,9 @@ async function fetchLinkPreviews(posts) {
     while (queue.length) {
       const url = queue.shift();
       try {
+        // Intentional: each worker fetches sequentially so at most 4 requests run at once
+        // (polite to external sites, bounded build time). Parallelism comes from Promise.all below.
+        // eslint-disable-next-line no-await-in-loop
         const meta = await fetchOgMetadata(url);
         if (meta.title) previews[url] = meta;
       } catch (error) {
