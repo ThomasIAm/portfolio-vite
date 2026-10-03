@@ -82,9 +82,6 @@ export default defineConfig(({ mode }) => {
     sourcemap: true,
   },
   // PostCSS (Tailwind + autoprefixer) is configured in postcss.config.js.
-  plugins: [tailwindcss() as unknown as import("postcss").AcceptedPlugin, autoprefixer()],
-    },
-  },
   plugins: [
     contentfulPlugin(env),
     react(),
