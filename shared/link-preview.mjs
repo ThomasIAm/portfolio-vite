@@ -29,7 +29,11 @@ export function isAllowedPreviewUrl(href) {
   if (url.protocol !== 'https:' || url.username || url.password) return false;
   if (url.port && url.port !== '443') return false;
   // Strip terminal DNS dot(s): "localhost." / "svc.internal." are the same hosts.
-  const host = url.hostname.toLowerCase().replace(/\.+$/, '');
+  // Plain loop instead of a regex: linear time, no backtracking.
+  let host = url.hostname.toLowerCase();
+  let end = host.length;
+  while (end > 0 && host[end - 1] === '.') end--;
+  host = host.slice(0, end);
   if (!host.includes('.') || host.endsWith('.localhost') || host.endsWith('.local') || host.endsWith('.internal')) return false;
   if (/^\d+\.\d+\.\d+\.\d+$/.test(host) || host.startsWith('[')) return false;
   return true;
