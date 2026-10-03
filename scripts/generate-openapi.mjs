@@ -51,7 +51,7 @@ const functionDefinitions = [
       get: {
         operationId: 'getOgMetadata',
         summary: 'Fetch Open Graph metadata',
-        description: 'Fetches Open Graph and Twitter Card metadata from an external URL for link previews',
+        description: 'Fetches Open Graph metadata for draft link previews. Requires a Cloudflare Access JWT (Cf-Access-Jwt-Assertion); returns 401 otherwise.',
         parameters: [
           {
             name: 'url',
