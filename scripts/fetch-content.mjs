@@ -92,7 +92,7 @@ async function fetchLinkPreviews(posts) {
       try {
         // Intentional: each worker fetches sequentially so at most 4 requests run at once
         // (polite to external sites, bounded build time). Parallelism comes from Promise.all below.
-        const meta = await fetchOgMetadata(url); // NOSONAR: bounded concurrency pool, see comment above
+        const meta = await fetchOgMetadata(url);
         if (meta.title) previews[url] = meta;
       } catch (error) {
         console.warn(`⚠️ Link preview skipped for ${url}: ${error.message}`);
