@@ -10,8 +10,8 @@ export function extractStandaloneLinks(markdown) {
   const links = new Set();
   for (const block of markdown.split(/\n\s*\n/)) {
     const text = block.trim();
-    const md = text.match(/^\[[^\]]*\]\((\S+?)(?:\s+"[^"]*")?\)$/);
-    const bare = text.match(/^<?(https?:\/\/[^\s<>]+)>?$/);
+    const md = /^\[[^\]]*\]\((\S+?)(?:\s+"[^"]*")?\)$/.exec(text);
+    const bare = /^<?(https?:\/\/[^\s<>]+)>?$/.exec(text);
     const href = md?.[1] ?? bare?.[1];
     if (href && isAllowedPreviewUrl(href)) links.add(href);
   }
@@ -36,8 +36,8 @@ export function isAllowedPreviewUrl(href) {
 
 function metaContent(html, property) {
   const attr = (kind, name) =>
-    html.match(new RegExp(`<meta[^>]*${kind}=["']${name}["'][^>]*content=["']([^"']+)["']`, 'i')) ||
-    html.match(new RegExp(`<meta[^>]*content=["']([^"']+)["'][^>]*${kind}=["']${name}["']`, 'i'));
+    new RegExp(`<meta[^>]*${kind}=["']${name}["'][^>]*content=["']([^"']+)["']`, 'i').exec(html) ||
+    new RegExp(`<meta[^>]*content=["']([^"']+)["'][^>]*${kind}=["']${name}["']`, 'i').exec(html);
   const m =
     attr('property', `og:${property}`) ||
     attr('name', `twitter:${property}`) ||
@@ -46,7 +46,7 @@ function metaContent(html, property) {
 }
 
 export function extractOgMetadata(html, pageUrl) {
-  const title = metaContent(html, 'title') ?? html.match(/<title[^>]*>([^<]+)<\/title>/i)?.[1]?.trim();
+  const title = metaContent(html, 'title') ?? /<title[^>]*>([^<]+)<\/title>/i.exec(html)?.[1]?.trim();
   let image = metaContent(html, 'image');
   if (image) {
     try {
