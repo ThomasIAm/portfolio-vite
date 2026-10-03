@@ -480,7 +480,7 @@ function createMarkdownComponents(
         {children}
       </ol>
     ),
-    li: ({ node, children, ...props }: any) => {
+    li: ({ node, children, ...props }: React.LiHTMLAttributes<HTMLLIElement> & { node?: unknown }) => {
       // Strip paragraph wrapper that react-markdown adds to list items
       const content = React.Children.map(children, (child) => {
         if (
@@ -498,13 +498,13 @@ function createMarkdownComponents(
         (node as { properties?: { id?: string } })?.properties?.id ??
         (node as { data?: { hProperties?: { id?: string } } })?.data?.hProperties?.id;
 
-      const { id: _ignoredId, ...restProps } = props;
+      const restProps = { ...props };
+      delete restProps.id;
 
-      const userContentId = rawId
-        ? (rawId as string).startsWith("user-content-")
-          ? rawId
-          : `user-content-${rawId}`
-        : undefined;
+      let userContentId: string | undefined;
+      if (rawId) {
+        userContentId = rawId.startsWith("user-content-") ? rawId : `user-content-${rawId}`;
+      }
 
       return (
         <li

@@ -94,37 +94,13 @@ describe("BlogContent", () => {
     expect(screen.getByText("$")).toBeInTheDocument();
   });
 
-  it("renders code block title from markdown meta with spaces", () => {
-    renderWithProviders(
-      <BlogContent
-        content={'```terminal title="Install dependencies for local dev"\nnpm install\n```'}
-      />
-    );
-    expect(
-      screen.getByText("Install dependencies for local dev")
-    ).toBeInTheDocument();
-  });
-
-  it("renders code block title from legacy syntax with spaces", () => {
-    renderWithProviders(
-      <BlogContent
-        content={"```terminal:title=Install dependencies for local dev\nnpm install\n```"}
-      />
-    );
-    expect(
-      screen.getByText("Install dependencies for local dev")
-    ).toBeInTheDocument();
-  });
-
-  it("parses unquoted title up to next metadata key", () => {
-    renderWithProviders(
-      <BlogContent
-        content={"```terminal title=Install dependencies for local dev linenos=true\nnpm install\n```"}
-      />
-    );
-    expect(
-      screen.getByText("Install dependencies for local dev")
-    ).toBeInTheDocument();
+  it.each([
+    ["markdown meta with spaces", '```terminal title="Install dependencies for local dev"\nnpm install\n```'],
+    ["legacy syntax with spaces", "```terminal:title=Install dependencies for local dev\nnpm install\n```"],
+    ["unquoted title up to next metadata key", "```terminal title=Install dependencies for local dev linenos=true\nnpm install\n```"],
+  ])("renders code block title from %s", (_label, content) => {
+    renderWithProviders(<BlogContent content={content} />);
+    expect(screen.getByText("Install dependencies for local dev")).toBeInTheDocument();
   });
 
   it("handles large metadata strings without backtracking blowups", () => {

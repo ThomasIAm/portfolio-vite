@@ -1,4 +1,4 @@
-# Portfolio Vite Framework
+# Portfolio Vite Framework 
 
 A modern, responsive portfolio website framework originally built for my own site and now structured for easier reuse.
 
@@ -53,6 +53,9 @@ That single config file now centralizes the most commonly rebranded values:
 - social/profile links
 - contact email and location copy
 - shared SEO descriptions
+- legal identity for the privacy and cookie policies (`legal.name`, `legal.privacyEmail`)
+
+> **Important — legal documents:** `/privacy` and `/cookies` render `public/PRIVACY.md` and `public/COOKIES.md`. Site URL/domain, data-controller name and privacy email are filled in from `src/config/site.ts` via `{{siteUrl}}`, `{{siteDomain}}`, `{{legalName}}` and `{{privacyEmail}}` placeholders, but the remaining text (jurisdiction, data processed, cookies used, retention, last-modified date) describes the original owner's situation. You **must** review and rewrite both files for your own site before publishing.
 
 After that, update the page-specific content in `src/pages/` and your Contentful content model/data as needed.
 
@@ -75,6 +78,23 @@ npm run build
 # Preview production build
 npm run preview
 ```
+
+## ✅ Tests & CI
+
+```bash
+npm test       # Vitest, single run
+npm run lint   # ESLint incl. SonarSource rules (eslint-plugin-sonarjs)
+```
+
+The linter includes SonarSource's recommended rules (the same engine as SonarCloud), so most SonarCloud findings surface locally and in CI first. Cognitive-complexity findings are warnings, not errors.
+
+`.github/workflows/ci.yml` runs `npm ci --ignore-scripts` (no dependency install scripts), `npm run lint`, `npm test` and `npm run build` on every pull request and push to `main`:
+
+- Builds with `USE_SAMPLE_CONTENT=true`, so no secrets are used in CI (safe for fork PRs).
+- Uses the `pull_request` trigger (never `pull_request_target`) and read-only `contents` permission.
+- Actions are pinned to commit SHAs; Dependabot (`github-actions` ecosystem) keeps them updated.
+- Recommended: mark the **CI / test-and-build** check as required in GitHub branch protection.
+
 
 ## 🌐 Deploying to Cloudflare Pages
 
@@ -104,9 +124,9 @@ Add these environment variables in Cloudflare Pages dashboard under **Settings �
 
 This project uses Cloudflare Pages Functions for:
 - **AI Search API** (`functions/api/search.ts`) - Semantic search using Cloudflare AI Search Worker binding
-- **Content Preview API** (`functions/api/preview.ts`) - Fetches draft content from Contentful Preview API
+- **Content Preview API** (`functions/api/preview.ts`) - Fetches draft content from Contentful Preview API. Requires a valid Cloudflare Access JWT (`Cf-Access-Jwt-Assertion`); set `CF_ACCESS_TEAM_DOMAIN` (e.g. `myteam.cloudflareaccess.com`) and `CF_ACCESS_AUD` (Access application AUD tag) on **preview** deployments only. Without them (e.g. production) the endpoint always returns 401.
 - Dynamic OG image generation (`functions/og/`)
-- OG metadata fetching API (`functions/api/og-metadata.ts`)
+- Link previews: metadata for standalone links in published posts is collected at build time by `scripts/fetch-content.mjs` into `src/data/link-previews.json` (https-only, no IP/local hosts, 8s timeout, 512 KB cap). The live `functions/api/og-metadata.ts` endpoint only serves draft previews and requires the same Cloudflare Access JWT as the preview API.
 - Dynamic sitemap generation (`functions/sitemap.xml.ts`)
 - SEO middleware for meta tag injection (`functions/_middleware.ts`)
 

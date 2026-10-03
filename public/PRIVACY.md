@@ -1,6 +1,6 @@
 # PRIVACY POLICY
 
-As soon as you visit our website tvdn.me or contact us, we receive information about you. In this privacy statement we explain what we do with that information. We always handle your information with care and store it securely. If you have any questions or want to know what information we have on you, please contact us. We may amend this privacy statement if necessary. We recommend that you regularly review this privacy statement so that you are aware of these changes. This privacy statement was last modified on 20 december 2025.
+As soon as you visit our website {{siteDomain}} or contact us, we receive information about you. In this privacy statement we explain what we do with that information. We always handle your information with care and store it securely. If you have any questions or want to know what information we have on you, please contact us. We may amend this privacy statement if necessary. We recommend that you regularly review this privacy statement so that you are aware of these changes. This privacy statement was last modified on 20 december 2025.
 
 ## Contents
 1. When do you apply this privacy statement?
@@ -25,7 +25,7 @@ This privacy statement applies to all personal data that we process and to all d
 
 # 2. Who uses your data?
 
-T. van den Nieuwenhoff is responsible for the website tvdn.me and therefore the responsible person for the use of your personal data as described in this privacy statement.
+{{legalName}} is responsible for the website {{siteDomain}} and therefore the responsible person for the use of your personal data as described in this privacy statement.
 
 # 3. Whose data do we use?
 
@@ -102,12 +102,12 @@ You may ask us to delete all data we have about you. We will then delete all dat
 
 ## Right to submit a complaint
 
-You may submit a complaint about the way in which we handle your data. If you have a complaint, we will be happy to resolve it for you. To do so, please contact us. You may also submit your complaint to the Dutch Data Protection Authority. Of cource we hope that is does not come to that, but if it's necessary you can also go to court. In that case, the court in the place of residence of T. van den Nieuwenhoff is the one
+You may submit a complaint about the way in which we handle your data. If you have a complaint, we will be happy to resolve it for you. To do so, please contact us. You may also submit your complaint to the Dutch Data Protection Authority. Of cource we hope that is does not come to that, but if it's necessary you can also go to court. In that case, the court in the place of residence of {{legalName}} is the one
 which will handle your complaint.
 
 ## How do I submit a request or complaint?
 
-You can submit your request or complaint to us by sending a mail to privacy@tvdn.me. We process every request or complaint within 30 days. If you submit multiple applications or complaints or if you submit a complex requerst or complaint, this may take more time. In that case, we will contact you within 60 days at the latest. We may ask you to identify yourself. In that case, we will ask you to submit certain information to ensure that you are the correct person whose personal data is.
+You can submit your request or complaint to us by sending a mail to {{privacyEmail}}. We process every request or complaint within 30 days. If you submit multiple applications or complaints or if you submit a complex requerst or complaint, this may take more time. In that case, we will contact you within 60 days at the latest. We may ask you to identify yourself. In that case, we will ask you to submit certain information to ensure that you are the correct person whose personal data is.
 
 # 12. What rules apply to this privacy statement?
 
@@ -126,4 +126,4 @@ We do not target minors with our website. This means that if you are under the a
 
 # 15. Do you have a question about this privacy policy?
 
-If you have a question about our privacy policy, please feel free to contact us on privacy@tvdn.me. We are happy to help.
+If you have a question about our privacy policy, please feel free to contact us on {{privacyEmail}}. We are happy to help.

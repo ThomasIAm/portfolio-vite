@@ -51,7 +51,7 @@ const functionDefinitions = [
       get: {
         operationId: 'getOgMetadata',
         summary: 'Fetch Open Graph metadata',
-        description: 'Fetches Open Graph and Twitter Card metadata from an external URL for link previews',
+        description: 'Fetches Open Graph metadata for draft link previews. Requires a Cloudflare Access JWT (Cf-Access-Jwt-Assertion); returns 401 otherwise.',
         parameters: [
           {
             name: 'url',
@@ -67,7 +67,7 @@ const functionDefinitions = [
             headers: {
               'Cache-Control': {
                 description: 'Caching directive',
-                schema: { type: 'string', example: 'public, max-age=86400' }
+                schema: { type: 'string', example: 'no-store' }
               }
             },
             content: {
@@ -76,35 +76,25 @@ const functionDefinitions = [
               }
             }
           },
+          401: {
+            description: 'Missing or invalid Cloudflare Access JWT',
+            content: { 'application/json': { schema: { $ref: '#/components/schemas/Error' } } }
+          },
           400: {
-            description: 'Bad request - URL parameter missing',
+            description: 'Bad request - public https URL required',
             content: {
               'application/json': {
                 schema: { $ref: '#/components/schemas/Error' },
-                example: { error: 'URL parameter is required' }
+                example: { error: 'A public https URL is required' }
               }
             }
           },
-          500: {
-            description: 'Server error - Failed to fetch metadata',
+          502: {
+            description: 'Bad gateway - the target site could not be fetched or its metadata could not be parsed',
             content: {
               'application/json': {
                 schema: { $ref: '#/components/schemas/MetadataError' }
               }
-            }
-          }
-        }
-      },
-      options: {
-        operationId: 'ogMetadataPreflight',
-        summary: 'CORS preflight for OG metadata endpoint',
-        responses: {
-          200: {
-            description: 'CORS preflight response',
-            headers: {
-              'Access-Control-Allow-Origin': { schema: { type: 'string', example: '*' } },
-              'Access-Control-Allow-Methods': { schema: { type: 'string', example: 'GET, POST, OPTIONS' } },
-              'Access-Control-Allow-Headers': { schema: { type: 'string', example: 'Content-Type' } }
             }
           }
         }
