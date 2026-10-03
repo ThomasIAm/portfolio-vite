@@ -13,6 +13,13 @@ describe("link preview URL rules", () => {
     expect(isAllowedPreviewUrl("https://[::1]/")).toBe(false);
   });
 
+  it("blocks local hosts written with a trailing DNS dot", () => {
+    expect(isAllowedPreviewUrl("https://localhost./")).toBe(false);
+    expect(isAllowedPreviewUrl("https://service.internal./")).toBe(false);
+    expect(isAllowedPreviewUrl("https://printer.local./")).toBe(false);
+    expect(isAllowedPreviewUrl("https://example.com./post")).toBe(true);
+  });
+
   it("collects only links that stand alone in a paragraph", () => {
     const md = "Intro with [inline](https://inline.example.com) link.\n\n[Alone](https://alone.example.com)\n\nhttps://bare.example.com";
     expect(extractStandaloneLinks(md)).toEqual(["https://alone.example.com", "https://bare.example.com"]);
