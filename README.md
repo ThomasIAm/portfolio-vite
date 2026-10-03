@@ -79,6 +79,20 @@ npm run build
 npm run preview
 ```
 
+## ✅ Tests & CI
+
+```bash
+npm test   # Vitest, single run
+```
+
+`.github/workflows/ci.yml` runs `npm ci`, `npm test` and `npm run build` on every pull request and push to `main`:
+
+- Builds with `USE_SAMPLE_CONTENT=true`, so no secrets are used in CI (safe for fork PRs).
+- Uses the `pull_request` trigger (never `pull_request_target`) and read-only `contents` permission.
+- Actions are pinned to commit SHAs; Dependabot (`github-actions` ecosystem) keeps them updated.
+- Recommended: mark the **CI / test-and-build** check as required in GitHub branch protection.
+
+
 ## 🌐 Deploying to Cloudflare Pages
 
 ### Quick Deploy
