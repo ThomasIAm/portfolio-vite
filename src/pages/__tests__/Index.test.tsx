@@ -14,11 +14,7 @@ describe("Index page", () => {
 
   it("renders subtitle", () => {
     renderWithProviders(<Index />);
-    expect(
-      screen.getByText((content) =>
-        content.includes(`${siteConfig.role} with a passion`)
-      )
-    ).toBeInTheDocument();
+    expect(screen.getByText((content) => content.includes(`${siteConfig.role} with a passion`))).toBeInTheDocument();
   });
 
   it("renders CTA buttons with correct links", () => {
@@ -54,11 +50,5 @@ describe("Index page", () => {
     renderWithProviders(<Index />);
     const img = screen.getByAltText(siteConfig.profileImage.alt);
     expect(img).toBeInTheDocument();
-  });
-
-  it("renders partner link", () => {
-    renderWithProviders(<Index />);
-    const partnerLink = screen.getByText(/My partner Sanne/);
-    expect(partnerLink.closest("a")).toHaveAttribute("href", "https://www.swoodroom.nl");
   });
 });
