@@ -16,7 +16,7 @@ function contentfulPlugin(extraEnv: Record<string, string> = {}): Plugin {
     buildStart() {
       console.log("📡 Fetching content from Contentful...");
       try {
-        execSync("node scripts/fetch-content.mjs", {
+        execFileSync(process.execPath, ["scripts/fetch-content.mjs"], {
           stdio: "inherit",
           env: childEnv,
         });
@@ -30,13 +30,14 @@ function contentfulPlugin(extraEnv: Record<string, string> = {}): Plugin {
     configureServer(server) {
       const fetchContent = () => {
         try {
-          execSync("node scripts/fetch-content.mjs", {
+          execFileSync(process.execPath, ["scripts/fetch-content.mjs"], {
             stdio: "pipe",
             env: childEnv,
           });
           console.log("🔄 Content refreshed");
         } catch (error) {
-          console.error("❌ Content refresh failed");
+          // Dev only: keep serving the last fetched content instead of crashing the dev server.
+          console.error("❌ Content refresh failed:", error instanceof Error ? error.message : error);
         }
       };
 
