@@ -28,7 +28,8 @@ export function isAllowedPreviewUrl(href) {
   }
   if (url.protocol !== 'https:' || url.username || url.password) return false;
   if (url.port && url.port !== '443') return false;
-  const host = url.hostname.toLowerCase();
+  // Strip terminal DNS dot(s): "localhost." / "svc.internal." are the same hosts.
+  const host = url.hostname.toLowerCase().replace(/\.+$/, '');
   if (!host.includes('.') || host.endsWith('.localhost') || host.endsWith('.local') || host.endsWith('.internal')) return false;
   if (/^\d+\.\d+\.\d+\.\d+$/.test(host) || host.startsWith('[')) return false;
   return true;
