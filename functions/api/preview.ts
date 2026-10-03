@@ -17,15 +17,16 @@ interface ContentfulResponse {
   };
 }
 
-function resolveLinks(item: any, includes: ContentfulResponse['includes']): any {
+type LinkLike = { sys?: { type?: string; linkType?: string; id?: string } };
+
+function resolveLinks(item: unknown, includes: ContentfulResponse['includes']): unknown {
   if (!item || typeof item !== 'object') return item;
 
   // Resolve sys links
-  if (item.sys?.type === 'Link') {
-    const linkType = item.sys.linkType;
-    const id = item.sys.id;
-    const collection = linkType === 'Asset' ? includes?.Asset : includes?.Entry;
-    const resolved = (collection as any[])?.find((e: any) => e.sys.id === id);
+  const { sys } = item as LinkLike;
+  if (sys?.type === 'Link') {
+    const collection = (sys.linkType === 'Asset' ? includes?.Asset : includes?.Entry) as LinkLike[] | undefined;
+    const resolved = collection?.find((e) => e.sys?.id === sys.id);
     return resolved ? resolveLinks(resolved, includes) : item;
   }
 
@@ -35,7 +36,7 @@ function resolveLinks(item: any, includes: ContentfulResponse['includes']): any 
   }
 
   // Recurse object fields
-  const result: any = {};
+  const result: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(item)) {
     result[key] = resolveLinks(value, includes);
   }
