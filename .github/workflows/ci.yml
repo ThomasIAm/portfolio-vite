@@ -31,6 +31,9 @@ jobs:
           cache: npm
       # No dependency install scripts: blocks malicious postinstall hooks. Tests and build don't need them.
       - run: npm ci --ignore-scripts
+      # SonarSource rules are skipped here: SonarCloud already reviews PRs.
       - run: npm run lint
+        env:
+          SKIP_SONARJS: "true"
       - run: npm test
       - run: npm run build
