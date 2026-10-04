@@ -49,7 +49,7 @@ describe("CodeBlock", () => {
   it("renders macOS dots in terminal mode", () => {
     const { container } = render(<CodeBlock code="ls" terminal />);
     const dots = container.querySelectorAll(".rounded-full");
-    expect(dots.length).toBe(3);
+    expect(dots).toHaveLength(3);
   });
 
   it("copies code to clipboard on click", async () => {

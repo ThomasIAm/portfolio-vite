@@ -1,21 +1,12 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import path from "node:path";
+import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { execFileSync } from "node:child_process";
 import type { Plugin } from "vite";
 
-// Styling (Tailwind + autoprefixer) is configured in postcss.config.js only,
-// so Vite and the plugins never compare two different postcss type copies.
-
-function contentfulPlugin(extraEnv: Record<string, string>): Plugin {
-  const run = (stdio: "inherit" | "pipe") =>
-    // Use the running Node binary instead of looking up "node" on PATH.
-    execFileSync(process.execPath, ["scripts/fetch-content.mjs"], {
-      stdio,
-      env: { ...extraEnv, ...process.env },
-    });
-
+function contentfulPlugin(extraEnv: Record<string, string> = {}): Plugin {
+  const childEnv = { ...process.env, ...extraEnv };
   return {
     name: "vite-contentful-plugin",
 
@@ -23,7 +14,10 @@ function contentfulPlugin(extraEnv: Record<string, string>): Plugin {
     buildStart() {
       console.log("📡 Fetching content from Contentful...");
       try {
-        run("inherit");
+        execFileSync(process.execPath, ["scripts/fetch-content.mjs"], {
+          stdio: "inherit",
+          env: childEnv,
+        });
       } catch (error) {
         console.error("❌ Failed to fetch content:", error);
         throw error;
@@ -34,10 +28,17 @@ function contentfulPlugin(extraEnv: Record<string, string>): Plugin {
     configureServer(server) {
       const fetchContent = () => {
         try {
-          run("pipe");
+          execFileSync(process.execPath, ["scripts/fetch-content.mjs"], {
+            stdio: "pipe",
+            env: childEnv,
+          });
           console.log("🔄 Content refreshed");
         } catch (error) {
-          console.error("❌ Content refresh failed:", error);
+          // Dev only: keep serving the last fetched content instead of crashing the dev server.
+          console.error(
+            "❌ Content refresh failed:",
+            error instanceof Error ? error.message : error,
+          );
         }
       };
 
@@ -54,44 +55,48 @@ function contentfulPlugin(extraEnv: Record<string, string>): Plugin {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-    proxy: {
-      "/api": {
-        target: "https://localhost:8788",
-        changeOrigin: true,
-        secure: false,
-      },
-      "/og": {
-        target: "https://localhost:8788",
-        changeOrigin: true,
-        secure: false,
-      },
-      "/sitemap.xml": {
-        target: "https://localhost:8788",
-        changeOrigin: true,
-        secure: false,
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  return {
+    server: {
+      host: "::",
+      port: 8080,
+      proxy: {
+        "/api": {
+          target: "https://localhost:8788",
+          changeOrigin: true,
+          secure: false,
+        },
+        "/og": {
+          target: "https://localhost:8788",
+          changeOrigin: true,
+          secure: false,
+        },
+        "/sitemap.xml": {
+          target: "https://localhost:8788",
+          changeOrigin: true,
+          secure: false,
+        },
       },
     },
-  },
-  build: {
-    sourcemap: true,
-  },
-  plugins: [
-    contentfulPlugin(loadEnv(mode, process.cwd(), "")),
-    react(),
-    mode === "development" && componentTagger(),
-  ].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+    build: {
+      sourcemap: true,
     },
-  },
-  define: {
-    "import.meta.env.VITE_CF_PAGES_URL": JSON.stringify(
-      process.env.CF_PAGES_URL || "",
-    ),
-  },
-}));
+    // PostCSS (Tailwind + autoprefixer) is configured in postcss.config.js.
+    plugins: [
+      contentfulPlugin(env),
+      react(),
+      mode === "development" && componentTagger(),
+    ].filter(Boolean),
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+    define: {
+      "import.meta.env.VITE_CF_PAGES_URL": JSON.stringify(
+        process.env.CF_PAGES_URL || "",
+      ),
+    },
+  };
+});

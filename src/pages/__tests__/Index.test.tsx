@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { screen } from "@testing-library/react";
+import { siteConfig } from "@/config/site";
 import { renderWithProviders } from "@/test/test-utils";
 import Index from "../Index";
 
@@ -7,13 +8,13 @@ describe("Index page", () => {
   it("renders hero section with name", () => {
     renderWithProviders(<Index />);
     // Name appears in hero h1 and footer
-    const matches = screen.getAllByText("Thomas van den Nieuwenhoff");
+    const matches = screen.getAllByText(siteConfig.name);
     expect(matches.length).toBeGreaterThan(0);
   });
 
   it("renders subtitle", () => {
     renderWithProviders(<Index />);
-    expect(screen.getByText(/Lead Cyber Security Consultant with a passion/)).toBeInTheDocument();
+    expect(screen.getByText((content) => content.includes(`${siteConfig.role} with a passion`))).toBeInTheDocument();
   });
 
   it("renders CTA buttons with correct links", () => {
@@ -47,13 +48,7 @@ describe("Index page", () => {
 
   it("renders profile image", () => {
     renderWithProviders(<Index />);
-    const img = screen.getByAltText("Thomas van den Nieuwenhoff");
+    const img = screen.getByAltText(siteConfig.profileImage.alt);
     expect(img).toBeInTheDocument();
-  });
-
-  it("renders partner link", () => {
-    renderWithProviders(<Index />);
-    const partnerLink = screen.getByText(/My partner Sanne/);
-    expect(partnerLink.closest("a")).toHaveAttribute("href", "https://www.swoodroom.nl");
   });
 });

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Calendar, Clock, ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, Clock, ArrowRight, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { calculateReadingTime } from "@/lib/contentful";
 import { format } from "date-fns";
 import { SEO } from "@/components/seo/SEO";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 import {
   Carousel,
   CarouselContent,
@@ -29,7 +30,7 @@ export default function Blog() {
     <Layout>
       <SEO
         title="Blog"
-        description="Insights on cyber security, leadership, and technology from Thomas van den Nieuwenhoff. Expert articles on Cloudflare, Zero Trust, and DevSecOps."
+        description={siteConfig.seo.blogDescription}
         canonical="/blog"
         keywords={[
           "cyber security blog",
@@ -252,7 +253,7 @@ export default function Blog() {
                 updates.
               </p>
               <a
-                href="https://linkedin.com/in/tvdn"
+                href={siteConfig.social.linkedin.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-primary font-medium hover:underline"

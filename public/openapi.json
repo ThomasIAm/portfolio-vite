@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "TVDN.me API",
+    "title": "TvdN.me API",
     "description": "Cloudflare Pages Functions API for tvdn.me personal website",
     "version": "1.0.0",
     "contact": {
@@ -20,8 +20,7 @@
       "get": {
         "operationId": "getOgMetadata",
         "summary": "Fetch Open Graph metadata",
-        "description": "Fetches Open Graph and Twitter Card metadata from an external URL for link previews",
-        "tags": ["Metadata"],
+        "description": "Fetches Open Graph metadata for draft link previews. Requires a Cloudflare Access JWT (Cf-Access-Jwt-Assertion); returns 401 otherwise.",
         "parameters": [
           {
             "name": "url",
@@ -43,7 +42,7 @@
                 "description": "Caching directive",
                 "schema": {
                   "type": "string",
-                  "example": "public, max-age=86400"
+                  "example": "no-store"
                 }
               }
             },
@@ -56,20 +55,30 @@
             }
           },
           "400": {
-            "description": "Bad request - URL parameter missing",
+            "description": "Bad request - public https URL required",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
                 "example": {
-                  "error": "URL parameter is required"
+                  "error": "A public https URL is required"
                 }
               }
             }
           },
-          "500": {
-            "description": "Server error - Failed to fetch metadata",
+          "401": {
+            "description": "Missing or invalid Cloudflare Access JWT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad gateway - the target site could not be fetched or its metadata could not be parsed",
             "content": {
               "application/json": {
                 "schema": {
@@ -78,37 +87,10 @@
               }
             }
           }
-        }
-      },
-      "options": {
-        "operationId": "ogMetadataPreflight",
-        "summary": "CORS preflight for OG metadata endpoint",
-        "tags": ["Metadata"],
-        "responses": {
-          "200": {
-            "description": "CORS preflight response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string",
-                  "example": "*"
-                }
-              },
-              "Access-Control-Allow-Methods": {
-                "schema": {
-                  "type": "string",
-                  "example": "GET, POST, OPTIONS"
-                }
-              },
-              "Access-Control-Allow-Headers": {
-                "schema": {
-                  "type": "string",
-                  "example": "Content-Type"
-                }
-              }
-            }
-          }
-        }
+        },
+        "tags": [
+          "Metadata"
+        ]
       }
     },
     "/og/{route}": {
@@ -116,7 +98,6 @@
         "operationId": "generateOgImage",
         "summary": "Generate Open Graph image",
         "description": "Dynamically generates an Open Graph image (1200x630) for social media sharing",
-        "tags": ["Images"],
         "parameters": [
           {
             "name": "route",
@@ -157,7 +138,10 @@
             "description": "Content type - affects image styling",
             "schema": {
               "type": "string",
-              "enum": ["website", "article"],
+              "enum": [
+                "website",
+                "article"
+              ],
               "default": "website",
               "example": "article"
             }
@@ -175,7 +159,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Images"
+        ]
       }
     },
     "/sitemap.xml": {
@@ -183,7 +170,6 @@
         "operationId": "getSitemap",
         "summary": "Get XML sitemap",
         "description": "Returns an XML sitemap including static routes and dynamically fetched blog posts from Contentful",
-        "tags": ["SEO"],
         "responses": {
           "200": {
             "description": "XML sitemap",
@@ -205,7 +191,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "SEO"
+        ]
       }
     }
   },
@@ -246,7 +235,9 @@
       },
       "Error": {
         "type": "object",
-        "required": ["error"],
+        "required": [
+          "error"
+        ],
         "properties": {
           "error": {
             "type": "string",
@@ -257,7 +248,10 @@
       },
       "MetadataError": {
         "type": "object",
-        "required": ["error", "url"],
+        "required": [
+          "error",
+          "url"
+        ],
         "properties": {
           "error": {
             "type": "string",

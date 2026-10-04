@@ -39,7 +39,7 @@ Object.defineProperty(window, "IntersectionObserver", {
 });
 
 // Mock scrollTo
-window.scrollTo = vi.fn() as any;
+window.scrollTo = vi.fn() as unknown as typeof window.scrollTo;
 
 // Mock clipboard
 Object.assign(navigator, {

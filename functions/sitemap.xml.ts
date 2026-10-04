@@ -1,3 +1,5 @@
+import { siteConfig } from "../src/config/site";
+
 interface BlogPost {
   fields: {
     slug: string;
@@ -6,7 +8,12 @@ interface BlogPost {
   };
 }
 
-async function fetchBlogPosts(env: any): Promise<BlogPost[]> {
+interface SitemapEnv {
+  CONTENTFUL_SPACE_ID?: string;
+  CONTENTFUL_ACCESS_TOKEN?: string;
+}
+
+async function fetchBlogPosts(env: SitemapEnv): Promise<BlogPost[]> {
   const spaceId = env.CONTENTFUL_SPACE_ID;
   const accessToken = env.CONTENTFUL_ACCESS_TOKEN;
 
@@ -39,8 +46,8 @@ function formatDate(date: string): string {
   return new Date(date).toISOString().split('T')[0];
 }
 
-export const onRequest: PagesFunction = async (context) => {
-  const baseUrl = 'https://tvdn.me';
+export const onRequest: PagesFunction<SitemapEnv> = async (context) => {
+  const baseUrl = siteConfig.siteUrl;
 
   // Static routes with their priorities and change frequencies
   const staticRoutes = [

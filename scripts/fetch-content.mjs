@@ -1,25 +1,50 @@
 #!/usr/bin/env node
 
-import { createClient } from 'contentful';
-import { writeFileSync, mkdirSync, copyFileSync, existsSync } from 'fs';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
+import { createClient } from "contentful";
+import { writeFileSync, mkdirSync, copyFileSync, existsSync } from "fs";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
+import {
+  extractStandaloneLinks,
+  fetchOgMetadata,
+} from "../shared/link-preview.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const envPath = join(__dirname, '..', '.env');
-if (existsSync(envPath) && typeof process.loadEnvFile === 'function') {
+const envPath = join(__dirname, "..", ".env");
+if (existsSync(envPath) && typeof process.loadEnvFile === "function") {
   // Load repo-local .env without overriding vars already set by the host
   // (Cloudflare Pages, CI, or the sandbox shell take precedence).
-  try { process.loadEnvFile(envPath); } catch { /* ignore */ }
+  try {
+    process.loadEnvFile(envPath);
+  } catch {
+    /* ignore */
+  }
 }
-const dataDir = join(__dirname, '..', 'src', 'data');
-const outputPath = join(dataDir, 'blog-posts.json');
-const samplePath = join(dataDir, 'blog-posts.sample.json');
+const dataDir = join(__dirname, "..", "src", "data");
+const outputPath = join(dataDir, "blog-posts.json");
+const samplePath = join(dataDir, "blog-posts.sample.json");
+const previewsPath = join(dataDir, "link-previews.json");
+
+// Sample mode never contacts external sites; previews show the fallback card.
+function writeEmptyPreviews() {
+  mkdirSync(dataDir, { recursive: true });
+  writeFileSync(previewsPath, "{}\n");
+}
 
 const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 const previewToken = process.env.CONTENTFUL_PREVIEW_TOKEN;
-const useSampleContent = process.env.USE_SAMPLE_CONTENT === 'true';
+const useSample = process.env.USE_SAMPLE_CONTENT === "true";
+
+if (useSample) {
+  console.log("📝 USE_SAMPLE_CONTENT=true, copying sample data");
+  mkdirSync(dataDir, { recursive: true });
+  if (existsSync(samplePath)) {
+    copyFileSync(samplePath, outputPath);
+  }
+  writeEmptyPreviews();
+  process.exit(0);
+}
 
 function useSampleData(reason) {
   console.log(`📦 ${reason}, using sample data`);
@@ -27,19 +52,14 @@ function useSampleData(reason) {
   if (!existsSync(samplePath)) {
     throw new Error(`Sample data not found at ${samplePath}`);
   }
-  copyFileSync(samplePath, outputPath);
-  console.log('📝 Copied blog-posts.sample.json to blog-posts.json');
-}
-
-// Explicit opt-in via env flag to use sample content (default in local .env).
-// In Cloudflare this variable is unset/false so real Contentful content is fetched.
-if (useSampleContent) {
-  useSampleData('USE_SAMPLE_CONTENT=true');
+  writeEmptyPreviews();
   process.exit(0);
 }
 
 if (!spaceId || (!accessToken && !previewToken)) {
-  console.error('❌ Contentful credentials missing. Set CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN (or CONTENTFUL_PREVIEW_TOKEN), or set USE_SAMPLE_CONTENT=true to use sample data.');
+  console.error(
+    "❌ Contentful credentials missing. Set CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN (or CONTENTFUL_PREVIEW_TOKEN), or set USE_SAMPLE_CONTENT=true to use sample data.",
+  );
   process.exit(1);
 }
 
@@ -48,7 +68,7 @@ const usePreviewApi = !!previewToken;
 const client = createClient({
   space: spaceId,
   accessToken: usePreviewApi ? previewToken : accessToken,
-  host: usePreviewApi ? 'preview.contentful.com' : 'cdn.contentful.com',
+  host: usePreviewApi ? "preview.contentful.com" : "cdn.contentful.com",
 });
 
 function isValidBlogPost(item) {
@@ -64,18 +84,48 @@ function isValidBlogPost(item) {
 }
 
 async function fetchBlogPosts() {
-  console.log(`📡 Fetching blog posts from Contentful (${usePreviewApi ? 'Preview' : 'Delivery'} API)...`);
-  
+  console.log(
+    `📡 Fetching blog posts from Contentful (${usePreviewApi ? "Preview" : "Delivery"} API)...`,
+  );
+
   const response = await client.getEntries({
-    content_type: 'blogPost',
-    order: ['-sys.createdAt'],
+    content_type: "blogPost",
+    order: ["-sys.createdAt"],
     include: 2,
   });
 
   const posts = response.items.filter(isValidBlogPost);
   console.log(`✅ Found ${posts.length} valid blog posts`);
-  
+
   return posts;
+}
+
+// Fetch link-preview metadata once at build time so no runtime fetching is needed.
+// Individual failures are non-fatal: that link just shows the fallback card.
+async function fetchLinkPreviews(posts) {
+  const urls = [
+    ...new Set(posts.flatMap((p) => extractStandaloneLinks(p.fields.content))),
+  ];
+  const previews = {};
+  const queue = [...urls];
+  const worker = async () => {
+    while (queue.length) {
+      const url = queue.shift();
+      try {
+        // Intentional: each worker fetches sequentially so at most 4 requests run at once
+        // (polite to external sites, bounded build time). Parallelism comes from Promise.all below.
+        const meta = await fetchOgMetadata(url);
+        if (meta.title) previews[url] = meta;
+      } catch (error) {
+        console.warn(`⚠️ Link preview skipped for ${url}: ${error.message}`);
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: 4 }, worker));
+  console.log(
+    `🔗 Collected ${Object.keys(previews).length}/${urls.length} link previews`,
+  );
+  return previews;
 }
 
 async function main() {
@@ -84,12 +134,17 @@ async function main() {
     mkdirSync(dataDir, { recursive: true });
     writeFileSync(outputPath, JSON.stringify(posts, null, 2));
     console.log(`📝 Wrote ${posts.length} posts to ${outputPath}`);
-    console.log('✨ Content fetch complete!');
+
+    const previews = await fetchLinkPreviews(posts);
+    writeFileSync(previewsPath, JSON.stringify(previews, null, 2));
+    console.log("✨ Content fetch complete!");
   } catch (error) {
-    console.error('❌ Failed to fetch content from Contentful:', error.message);
-    console.error('   Set USE_SAMPLE_CONTENT=true to build with sample data instead.');
+    console.error("❌ Failed to fetch content from Contentful:", error.message);
+    console.error(
+      "   Set USE_SAMPLE_CONTENT=true to build with sample data instead.",
+    );
     process.exit(1);
   }
 }
 
-main();
+await main();
