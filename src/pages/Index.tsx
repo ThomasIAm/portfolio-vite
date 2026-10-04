@@ -38,14 +38,14 @@ const highlights = [
           className="text-primary hover:underline"
         >
           Cloudflare Solutions Architect
-        </a>
+        </Link>
         ,{" "}
         <Link
-          to="/cloudflare-consulant"
+          to="/cloudflare-consultant"
           className="text-primary hover:underline"
         >
           Zero Trust Engineer
-        </a>{" "}
+        </Link>{" "}
         &{" "}
         <a
           href="https://redtrain.nl/onze-diensten/"

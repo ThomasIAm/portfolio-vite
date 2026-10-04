@@ -4,6 +4,8 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SEO } from "@/components/seo/SEO";
+import { OptimizedImage } from "@/components/ui/optimized-image";
+import { siteConfig } from "@/config/site";
 import {
   Accordion,
   AccordionContent,
@@ -131,7 +133,8 @@ export default function CloudflareConsultant() {
       {/* Hero */}
       <section className="bg-gradient-hero">
         <div className="container py-20 md:py-28">
-          <AnimatedSection className="max-w-3xl">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          <AnimatedSection variant="fade-right" className="flex-1 max-w-3xl">
             <p className="text-primary font-medium mb-4">
               Cloudflare consultant: Nederland
             </p>
@@ -155,6 +158,18 @@ export default function CloudflareConsultant() {
               </Button>
             </div>
           </AnimatedSection>
+          <AnimatedSection variant="scale" delay={200} className="flex-shrink-0">
+            <OptimizedImage
+              src={siteConfig.profileImage.src}
+              alt={siteConfig.profileImage.alt}
+              className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-card border-4 border-background"
+              preset="avatarLarge"
+              showSkeleton={false}
+              loading="eager"
+              fetchPriority="high"
+            />
+          </AnimatedSection>
+          </div>
         </div>
       </section>
 
