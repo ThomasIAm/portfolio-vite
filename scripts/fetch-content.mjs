@@ -46,15 +46,9 @@ if (useSample) {
   process.exit(0);
 }
 
-function useSampleData(reason) {
-  console.log(`📦 ${reason}, using sample data`);
-  mkdirSync(dataDir, { recursive: true });
-  if (!existsSync(samplePath)) {
-    throw new Error(`Sample data not found at ${samplePath}`);
-  }
-  writeEmptyPreviews();
-  process.exit(0);
-}
+// No silent fallback: outside USE_SAMPLE_CONTENT=true, missing credentials or a failed
+// fetch exit non-zero so Vite's buildStart fails and placeholder content never ships.
+
 
 if (!spaceId || (!accessToken && !previewToken)) {
   console.error(
