@@ -9,3 +9,5 @@
 - Dismiss intentional SonarCloud findings by marking them "Accepted" in the SonarCloud dashboard with a reason; keep an explanatory code comment, no inline suppression (NOSONAR silences every rule on the line).
 
 - CI (GitHub Actions) builds with sample content and read-only permissions, actions pinned to SHAs — keeps secrets out of PR runs and blocks supply-chain drift.
+
+- `/llms.txt` is generated at build time from route metadata and fetched posts (src/config/llms-txt.ts); never hand-edit a static copy. Why: new pages and posts must appear without manual upkeep.

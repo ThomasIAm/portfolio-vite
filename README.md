@@ -161,6 +161,10 @@ If Browser Run isn't configured or fails, the normal HTML is returned. Productio
 
 Preview deployments sit behind Cloudflare Access, which Browser Run can't pass, so don't set these there.
 
+### llms.txt
+
+`/llms.txt` is generated on every build (and served live in `npm run dev`) by `src/config/llms-txt.ts`. Core pages come from `ROUTE_METADATA`, the Markdown page list from `MARKDOWN_PATHS`, and the 10 newest blog posts from the fetched content. To add a page, give it an entry in `ROUTE_METADATA`; edit the summary or expertise list in `src/config/llms-txt.ts`. There is no `public/llms.txt`.
+
 ## 📁 Project Structure
 ```
 src/
