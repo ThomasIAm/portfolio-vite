@@ -3,7 +3,31 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { execFileSync } from "node:child_process";
+import { existsSync, readFileSync } from "node:fs";
 import type { Plugin } from "vite";
+import { buildLlmsTxt, type LlmsPost } from "./src/config/llms-txt";
+
+/** Generates /llms.txt from route metadata + fetched blog posts (no hand-maintained copy). */
+function llmsTxtPlugin(): Plugin {
+  const render = () => {
+    const file = path.resolve(__dirname, "src/data/blog-posts.json");
+    const posts: LlmsPost[] = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : [];
+    return buildLlmsTxt(posts);
+  };
+  return {
+    name: "vite-llms-txt",
+    generateBundle() {
+      this.emitFile({ type: "asset", fileName: "llms.txt", source: render() });
+    },
+    configureServer(server) {
+      server.middlewares.use("/llms.txt", (_req, res) => {
+        res.setHeader("Content-Type", "text/plain; charset=utf-8");
+        res.end(render());
+      });
+    },
+  };
+}
+
 
 function contentfulPlugin(extraEnv: Record<string, string> = {}): Plugin {
   const childEnv = { ...process.env, ...extraEnv };
