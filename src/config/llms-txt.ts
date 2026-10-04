@@ -41,7 +41,8 @@ export function buildLlmsTxt(posts: LlmsPost[] = []): string {
     .slice(0, LLMS_RECENT_POSTS)
     .map((p) => {
       const desc = p.fields.excerpt ? `: ${p.fields.excerpt}` : "";
-      return `- [${p.fields.title}](${url(`/blog/${p.fields.slug}`)})${desc}`;
+      const href = url("/blog/" + p.fields.slug);
+      return `- [${p.fields.title}](${href})${desc}`;
     });
 
   return [
