@@ -109,6 +109,7 @@ export default defineConfig(({ mode }) => {
     // PostCSS (Tailwind + autoprefixer) is configured in postcss.config.js.
     plugins: [
       contentfulPlugin(env),
+      llmsTxtPlugin(),
       react(),
       mode === "development" && componentTagger(),
     ].filter(Boolean),
