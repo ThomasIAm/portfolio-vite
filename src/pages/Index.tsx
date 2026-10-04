@@ -33,17 +33,15 @@ const highlights = [
     title: "Security Expert",
     description: (
       <>
-        <a
-          href="/cloudflare-expert"
-          rel="noopener noreferrer"
+        <Link
+          to="/cloudflare-consultant"
           className="text-primary hover:underline"
         >
           Cloudflare Solutions Architect
         </a>
         ,{" "}
-        <a
-          href="/cloudflare-expert"
-          rel="noopener noreferrer"
+        <Link
+          to="/cloudflare-consulant"
           className="text-primary hover:underline"
         >
           Zero Trust Engineer

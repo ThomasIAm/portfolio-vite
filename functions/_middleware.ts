@@ -199,6 +199,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           headers: {
             "Content-Type": "text/markdown; charset=utf-8",
             "Cache-Control": "public, max-age=60",
+            Vary: "Accept",
           },
         });
       }
