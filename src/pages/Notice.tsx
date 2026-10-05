@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { ExternalLink, Heart, Sparkles } from "lucide-react";
 
 interface Dependency {
@@ -46,7 +46,7 @@ const dependencies: Dependency[] = [
 export default function Notice() {
   return (
     <Layout>
-      <SEO
+      <Seo
         title="Notice & Attributions"
         description="Acknowledgments and attributions for the open-source software used in this project."
         canonical="/notice"

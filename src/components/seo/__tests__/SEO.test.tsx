@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
 import { UnheadProvider, createHead } from "@unhead/react/client";
 import { MemoryRouter } from "react-router-dom";
-import { SEO as Seo } from "../SEO";
+import { Seo } from "../SEO";
 
 function Wrapper({ children }: Readonly<{ children: React.ReactNode }>) {
   const head = createHead();

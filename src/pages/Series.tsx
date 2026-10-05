@@ -4,7 +4,7 @@ import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { calculateReadingTime } from "@/lib/contentful";
 import { Calendar, Clock, ArrowLeft, BookOpen } from "lucide-react";
 import { format } from "date-fns";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 
@@ -40,7 +40,7 @@ const Series = () => {
   if (!series || seriesPosts.length === 0) {
     return (
       <Layout>
-        <SEO title="Series Not Found" description="The requested series could not be found." />
+        <Seo title="Series Not Found" description="The requested series could not be found." />
         <div className="min-h-screen flex flex-col items-center justify-center gap-4">
           <h1 className="text-2xl font-bold">Series not found</h1>
           <Link to="/blog" className="text-primary hover:underline flex items-center gap-2">
@@ -54,7 +54,7 @@ const Series = () => {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title={`${series.fields.title} Series`}
         description={
           series.fields.description ||

@@ -3,7 +3,7 @@ import { ArrowRight, Shield, Cloud, Lock, Zap, CheckCircle2 } from "lucide-react
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/animated-section";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { siteConfig } from "@/config/site";
 import {
@@ -110,7 +110,7 @@ const faqStructuredData = {
 export default function CloudflareConsultant() {
   return (
     <Layout>
-      <SEO
+      <Seo
         title="Cloudflare Consultant Nederland | Zero Trust & SASE Expert"
         description="Onafhankelijk Cloudflare consultant in Nederland. Cloudflare Solutions Architect met expertise in Zero Trust, WAF, Workers en enterprise security. Direct contact."
         canonical="/cloudflare-consultant"

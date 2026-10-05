@@ -6,7 +6,7 @@ import { useBlogPost } from "@/hooks/useBlogPosts";
 import { calculateReadingTime } from "@/lib/contentful";
 import { Calendar, Clock, ArrowLeft, RefreshCw, BookOpen } from "lucide-react";
 import { format } from "date-fns";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { Card, CardContent } from "@/components/ui/card";
 import { buildSiteUrl, siteConfig } from "@/config/site";
@@ -18,7 +18,7 @@ export default function BlogPost() {
   if (isLoading) {
     return (
       <Layout>
-        <SEO
+        <Seo
           title="Loading..."
           description="Loading blog post"
           canonical={`/blog/${slug}`}
@@ -41,7 +41,7 @@ export default function BlogPost() {
   if (error || !post) {
     return (
       <Layout>
-        <SEO
+        <Seo
           title="Post Not Found"
           description="The blog post you're looking for doesn't exist."
           canonical="/blog"
@@ -97,7 +97,7 @@ export default function BlogPost() {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title={fields.title}
         description={fields.excerpt}
         canonical={`/blog/${fields.slug}`}

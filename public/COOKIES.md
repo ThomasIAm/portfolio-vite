@@ -1,3 +1,5 @@
+# Cookie Policy
+
 This is the Cookie Policy for {{siteDomain}}, accessible from {{siteUrl}}
 
 ## What Are Cookies

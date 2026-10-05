@@ -17,7 +17,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { siteConfig } from "@/config/site";
 
 const INITIAL_PROJECTS_COUNT = 6;
@@ -128,7 +128,7 @@ export default function Projects() {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title="Projects & Work"
         description={siteConfig.seo.projectsDescription}
         canonical="/projects"

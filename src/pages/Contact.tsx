@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { Mail, Linkedin, Github, MapPin, Gitlab } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { siteConfig } from "@/config/site";
 
 const contactMethods = [
@@ -41,7 +41,7 @@ const contactMethods = [
 export default function Contact() {
   return (
     <Layout>
-      <SEO
+      <Seo
         title="Contact"
         description={siteConfig.seo.contactDescription}
         canonical="/contact"
