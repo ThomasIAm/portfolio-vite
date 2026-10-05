@@ -33,23 +33,19 @@ const highlights = [
     title: "Security Expert",
     description: (
       <>
-        <a
-          href="https://salt-security.com/diensten/professional-services/architecture-best-practices"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/cloudflare-consultant"
           className="text-primary hover:underline"
         >
           Cloudflare Solutions Architect
-        </a>
+        </Link>
         ,{" "}
-        <a
-          href="https://salt-security.com/diensten/professional-services/consultancy-implementatie"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/cloudflare-consultant"
           className="text-primary hover:underline"
         >
           Zero Trust Engineer
-        </a>{" "}
+        </Link>{" "}
         &{" "}
         <a
           href="https://redtrain.nl/onze-diensten/"
@@ -116,8 +112,8 @@ export default function Index() {
                 {siteConfig.name}
               </h1>
               <p className="text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
-                {siteConfig.role} with a passion for empowering
-                businesses and teams in the digital realm.
+                {siteConfig.role} with a passion for empowering businesses and
+                teams in the digital realm.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button variant="warm" size="lg" asChild>

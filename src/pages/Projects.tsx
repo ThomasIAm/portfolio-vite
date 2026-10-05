@@ -1,6 +1,21 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { AppWindow, Blocks, CloudCog, Code, ExternalLink, Github, Gitlab, LandPlot, Linkedin, LoaderPinwheel, Lock, Server, Shield, ChevronDown } from "lucide-react";
+import {
+  AppWindow,
+  Blocks,
+  CloudCog,
+  Code,
+  ExternalLink,
+  Github,
+  Gitlab,
+  LandPlot,
+  Linkedin,
+  LoaderPinwheel,
+  Lock,
+  Server,
+  Shield,
+  ChevronDown,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/seo/SEO";
 import { siteConfig } from "@/config/site";
@@ -10,83 +25,95 @@ const INITIAL_PROJECTS_COUNT = 6;
 const projects = [
   {
     title: "Lead Cloudflare Professional Services",
-    description: "Leading Cloudflare Professional Services at SALT Cyber Security, responsible for mentoring colleagues, identifying commercial opportunities, and delivering consulting and engineering services.",
+    description:
+      "Leading Cloudflare Professional Services at SALT Cyber Security, responsible for mentoring colleagues, identifying commercial opportunities, and delivering consulting and engineering services.",
     tags: ["Cloudflare", "Leadership", "Professional Services"],
     icon: Shield,
     url: "https://salt-security.com",
   },
   {
     title: "Identity Access Management",
-    description: "Security expert for IBM Security Verify Access at Belastingdienst, managing authentication solutions (including DigiD) and creating migration plans for Red Hat OpenShift.",
+    description:
+      "Security expert for IBM Security Verify Access at Belastingdienst, managing authentication solutions (including DigiD) and creating migration plans for Red Hat OpenShift.",
     tags: ["IAM", "Security", "DigiD"],
     icon: Lock,
     url: "https://www.belastingdienst.nl/wps/wcm/connect/nl/home/content/inloggen-mijn-belastingdienst",
   },
   {
     title: "OpenShift Platform Migration",
-    description: "Led OpenShift migrations at Belastingdienst, successfully onboarding developers, implementing automation with Tekton and ArgoCD, and enhancing cluster security with Advanced Cluster Security.",
+    description:
+      "Led OpenShift migrations at Belastingdienst, successfully onboarding developers, implementing automation with Tekton and ArgoCD, and enhancing cluster security with Advanced Cluster Security.",
     tags: ["OpenShift", "DevOps", "Kubernetes"],
     icon: Server,
   },
   {
     title: "Fully Homomorphic Encryption Research",
-    description: "Conducted research on Fully Homomorphic Encryption including business applications, built a proof-of-concept weight-tracking app, and published multiple articles on the technology.",
+    description:
+      "Conducted research on Fully Homomorphic Encryption including business applications, built a proof-of-concept weight-tracking app, and published multiple articles on the technology.",
     tags: ["Research", "Cryptography", "Innovation"],
     icon: Shield,
     url: "https://fhe.tvdn.me",
   },
   {
     title: "Wheel of No",
-    description: "Built a tiny web app with a wheel of fortune that never seems to land on the expected outcome.",
+    description:
+      "Built a tiny web app with a wheel of fortune that never seems to land on the expected outcome.",
     tags: ["Development", "Fun", "Prototyping"],
     icon: LoaderPinwheel,
     url: "https://benikincapabel.tvdn.me",
   },
   {
     title: "Self-Made Cloud Portal",
-    description: "Automated infrastructure management using Ansible/Vagrant, and built a management interface using PHP/Bootstrap.",
+    description:
+      "Automated infrastructure management using Ansible/Vagrant, and built a management interface using PHP/Bootstrap.",
     tags: ["Development", "Cloud", "Automation"],
     icon: CloudCog,
     url: "https://vm2.tvdn.me",
   },
   {
     title: "Capture-the-Flag Competition",
-    description: "Put together a CTF using RootTheBox, LogonBox VPN, and VMware vCenter technologies.",
+    description:
+      "Put together a CTF using RootTheBox, LogonBox VPN, and VMware vCenter technologies.",
     tags: ["Hacking", "Infrastructure", "Education"],
     icon: LandPlot,
     url: "https://github.com/ThomasIAm/ais-ctf-demo",
   },
   {
     title: "Low-Code Backoffice/CRM Development",
-    description: "Built a fully functional backoffice and public portfolio webapp with Mendix low-code platform.",
+    description:
+      "Built a fully functional backoffice and public portfolio webapp with Mendix low-code platform.",
     tags: ["Development", "Mendix", "Innovation"],
     icon: AppWindow,
     url: "https://github.com/ThomasIAm/Young-Mountaineers",
   },
   {
     title: "Time Saving Chrome Extension",
-    description: "Built an easy way to research academic sources using the Einde search engine right from the Chrome omnibox or extension bar.",
+    description:
+      "Built an easy way to research academic sources using the Einde search engine right from the Chrome omnibox or extension bar.",
     tags: ["Development", "Chrome", "Efficiency"],
     icon: Blocks,
     url: "https://github.com/ThomasIAm/WindeSearch",
   },
   {
     title: "My First Webshop",
-    description: "First time working in a team trying to build an MVP powered by PHP/Bootstrap/MySQL.",
+    description:
+      "First time working in a team trying to build an MVP powered by PHP/Bootstrap/MySQL.",
     tags: ["Development", "Teamwork", "PHP"],
     icon: AppWindow,
     url: "https://kbsa.tvdn.me",
   },
   {
     title: "AI Sounds Interesting...",
-    description: "Put together an informative website about Artificial Intelligence using Material Design.",
+    description:
+      "Put together an informative website about Artificial Intelligence using Material Design.",
     tags: ["Development", "Design System", "Web2"],
     icon: Code,
     url: "https://ai.tvdn.me",
   },
   {
     title: "My First Website",
-    description: "This was my first real website with information and tools I wanted handy. I was 15 years old when I made this using PHP/Material Design.",
+    description:
+      "This was my first real website with information and tools I wanted handy. I was 15 years old when I made this using PHP/Material Design.",
     tags: ["Development", "Baby Steps", "Portfolio"],
     icon: Code,
     url: "https://old.tvdn.me",
@@ -95,7 +122,9 @@ const projects = [
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
-  const visibleProjects = showAll ? projects : projects.slice(0, INITIAL_PROJECTS_COUNT);
+  const visibleProjects = showAll
+    ? projects
+    : projects.slice(0, INITIAL_PROJECTS_COUNT);
 
   return (
     <Layout>
@@ -103,7 +132,13 @@ export default function Projects() {
         title="Projects & Work"
         description={siteConfig.seo.projectsDescription}
         canonical="/projects"
-        keywords={["security projects", "Cloudflare consulting", "OpenShift migration", "IAM solutions", "cyber security portfolio"]}
+        keywords={[
+          "security projects",
+          "Cloudflare consulting",
+          "OpenShift migration",
+          "IAM solutions",
+          "cyber security portfolio",
+        ]}
       />
       {/* Hero Section */}
       <section className="py-20 md:py-28 bg-gradient-hero">
@@ -113,7 +148,8 @@ export default function Projects() {
               Projects & Work
             </h1>
             <p className="text-xl text-muted-foreground">
-              A selection of initiatives and projects I've led or contributed to.
+              A selection of initiatives and projects I've led or contributed
+              to.
             </p>
           </div>
         </div>
@@ -173,14 +209,21 @@ export default function Projects() {
                 onClick={() => setShowAll(!showAll)}
                 className="gap-2"
               >
-                {showAll ? "Show Less" : `Show More (${projects.length - INITIAL_PROJECTS_COUNT} more)`}
-                <ChevronDown className={`h-4 w-4 transition-transform ${showAll ? "rotate-180" : ""}`} />
+                {showAll
+                  ? "Show Less"
+                  : `Show More (${projects.length - INITIAL_PROJECTS_COUNT} more)`}
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform ${showAll ? "rotate-180" : ""}`}
+                />
               </Button>
             </div>
           )}
 
           {/* GitHub/GitLab/LinkedIn CTA */}
-          <div className="mt-16 text-center animate-fade-up" style={{ animationDelay: "0.4s" }}>
+          <div
+            className="mt-16 text-center animate-fade-up"
+            style={{ animationDelay: "0.4s" }}
+          >
             <p className="text-muted-foreground mb-6">
               Want to see more of my work?
             </p>

@@ -1,30 +1,43 @@
 #!/usr/bin/env node
 
-import { createClient } from 'contentful';
-import { writeFileSync, mkdirSync, copyFileSync, existsSync } from 'fs';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
-import { extractStandaloneLinks, fetchOgMetadata } from '../shared/link-preview.mjs';
+import { createClient } from "contentful";
+import { writeFileSync, mkdirSync, copyFileSync, existsSync } from "fs";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
+import {
+  extractStandaloneLinks,
+  fetchOgMetadata,
+} from "../shared/link-preview.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const dataDir = join(__dirname, '..', 'src', 'data');
-const outputPath = join(dataDir, 'blog-posts.json');
-const samplePath = join(dataDir, 'blog-posts.sample.json');
-const previewsPath = join(dataDir, 'link-previews.json');
+const envPath = join(__dirname, "..", ".env");
+if (existsSync(envPath) && typeof process.loadEnvFile === "function") {
+  // Load repo-local .env without overriding vars already set by the host
+  // (Cloudflare Pages, CI, or the sandbox shell take precedence).
+  try {
+    process.loadEnvFile(envPath);
+  } catch {
+    /* ignore */
+  }
+}
+const dataDir = join(__dirname, "..", "src", "data");
+const outputPath = join(dataDir, "blog-posts.json");
+const samplePath = join(dataDir, "blog-posts.sample.json");
+const previewsPath = join(dataDir, "link-previews.json");
 
 // Sample mode never contacts external sites; previews show the fallback card.
 function writeEmptyPreviews() {
   mkdirSync(dataDir, { recursive: true });
-  writeFileSync(previewsPath, '{}\n');
+  writeFileSync(previewsPath, "{}\n");
 }
 
 const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 const previewToken = process.env.CONTENTFUL_PREVIEW_TOKEN;
-const useSample = process.env.USE_SAMPLE_CONTENT === 'true';
+const useSample = process.env.USE_SAMPLE_CONTENT === "true";
 
 if (useSample) {
-  console.log('📝 USE_SAMPLE_CONTENT=true, copying sample data');
+  console.log("📝 USE_SAMPLE_CONTENT=true, copying sample data");
   mkdirSync(dataDir, { recursive: true });
   if (existsSync(samplePath)) {
     copyFileSync(samplePath, outputPath);
@@ -33,16 +46,15 @@ if (useSample) {
   process.exit(0);
 }
 
-// If credentials aren't configured, copy sample data to blog-posts.json
+// No silent fallback: outside USE_SAMPLE_CONTENT=true, missing credentials or a failed
+// fetch exit non-zero so Vite's buildStart fails and placeholder content never ships.
+
+
 if (!spaceId || (!accessToken && !previewToken)) {
-  console.log('⚠️ Contentful credentials not configured, using sample data');
-  mkdirSync(dataDir, { recursive: true });
-  if (existsSync(samplePath)) {
-    copyFileSync(samplePath, outputPath);
-    console.log('📝 Copied blog-posts.sample.json to blog-posts.json');
-  }
-  writeEmptyPreviews();
-  process.exit(0);
+  console.error(
+    "❌ Contentful credentials missing. Set CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN (or CONTENTFUL_PREVIEW_TOKEN), or set USE_SAMPLE_CONTENT=true to use sample data.",
+  );
+  process.exit(1);
 }
 
 const usePreviewApi = !!previewToken;
@@ -50,7 +62,7 @@ const usePreviewApi = !!previewToken;
 const client = createClient({
   space: spaceId,
   accessToken: usePreviewApi ? previewToken : accessToken,
-  host: usePreviewApi ? 'preview.contentful.com' : 'cdn.contentful.com',
+  host: usePreviewApi ? "preview.contentful.com" : "cdn.contentful.com",
 });
 
 function isValidBlogPost(item) {
@@ -66,24 +78,28 @@ function isValidBlogPost(item) {
 }
 
 async function fetchBlogPosts() {
-  console.log(`📡 Fetching blog posts from Contentful (${usePreviewApi ? 'Preview' : 'Delivery'} API)...`);
-  
+  console.log(
+    `📡 Fetching blog posts from Contentful (${usePreviewApi ? "Preview" : "Delivery"} API)...`,
+  );
+
   const response = await client.getEntries({
-    content_type: 'blogPost',
-    order: ['-sys.createdAt'],
+    content_type: "blogPost",
+    order: ["-sys.createdAt"],
     include: 2,
   });
 
   const posts = response.items.filter(isValidBlogPost);
   console.log(`✅ Found ${posts.length} valid blog posts`);
-  
+
   return posts;
 }
 
 // Fetch link-preview metadata once at build time so no runtime fetching is needed.
 // Individual failures are non-fatal: that link just shows the fallback card.
 async function fetchLinkPreviews(posts) {
-  const urls = [...new Set(posts.flatMap((p) => extractStandaloneLinks(p.fields.content)))];
+  const urls = [
+    ...new Set(posts.flatMap((p) => extractStandaloneLinks(p.fields.content))),
+  ];
   const previews = {};
   const queue = [...urls];
   const worker = async () => {
@@ -100,27 +116,27 @@ async function fetchLinkPreviews(posts) {
     }
   };
   await Promise.all(Array.from({ length: 4 }, worker));
-  console.log(`🔗 Collected ${Object.keys(previews).length}/${urls.length} link previews`);
+  console.log(
+    `🔗 Collected ${Object.keys(previews).length}/${urls.length} link previews`,
+  );
   return previews;
 }
 
 async function main() {
   try {
     const posts = await fetchBlogPosts();
-    
-    // Ensure data directory exists
     mkdirSync(dataDir, { recursive: true });
-    
-    // Write posts to JSON file
     writeFileSync(outputPath, JSON.stringify(posts, null, 2));
-    
     console.log(`📝 Wrote ${posts.length} posts to ${outputPath}`);
 
     const previews = await fetchLinkPreviews(posts);
     writeFileSync(previewsPath, JSON.stringify(previews, null, 2));
-    console.log('✨ Content fetch complete!');
+    console.log("✨ Content fetch complete!");
   } catch (error) {
-    console.error('❌ Failed to fetch content:', error.message);
+    console.error("❌ Failed to fetch content from Contentful:", error.message);
+    console.error(
+      "   Set USE_SAMPLE_CONTENT=true to build with sample data instead.",
+    );
     process.exit(1);
   }
 }

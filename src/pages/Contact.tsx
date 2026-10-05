@@ -24,8 +24,16 @@ const contactMethods = [
     label: "Code",
     description: "Check out my repositories",
     links: [
-      { icon: Github, label: siteConfig.social.github.label, href: siteConfig.social.github.href },
-      { icon: Gitlab, label: siteConfig.social.gitlab.label, href: siteConfig.social.gitlab.href },
+      {
+        icon: Github,
+        label: siteConfig.social.github.label,
+        href: siteConfig.social.github.href,
+      },
+      {
+        icon: Gitlab,
+        label: siteConfig.social.gitlab.label,
+        href: siteConfig.social.gitlab.href,
+      },
     ],
   },
 ];
@@ -37,7 +45,11 @@ export default function Contact() {
         title="Contact"
         description={siteConfig.seo.contactDescription}
         canonical="/contact"
-        keywords={["contact cyber security consultant", "hire security expert", "security consulting Netherlands"]}
+        keywords={[
+          "contact cyber security consultant",
+          "hire security expert",
+          "security consulting Netherlands",
+        ]}
       />
       {/* Hero Section */}
       <section className="py-20 md:py-28 bg-gradient-hero">
@@ -47,7 +59,8 @@ export default function Contact() {
               Let's Connect
             </h1>
             <p className="text-xl text-muted-foreground">
-              Have a question, opportunity, or just want to say hello? I'd love to hear from you.
+              Have a question, opportunity, or just want to say hello? I'd love
+              to hear from you.
             </p>
           </div>
         </div>
@@ -59,8 +72,8 @@ export default function Contact() {
           <div className="max-w-3xl mx-auto">
             <div className="grid gap-6">
               {contactMethods.map((method, index) => {
-                const hasMultipleLinks = 'links' in method && method.links;
-                
+                const hasMultipleLinks = "links" in method && method.links;
+
                 if (hasMultipleLinks) {
                   return (
                     <div
@@ -76,7 +89,11 @@ export default function Contact() {
                           <h2 className="font-display text-lg font-semibold text-foreground mb-1">
                             {method.label}
                           </h2>
-                          {method.value && <p className="text-primary font-medium break-all">{method.value}</p>}
+                          {method.value && (
+                            <p className="text-primary font-medium break-all">
+                              {method.value}
+                            </p>
+                          )}
                           <p className="text-sm text-muted-foreground mt-1">
                             {method.description}
                           </p>
@@ -99,13 +116,19 @@ export default function Contact() {
                     </div>
                   );
                 }
-                
+
                 return (
                   <a
                     key={method.label}
                     href={method.href}
-                    target={method.href?.startsWith("http") ? "_blank" : undefined}
-                    rel={method.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                    target={
+                      method.href?.startsWith("http") ? "_blank" : undefined
+                    }
+                    rel={
+                      method.href?.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                     className="group p-4 sm:p-6 rounded-2xl bg-card shadow-soft hover-lift flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 animate-fade-up"
                     style={{ animationDelay: `${0.1 * (index + 1)}s` }}
                   >
@@ -116,7 +139,9 @@ export default function Contact() {
                       <h2 className="font-display text-lg font-semibold text-foreground mb-1">
                         {method.label}
                       </h2>
-                      <p className="text-primary font-medium break-all">{method.value}</p>
+                      <p className="text-primary font-medium break-all">
+                        {method.value}
+                      </p>
                       <p className="text-sm text-muted-foreground mt-1">
                         {method.description}
                       </p>
@@ -127,10 +152,15 @@ export default function Contact() {
             </div>
 
             {/* Location Note */}
-            <div className="mt-12 p-6 rounded-2xl bg-muted/50 flex items-start gap-4 animate-fade-up" style={{ animationDelay: "0.4s" }}>
+            <div
+              className="mt-12 p-6 rounded-2xl bg-muted/50 flex items-start gap-4 animate-fade-up"
+              style={{ animationDelay: "0.4s" }}
+            >
               <MapPin className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-0.5" />
               <div>
-                <p className="text-foreground font-medium">{siteConfig.contact.location.label}</p>
+                <p className="text-foreground font-medium">
+                  {siteConfig.contact.location.label}
+                </p>
                 <p className="text-sm text-muted-foreground mt-1">
                   {siteConfig.contact.location.description}
                 </p>
@@ -148,7 +178,8 @@ export default function Contact() {
               Prefer a quick message?
             </h2>
             <p className="text-muted-foreground mb-8">
-              Send me a connection request on LinkedIn with a note about what you'd like to discuss.
+              Send me a connection request on LinkedIn with a note about what
+              you'd like to discuss.
             </p>
             <Button variant="warm" size="lg" asChild>
               <a

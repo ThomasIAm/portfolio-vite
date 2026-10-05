@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "./site";
 
 export interface RouteMetadata {
   title: string;
@@ -41,7 +41,27 @@ export const ROUTE_METADATA: Record<string, RouteMetadata> = {
     type: 'website',
     keywords: ['contact', 'cyber security consulting', 'collaboration'],
   },
+  '/cloudflare-consultant': {
+    title: 'Cloudflare Consultant Nederland | Zero Trust & SASE Expert',
+    description: 'Onafhankelijk Cloudflare consultant in Nederland. Cloudflare Solutions Architect met expertise in Zero Trust, WAF, Workers en enterprise security.',
+    type: 'website',
+    keywords: ['Cloudflare consultant Nederland', 'Cloudflare expert', 'Cloudflare Solutions Architect', 'Zero Trust consultant', 'SASE Nederland', 'Cloudflare Workers', 'WAF specialist'],
+  },
 };
+
+/**
+ * Non-blog pages that agents can fetch as Markdown (`Accept: text/markdown`).
+ * This is the single allowlist: only these paths are ever rendered by Browser Run.
+ */
+export const MARKDOWN_PATHS = ['/', '/about', '/projects', '/cloudflare-consultant'] as const;
+
+export function normalizeMarkdownPath(path: string): string {
+  return path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
+}
+
+export function isMarkdownPath(path: string): boolean {
+  return (MARKDOWN_PATHS as readonly string[]).includes(normalizeMarkdownPath(path));
+}
 
 export function getRouteMetadata(path: string): RouteMetadata {
   // Direct match
