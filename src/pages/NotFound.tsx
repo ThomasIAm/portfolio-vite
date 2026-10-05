@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { Head } from "@unhead/react";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { siteConfig } from "@/config/site";
 
 const NotFound = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
-      <SEO
+      <Seo
         title={`Page Not Found | ${siteConfig.name}`}
         description="The page you're looking for doesn't exist or has moved."
       />

@@ -6,7 +6,7 @@ import { TableOfContents } from "@/components/blog/TableOfContents";
 import { calculateReadingTime, type BlogPost } from "@/lib/contentful";
 import { Calendar, Clock, ArrowLeft, RefreshCw, BookOpen, Eye, AlertTriangle } from "lucide-react";
 import { format } from "date-fns";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -49,7 +49,7 @@ export default function Preview() {
   if (isLoading) {
     return (
       <Layout>
-        <SEO title="Loading Preview..." description="Loading draft content" />
+        <Seo title="Loading Preview..." description="Loading draft content" />
         <section className="py-20 md:py-28">
           <div className="container">
             <div className="max-w-3xl mx-auto">
@@ -68,7 +68,7 @@ export default function Preview() {
   if (error || !post) {
     return (
       <Layout>
-        <SEO title="Preview Not Found" description="The preview content could not be loaded." />
+        <Seo title="Preview Not Found" description="The preview content could not be loaded." />
         <section className="py-20 md:py-28">
           <div className="container">
             <div className="max-w-3xl mx-auto text-center">
@@ -104,7 +104,7 @@ export default function Preview() {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title={`Preview: ${fields.title}`}
         description={fields.excerpt}
         canonical={`/blog/${fields.slug}`}

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { calculateReadingTime } from "@/lib/contentful";
 import { format } from "date-fns";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import {
@@ -28,7 +28,7 @@ export default function Blog() {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title="Blog"
         description={siteConfig.seo.blogDescription}
         canonical="/blog"
