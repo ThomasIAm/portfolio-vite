@@ -26,7 +26,7 @@ interface SEOProps {
 
 const BASE_URL = import.meta.env.VITE_CF_PAGES_URL || import.meta.env.VITE_SITE_URL || siteConfig.siteUrl;
 
-export function SEO({
+export function Seo({
   title: titleOverride,
   description: descriptionOverride,
   canonical,

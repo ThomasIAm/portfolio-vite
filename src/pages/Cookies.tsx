@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { BlogContent } from "@/components/blog/BlogContent";
 import { fillLegalPlaceholders } from "@/config/site";
 
@@ -16,7 +16,7 @@ export default function Cookies() {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title="Cookie Policy"
         description="Learn about how we use cookies and similar technologies on our website."
         canonical="/cookies"

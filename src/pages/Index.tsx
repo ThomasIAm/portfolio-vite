@@ -3,7 +3,7 @@ import { ArrowRight, Shield, Users, Lightbulb } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/animated-section";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { siteConfig } from "@/config/site";
 
@@ -85,7 +85,7 @@ const highlights = [
 export default function Index() {
   return (
     <Layout>
-      <SEO
+      <Seo
         title={`${siteConfig.name} | ${siteConfig.role}`}
         description={siteConfig.seo.homeDescription}
         canonical="/"

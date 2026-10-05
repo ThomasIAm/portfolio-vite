@@ -11,7 +11,7 @@ import {
   Trophy,
 } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/animated-section";
-import { SEO } from "@/components/seo/SEO";
+import { Seo } from "@/components/seo/SEO";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
@@ -464,7 +464,7 @@ export default function About() {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title="About"
         description={siteConfig.seo.aboutDescription}
         canonical="/about"
