@@ -61,7 +61,7 @@ const tw = readFileSync(join(root, "tailwind.config.ts"), "utf8");
 const font = (key) => {
   const m = tw.match(new RegExp(`${key}:\\s*\\[([^\\]]*)\\]`));
   if (!m) throw new Error(`tailwind.config.ts: font ${key} not found`);
-  return m[1].split(",").map((x) => x.trim()).join(", ");
+  return m[1].split(",").map((x) => x.trim().replace(/^"|"$/g, "")).map((x) => (x.includes(" ") ? `"${x}"` : x)).join(", ");
 };
 
 const tokens = {
