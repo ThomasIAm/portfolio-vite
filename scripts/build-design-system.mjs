@@ -3,7 +3,6 @@
 // Hand-written parts (README, component docs and previews) live beside it in design-system/project.
 //   node scripts/build-design-system.mjs          write tokens.json
 //   node scripts/build-design-system.mjs --check  exit 1 if tokens.json is out of date
-import { execSync } from "node:child_process";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -104,13 +103,8 @@ const tokens = {
     value: { light: shadow(light[`shadow-${k}`]), dark: shadow(dark[`shadow-${k}`] ?? light[`shadow-${k}`]) },
     usage: shadowUsage[k],
   })) },
-  meta: { source: "github", package: "src/index.css, tailwind.config.ts", ref: ref() },
+  meta: { source: "github", package: "src/index.css, tailwind.config.ts" },
 };
-
-function ref() {
-  try { return execSync("git log -1 --format=%h -- src/index.css tailwind.config.ts", { cwd: root }).toString().trim(); }
-  catch { return "unknown"; }
-}
 
 const next = JSON.stringify(tokens, null, 1) + "\n";
 if (process.argv.includes("--check")) {

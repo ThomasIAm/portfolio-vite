@@ -35,5 +35,7 @@ jobs:
       - run: npm run lint
         env:
           SKIP_SONARJS: "true"
+      # Fails if design-system/project/tokens.json no longer matches src/index.css (run `npm run design-system`).
+      - run: npm run design-system:check
       - run: npm test
       - run: npm run build
