@@ -11,18 +11,27 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, "design-system/project/tokens.json");
 const css = readFileSync(join(root, "src/index.css"), "utf8");
 
-const block = (selector) => {
-  const m = css.match(new RegExp(`${selector}\\s*\\{([\\s\\S]*?)\\n  \\}`));
-  if (!m) throw new Error(`index.css: block ${selector} not found`);
-  return Object.fromEntries([...m[1].matchAll(/--([\w-]+):\s*([^;]+);/g)].map((x) => [x[1], x[2].trim()]));
+// Reads `--name: value;` declarations from the indented rule that starts with `header`.
+const block = (header) => {
+  const start = css.indexOf(`  ${header} {`);
+  const end = start < 0 ? -1 : css.indexOf("\n  }", start);
+  if (end < 0) throw new Error(`index.css: block ${header} not found`);
+  const decls = css.slice(start, end).split(";");
+  return Object.fromEntries(
+    decls.flatMap((d) => {
+      const i = d.indexOf("--");
+      const colon = d.indexOf(":", i);
+      return i < 0 || colon < 0 ? [] : [[d.slice(i + 2, colon).trim(), d.slice(colon + 1).trim()]];
+    }),
+  );
 };
-const light = block("  :root");
-const dark = block("  \\.dark");
+const light = block(":root");
+const dark = block(".dark");
 
 // "12 76% 61%" -> "hsl(12, 76%, 61%)"
-const hsl = (v) => `hsl(${v.replace(/\s+/g, ", ")})`;
+const hsl = (v) => `hsl(${v.trim().split(" ").filter(Boolean).join(", ")})`;
 // "hsl(20, 20%, 15%, 0.08)" -> "hsla(...)"
-const shadow = (v) => v.replace(/hsl\(([^)]*,[^)]*,[^)]*,[^)]*)\)/g, "hsla($1)");
+const shadow = (v) => v.replace(/hsl\(([^)]+)\)/g, (m, args) => (args.split(",").length === 4 ? `hsla(${args})` : m));
 
 const usage = {
   background: "Page background. Warm cream in light, deep warm brown in dark.",
@@ -53,15 +62,22 @@ const shadowUsage = {
   card: "Cards and panels.",
   hover: "Hover lift: coral-tinted glow.",
 };
-const px = (v) => (v.endsWith("rem") ? parseFloat(v) * 16 : parseFloat(v));
+const px = (v) => (v.endsWith("rem") ? Number.parseFloat(v) * 16 : Number.parseFloat(v));
 const base = px(light.radius);
 
 const tw = readFileSync(join(root, "tailwind.config.ts"), "utf8");
 const font = (key) => {
-  const m = tw.match(new RegExp(`${key}:\\s*\\[([^\\]]*)\\]`));
-  if (!m) throw new Error(`tailwind.config.ts: font ${key} not found`);
-  return m[1].split(",").map((x) => x.trim().replace(/^"|"$/g, "")).map((x) => (x.includes(" ") ? `"${x}"` : x)).join(", ");
+  const start = tw.indexOf(`${key}: [`);
+  const end = start < 0 ? -1 : tw.indexOf("]", start);
+  if (end < 0) throw new Error(`tailwind.config.ts: font ${key} not found`);
+  return tw
+    .slice(start + key.length + 3, end)
+    .split(",")
+    .map((x) => x.trim().replace(/^"|"$/g, ""))
+    .map((x) => (x.includes(" ") ? `"${x}"` : x))
+    .join(", ");
 };
+
 
 const tokens = {
   name: "Portfolio",
