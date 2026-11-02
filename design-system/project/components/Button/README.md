@@ -1,0 +1,3 @@
+Rounded action button with seven variants (default, warm, secondary, outline, ghost, link, destructive) and four sizes (sm 36px, default 44px, lg 48px, icon 40px square).
+
+Use `default` for the one primary action per view, `warm` for hero calls to action, `outline` or `ghost` for the rest. Default and warm lift 2px and gain `shadow-hover` on hover. Labels are `button` text style, sentence case. Focus shows a 2px `ring` outline with 2px offset. Disabled drops to 50% opacity. Cream-on-coral label is about 2.9:1 in light theme; keep labels at the default weight 500 or heavier and never smaller than 14px.

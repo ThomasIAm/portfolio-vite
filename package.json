@@ -9,6 +9,8 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "content": "node scripts/fetch-content.mjs",
+    "design-system": "node scripts/build-design-system.mjs",
+    "design-system:check": "node scripts/build-design-system.mjs --check",
     "pretest": "node scripts/fetch-content.mjs",
     "test": "vitest run",
     "preview": "vite preview",
