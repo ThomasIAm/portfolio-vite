@@ -4,6 +4,7 @@ import {
   generateOgImageUrl,
   SITE_NAME,
   ROUTE_METADATA,
+  isKnownRoute,
 } from "../seo-metadata";
 import { siteConfig } from "../site";
 
@@ -52,4 +53,31 @@ describe("SITE_NAME", () => {
   it("is defined", () => {
     expect(SITE_NAME).toBe(siteConfig.name);
   });
+});
+
+describe("isKnownRoute", () => {
+  it.each([
+    "/",
+    "/about",
+    "/about/",
+    "/projects",
+    "/blog",
+    "/blog/some-post",
+    "/blog/series/some-series",
+    "/contact",
+    "/privacy",
+    "/cookies",
+    "/notice",
+    "/cloudflare-consultant",
+    "/preview/some-draft",
+  ])("treats %s as a real route", (path) => {
+    expect(isKnownRoute(path)).toBe(true);
+  });
+
+  it.each(["/nonexistent-page", "/about/extra", "/blog/series", "/preview", "/foo/bar"])(
+    "treats %s as unknown",
+    (path) => {
+      expect(isKnownRoute(path)).toBe(false);
+    },
+  );
 });

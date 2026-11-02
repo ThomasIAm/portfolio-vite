@@ -4,6 +4,7 @@ import {
   ROUTE_METADATA,
   generateOgImageUrl,
   isMarkdownPath,
+  isKnownRoute,
 } from "../src/config/seo-metadata";
 import {
   buildCSPHeader,
@@ -288,8 +289,15 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   // Advertise that this URL has a markdown variant for agents
   headers.append("Vary", "Accept");
 
+  // The SPA fallback answers 200 for any path. Return a real 404 for unknown
+  // routes (and missing blog posts) so Search Console doesn't flag soft 404s.
+  const notFound = blogPostNotFound || !isKnownRoute(path);
+  if (notFound) {
+    headers.set("X-Robots-Tag", "noindex");
+  }
+
   return new Response(html, {
-    status: blogPostNotFound ? 404 : response.status,
+    status: notFound ? 404 : response.status,
     headers,
   });
 };

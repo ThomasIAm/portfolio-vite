@@ -63,6 +63,22 @@ export function isMarkdownPath(path: string): boolean {
   return (MARKDOWN_PATHS as readonly string[]).includes(normalizeMarkdownPath(path));
 }
 
+// Routes that exist in the SPA but have no entry in ROUTE_METADATA.
+const OTHER_STATIC_ROUTES = ['/privacy', '/cookies', '/notice'];
+
+/**
+ * Whether the SPA has a real route for this path. Unknown paths must get a
+ * real 404 status: the SPA fallback otherwise answers 200, which Search Console
+ * reports as "Soft 404". Blog slugs are verified separately against Contentful.
+ */
+export function isKnownRoute(path: string): boolean {
+  const normalized = normalizeMarkdownPath(path);
+  if (normalized in ROUTE_METADATA || OTHER_STATIC_ROUTES.includes(normalized)) {
+    return true;
+  }
+  return /^\/(blog\/series\/|blog\/|preview\/)[^/]+$/.test(normalized) && normalized !== '/blog/series';
+}
+
 export function getRouteMetadata(path: string): RouteMetadata {
   // Direct match
   if (ROUTE_METADATA[path]) {
